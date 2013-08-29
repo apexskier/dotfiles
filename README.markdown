@@ -9,7 +9,7 @@ machines. The actual contents were inspired from a multitude of sources.
 I've added my bash configuration files becuase I haven't yet switched to zsh. I
 might eventually.
 
-## Reference for me
+## Reference
 
 There's a few special files in the hierarchy.
 
