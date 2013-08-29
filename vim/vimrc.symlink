@@ -1,4 +1,170 @@
-syntax on
+" " " " " " " " " " " " " " " " "
+" Cameron Little's .vimrc file  "
+" " " " " " " " " " " " " " " " "
 
-" Wrap gitcommit file types at the appropriate length
-filetype indent plugin on
+set nocompatible    " use Vim settings rather than Vi settings
+
+set visualbell      " visual error alert
+set t_vb=           " helps with errors
+set mouse=a         " allow mouse use
+
+set autoread        " auto read when a file is changed from the outside
+set viminfo^=%      " remember info about open buffers on close
+set lazyredraw      " Don't redraw while executing macros (better performance)
+
+filetype plugin indent on
+
+" search "
+set ignorecase      " ignore case
+set smartcase       " unless capital characters are used
+set incsearch       " find the next match as search is type
+set hlsearch        " highlight results
+
+" visual stuff "
+if &term =~ '256color'
+    " Disable Background Color Erase (BCE) so that color schemes
+    " work properly when Vim is used inside tmux and GNU screen.
+    " See also http://snk.tuxfamily.org/log/vim-256color-bce.html
+    set t_ut=
+endif
+if &t_Co > 2 || has("gui_running")
+    syntax on
+    syntax enable
+endif
+syntax on           " turn on syntax highlighting
+
+" Turns autocompletion on for various filetypes "
+autocmd FileType python set omnifunc=pythoncomplete#Complete
+autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
+autocmd FileType html set omnifunc=htmlcomplete#CompleteTags
+autocmd FileType css set omnifunc=csscomplete#CompleteCSS
+autocmd FileType xml set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+autocmd FileType c set omnifunc=ccomplete#Complete
+autocmd FileType aspnet set omnifunc=xmlcomplete#CompleteTags
+autocmd FileType aspx set omnifunc=xmlcomplete#CompleteTags
+
+autocmd FileType wsgi set syntax=python
+
+set ruler           " always show current pos
+set number          " display line numbers
+set cmdheight=2     " more room for commands
+" set laststatus=2    " makes status bar 2 lines tall
+set showcmd         " show incomplete commands at bottom
+set showmode        " show current mode at bottomi
+set showmatch       " show matching brakets/parthesis
+set cursorline
+set virtualedit=onemore " allow for cursor beyond character
+set wildmenu        " show list instead of just completing
+set wildmode=list:longest,full " command <tab> completion, list matches, then longest common part, then all.
+set background=dark
+set title           " shows title of open file in terminal
+
+" editing stuff "
+set autoindent      " automatically indent
+set smartindent
+set smarttab
+set nowrap          " don't wrap lines
+set expandtab       " spaces instead of tabs
+set shiftwidth=4    " tab spacing
+set tabstop=4       " tab spacing
+autocmd BufWritePre * :%s/\s\+$//e " remove trailing whitespace
+set backspace=indent,eol,start  " allow backspace in insert mode
+set scrolloff=5     " start scrolling when 5 lines away from margins
+set sidescrolloff=10
+set sidescroll=1
+set history=1000     " more history storage
+set undolevels=1000
+set backupdir=~/.dotfiles/vim/tmp
+set directory=~/.dotfiles/vim/tmp
+source ~/.dotfiles/vim/scripts/closetag.vim
+let b:unaryTagsStack=""
+inoremap <// <C-R>=GetCloseTag()<CR>
+
+" copy paste stuff "
+set pastetoggle=<f8>
+
+" code folding "
+set foldmethod=indent " fold based on indent
+set foldnestmax=10  " deepest fold is 10 levels
+set foldlevel=1
+
+" Return to last edit position when opening files (You want this!)
+autocmd BufReadPost *
+     \ if line("'\"") > 0 && line("'\"") <= line("$") |
+     \   exe "normal! g`\"" |
+     \ endif
+
+" Normal Mode Mappings "
+" Makes J insert a <CR> it's like the opposite of J
+nnoremap K i<C-m><Esc>
+" Execute Macros with Q
+nnoremap Q @q
+" Y yanks to end of line, making it consistant with D and C
+nnoremap Y y$
+" Keep search pattern at the center of the screen
+nnoremap <silent> n nzz
+nnoremap <silent> N Nzz
+" Remap j and k to scroll by visual lines
+nnoremap j gj
+nnoremap k gk
+
+" Insert Mode Mappings "
+" A quicker alternative to pushing <ESC>
+inoremap jk <ESC>
+" Autoclosing parenthesis/brackets
+inoremap ( ()<Left>
+inoremap (<Right> (
+inoremap (<BS> (<BS>
+inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+inoremap (<C-m> (<C-m><BS>)<Up><Esc>$i<Right><C-m>
+inoremap { {}<Left>
+inoremap {<Right> {
+inoremap {<BS> {<BS>
+inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
+inoremap {<C-m> {<C-m><BS>}<Up><Esc>$i<Right><C-m>
+inoremap [ []<Left>
+inoremap [<Right> [
+inoremap [<BS> [<BS>
+inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
+inoremap [<C-m> [<C-m><BS>]<Up><Esc>$i<Right><C-m>
+" set indenting in insert-mode
+inoremap << <C-d>
+inoremap >> <C-t>
+" Go to beginning of line in insert mode
+inoremap <C-a> <ESC>I
+inoremap Higgenson Higginson
+inoremap higgenson higginson
+
+" Go to end of line in insert mode
+inoremap <C-e> <ESC>A
+" Start editing on new line above current line
+inoremap <C-p> <ESC>O
+" Start editing on new line below current line
+inoremap <C-u> <ESC>o
+" Move current line up one line (switches places with above line)
+inoremap <silent><C-k> <ESC>mz:m-2<CR>`zi
+" Move current line down one line (switches places with below line)
+inoremap <silent><C-j> <ESC>mz:m+<CR>`zi
+""" css snippets
+
+" Visual Mode Mappings "
+" Yank highlighted text and searches it
+vmap <C-n> y/<C-R>"<CR>
+" visual shifting
+vnoremap < <gv
+vnoremap > >gv
+
+" Command Mode Mappings "
+" Leave escape mode by pressing jk/kj
+cnoremap jk <ESC>
+cnoremap kj <ESC>
+
+" .vimrc references "
+" https://github.com/edlandm/vim
+" http://vimdoc.sourceforge.net/htmldoc/intro.html#keycodes
+
+
+" workspace specific
+" touch wsgi on save python file
+autocmd BufWritePre *.py :! touch ~/django/wwu_housing/wsgi.py
