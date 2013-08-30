@@ -24,7 +24,7 @@ set-window-option -g window-status-format "#[fg=cyan,dim]#I:#W#[fg=grey,dim]#F"
 set-window-option -g window-status-current-format "#[fg=white,bold,bg=cyan]#I:#[fg=white]#W#F"
 set -g status-justify left
 setw -g monitor-activity on
-set -g visual-activity on
+# set -g visual-activity on
 setw -g automatic-rename on
 
 # status bar colors
@@ -36,3 +36,7 @@ setw -g pane-active-border-fg '#859900'
 
 # visual bell
 set -g visual-bell on
+
+# terminal window titles
+set -g set-titles on
+set -g set-titles-string "#T"
