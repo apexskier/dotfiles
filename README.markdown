@@ -1,6 +1,6 @@
 # Cameron Little's dotfiles
 
-For the real readme, checkout [@holman's
+For the real readme, check out [@holman's
 dotfiles](https://github.com/holman/dotfiles).
 
 I'm using his system to organize and propagate my configurations across
