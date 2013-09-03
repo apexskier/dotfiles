@@ -106,6 +106,8 @@ nnoremap <silent> N Nzz
 " Remap j and k to scroll by visual lines
 nnoremap j gj
 nnoremap k gk
+" set sytnax to django template with html
+nnoremap sdh :setfiletype htmldjango<C-m>
 
 " Insert Mode Mappings "
 " A quicker alternative to pushing <ESC>
