@@ -77,9 +77,7 @@ set history=1000     " more history storage
 set undolevels=1000
 set backupdir=~/.dotfiles/vim/tmp
 set directory=~/.dotfiles/vim/tmp
-source ~/.dotfiles/vim/scripts/closetag.vim
-let b:unaryTagsStack=""
-inoremap <// <C-R>=GetCloseTag()<CR>
+inoremap <// </<C-x><C-o>
 
 " copy paste stuff "
 set pastetoggle=<f8>
