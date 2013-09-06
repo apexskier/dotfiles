@@ -1,0 +1,10 @@
+# gravelpit
+new-window "exit"
+new-window "exit"
+new-window "exit"
+new-window "exit"
+new-window "exit"
+new-window "exit"
+new-window "exit"
+new-window -n irc "ssh juicebox.restek.wwu.edu -t startirc"
+select-window -t 1
