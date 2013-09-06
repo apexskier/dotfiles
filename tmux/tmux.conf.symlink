@@ -10,6 +10,9 @@ set -g base-index 1
 unbind r
 bind r source-file ~/.tmux.conf \; display "Reloaded tmux config file."
 
+# bind S to initialize session
+bind S source-file ~/.tmux.session.gravelpit
+
 # different pane splitting binding
 bind | split-window -h
 bind _ split-window -v
