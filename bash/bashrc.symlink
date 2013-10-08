@@ -44,3 +44,11 @@ bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 bind 'set show-all-if-ambiguous on'
 bind 'set completion-ignore-case on'
+
+
+# resnet rewrite
+export WORKON_HOME="$HOME/.virtualenvs"
+export PROJECT_HOME="$HOME/projects"
+export VIRTUALENVWRAPPER_VIRTUALENV="virtualenv"
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
+export PIP_RESPECT_VIRTUALENV=true
