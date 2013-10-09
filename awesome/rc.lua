@@ -354,7 +354,10 @@ awful.rules.rules = {
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
-    -- Set Firefox to always map on tags number 2 of screen 1.
+    { rule = { class = "Iceweasel" },
+      callback = function(c) c:tags({
+          tags[1][1], tags[1][2]
+      }) end },
     { rule = { class = "Firefox" },
       callback = function(c) c:tags({
           tags[1][1], tags[1][2]
