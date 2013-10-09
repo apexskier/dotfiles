@@ -35,14 +35,15 @@ do
 end
 -- }}}
 
+awful.util.spawn_with_shell("xmodmap ~/.Xmodmap")
+
 -- {{{ Variable definitions
 -- Themes define colours, icons, and wallpapers
 beautiful.init("/usr/share/awesome/themes/zenburn/theme.lua")
--- theme.wallpaper_cmd = { "awsetbg /path/to/background.png" }
 
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
-editor = os.getenv("EDITOR") or "vim"
+editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 
 -- Default modkey.
@@ -73,13 +74,22 @@ layouts =
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {
-    names = { "main", "www", "irc", "office", 5, 6, 7, 8, 9 },
-    layout = { layouts[1], layouts[2], layouts[1], layouts[5], layouts[6],
-               layouts[12], layouts[9], layouts[3], layouts[7], }
+    names = { "main", "www", "ide", "irc", 5, 6, 7, 8, 9 },
+    layout = {
+        layouts[2],
+        layouts[2],
+        layouts[10],
+        layouts[2],
+        layouts[7],
+        layouts[6],
+        layouts[7],
+        layouts[6],
+        layouts[7],
+    }
 }
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag(tAgs.names, s, tags.layout)
+    tags[s] = awful.tag(tags.names, s, tags.layout)
 end
 -- }}}
 
@@ -345,8 +355,16 @@ awful.rules.rules = {
     { rule = { class = "gimp" },
       properties = { floating = true } },
     -- Set Firefox to always map on tags number 2 of screen 1.
-    -- { rule = { class = "Firefox" },
-    --   properties = { tag = tags[1][2] } },
+    { rule = { class = "Firefox" },
+      callback = function(c) c:tags({
+          tags[1][1], tags[1][2]
+      }) end },
+    { rule = { class = "Chromium" },
+      properties = { tag = tags[2][2], switchtotag = true } },
+    { rule = { class = "Eclipse" },
+      properties = { tag = tags[1][3] } },
+    { rule = { class = "Thunar" },
+      properties = { floating = true } },
 }
 -- }}}
 
