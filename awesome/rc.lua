@@ -45,9 +45,9 @@ editor_cmd = terminal .. " -e " .. editor
 config_dir = awful.util.getdir("config")
 home_dir = os.getenv("HOME")
 
-naughty.notify({ preset = naughty.config.presets.critical,
-                 title = "Config directory",
-                 text = config_dir})
+-- naughty.notify({ preset = naughty.config.presets.critical,
+--                  title = "Config directory",
+--                  text = config_dir})
 
 -- https://github.com/Stebalien/awesomewm-config/blob/master/rc.lua
 
