@@ -38,13 +38,21 @@ end
 awful.util.spawn_with_shell("xmodmap ~/.Xmodmap")
 
 -- {{{ Variable definitions
--- Themes define colours, icons, and wallpapers
-beautiful.init("/home/littlec8/.dotfiles/awesome/themes/zenburn/theme.lua")
-
 -- This is used later as the default terminal and editor to run.
 terminal = "x-terminal-emulator"
 editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
+config_dir = awful.util.getdir("config")
+home_dir = os.getenv("HOME")
+
+naughty.notify({ preset = naughty.config.presets.critical,
+                 title = "Config directory",
+                 text = config_dir})
+
+-- https://github.com/Stebalien/awesomewm-config/blob/master/rc.lua
+
+-- Themes define colours, icons, and wallpapers
+beautiful.init("/home/littlec8/.dotfiles/awesome/themes/zenburn/theme.lua")
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
