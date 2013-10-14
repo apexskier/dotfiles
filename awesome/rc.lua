@@ -367,15 +367,26 @@ awful.rules.rules = {
           tags[1][1], tags[1][2]
       }) end },
     { rule = { class = "Firefox" },
-      callback = function(c) c:tags({
+      callback = function(c)
+        c:tags({
           tags[1][1], tags[1][2]
-      }) end },
+        })
+        awful.titlebar.add(c, { modkey = modkey })
+      end },
     { rule = { class = "Chromium" },
-      properties = { tag = tags[2][2], switchtotag = true } },
+      properties = { switchtotag = true },
+      callback = function(c)
+        awful.client.movetotag(tags[mouse.screen][2], c)
+        awful.tag.viewonly(tags[mouse.screen][2])
+        awful.titlebar.add(c, { modkey = modkey })
+      end },
     { rule = { class = "Eclipse" },
       properties = { tag = tags[1][3] } },
     { rule = { class = "Thunar" },
-      properties = { floating = true } },
+      properties = { floating = true },
+      callback = function(c)
+        awful.titlebar.add(c, { modkey = modkey })
+      end },
 }
 -- }}}
 
