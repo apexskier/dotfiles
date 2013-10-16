@@ -420,6 +420,16 @@ awful.rules.rules = {
                      buttons = clientbuttons } },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
+    { rule = { name = "xmessage" },
+      properties = {
+          opacity = 0.75,
+          floating = true,
+          ontop = true,
+          focus = true
+      },
+      callback = function(c)
+        awful.client.moveresize(20, 20, 0, 20, c)
+      end },
     { rule = { type = "dialog" },
       properties = {
           opacity = 0.75,
@@ -442,9 +452,13 @@ awful.rules.rules = {
       callback = function(c)
         awful.tag.put_and_show(c, tags[1][2], 1);
       end },
-    { rule = { class="Iceweasel",
-               title = "Downloads" },
-      properties = { floating = true, ontop = true } },
+    { rule = { class = "Iceweasel",
+               name = "Downloads" },
+      properties = { floating = true, ontop = true },
+      callback = function(c)
+        awful.titlebar.add(c, { modkey = modkey })
+        awful.client.moveresize(20, 20, 0, 0, c)
+      end },
     { rule = { class = "Chromium" },
       callback = function(c)
         local dest_tag = tags[mouse.screen][2]
