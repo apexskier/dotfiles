@@ -72,37 +72,90 @@ layouts =
     awful.layout.suit.floating,         -- 1
     awful.layout.suit.tile,             -- 2
     awful.layout.suit.tile.left,        -- 3
-    awful.layout.suit.tile.bottom,      -- 4
-    awful.layout.suit.tile.top,         -- 5
-    awful.layout.suit.fair,             -- 6
-    awful.layout.suit.fair.horizontal,  -- 7
-    awful.layout.suit.spiral,           -- 8
-    awful.layout.suit.spiral.dwindle,   -- 9
-    awful.layout.suit.max,              -- 10
-    awful.layout.suit.max.fullscreen,   -- 11
-    awful.layout.suit.magnifier         -- 12
+    -- awful.layout.suit.tile.bottom,
+    -- awful.layout.suit.tile.top,
+    awful.layout.suit.fair,             -- 4
+    awful.layout.suit.fair.horizontal,  -- 5
+    -- awful.layout.suit.spiral,
+    awful.layout.suit.spiral.dwindle,   -- 6
+    awful.layout.suit.max,              -- 7
+    awful.layout.suit.max.fullscreen,   -- 8
+    -- awful.layout.suit.magnifier
 }
 -- }}}
 
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
-tags = {
-    names = { "main", "www", "ide", "irc", 5, 6, 7, 8, 9 },
-    layout = {
-        layouts[2],
-        layouts[2],
-        layouts[10],
-        layouts[2],
-        layouts[7],
-        layouts[6],
-        layouts[7],
-        layouts[6],
-        layouts[7],
-    }
+tags = {}
+tag_layouts = { -- defualt layouts for the specified tags
+    main = layouts[2],
+    www = layouts[4],
+    files = layouts[1],
+    ide = layouts[7],
+    irc = layouts[3]
 }
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    tags[s] = awful.tag(tags.names, s, tags.layout)
+    if s == 1 then -- first screen
+        if screen.count() == 1 then -- one screen
+            tags[s] = awful.tag(
+                { "main", "www", "files", "ide", "irc", 6, 7, 8 },
+                s,
+                {
+                    tag_layouts["main"], -- main
+                    tag_layouts["www"], -- www
+                    tag_layouts["files"], -- files
+                    tag_layouts["ide"], -- ide
+                    tag_layouts["irc"], -- irc
+                    layouts[6], --
+                    layouts[7], --
+                    layouts[6], --
+                })
+
+        else                        -- multiple monitors
+            tags[s] = awful.tag(
+                { "main", "www", "files", "ide", 5, 6, 7, 8 },
+                s,
+                {
+                    layouts[3], -- main
+                    tag_layouts["www"], -- www
+                    tag_layouts["files"], -- files
+                    tag_layouts["ide"], -- ide
+                    layouts[7], --
+                    layouts[6], --
+                    layouts[7], --
+                    layouts[6], --
+                })
+        end
+    elseif s == screen.count() then -- last screen
+        tags[s] = awful.tag(
+            { "main", "www", "files", "irc", 5, 6, 7, 8 },
+            s,
+            {
+                tag_layouts["main"], -- main
+                tag_layouts["www"], -- www
+                tag_layouts["files"], -- files
+                tag_layouts["irc"], -- irc
+                layouts[7], --
+                layouts[6], --
+                layouts[7], --
+                layouts[6], --
+            })
+    else
+        tags[s] = awful.tag(
+            { "main", "www", "files", 4, 5, 6, 7, 8 },
+            s,
+            {
+                tag_layouts["main"], -- main
+                tag_layouts["www"], -- www
+                layouts["files"], -- files
+                layouts[2], --
+                layouts[7], --
+                layouts[6], --
+                layouts[7], --
+                layouts[6], --
+            })
+    end
 end
 -- }}}
 
@@ -273,8 +326,7 @@ globalkeys = awful.util.table.join(
 
     -- Prompt
     awful.key({ modkey },            "r",     function () mypromptbox[mouse.screen]:run() end),
-
-    awful.key({ modkey }, "x",
+    awful.key({ modkey },            "x",
               function ()
                   awful.prompt.run({ prompt = "Run Lua code: " },
                   mypromptbox[mouse.screen].widget,
@@ -379,22 +431,20 @@ awful.rules.rules = {
     { rule = { class = "gimp" },
       properties = { floating = true } },
     { rule = { class = "Iceweasel" },
-      callback = function(c) c:tags({
-          tags[1][1], tags[1][2]
-      }) end },
-    { rule = { class = "Firefox" },
+      properties = { tag = tags[1][2] },
       callback = function(c)
-        c:tags({
-          tags[1][1], tags[1][2]
-        })
-        awful.titlebar.add(c, { modkey = modkey })
+        awful.tag.viewtoggle(tags[1][2])
+      end },
+    { rule = { class = "Firefox" },
+      properties = { tag = tags[1][2] },
+      callback = function(c)
+        awful.tag.viewtoggle(tags[1][2])
       end },
     { rule = { class = "Chromium" },
-      properties = { switchtotag = true },
       callback = function(c)
-        -- move to www tag, then switch to that tag, then add titlebar
-        awful.client.movetotag(tags[mouse.screen][2], c)
-        awful.tag.viewonly(tags[mouse.screen][2])
+        dest_tag = tags[mouse.screen][2]
+        awful.client.movetotag(dest_tag, c)
+        awful.tag.viewtoggle(dest_tag)
         awful.titlebar.add(c, { modkey = modkey })
       end },
     { rule = { class = "Eclipse" },
@@ -402,11 +452,17 @@ awful.rules.rules = {
     { rule = { class = "Thunar" },
       properties = { floating = true },
       callback = function(c)
+        dest_tag = tags[mouse.screen][3]
+        awful.client.movetotag(dest_tag, c)
+        awful.tag.viewtoggle(dest_tag)
         awful.titlebar.add(c, { modkey = modkey })
       end },
     { rule = { class = "Nautilus" },
       properties = { floating = true },
       callback = function(c)
+        dest_tag = tags[mouse.screen][3]
+        awful.client.movetotag(dest_tag, c)
+        awful.tag.viewtoggle(dest_tag)
         awful.titlebar.add(c, { modkey = modkey })
       end },
 }
