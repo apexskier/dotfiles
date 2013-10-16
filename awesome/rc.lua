@@ -50,14 +50,8 @@ editor_cmd = terminal .. " -e " .. editor
 config_dir = awful.util.getdir("config")
 home_dir = os.getenv("HOME")
 
--- naughty.notify({ preset = naughty.config.presets.critical,
---                  title = "Config directory",
---                  text = config_dir})
-
--- https://github.com/Stebalien/awesomewm-config/blob/master/rc.lua
-
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/home/littlec8/.dotfiles/awesome/themes/zenburn/theme.lua")
+beautiful.init("/home/littlec8/.dotfiles/awesome/themes/cstm-apexskier/theme.lua")
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -426,47 +420,83 @@ awful.rules.rules = {
                      buttons = clientbuttons } },
     { rule = { class = "MPlayer" },
       properties = { floating = true } },
+    { rule = { type = "dialog" },
+      properties = {
+          opacity = 0.75,
+          floating = true,
+          ontop = true,
+          focus = true
+      } },
     { rule = { class = "pinentry" },
       properties = { floating = true } },
     { rule = { class = "gimp" },
       properties = { floating = true } },
+    -- www
     { rule = { class = "Iceweasel" },
       properties = { tag = tags[1][2] },
       callback = function(c)
-        awful.tag.viewtoggle(tags[1][2])
+        awful.tag.put_and_show(c, tags[1][2], 1);
       end },
     { rule = { class = "Firefox" },
       properties = { tag = tags[1][2] },
       callback = function(c)
-        awful.tag.viewtoggle(tags[1][2])
+        awful.tag.put_and_show(c, tags[1][2], 1);
       end },
+    { rule = { class="Iceweasel",
+               title = "Downloads" },
+      properties = { floating = true, ontop = true } },
     { rule = { class = "Chromium" },
       callback = function(c)
-        dest_tag = tags[mouse.screen][2]
-        awful.client.movetotag(dest_tag, c)
-        awful.tag.viewtoggle(dest_tag)
+        local dest_tag = tags[mouse.screen][2]
         awful.titlebar.add(c, { modkey = modkey })
+        awful.tag.put_and_show(c, dest_tag, mouse.screen);
       end },
+    -- ide's
     { rule = { class = "Eclipse" },
       properties = { tag = tags[1][3] } },
+    -- files
     { rule = { class = "Thunar" },
       properties = { floating = true },
       callback = function(c)
-        dest_tag = tags[mouse.screen][3]
-        awful.client.movetotag(dest_tag, c)
-        awful.tag.viewtoggle(dest_tag)
+        local dest_tag = tags[mouse.screen][3]
         awful.titlebar.add(c, { modkey = modkey })
+        awful.tag.put_and_show(c, dest_tag, mouse.screen);
+      end },
+    { rule = { class = "Pcmanfm" },
+      properties = { floating = true },
+      callback = function(c)
+        local dest_tag = tags[mouse.screen][3]
+        awful.titlebar.add(c, { modkey = modkey })
+        awful.tag.put_and_show(c, dest_tag, mouse.screen);
       end },
     { rule = { class = "Nautilus" },
       properties = { floating = true },
       callback = function(c)
-        dest_tag = tags[mouse.screen][3]
-        awful.client.movetotag(dest_tag, c)
-        awful.tag.viewtoggle(dest_tag)
+        local dest_tag = tags[mouse.screen][3]
         awful.titlebar.add(c, { modkey = modkey })
+        awful.tag.put_and_show(c, dest_tag, mouse.screen);
       end },
 }
 -- }}}
+
+-- move a client to a tag on a screen and then show it (preserving already
+-- shown tags)
+function awful.tag.put_and_show(c, tag, screen)
+    awful.client.movetotag(tag, c)
+    if not awful.tag.visible(tag, screen) then
+        awful.tag.viewtoggle(tag)
+    end
+end
+-- is a tag visible on a screen?
+function awful.tag.visible(tag, screen)
+    local selected = awful.tag.selectedlist(screen)
+    local found = false
+    for i_, v in ipairs(selected) do
+        if v == tag then
+            return true
+        end
+    end
+end
 
 -- {{{ Signals
 -- Signal function to execute when a new client appears.
