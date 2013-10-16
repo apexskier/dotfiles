@@ -10,6 +10,8 @@ require("naughty")
 -- Load Debian menu entries
 require("debian.menu")
 
+require("volume")
+
 -- {{{ Error handling
 -- Check if awesome encountered an error during startup and fell back to
 -- another config (This code will only ever execute for the fallback config)
@@ -35,7 +37,10 @@ do
 end
 -- }}}
 
-awful.util.spawn_with_shell("xmodmap ~/.Xmodmap")
+awful.util.spawn_with_shell("xmodmap ~/.Xmodmap") -- set caps lock to modkey
+awful.util.spawn_with_shell("amixer sset Front on")     -- turn volume on
+awful.util.spawn_with_shell("amixer sset Headphone on")
+awful.util.spawn_with_shell("amixer sset PCM on")
 
 -- {{{ Variable definitions
 -- This is used later as the default terminal and editor to run.
@@ -203,6 +208,7 @@ for s = 1, screen.count() do
         },
         mylayoutbox[s],
         mytextclock,
+        volume_widget,
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
@@ -275,28 +281,39 @@ globalkeys = awful.util.table.join(
                   mypromptbox[mouse.screen].widget,
                   awful.util.eval, nil,
                   awful.util.getdir("cache") .. "/history_eval")
-              end)
+              end),
+
+    -- volume
+    awful.key({ modkey, "Control" }, "Up",   function () awful.util.spawn("amixer set Master 9%+") end),
+    awful.key({ modkey, "Control" }, "Down", function () awful.util.spawn("amixer set Master 9%-") end),
+    awful.key({ modkey, "Control" }, "m",    function () awful.util.spawn("amixer sset Master toggle") end)
 )
 
 clientkeys = awful.util.table.join(
     awful.key({ modkey,           }, "f",      function (c) c.fullscreen = not c.fullscreen  end),
     awful.key({ modkey, "Shift"   }, "c",      function (c) c:kill()                         end),
+    awful.key({ "Control"         }, "w",      function (c) c:kill()                         end),
     awful.key({ modkey, "Control" }, "space",  awful.client.floating.toggle                     ),
     awful.key({ modkey, "Control" }, "Return", function (c) c:swap(awful.client.getmaster()) end),
     awful.key({ modkey,           }, "o",      awful.client.movetoscreen                        ),
     awful.key({ modkey, "Shift"   }, "r",      function (c) c:redraw()                       end),
     awful.key({ modkey,           }, "t",      function (c) c.ontop = not c.ontop            end),
-    awful.key({ modkey,           }, "n",
+    awful.key({ modkey,           }, "m",
         function (c)
             -- The client currently has the input focus, so it cannot be
             -- minimized, since minimized clients can't have the focus.
             c.minimized = true
         end),
-    awful.key({ modkey,           }, "m",
-        function (c)
-            c.maximized_horizontal = not c.maximized_horizontal
-            c.maximized_vertical   = not c.maximized_vertical
-        end)
+    awful.key({ modkey,           }, "z",               -- zoom client
+         function (c)
+             c.maximized_horizontal = not c.maximized_horizontal
+             c.maximized_vertical   = not c.maximized_vertical
+            if c.maximized_horizontal and c.maximized_vertical then
+                c.ontop = true
+            else
+                c.ontop = false
+            end
+         end)
 )
 
 -- Compute the maximum number of digit we need, limited to 9
@@ -376,6 +393,7 @@ awful.rules.rules = {
     { rule = { class = "Chromium" },
       properties = { switchtotag = true },
       callback = function(c)
+        -- move to www tag, then switch to that tag, then add titlebar
         awful.client.movetotag(tags[mouse.screen][2], c)
         awful.tag.viewonly(tags[mouse.screen][2])
         awful.titlebar.add(c, { modkey = modkey })
@@ -383,6 +401,11 @@ awful.rules.rules = {
     { rule = { class = "Eclipse" },
       properties = { tag = tags[1][3] } },
     { rule = { class = "Thunar" },
+      properties = { floating = true },
+      callback = function(c)
+        awful.titlebar.add(c, { modkey = modkey })
+      end },
+    { rule = { class = "Nautilus" },
       properties = { floating = true },
       callback = function(c)
         awful.titlebar.add(c, { modkey = modkey })
