@@ -21,18 +21,38 @@ function update_volume(widget)
     local ib = volume * (eb - sb) + sb
     interpol_colour = string.format("%.2x%.2x%.2x", ir, ig, ib)
 
-    local ticks = {' ', '▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'}
-    local adjvol = math.ceil(volume * 8) + 1
+    local ticks = {'▁', '▂', '▃', '▄', '▅', '▆', '▇', '█'}
+    local adjvol = math.ceil(volume * 7) + 1
     local volchar = ticks[adjvol]
 
     if string.find(status, "on", 1, true) then
-        volume = " <span color='#" .. interpol_colour .. "'>" .. volchar .. "</span> "
+        volume = " <span color='#" .. interpol_colour .. "'>♪ " .. volchar .. "</span> "
     else
-        volume = " <span color='red'>" .. volchar .. "</span> "
+        volume = " <span color='red'>♪ " .. volchar .. "</span> "
     end
     widget.text = volume
- end
+end
 
 update_volume(volume_widget)
 awful.hooks.timer.register(1, function () update_volume(volume_widget) end)
 
+volume_widget:buttons(awful.util.table.join(
+    awful.button({ }, 1,
+        function()
+            awful.util.spawn("amixer sset Master toggle")
+            awful.util.spawn("amixer sset Front on")     -- turn volume on
+            awful.util.spawn("amixer sset Headphone on")
+            awful.util.spawn("amixer sset PCM on")
+            update_volume(volume_widget)
+        end),
+    awful.button({}, 4,
+        function()
+            awful.util.spawn("amixer set Master 9%+")
+            update_volume(volume_widget)
+        end),
+    awful.button({}, 5,
+        function()
+            awful.util.spawn("amixer set Master 9%-")
+            update_volume(volume_widget)
+        end)
+))
