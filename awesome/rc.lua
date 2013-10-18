@@ -419,6 +419,9 @@ awful.rules.rules = {
       callback = function(c)
         awful.client.moveresize(20, 20, 0, 20, c)
       end },
+    { rule = { instance = "plugin-container" },
+      properties = { floating = true,
+                     focus = yes } },
     { rule = { type = "dialog" },
       properties = {
           opacity = 0.75,

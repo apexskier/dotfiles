@@ -43,3 +43,6 @@ set -g visual-bell on
 # terminal window titles
 set -g set-titles on
 set -g set-titles-string "#T"
+
+# auto create session
+new-session
