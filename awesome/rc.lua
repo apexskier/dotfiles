@@ -459,7 +459,7 @@ awful.rules.rules = {
       end },
     -- ide's
     { rule = { class = "Eclipse" },
-      properties = { tag = tags[1][3] } },
+      properties = { tag = tags[1][4] } },
     -- files
     { rule = { class = "Thunar" },
       properties = { floating = true },
