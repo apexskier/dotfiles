@@ -33,27 +33,28 @@ function update_volume(widget)
 end
 update_volume(volume_widget)
 
+function vol_mute()
+    awful.util.spawn_with_shell("amixer sset Master toggle")
+    awful.util.spawn_with_shell("amixer sset Front on")     -- turn sound on
+    awful.util.spawn_with_shell("amixer sset Headphone on")
+    awful.util.spawn_with_shell("amixer sset PCM on")
+    update_volume(volume_widget)
+end
+function vol_up()
+    awful.util.spawn_with_shell("amixer set Master 9%+")
+    update_volume(volume_widget)
+end
+function vol_down()
+    awful.util.spawn_with_shell("amixer set Master 9%-")
+    update_volume(volume_widget)
+end
+
 -- update volume on an interval
 awful.hooks.timer.register(1, function () update_volume(volume_widget) end)
 
 -- use the mouse
 volume_widget:buttons(awful.util.table.join(
-    awful.button({ }, 1, -- clicking mutes/unmutes
-        function()
-            awful.util.spawn_with_shell("amixer sset Master toggle")
-            awful.util.spawn_with_shell("amixer sset Front on")     -- turn volume on
-            awful.util.spawn_with_shell("amixer sset Headphone on")
-            awful.util.spawn_with_shell("amixer sset PCM on")
-            update_volume(volume_widget)
-        end),
-    awful.button({}, 4, -- scrolling up increases volume
-        function()
-            awful.util.spawn_with_shell("amixer set Master 9%+")
-            update_volume(volume_widget)
-        end),
-    awful.button({}, 5, -- scrolling up decreases volume
-        function()
-            awful.util.spawn_with_shell("amixer set Master 9%-")
-            update_volume(volume_widget)
-        end)
+    awful.button({}, 1, vol_mute), -- clicking mutes/unmutes
+    awful.button({}, 4, vol_up),   -- scrolling up increases volume
+    awful.button({}, 5, vol_down)  -- scrolling up decreases volume
 ))

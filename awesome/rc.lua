@@ -49,6 +49,7 @@ editor = os.getenv("EDITOR") or "editor"
 editor_cmd = terminal .. " -e " .. editor
 config_dir = awful.util.getdir("config")
 home_dir = os.getenv("HOME")
+globalkeys = awful.util.table.join()
 
 -- Themes define colours, icons, and wallpapers
 beautiful.init("/home/littlec8/.dotfiles/awesome/themes/cstm-apexskier/theme.lua")
@@ -261,7 +262,7 @@ root.buttons(awful.util.table.join(
 -- }}}
 
 -- {{{ Key bindings
-globalkeys = awful.util.table.join(
+globalkeys = awful.util.table.join(globalkeys,
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
@@ -318,9 +319,9 @@ globalkeys = awful.util.table.join(
               end),
 
     -- volume
-    awful.key({ modkey, "Control" }, "Up",   function () awful.util.spawn("amixer set Master 9%+") end),
-    awful.key({ modkey, "Control" }, "Down", function () awful.util.spawn("amixer set Master 9%-") end),
-    awful.key({ modkey, "Control" }, "m",    function () awful.util.spawn("amixer sset Master toggle") end)
+    awful.key({ modkey, "Control" }, "m",    vol_mute),
+    awful.key({ modkey, "Control" }, "Up",   vol_up),
+    awful.key({ modkey, "Control" }, "Down", vol_down)
 )
 
 clientkeys = awful.util.table.join(
