@@ -19,6 +19,7 @@ set ignorecase      " ignore case
 set smartcase       " unless capital characters are used
 set incsearch       " find the next match as search is type
 set hlsearch        " highlight results
+set magic           " for regular expressions use magic (?)
 " Search for selected tet, forwards or backwards.
 vnoremap <silent> * :<C-U>
   \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
@@ -30,6 +31,8 @@ vnoremap <silent> # :<C-U>
   \gvy?<C-R><C-R>=substitute(
   \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
   \gV:call setreg('"', old_reg, old_regtype)<CR>
+" Disable highlight when <leader><cr> is pressed
+map <silent> <leader><cr> :noh<cr>
 
 " visual stuff "
 if &term =~ '256color'
@@ -39,10 +42,13 @@ if &term =~ '256color'
     set t_ut=
 endif
 if &t_Co > 2 || has("gui_running")
-    syntax on
-    syntax enable
+    set guioptions-=T
+    set guioptions+=e
+    set t_Co=256
+    set guitablabel=%M\ %t
 endif
 syntax on           " turn on syntax highlighting
+syntax enable
 
 " Turns autocompletion on for various filetypes "
 autocmd FileType python set omnifunc=pythoncomplete#Complete
@@ -60,7 +66,17 @@ autocmd FileType wsgi set syntax=python
 set ruler           " always show current pos
 set number          " display line numbers
 set cmdheight=2     " more room for commands
-" set laststatus=2    " makes status bar 2 lines tall
+set laststatus=2    " makes status bar 2 lines tall
+" Format the status line
+set statusline=\ %#todo#%{HasPaste()}%*%{PasteSpace()} " paste mode
+set statusline+=%f                  " file
+set statusline+=\ %m                " modified?
+set statusline+=%#error#%r%*        " readonly?
+set statusline+=%h                  " help?
+set statusline+=%w                  " some flag
+set statusline+=%=\ \ %{getcwd()}   " current dir
+set statusline+=\ \ \ %P            " percent through file
+set statusline+=\ %*                " ending space
 set showcmd         " show incomplete commands at bottom
 set showmode        " show current mode at bottomi
 set showmatch       " show matching brakets/parthesis
@@ -84,6 +100,8 @@ set backspace=indent,eol,start  " allow backspace in insert mode
 set scrolloff=5     " start scrolling when 5 lines away from margins
 set sidescrolloff=10
 set sidescroll=1
+set encoding=utf8    " Set utf8 as standard encoding and en_US as the standard language
+set ffs=unix,dos,mac " Use Unix as the standard file type
 set history=1000     " more history storage
 set undodir=~/.dotfiles/vim/undo
 set undofile
@@ -92,6 +110,15 @@ set undoreload=10000
 set backupdir=~/.dotfiles/vim/tmp
 set directory=~/.dotfiles/vim/tmp
 inoremap <// </<C-x><C-o>
+" Pressing <leader>ss will toggle and untoggle spell checking
+map <leader>ss :setlocal spell!<cr>
+
+" windows "
+" Smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
 
 " copy paste stuff "
 set pastetoggle=<f8>
@@ -182,3 +209,19 @@ cnoremap kj <ESC>
 " workspace specific
 " touch wsgi on save python file
 autocmd BufWritePre *.py :! touch ~/django/wwu_housing/wsgi.py
+
+
+
+" Returns true if paste mode is enabled
+function! HasPaste()
+    if &paste
+        return 'paste mode'
+    en
+    return ''
+endfunction
+function! PasteSpace()
+    if &paste
+        return " "
+    en
+    return ''
+endfunction
