@@ -68,15 +68,21 @@ set number          " display line numbers
 set cmdheight=2     " more room for commands
 set laststatus=2    " makes status bar 2 lines tall
 " Format the status line
-set statusline=\ %#todo#%{HasPaste()}%*%{PasteSpace()} " paste mode
-set statusline+=%f                  " file
-set statusline+=\ %m                " modified?
+hi User1 ctermbg=white ctermfg=blue guibg=red guifg=green
+set statusline=
+set statusline+=\ %#todo#%{HasPaste()}%*%{PasteSpace()} " paste mode
+set statusline+=%1*%{getcwd()}      " current dir
+set statusline+=/%*%f               " file
+set statusline+=%m                  " modified?
+set statusline+=\ %y                " type?
 set statusline+=%#error#%r%*        " readonly?
-set statusline+=%h                  " help?
-set statusline+=%w                  " some flag
-set statusline+=%=\ \ %{getcwd()}   " current dir
-set statusline+=\ \ \ %P            " percent through file
+set statusline+=%w                  " preview?
+" set statusline+=\ buff:\ %n         " buffer num
+set statusline+=%=                  " right align
+set statusline+=%10((%l,%c%V)%)     " line and column
+set statusline+=\ \ %P              " percent through file
 set statusline+=\ %*                " ending space
+" set statusline=[%n]\ %<%.99f\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%y%=%-16(\ %l,%c-%v\ %)%P
 set showcmd         " show incomplete commands at bottom
 set showmode        " show current mode at bottomi
 set showmatch       " show matching brakets/parthesis
