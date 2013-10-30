@@ -249,7 +249,6 @@ install_dotfiles () {
             fi
         fi
     done
-
 }
 
 setup_gitconfig
@@ -266,6 +265,10 @@ then
         fail "error installing dependencies"
     fi
 fi
+
+echo '    Creating vim tmp and undo dirs...'
+mkdir -p $HOME/.dotfiles/vim/undo
+mkdir -p $HOME/.dotfiles/vim/tmp
 
 echo ''
 echo '  All installed!'

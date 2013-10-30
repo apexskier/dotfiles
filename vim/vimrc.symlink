@@ -85,7 +85,10 @@ set scrolloff=5     " start scrolling when 5 lines away from margins
 set sidescrolloff=10
 set sidescroll=1
 set history=1000     " more history storage
+set undodir=~/.dotfiles/vim/undo
+set undofile
 set undolevels=1000
+set undoreload=10000
 set backupdir=~/.dotfiles/vim/tmp
 set directory=~/.dotfiles/vim/tmp
 inoremap <// </<C-x><C-o>
