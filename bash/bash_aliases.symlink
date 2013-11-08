@@ -1,17 +1,11 @@
 # ls aliases
-alias ls='ls -GFh'
-alias ll='ls -lF'
+alias ls='ls -F --color=auto'
+alias ll='ls -lh'
 alias la='ls -A'
-alias lal='ls -lFA'
+alias lal='ls -lhA'
 
 # enable color support of ls and redefine aliases if able
 if [ -x /usr/bin/dircolors ]; then
-    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
-    alias ls='ls -GFh --color=auto'
-    alias ll='ls -lF --color=auto'
-    alias la='ls -A --color=auto'
-    alias lal='ls -lFA --color=auto'
-
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
@@ -20,11 +14,9 @@ fi
 alias ack='ack-grep'
 alias c=clear
 alias ud='cd ~/.dotfiles && git pull'
+alias ..='cd ..'
 
-alias 'ssh-gravelpit'='ssh littlec8@gravelpit.housing.wwu.edu -t tmux attach -d'
-alias 'ssh-gravel'='ssh littlec8@gravelpit.housing.wwu.edu -t tmux attach -d'
 alias 'ssh-gp'='ssh littlec8@gravelpit.housing.wwu.edu -t tmux attach -d'
-alias 'ssh-juicebox'='ssh littlec8@juicebox.restek.wwu.edu -t startirc'
 alias 'ssh-jb'='ssh littlec8@juicebox.restek.wwu.edu -t startirc'
 
 alias 'ts2'='rdesktop -u littlec8 -d WWU -g 1254x1003 -T TS2 ts.restek.wwu.edu'
@@ -34,5 +26,3 @@ alias 'classinfo'='xpop= $( xprop | grep --color=none "WM_CLASS\|^WM_NAME" | xme
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
-
-alias test='echo "testing"'
