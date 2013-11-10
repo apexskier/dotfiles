@@ -17,3 +17,7 @@ Host cf416 cf416.cs.wwu.edu
 Host juicebox jb juicebox.restek.wwu.edu
     Hostname juicebox.restek.wwu.edu
     User littlec8
+
+Host yildun yildun.dreamhost.com
+    Hostname yildun.dreamhost.com
+    User camlittle
