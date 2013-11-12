@@ -18,6 +18,10 @@ Host cf416 cf416.cs.wwu.edu
     Hostname cf416.cs.wwu.edu
     User littlec8
 
+Host cf416-11 cf416-11.cs.wwu.edu
+    Hostname cf416-11.cs.wwu.edu
+    User littlec8
+
 Host juicebox jb juicebox.restek.wwu.edu
     Hostname juicebox.restek.wwu.edu
     User littlec8
