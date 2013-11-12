@@ -37,10 +37,15 @@ do
 end
 -- }}}
 
+-- {{{ auto start stuff
+-- audio
 awful.util.spawn_with_shell("xmodmap ~/.Xmodmap") -- set caps lock to modkey
 awful.util.spawn_with_shell("amixer sset Front on")     -- turn volume on
 awful.util.spawn_with_shell("amixer sset Headphone on")
 awful.util.spawn_with_shell("amixer sset PCM on")
+-- screensaver/lock
+awful.util.spawn_with_shell("xscreensaver -no-splash")
+-- }}}
 
 -- {{{ Variable definitions
 -- This is used later as the default terminal and editor to run.
@@ -263,6 +268,8 @@ root.buttons(awful.util.table.join(
 
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(globalkeys,
+    awful.key({ modkey, "Mod1"    }, "l", function () awful.util.spawn_with_shell("xscreensaver-command -lock") end),
+
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
     awful.key({ modkey,           }, "Escape", awful.tag.history.restore),
