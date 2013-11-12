@@ -269,6 +269,7 @@ root.buttons(awful.util.table.join(
 -- {{{ Key bindings
 globalkeys = awful.util.table.join(globalkeys,
     awful.key({ modkey, "Mod1"    }, "l", function () awful.util.spawn_with_shell("xscreensaver-command -lock") end),
+    awful.key({ }, "Print", function () awful.util.spawn_with_shell("xwd -root | xwdtopnm | pnmtopng > screenshot.png") end),
 
     awful.key({ modkey,           }, "Left",   awful.tag.viewprev       ),
     awful.key({ modkey,           }, "Right",  awful.tag.viewnext       ),
