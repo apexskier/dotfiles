@@ -74,8 +74,8 @@ layouts =
     awful.layout.suit.tile.left,        -- 3
     -- awful.layout.suit.tile.bottom,
     -- awful.layout.suit.tile.top,
-    awful.layout.suit.fair,             -- 4
-    awful.layout.suit.fair.horizontal,  -- 5
+    -- awful.layout.suit.fair,
+    -- awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.spiral,
     awful.layout.suit.spiral.dwindle,   -- 6
     awful.layout.suit.max,              -- 7
@@ -89,9 +89,9 @@ layouts =
 tags = {}
 tag_layouts = { -- defualt layouts for the specified tags
     main = layouts[2],
-    www = layouts[4],
+    www = layouts[2],
     files = layouts[1],
-    ide = layouts[7],
+    ide = layouts[5],
     irc = layouts[3]
 }
 for s = 1, screen.count() do
@@ -107,9 +107,9 @@ for s = 1, screen.count() do
                     tag_layouts["files"], -- files
                     tag_layouts["ide"], -- ide
                     tag_layouts["irc"], -- irc
-                    layouts[6], --
-                    layouts[7], --
-                    layouts[6], --
+                    layouts[4], --
+                    layouts[5], --
+                    layouts[4], --
                 })
 
         else                        -- multiple monitors
@@ -121,10 +121,10 @@ for s = 1, screen.count() do
                     tag_layouts["www"], -- www
                     tag_layouts["files"], -- files
                     tag_layouts["ide"], -- ide
-                    layouts[7], --
-                    layouts[6], --
-                    layouts[7], --
-                    layouts[6], --
+                    layouts[5], --
+                    layouts[4], --
+                    layouts[5], --
+                    layouts[4], --
                 })
         end
     elseif s == screen.count() then -- last screen
@@ -136,10 +136,10 @@ for s = 1, screen.count() do
                 tag_layouts["www"], -- www
                 tag_layouts["files"], -- files
                 tag_layouts["irc"], -- irc
-                layouts[7], --
-                layouts[6], --
-                layouts[7], --
-                layouts[6], --
+                layouts[5], --
+                layouts[4], --
+                layouts[5], --
+                layouts[4], --
             })
     else
         tags[s] = awful.tag(
@@ -150,10 +150,10 @@ for s = 1, screen.count() do
                 tag_layouts["www"], -- www
                 layouts["files"], -- files
                 layouts[2], --
-                layouts[7], --
-                layouts[6], --
-                layouts[7], --
-                layouts[6], --
+                layouts[5], --
+                layouts[4], --
+                layouts[5], --
+                layouts[4], --
             })
     end
 end
@@ -181,6 +181,9 @@ mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
 -- {{{ Wibox
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
+
+firefox_widget = widget({ type = "textbox", name = "firefox_w", align = "right" })
+firefox_widget = "Firefox"
 
 -- Create a systray
 mysystray = widget({ type = "systray" })
@@ -251,6 +254,7 @@ for s = 1, screen.count() do
         mylayoutbox[s],
         mytextclock,
         volume_widget,
+        firefox_widget,
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
