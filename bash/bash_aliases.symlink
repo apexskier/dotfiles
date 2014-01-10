@@ -19,9 +19,9 @@ alias ack='ack-grep'
 alias c=clear
 alias ud='cd ~/.dotfiles && git pull'
 alias ..='cd ..'
-alias ....='cd ../..'
-alias ......='cd ../../..'
-alias ........='cd ../../../..'
+alias ...='cd ../..'
+alias ....='cd ../../..'
+alias .....='cd ../../../..'
 
 alias 'ssh-gp'='ssh littlec8@gravelpit.housing.wwu.edu -t tmux attach -d'
 alias 'ssh-jb'='ssh littlec8@juicebox.restek.wwu.edu -t startirc'
