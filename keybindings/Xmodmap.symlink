@@ -1,3 +1,5 @@
 clear lock
-keysym Caps_Lock = Super_L
-add mod4 = Caps_Lock
+
+keycode 66 = Super_L
+
+add mod4 = Super_L

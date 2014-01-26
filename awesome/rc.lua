@@ -57,7 +57,7 @@ home_dir = os.getenv("HOME")
 globalkeys = awful.util.table.join()
 
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/home/littlec8/.dotfiles/awesome/themes/cstm-apexskier/theme.lua")
+beautiful.init(home_dir .. "/.dotfiles/awesome/themes/cstm-apexskier/theme.lua")
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -165,7 +165,7 @@ myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
    { "restart", awesome.restart },
-   { "quit", awesome.quit }
+   { "exit", awesome.quit }
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
@@ -181,9 +181,6 @@ mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
 -- {{{ Wibox
 -- Create a textclock widget
 mytextclock = awful.widget.textclock({ align = "right" })
-
-firefox_widget = widget({ type = "textbox", name = "firefox_w", align = "right" })
-firefox_widget = "Firefox"
 
 -- Create a systray
 mysystray = widget({ type = "systray" })
@@ -254,7 +251,6 @@ for s = 1, screen.count() do
         mylayoutbox[s],
         mytextclock,
         volume_widget,
-        firefox_widget,
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
