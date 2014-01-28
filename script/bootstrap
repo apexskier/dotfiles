@@ -51,6 +51,11 @@ setup_gitconfig () {
     fi
 }
 
+setup_awesome () {
+    ln -s $HOME/.dotfiles/awesome $HOME/.config/awesome
+    success "setup awesome"
+}
+
 link_files () {
     ln -s $1 $2
     success "linked $1 to $2"
@@ -255,6 +260,7 @@ install_dotfiles () {
 }
 
 setup_gitconfig
+setup_awesome
 install_dotfiles
 
 # If we're on a Mac, let's install and setup homebrew.
