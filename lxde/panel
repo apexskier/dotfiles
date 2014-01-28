@@ -6,7 +6,7 @@ Global {
     allign=left
     margin=0
     widthtype=percent
-    width=62
+    width=57
     height=24
     transparent=1
     tintcolor=#292e31
@@ -58,10 +58,10 @@ Plugin {
             id=pcmanfm.desktop
         }
         Button {
-            id=/usr/share/applications/firefox.desktop
+            id=lxde-x-www-browser.desktop
         }
         Button {
-            id=/usr/share/applications/chromium-browser.desktop
+            id=/usr/share/applications/chromium.desktop
         }
         Button {
             id=/usr/share/applications/terminator.desktop
