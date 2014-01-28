@@ -1,0 +1,4 @@
+#!/bin/bash
+
+exec thunar ~/Dropbox
+exit 0
