@@ -37,18 +37,41 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-[[ -d "${HOME}/.dotfiles/bin" ]] && export PATH="${HOME}/.dotfiles/bin:${PATH}"
-export REPO_PATH=boar+ssh://boar@odin.restek.wwu.edu/home/boar/repo
-
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 bind 'set show-all-if-ambiguous on'
 bind 'set completion-ignore-case on'
 
 
-# resnet rewrite
-export WORKON_HOME="$HOME/.virtualenvs"
-export PROJECT_HOME="$HOME/projects"
-export VIRTUALENVWRAPPER_VIRTUALENV="virtualenv"
-export PIP_VIRTUALENV_BASE=$WORKON_HOME
-export PIP_RESPECT_VIRTUALENV=true
+
+if [ -d "$HOME/.dotfiles/bin" ] ; then
+    export PATH="$HOME/.dotfiles/bin:$PATH"
+fi
+if [ -d "$HOME/bin" ] ; then
+    export PATH="$HOME/bin:$PATH"
+fi
+
+if [ -d "/usr/local/go/bin" ] ; then
+    export PATH="$PATH:/usr/local/go/bin"
+fi
+
+if [ -n "$DISPLAY" ]; then
+    BROWSER=firefox
+fi
+
+if [ -n "$HOME/Dropbox/Projects/go" ]; then
+    export GOPATH="$HOME/Dropbox/Projects/go"
+    export PATH=$PATH:$GOPATH/bin
+fi
+
+if [ -d "$HOME/.virtualenvs" ] ; then
+    export WORKON_HOME="$HOME/.virtualenvs"
+    export PIP_VIRTUALENV_BASE=$WORKON_HOME
+    export PIP_RESPECT_VIRTUALENV=true
+    export VIRTUALENVWRAPPER_VIRTUALENV="virtualenv"
+fi
+if [ -d "$HOME/projects" ] ; then
+    export PROJECT_HOME="$HOME/projects"
+fi
+export REPO_PATH=boar+ssh://boar@odin.restek.wwu.edu/home/boar/repo
+
