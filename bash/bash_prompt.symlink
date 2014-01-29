@@ -53,7 +53,7 @@ function set_prompt() {
     echo "$ret "
 }
 
-source liquidprompt-custom
+source "$HOME/.dotfiles/bash/liquidprompt-custom"
 
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
