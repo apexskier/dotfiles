@@ -22,38 +22,135 @@ fi
 #fi
 unset color_prompt force_color_prompt
 
+    nocol="\[\033[m\]"
+    black="\[\033[0;30m\]"
+     blue="\[\033[0;34m\]"
+    green="\[\033[0;32m\]"
+     cyan="\[\033[0;36m\]"
+      red="\[\033[0;31m\]"
+   purple="\[\033[0;35m\]"
+    brown="\[\033[0;33m\]"
+  lt_grey="\[\033[0;37m\]"
+  dk_gray="\[\033[1;30m\]"
+  lt_blue="\[\033[1;34m\]"
+ lt_green="\[\033[1;32m\]"
+  lt_cyan="\[\033[1;36m\]"
+   lt_red="\[\033[1;31m\]"
+lt_purple="\[\033[1;35m\]"
+   yellow="\[\033[1;33m\]"
+    white="\[\033[1;37m\]"
+
+
+last_seconds=$SECONDS
+runtime() {
+    if [[ $cmd_seconds -ge 2 ]]; then
+        echo -ne "$brown"
+        # display runtime seconds as days, hours, minutes, and seconds
+        [[ "$cmd_seconds" -ge 86400 ]] && echo -ne $((cmd_seconds / 86400))d
+        [[ "$cmd_seconds" -ge 3600 ]] && echo -ne $((cmd_seconds % 86400 / 3600))h
+        [[ "$cmd_seconds" -ge 60 ]] && echo -ne $((cmd_seconds % 3600 / 60))m
+        echo -ne $((cmd_seconds % 60))s
+        echo -ne "$nocol"
+    fi
+}
+reset_runtime() {
+    # Compute number of seconds since program was started
+    cmd_seconds=$((SECONDS - last_seconds))
+    # Reset when no command actually executed
+    [ "$cmd_executed" != 1 ] && last_seconds=$SECONDS && cmd_seconds=0
+    # Make sure last command wasn't setting the prompt
+    [ "$BASH_COMMAND" = set_prompt ] && cmd_executed=0 && return
+    cmd_executed=1
+}
+# call whenever bash executes a command
+trap 'reset_runtime' DEBUG
+
+_USER=""
+# Yellow for root, bold if the user is not the login one, else no color.
+if [[ "$EUID" -ne "0" ]] ; then  # if user is not root
+    # if user is not login user
+    if [[ $USER != "$(logname 2>/dev/null || echo $LOGNAME)" ]]; then
+        _USER="$lt_grey"
+    else
+        _USER="$cyan"
+    fi
+else # root!
+    _USER="$lt_cyan"
+fi
+_USER+="\u$nocol"
+
+connection_type() {
+    if [[ -n "$SSH_CLIENT$SSH2_CLIENT$SSH_TTY" ]] ; then
+        echo ssh
+    else
+        # TODO check on *BSD
+        local sess_src="$(who am i | sed -n 's/.*(\(.*\))/\1/p')"
+        local sess_parent="$(ps -o comm= -p $PPID 2> /dev/null)"
+        if [[ -z "$sess_src" || "$sess_src" = ":"* ]] ; then
+            echo lcl # Local
+        elif [[ "$sess_parent" = "su" || "$sess_parent" = "sudo" ]] ; then
+            echo su  # Remote su/sudo
+        else
+            echo tel # Telnet
+        fi
+    fi
+}
+case "$(connection_type)" in
+ssh)
+    connectionmark="⇝" ;;
+tel)
+    connectionmark="⇢" ;;
+esac
+unset connection_type
+
+mark="@"
+# If we are connected with a X11 support
+if [[ -n "$DISPLAY" ]] ; then
+    mark="$white$mark$nocol"
+else
+    mark="$lt_grey$mark$nocol"
+fi
+
+
 function set_prompt() {
+    # get return code of last cmd
+    local -i err=$?
+    local cmd_info=""
+    if (( err != 0 )); then
+        cmd_info="$red$err↩$nocol "
+    else
+        cmd_info=""
+    fi
+    cmd_info+=$(runtime)
+    if [[ -n "$cmd_info" ]] ; then
+        cmd_info+="\n"
+    fi
+
     local ret
-    local open="\["
-    local close="\]"
-    local color="\[\033["
 
-    local     nocol="\[\033[m\]"
-    local     black="\[\033[0;30m\]"
-    local      blue="\[\033[0;34m\]"
-    local     green="\[\033[0;32m\]"
-    local      cyan="\[\033[0;36m\]"
-    local       red="\[\033[0;31m\]"
-    local    purple="\[\033[0;35m\]"
-    local     brown="\[\033[0;33m\]"
-    local   lt_grey="\[\033[0;37m\]"
-    local   dk_gray="\[\033[1;30m\]"
-    local   lt_blue="\[\033[1;34m\]"
-    local  lt_green="\[\033[1;32m\]"
-    local   lt_cyan="\[\033[1;36m\]"
-    local    lt_red="\[\033[1;31m\]"
-    local lt_purple="\[\033[1;35m\]"
-    local    yellow="\[\033[1;33m\]"
-    local     white="\[\033[1;37m\]"
+    local venv
+    if [[ -n "$VIRTUAL_ENV" ]] ; then
+        venv="($VIRTUAL_ENV)"
+    fi
+
+    local write=":"
+    if [[ -w "$PWD" ]] ; then
+        write="$green$write$nocol"
+    else
+        write="$red$write$nocol"
+    fi
 
 
+    ret+="$cmd_info$venv$_USER$mark$connectionmark$green\h$nocol$write"
+    ret+="$yellow\w$nocol"
+    ret+="\n$ "
 
-    ret+="$cyan\u$nocol@$green\h$nocol:$yellow\w$nocol"
-    ret+="\n$"
-    echo "$ret "
+    PS1=$ret
 }
 
-source "$HOME/.dotfiles/bash/liquidprompt-custom"
+#export PS1="\u@\h:\w\n$ "
+
+export PROMPT_COMMAND=set_prompt
 
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad

@@ -2,9 +2,9 @@ Host glacier glacier.camlittle.com
     User cameronlittle
     Hostname glacier.camlittle.com
 
-Host elwha elwha.camlittle.com
+Host elwha
     User cameronlittle
-    Hostname elwha.camlittle.com
+    Hostname 24.19.192.139
 
 Host gravelpit gp gravelpit.housing.wwu.edu
     Hostname gravelpit.housing.wwu.edu
