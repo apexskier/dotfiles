@@ -140,9 +140,13 @@ function set_prompt() {
         write="$red$write$nocol"
     fi
 
+    local gitbranch="$(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
+    if [[ -n "$gitbranch" ]] ; then
+        gitbranch="($gitbranch)"
+    fi
 
     ret+="$cmd_info$venv$_USER$mark$connectionmark$green\h$nocol$write"
-    ret+="$yellow\w$nocol"
+    ret+="$yellow\w$nocol $gitbranch"
     ret+="\n$ "
 
     PS1=$ret
