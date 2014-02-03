@@ -1,48 +1,56 @@
+# utf8
+set -g utf8
+setw -g utf8 on
+
 # set different prefix key
 unbind C-b
 set -g prefix `
 bind ` send-prefix
 
+set -g status-keys "vi"
+
 # start window numbering at 1
-set -g base-index 1
+set-option -g base-index 1
+setw -g pane-base-index 1
 
 # bind r to reload this config file
 unbind r
 bind r source-file ~/.tmux.conf \; display "Reloaded tmux config file."
-
-# bind S to initialize session
-bind S source-file ~/.tmux.session.gravelpit
 
 # different pane splitting binding
 bind | split-window -h
 bind _ split-window -v
 
 # contents of status bar
+set -g status on
 set -g status-interval 2
 set -g status-utf8 on
 set -g status-right-length 80
-set -g status-left "#[fg=#5f8700] [#S] %t"
-set -g status-right "#[fg=#5f8700] #H | %a %d %b %l:%M %P "
-set-window-option -g window-status-format "#[fg=cyan,dim]#I:#W#[fg=grey,dim]#F"
-set-window-option -g window-status-current-format "#[fg=white,bold,bg=cyan]#I:#[fg=white]#W#F"
+set -g status-left " [#S] •"
+set -g status-right "#H • %a %d-%b %l:%M %P "
 set -g status-justify left
 setw -g monitor-activity on
-# set -g visual-activity on
-setw -g automatic-rename on
+set -g visual-activity on
+
+set -g default-terminal "screen-256color"
 
 # status bar colors
 set -g status-fg white
-set -g status-bg colour234
+set -g status-bg black
+setw -g window-status-fg colour7
+setw -g window-status-current-fg colour6
 
 # pane colors
-setw -g pane-active-border-fg '#859900'
+set -g pane-border-fg black
+set -g pane-active-border-fg colour6
 
 # visual bell
 set -g visual-bell on
 
 # terminal window titles
+setw -g automatic-rename on
 set -g set-titles on
 set -g set-titles-string "#T"
 
 # auto create session
-new-session
+#new-session
