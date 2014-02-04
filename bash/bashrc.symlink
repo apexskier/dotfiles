@@ -51,8 +51,10 @@ bind 'set completion-ignore-case on'
 [ -d "/usr/local/go/bin" ] && export PATH="$PATH:/usr/local/go/bin"
 
 # Mac OS X stuff
-[ -f $(brew --prefix)/etc/bash_completion ] && . $(brew --prefix)/etc/bash_completion
-[ -f $(brew --prefix)git/contrib/completion/git-completion.bash ] && . $(brew --prefix)git/contrib/completion/git-completion.bash
+if [ -n "$(which brew 2>/dev/null)" ]; then
+    [ -f $(brew --prefix)/etc/bash_completion ] && . $(brew --prefix)/etc/bash_completion
+    [ -f $(brew --prefix)git/contrib/completion/git-completion.bash ] && . $(brew --prefix)git/contrib/completion/git-completion.bash
+fi
 [ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
 [ "$(uname -s)" == "Darwin" ] && export DISPLAY=localhost:0.0
 
@@ -76,9 +78,6 @@ if [ -d "$HOME/.virtualenvs" ] ; then
     export PIP_RESPECT_VIRTUALENV=true
     export VIRTUALENVWRAPPER_VIRTUALENV="virtualenv"
     export PIP_DOWNLOAD_CACHE=$HOME/.pip/caches
-    syspip() {
-        PIP_REQUIRE_VIRTUALENV="" pip "$@"
-    }
 fi
 
 export REPO_PATH=boar+ssh://boar@odin.restek.wwu.edu/home/boar/repo
