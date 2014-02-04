@@ -59,7 +59,7 @@ fi
 [ "$(uname -s)" == "Darwin" ] && export DISPLAY=localhost:0.0
 
 # go stuff
-if [ -n "$HOME/Dropbox/Projects/go" ]; then
+if [ -d "$HOME/Dropbox/Projects/go" ]; then
     export GOPATH="$HOME/Dropbox/Projects/go"
     export PATH=$PATH:$GOPATH/bin
 fi
