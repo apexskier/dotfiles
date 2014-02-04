@@ -27,7 +27,7 @@ set -g status-interval 2
 set -g status-utf8 on
 set -g status-right-length 80
 set -g status-left " [#S] •"
-set -g status-right "#H • %a %d-%b %l:%M %P "
+set -g status-right " #[fg=cyan]#(echo $USER)#[fg=white]@#[fg=green]#H#[fg=white] • %a %d-%b %l:%M %P "
 set -g status-justify left
 setw -g monitor-activity on
 set -g visual-activity on
@@ -37,8 +37,8 @@ set -g default-terminal "screen-256color"
 # status bar colors
 set -g status-fg white
 set -g status-bg black
-setw -g window-status-fg colour7
-setw -g window-status-current-fg colour6
+setw -g window-status-fg colour6
+setw -g window-status-current-fg colour14
 
 # pane colors
 set -g pane-border-fg black
@@ -53,4 +53,4 @@ set -g set-titles on
 set -g set-titles-string "#T"
 
 # auto create session
-#new-session
+new-session
