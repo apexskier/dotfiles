@@ -55,8 +55,18 @@ bind 'set completion-ignore-case on'
 [ -f $(brew --prefix)git/contrib/completion/git-completion.bash ] && . $(brew --prefix)git/contrib/completion/git-completion.bash
 [ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
 [ "$(uname -s)" == "Darwin" ] && export DISPLAY=localhost:0.0
+
+# go stuff
 if [ -n "$HOME/Dropbox/Projects/go" ]; then
     export GOPATH="$HOME/Dropbox/Projects/go"
+    export PATH=$PATH:$GOPATH/bin
+fi
+if [ -d "$HOME/bin/go" ]; then
+    export GOROOT=$HOME/bin/go
+    export PATH=$PATH:$HOME/bin/go/bin
+fi
+if [ -d "$HOME/go" ]; then
+    export GOPATH="$HOME/go"
     export PATH=$PATH:$GOPATH/bin
 fi
 
