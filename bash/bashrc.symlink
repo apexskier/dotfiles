@@ -43,21 +43,18 @@ bind 'set show-all-if-ambiguous on'
 bind 'set completion-ignore-case on'
 
 
-if [ -d "$HOME/.dotfiles/bin" ] ; then
-    export PATH="$HOME/.dotfiles/bin:$PATH"
-fi
-if [ -d "$HOME/bin" ] ; then
-    export PATH="$HOME/bin:$PATH"
-fi
+[ -n "$DISPLAY" ] && BROWSER=firefox
 
-if [ -d "/usr/local/go/bin" ] ; then
-    export PATH="$PATH:/usr/local/go/bin"
-fi
+# Add stuff to my PATH
+[ -d "$HOME/.dotfiles/bin" ] && export PATH="$HOME/.dotfiles/bin:$PATH"
+[ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
+[ -d "/usr/local/go/bin" ] && export PATH="$PATH:/usr/local/go/bin"
 
-if [ -n "$DISPLAY" ]; then
-    BROWSER=firefox
-fi
-
+# Mac OS X stuff
+[ -f $(brew --prefix)/etc/bash_completion ] && . $(brew --prefix)/etc/bash_completion
+[ -f $(brew --prefix)git/contrib/completion/git-completion.bash ] && . $(brew --prefix)git/contrib/completion/git-completion.bash
+[ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
+[ "$(uname -s)" == "Darwin" ] && export DISPLAY=localhost:0.0
 if [ -n "$HOME/Dropbox/Projects/go" ]; then
     export GOPATH="$HOME/Dropbox/Projects/go"
     export PATH=$PATH:$GOPATH/bin
@@ -68,12 +65,14 @@ if [ -d "$HOME/.virtualenvs" ] ; then
     export PIP_VIRTUALENV_BASE=$WORKON_HOME
     export PIP_RESPECT_VIRTUALENV=true
     export VIRTUALENVWRAPPER_VIRTUALENV="virtualenv"
+    export PIP_DOWNLOAD_CACHE=$HOME/.pip/caches
+    syspip() {
+        PIP_REQUIRE_VIRTUALENV="" pip "$@"
+    }
 fi
-if [ -d "$HOME/projects" ] ; then
-    export PROJECT_HOME="$HOME/projects"
-fi
+
 export REPO_PATH=boar+ssh://boar@odin.restek.wwu.edu/home/boar/repo
 
-if [ -d "$HOME/cs352w14/CVSrep" ] ; then
-    export CVSROOT=$HOME/cs352w14/CVSrep
-fi
+[ -d "$HOME/cs352w14/CVSrep" ] && export CVSROOT=$HOME/cs352w14/CVSrep
+
+[ -d "$HOME/projects" ] && export PROJECT_HOME="$HOME/projects"
