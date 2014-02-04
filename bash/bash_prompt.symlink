@@ -130,7 +130,7 @@ function set_prompt() {
 
     local venv
     if [[ -n "$VIRTUAL_ENV" ]] ; then
-        venv="(${VIRTUAL_ENV#$WORKON_HOME/}) "
+        venv="(⊙${VIRTUAL_ENV#$WORKON_HOME/}) "
     fi
 
     local write=":"
@@ -142,11 +142,11 @@ function set_prompt() {
 
     local gitbranch="$(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
     if [[ -n "$gitbranch" ]] ; then
-        gitbranch="($gitbranch)"
+        gitbranch="(±$gitbranch) "
     fi
 
-    ret+="$cmd_info$venv$_USER$mark$connectionmark$green\h$nocol$write"
-    ret+="$yellow\w$nocol $gitbranch"
+    ret+="$cmd_info$_USER$mark$connectionmark$green\h$nocol$write"
+    ret+="$yellow\w$nocol $gitbranch$venv"
     ret+="\n$ "
 
     PS1=$ret
