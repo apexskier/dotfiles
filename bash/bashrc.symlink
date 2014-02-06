@@ -72,7 +72,7 @@ if [ -d "$HOME/go" ]; then
     export PATH=$PATH:$GOPATH/bin
 fi
 
-if [ -d "$HOME/.virtualenvs" ] ; then
+if [ -d "$HOME/.virtualenvs" ]; then
     export WORKON_HOME="$HOME/.virtualenvs"
     export PIP_VIRTUALENV_BASE=$WORKON_HOME
     export PIP_RESPECT_VIRTUALENV=true
@@ -82,6 +82,10 @@ fi
 
 export REPO_PATH=boar+ssh://boar@odin.restek.wwu.edu/home/boar/repo
 
-[ -d "$HOME/cs352w14/CVSrep" ] && export CVSROOT=$HOME/cs352w14/CVSrep
+if [ -d "$HOME/cs352w14/CVSrep" ]; then
+    export CVSROOT=$HOME/cs352w14/CVSrep
+fi
 
-[ -d "$HOME/projects" ] && export PROJECT_HOME="$HOME/projects"
+if [ -d "$HOME/projects" ]; then
+    export PROJECT_HOME=$HOME/projects
+fi
