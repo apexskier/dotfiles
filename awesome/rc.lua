@@ -443,15 +443,12 @@ awful.rules.rules = {
     { rule = { class = "gimp" },
       properties = { floating = true } },
     -- www
-    { rule = { class = "Iceweasel" },
-      properties = { tag = tags[1][2] },
+    { rule = { class = "Firefox",
+               name = "Downloads" },
+      properties = { floating = true, ontop = true },
       callback = function(c)
-        awful.tag.put_and_show(c, tags[1][2], 1);
-      end },
-    { rule = { class = "Firefox" },
-      properties = { tag = tags[1][2] },
-      callback = function(c)
-        awful.tag.put_and_show(c, tags[1][2], 1);
+        awful.titlebar.add(c, { modkey = modkey })
+        awful.client.moveresize(20, 20, 0, 0, c)
       end },
     { rule = { class = "Iceweasel",
                name = "Downloads" },
@@ -460,36 +457,21 @@ awful.rules.rules = {
         awful.titlebar.add(c, { modkey = modkey })
         awful.client.moveresize(20, 20, 0, 0, c)
       end },
-    { rule = { class = "Chromium" },
-      callback = function(c)
-        local dest_tag = tags[mouse.screen][2]
-        awful.titlebar.add(c, { modkey = modkey })
-        awful.tag.put_and_show(c, dest_tag, mouse.screen);
-      end },
-    -- ide's
-    { rule = { class = "Eclipse" },
-      properties = { tag = tags[1][4] } },
     -- files
     { rule = { class = "Thunar" },
       properties = { floating = true },
       callback = function(c)
-        local dest_tag = tags[mouse.screen][3]
         awful.titlebar.add(c, { modkey = modkey })
-        awful.tag.put_and_show(c, dest_tag, mouse.screen);
       end },
     { rule = { class = "Pcmanfm" },
       properties = { floating = true },
       callback = function(c)
-        local dest_tag = tags[mouse.screen][3]
         awful.titlebar.add(c, { modkey = modkey })
-        awful.tag.put_and_show(c, dest_tag, mouse.screen);
       end },
     { rule = { class = "Nautilus" },
       properties = { floating = true },
       callback = function(c)
-        local dest_tag = tags[mouse.screen][3]
         awful.titlebar.add(c, { modkey = modkey })
-        awful.tag.put_and_show(c, dest_tag, mouse.screen);
       end },
 }
 -- }}}
