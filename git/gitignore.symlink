@@ -5,3 +5,6 @@
 *.rbc
 *.pyc
 *.log
+*.aux
+*.out
+*-eps-converted-to.pdf
