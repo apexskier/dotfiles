@@ -217,7 +217,7 @@ cnoremap kj <ESC>
 
 " workspace specific
 " touch wsgi on save python file
-" autocmd BufWritePre *.py :! touch ~/django/wwu_housing/wsgi.py
+autocmd BufWritePre *.py :! touch ~/django/wwu_housing/wsgi.py
 
 
 " Returns true if paste mode is enabled

@@ -20,3 +20,5 @@
     tool = vimdiff
 [diff]
     tool = vimdiff
+[alias]
+    st = status -sb
