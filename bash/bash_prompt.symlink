@@ -152,6 +152,7 @@ function set_prompt() {
     PS1=$ret
 }
 
+#export PROMPT_COMMAND=""
 #export PS1="\u@\h:\w\n$ "
 
 export PROMPT_COMMAND=set_prompt
