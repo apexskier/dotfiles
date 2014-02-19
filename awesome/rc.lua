@@ -292,7 +292,35 @@ globalkeys = awful.util.table.join(globalkeys,
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
+    awful.key({ modkey, "Shift"   }, "Left",
+        function ()
+            awful.client.focus.bydirection('left')
+        end),
+    awful.key({ modkey, "Shift"   }, "Right",
+        function ()
+            awful.client.focus.bydirection('right')
+        end),
+    awful.key({ modkey, "Shift"   }, "Up",
+        function ()
+            awful.client.focus.bydirection('up')
+        end),
+    awful.key({ modkey, "Shift"   }, "Down",
+        function ()
+            awful.client.focus.bydirection('down')
+        end),
     awful.key({ modkey,           }, "Tab",
+        function ()
+            awful.client.focus.byidx(1)
+            if awful.client.ismarked() then
+                awful.screen.focus_relative(-1)
+                awful.client.getmarked()
+            end
+            if client.focus then
+                client.focus:raise()
+            end
+            awful.client.togglemarked()
+        end),
+    awful.key({ modkey,           }, "p",
         function ()
             awful.client.focus.history.previous()
             if client.focus then
