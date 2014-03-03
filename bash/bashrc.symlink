@@ -78,6 +78,7 @@ if [ -d "$HOME/.virtualenvs" ]; then
     export PIP_RESPECT_VIRTUALENV=true
     export VIRTUALENVWRAPPER_VIRTUALENV="virtualenv"
     export PIP_DOWNLOAD_CACHE=$HOME/.pip/caches
+    export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/dist-packages/:/usr/lib/pymodules/python2.7/
 fi
 
 export REPO_PATH=boar+ssh://boar@odin.restek.wwu.edu/home/boar/repo

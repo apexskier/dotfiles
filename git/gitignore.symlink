@@ -8,3 +8,4 @@
 *.aux
 *.out
 *-eps-converted-to.pdf
+*.o
