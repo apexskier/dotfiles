@@ -30,7 +30,7 @@ set -g status-left " [#S] •"
 set -g status-right " #[fg=cyan]#(echo $USER)#[fg=white]@#[fg=green]#H#[fg=white] • %a %d-%b %l:%M %P "
 set -g status-justify left
 setw -g monitor-activity on
-set -g visual-activity on
+set -g visual-activity off
 
 set -g default-terminal "screen-256color"
 
@@ -53,4 +53,4 @@ set -g set-titles on
 set -g set-titles-string "#T"
 
 # auto create session
-new-session
+# new-session
