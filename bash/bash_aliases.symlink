@@ -26,6 +26,7 @@ alias .....='cd ../../../..'
 alias 'ssh-gp'='ssh littlec8@gravelpit.housing.wwu.edu -t tmux attach -d'
 alias 'ssh-alvis'='ssh alvis -t tmux attach -d'
 alias 'ssh-jb'='ssh littlec8@juicebox.restek.wwu.edu -t startirc'
+alias 'ssh-nari'='ssh -L 8009:localhost:8009 nari.restek.wwu.edu'
 
 alias 'ts2'='rdesktop -u littlec8 -d WWU -g 1254x1003 -T TS2 ts.restek.wwu.edu'
 
