@@ -101,7 +101,6 @@ set autoindent      " automatically indent
 set smartindent
 set smarttab
 set nowrap          " don't wrap lines
-set expandtab       " spaces instead of tabs
 set shiftwidth=4    " tab spacing
 set tabstop=4       " tab spacing
 autocmd BufWritePre * :%s/\s\+$//e " remove trailing whitespace
