@@ -61,6 +61,7 @@ fi
 # go stuff
 if [ -d "$HOME/Dropbox/Projects/go" ]; then
     export GOPATH="$HOME/Dropbox/Projects/go"
+    export GOROOT=/usr/local/go
     export PATH=$PATH:$GOPATH/bin
 fi
 if [ -d "$HOME/bin/go" ]; then

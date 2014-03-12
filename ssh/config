@@ -18,6 +18,10 @@ Host juicebox jb juicebox.restek.wwu.edu
     Hostname juicebox.restek.wwu.edu
     User littlec8
 
+Host goldenstar goldenstar.dreamhost.com
+    Hostname goldenstar.dreamhost.com
+    User camlittle
+
 Host yildun yildun.dreamhost.com
     Hostname yildun.dreamhost.com
     User camlittle
