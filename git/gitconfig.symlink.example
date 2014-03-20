@@ -22,3 +22,5 @@
     tool = vimdiff
 [alias]
     st = status -sb
+    lg = log --graph --decorate --oneline
+    lga = log --graph --decorate --oneline --all
