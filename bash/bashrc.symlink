@@ -82,6 +82,10 @@ if [ -d "$HOME/.virtualenvs" ]; then
     export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/dist-packages/:/usr/lib/pymodules/python2.7/
 fi
 
+if [ -d "/usr/local/lib/python2.7/site-packages" ]; then
+    export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages
+fi
+
 export REPO_PATH=boar+ssh://boar@odin.restek.wwu.edu/home/boar/repo
 
 if [ -d "$HOME/cs352w14/CVSrep" ]; then
@@ -90,4 +94,8 @@ fi
 
 if [ -d "$HOME/projects" ]; then
     export PROJECT_HOME=$HOME/projects
+fi
+
+if [ -f "/Applications/Octave.app/Contents/Resources/bin/octave" ]; then
+    export PATH=$PATH:/Applications/Octave.app/Contents/Resources/bin
 fi
