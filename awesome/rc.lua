@@ -57,7 +57,7 @@ home_dir = os.getenv("HOME")
 globalkeys = awful.util.table.join()
 
 -- Themes define colours, icons, and wallpapers
-beautiful.init("/home/littlec8/.dotfiles/awesome/themes/cstm-apexskier/theme.lua")
+beautiful.init(home_dir .. "/.dotfiles/awesome/themes/cstm-apexskier/theme.lua")
 
 -- Default modkey.
 -- Usually, Mod4 is the key with a logo between Control and Alt.
@@ -74,8 +74,8 @@ layouts =
     awful.layout.suit.tile.left,        -- 3
     -- awful.layout.suit.tile.bottom,
     -- awful.layout.suit.tile.top,
-    awful.layout.suit.fair,             -- 4
-    awful.layout.suit.fair.horizontal,  -- 5
+    -- awful.layout.suit.fair,
+    -- awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.spiral,
     awful.layout.suit.spiral.dwindle,   -- 6
     awful.layout.suit.max,              -- 7
@@ -89,9 +89,9 @@ layouts =
 tags = {}
 tag_layouts = { -- defualt layouts for the specified tags
     main = layouts[2],
-    www = layouts[4],
+    www = layouts[2],
     files = layouts[1],
-    ide = layouts[7],
+    ide = layouts[5],
     irc = layouts[3]
 }
 for s = 1, screen.count() do
@@ -107,9 +107,9 @@ for s = 1, screen.count() do
                     tag_layouts["files"], -- files
                     tag_layouts["ide"], -- ide
                     tag_layouts["irc"], -- irc
-                    layouts[6], --
-                    layouts[7], --
-                    layouts[6], --
+                    layouts[4], --
+                    layouts[5], --
+                    layouts[4], --
                 })
 
         else                        -- multiple monitors
@@ -121,10 +121,10 @@ for s = 1, screen.count() do
                     tag_layouts["www"], -- www
                     tag_layouts["files"], -- files
                     tag_layouts["ide"], -- ide
-                    layouts[7], --
-                    layouts[6], --
-                    layouts[7], --
-                    layouts[6], --
+                    layouts[5], --
+                    layouts[4], --
+                    layouts[5], --
+                    layouts[4], --
                 })
         end
     elseif s == screen.count() then -- last screen
@@ -136,10 +136,10 @@ for s = 1, screen.count() do
                 tag_layouts["www"], -- www
                 tag_layouts["files"], -- files
                 tag_layouts["irc"], -- irc
-                layouts[7], --
-                layouts[6], --
-                layouts[7], --
-                layouts[6], --
+                layouts[5], --
+                layouts[4], --
+                layouts[5], --
+                layouts[4], --
             })
     else
         tags[s] = awful.tag(
@@ -150,10 +150,10 @@ for s = 1, screen.count() do
                 tag_layouts["www"], -- www
                 layouts["files"], -- files
                 layouts[2], --
-                layouts[7], --
-                layouts[6], --
-                layouts[7], --
-                layouts[6], --
+                layouts[5], --
+                layouts[4], --
+                layouts[5], --
+                layouts[4], --
             })
     end
 end
@@ -165,7 +165,7 @@ myawesomemenu = {
    { "manual", terminal .. " -e man awesome" },
    { "edit config", editor_cmd .. " " .. awesome.conffile },
    { "restart", awesome.restart },
-   { "quit", awesome.quit }
+   { "exit", awesome.quit }
 }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
@@ -292,7 +292,35 @@ globalkeys = awful.util.table.join(globalkeys,
     awful.key({ modkey, "Control" }, "j", function () awful.screen.focus_relative( 1) end),
     awful.key({ modkey, "Control" }, "k", function () awful.screen.focus_relative(-1) end),
     awful.key({ modkey,           }, "u", awful.client.urgent.jumpto),
+    awful.key({ modkey, "Shift"   }, "Left",
+        function ()
+            awful.client.focus.bydirection('left')
+        end),
+    awful.key({ modkey, "Shift"   }, "Right",
+        function ()
+            awful.client.focus.bydirection('right')
+        end),
+    awful.key({ modkey, "Shift"   }, "Up",
+        function ()
+            awful.client.focus.bydirection('up')
+        end),
+    awful.key({ modkey, "Shift"   }, "Down",
+        function ()
+            awful.client.focus.bydirection('down')
+        end),
     awful.key({ modkey,           }, "Tab",
+        function ()
+            awful.client.focus.byidx(1)
+            if awful.client.ismarked() then
+                awful.screen.focus_relative(-1)
+                awful.client.getmarked()
+            end
+            if client.focus then
+                client.focus:raise()
+            end
+            awful.client.togglemarked()
+        end),
+    awful.key({ modkey,           }, "p",
         function ()
             awful.client.focus.history.previous()
             if client.focus then
@@ -443,15 +471,12 @@ awful.rules.rules = {
     { rule = { class = "gimp" },
       properties = { floating = true } },
     -- www
-    { rule = { class = "Iceweasel" },
-      properties = { tag = tags[1][2] },
+    { rule = { class = "Firefox",
+               name = "Downloads" },
+      properties = { floating = true, ontop = true },
       callback = function(c)
-        awful.tag.put_and_show(c, tags[1][2], 1);
-      end },
-    { rule = { class = "Firefox" },
-      properties = { tag = tags[1][2] },
-      callback = function(c)
-        awful.tag.put_and_show(c, tags[1][2], 1);
+        awful.titlebar.add(c, { modkey = modkey })
+        awful.client.moveresize(20, 20, 0, 0, c)
       end },
     { rule = { class = "Iceweasel",
                name = "Downloads" },
@@ -460,36 +485,21 @@ awful.rules.rules = {
         awful.titlebar.add(c, { modkey = modkey })
         awful.client.moveresize(20, 20, 0, 0, c)
       end },
-    { rule = { class = "Chromium" },
-      callback = function(c)
-        local dest_tag = tags[mouse.screen][2]
-        awful.titlebar.add(c, { modkey = modkey })
-        awful.tag.put_and_show(c, dest_tag, mouse.screen);
-      end },
-    -- ide's
-    { rule = { class = "Eclipse" },
-      properties = { tag = tags[1][4] } },
     -- files
     { rule = { class = "Thunar" },
       properties = { floating = true },
       callback = function(c)
-        local dest_tag = tags[mouse.screen][3]
         awful.titlebar.add(c, { modkey = modkey })
-        awful.tag.put_and_show(c, dest_tag, mouse.screen);
       end },
     { rule = { class = "Pcmanfm" },
       properties = { floating = true },
       callback = function(c)
-        local dest_tag = tags[mouse.screen][3]
         awful.titlebar.add(c, { modkey = modkey })
-        awful.tag.put_and_show(c, dest_tag, mouse.screen);
       end },
     { rule = { class = "Nautilus" },
       properties = { floating = true },
       callback = function(c)
-        local dest_tag = tags[mouse.screen][3]
         awful.titlebar.add(c, { modkey = modkey })
-        awful.tag.put_and_show(c, dest_tag, mouse.screen);
       end },
 }
 -- }}}

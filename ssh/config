@@ -6,6 +6,10 @@ Host elwha elwha.camlittle.com
     User cameronlittle
     Hostname elwha.camlittle.com
 
+Host nari nari.housing.wwu.edu
+    Hostname nari.housing.wwu.edu
+    User littlec8
+
 Host gravelpit gp gravelpit.housing.wwu.edu
     Hostname gravelpit.housing.wwu.edu
     User littlec8
@@ -14,18 +18,22 @@ Host alvis alvis.restek.wwu.edu
     Hostname alvis.restek.wwu.edu
     User littlec8
 
-Host cf416 cf416.cs.wwu.edu
-    Hostname cf416.cs.wwu.edu
-    User littlec8
-
-Host cf416-11 cf416-11.cs.wwu.edu
-    Hostname cf416-11.cs.wwu.edu
-    User littlec8
-
 Host juicebox jb juicebox.restek.wwu.edu
     Hostname juicebox.restek.wwu.edu
     User littlec8
 
+Host goldenstar goldenstar.dreamhost.com
+    Hostname goldenstar.dreamhost.com
+    User camlittle
+
 Host yildun yildun.dreamhost.com
     Hostname yildun.dreamhost.com
     User camlittle
+
+Host cflinux linux.cs.wwu.edu
+    Hostname linux.cs.wwu.edu
+    User littlec8
+
+Host cflinux9 linux-09.cs.wwu.edu
+    Hostname linux-09.cs.wwu.edu
+    User littlec8

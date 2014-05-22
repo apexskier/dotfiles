@@ -44,8 +44,20 @@ setup_gitconfig () {
 
         sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" git/gitconfig.symlink.example > git/gitconfig.symlink
 
+        git config --global user.name "$git_authorname"
+        git config --global user.email $git_authoremail
+
         success 'gitconfig'
     fi
+}
+
+setup_awesome () {
+    mkdir -p $HOME/.config
+    if [ -h $HOME/.config/awesome ]; then
+        rm -rf $HOME/.config/awesome
+    fi
+    ln -s $HOME/.dotfiles/awesome $HOME/.config/awesome
+    success "setup awesome"
 }
 
 link_files () {
@@ -252,9 +264,10 @@ install_dotfiles () {
 }
 
 setup_gitconfig
+setup_awesome
 install_dotfiles
 
-# If we are on a mac, lets install and setup homebrew
+# If we're on a Mac, let's install and setup homebrew.
 if [ "$(uname -s)" == "Darwin" ]
 then
     info "installing dependencies"

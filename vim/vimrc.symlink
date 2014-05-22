@@ -12,6 +12,9 @@ set autoread        " auto read when a file is changed from the outside
 set viminfo^=%      " remember info about open buffers on close
 set lazyredraw      " Don't redraw while executing macros (better performance)
 
+" go syntax highlighting
+set rtp+=$GOROOT/misc/vim
+
 filetype plugin indent on
 
 " search "
@@ -98,9 +101,11 @@ set autoindent      " automatically indent
 set smartindent
 set smarttab
 set nowrap          " don't wrap lines
-set expandtab       " spaces instead of tabs
 set shiftwidth=4    " tab spacing
 set tabstop=4       " tab spacing
+set expandtab       " don't use tabs
+:command! -nargs=1 -range Sretab <line1>,<line2>s/\v%(^ *)@<= {<args>}/\t/g
+
 autocmd BufWritePre * :%s/\s\+$//e " remove trailing whitespace
 set backspace=indent,eol,start  " allow backspace in insert mode
 set scrolloff=5     " start scrolling when 5 lines away from margins
@@ -215,7 +220,6 @@ cnoremap kj <ESC>
 " workspace specific
 " touch wsgi on save python file
 " autocmd BufWritePre *.py :! touch ~/django/wwu_housing/wsgi.py
-
 
 
 " Returns true if paste mode is enabled

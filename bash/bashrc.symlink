@@ -37,21 +37,11 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
 
-[[ -d "${HOME}/.dotfiles/bin" ]] && export PATH="${HOME}/.dotfiles/bin:${PATH}"
-export REPO_PATH=boar+ssh://boar@odin.restek.wwu.edu/home/boar/repo
-
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 bind 'set show-all-if-ambiguous on'
 bind 'set completion-ignore-case on'
 
-
-# resnet rewrite
-export WORKON_HOME="$HOME/.virtualenvs"
-export PROJECT_HOME="$HOME/projects"
-export VIRTUALENVWRAPPER_VIRTUALENV="virtualenv"
-export PIP_VIRTUALENV_BASE=$WORKON_HOME
-export PIP_RESPECT_VIRTUALENV=true
 
 # {{{
 # Node Completion - Auto-generated, do not touch.
@@ -61,3 +51,60 @@ for f in $(command ls ~/.node-completion); do
   test -f "$f" && . "$f"
 done
 # }}}
+
+[ -n "$DISPLAY" ] && BROWSER=firefox
+
+# Add stuff to my PATH
+[ -d "$HOME/.dotfiles/bin" ] && export PATH="$HOME/.dotfiles/bin:$PATH"
+[ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
+[ -d "/usr/local/go/bin" ] && export PATH="$PATH:/usr/local/go/bin"
+
+# Mac OS X stuff
+if [ -n "$(which brew 2>/dev/null)" ]; then
+    [ -f $(brew --prefix)/etc/bash_completion ] && . $(brew --prefix)/etc/bash_completion
+    [ -f $(brew --prefix)git/contrib/completion/git-completion.bash ] && . $(brew --prefix)git/contrib/completion/git-completion.bash
+fi
+[ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
+[ "$(uname -s)" == "Darwin" ] && export DISPLAY=localhost:0.0
+
+# go stuff
+if [ -d "$HOME/Dropbox/Projects/go" ]; then
+    export GOPATH="$HOME/Dropbox/Projects/go"
+    export GOROOT=/usr/local/go
+    export PATH=$PATH:$GOPATH/bin
+fi
+if [ -d "$HOME/bin/go" ]; then
+    export GOROOT=$HOME/bin/go
+    export PATH=$PATH:$HOME/bin/go/bin
+fi
+if [ -d "$HOME/go" ]; then
+    export GOPATH="$HOME/go"
+    export PATH=$PATH:$GOPATH/bin
+fi
+
+if [ -d "$HOME/.virtualenvs" ]; then
+    export WORKON_HOME="$HOME/.virtualenvs"
+    export PIP_VIRTUALENV_BASE=$WORKON_HOME
+    export PIP_RESPECT_VIRTUALENV=true
+    export VIRTUALENVWRAPPER_VIRTUALENV="virtualenv"
+    export PIP_DOWNLOAD_CACHE=$HOME/.pip/caches
+    export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/dist-packages/:/usr/lib/pymodules/python2.7/
+fi
+
+if [ -d "/usr/local/lib/python2.7/site-packages" ]; then
+    export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages
+fi
+
+export REPO_PATH=boar+ssh://boar@odin.restek.wwu.edu/home/boar/repo
+
+if [ -d "$HOME/cs352w14/CVSrep" ]; then
+    export CVSROOT=$HOME/cs352w14/CVSrep
+fi
+
+if [ -d "$HOME/projects" ]; then
+    export PROJECT_HOME=$HOME/projects
+fi
+
+if [ -f "/Applications/Octave.app/Contents/Resources/bin/octave" ]; then
+    export PATH=$PATH:/Applications/Octave.app/Contents/Resources/bin
+fi
