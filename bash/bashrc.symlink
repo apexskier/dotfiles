@@ -52,3 +52,12 @@ export PROJECT_HOME="$HOME/projects"
 export VIRTUALENVWRAPPER_VIRTUALENV="virtualenv"
 export PIP_VIRTUALENV_BASE=$WORKON_HOME
 export PIP_RESPECT_VIRTUALENV=true
+
+# {{{
+# Node Completion - Auto-generated, do not touch.
+shopt -s progcomp
+for f in $(command ls ~/.node-completion); do
+  f="$HOME/.node-completion/$f"
+  test -f "$f" && . "$f"
+done
+# }}}
