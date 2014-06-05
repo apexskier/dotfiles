@@ -30,6 +30,10 @@ Host yildun yildun.dreamhost.com
     Hostname yildun.dreamhost.com
     User camlittle
 
+Host nodmhosting ps267313 ps267313.dreamhost.com
+    Hostname ps267313.dreamhost.com
+    User nodm
+
 Host cflinux linux.cs.wwu.edu
     Hostname linux.cs.wwu.edu
     User littlec8
