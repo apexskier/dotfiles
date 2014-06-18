@@ -91,3 +91,15 @@ fi
 if [ -d "$HOME/projects" ]; then
     export PROJECT_HOME=$HOME/projects
 fi
+
+if [ -d "$HOME/.gem/bin" ]; then
+    export PATH="$PATH:$HOME/.gem/bin"
+fi
+if [ -d "/var/lib/gems" ]; then
+    export GEM_PATH="$GEM_PATH:/var/lib/gems"
+fi
+mkdir -p $HOME/.gems
+if [ -d "$HOME/.gems/" ]; then
+    export GEM_PATH="$GEM_PATH:$HOME/.gems"
+    export GEM_HOME="$HOME/.gems"
+fi
