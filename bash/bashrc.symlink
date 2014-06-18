@@ -43,6 +43,17 @@ bind 'set show-all-if-ambiguous on'
 bind 'set completion-ignore-case on'
 
 
+if [ -d $HOME/.node-completion ]; then
+    # {{{
+    # Node Completion - Auto-generated, do not touch.
+    shopt -s progcomp
+    for f in $(command ls ~/.node-completion); do
+      f="$HOME/.node-completion/$f"
+      test -f "$f" && . "$f"
+    done
+    # }}}
+fi
+
 [ -n "$DISPLAY" ] && BROWSER=firefox
 
 # Add stuff to my PATH
@@ -82,6 +93,10 @@ if [ -d "$HOME/.virtualenvs" ]; then
     export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/dist-packages/:/usr/lib/pymodules/python2.7/
 fi
 
+if [ -d "/usr/local/lib/python2.7/site-packages" ]; then
+    export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages
+fi
+
 export REPO_PATH=boar+ssh://boar@odin.restek.wwu.edu/home/boar/repo
 
 if [ -d "$HOME/cs352w14/CVSrep" ]; then
@@ -98,8 +113,13 @@ fi
 if [ -d "/var/lib/gems" ]; then
     export GEM_PATH="$GEM_PATH:/var/lib/gems"
 fi
-mkdir -p $HOME/.gems
 if [ -d "$HOME/.gems/" ]; then
     export GEM_PATH="$GEM_PATH:$HOME/.gems"
     export GEM_HOME="$HOME/.gems"
+else
+    mkdir -p $HOME/.gems
+fi
+
+if [ -f "/Applications/Octave.app/Contents/Resources/bin/octave" ]; then
+    export PATH=$PATH:/Applications/Octave.app/Contents/Resources/bin
 fi
