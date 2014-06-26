@@ -28,6 +28,8 @@ alias 'ssh-alvis'='ssh alvis -t tmux attach -d'
 alias 'ssh-jb'='ssh littlec8@juicebox.restek.wwu.edu -t startirc'
 alias 'ssh-nari'='ssh -L 8009:localhost:8009 nari.housing.wwu.edu -t tmux attach -d'
 
+alias 'git-clch'='(cd ./$(git rev-parse --show-cdup) && git checkout -- $(git status --porcelain | sed s/^...//))'
+
 alias 'classinfo'='xpop= $( xprop | grep --color=none "WM_CLASS\|^WM_NAME" | xmessage -file - )'
 
 cs_print() {

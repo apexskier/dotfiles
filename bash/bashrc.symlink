@@ -74,14 +74,16 @@ if [ -d "$HOME/Dropbox/Projects/go" ]; then
     export GOPATH="$HOME/Dropbox/Projects/go"
     export GOROOT=/usr/local/go
     export PATH=$PATH:$GOPATH/bin
-fi
-if [ -d "$HOME/bin/go" ]; then
-    export GOROOT=$HOME/bin/go
-    export PATH=$PATH:$HOME/bin/go/bin
-fi
-if [ -d "$HOME/go" ]; then
-    export GOPATH="$HOME/go"
-    export PATH=$PATH:$GOPATH/bin
+else
+    if [ -d "$HOME/bin/go" ]; then
+        export GOROOT=$HOME/bin/go
+        export PATH=$PATH:$HOME/bin/go/bin
+    else
+        if [ -d "$HOME/go" ]; then
+            export GOPATH="$HOME/go"
+            export PATH=$PATH:$GOPATH/bin
+        fi
+    fi
 fi
 
 if [ -d "$HOME/.virtualenvs" ]; then
@@ -114,8 +116,8 @@ if [ -d "/var/lib/gems" ]; then
     export GEM_PATH="$GEM_PATH:/var/lib/gems"
 fi
 if [ -d "$HOME/.gems/" ]; then
-    export GEM_PATH="$GEM_PATH:$HOME/.gems"
     export GEM_HOME="$HOME/.gems"
+    export PATH="$PATH:$HOME/.gems/bin"
 else
     mkdir -p $HOME/.gems
 fi
@@ -123,3 +125,4 @@ fi
 if [ -f "/Applications/Octave.app/Contents/Resources/bin/octave" ]; then
     export PATH=$PATH:/Applications/Octave.app/Contents/Resources/bin
 fi
+export PATH=$HOME/local/bin:$PATH
