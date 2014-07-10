@@ -1,38 +1,66 @@
--------------------------------
---  "Zenburn" awesome theme  --
---    By Adrian C. (anrxc)   --
--------------------------------
+--------------------------------------
+--  Cameron Little's awesome theme  --
+--------------------------------------
 
 -- Alternative icon sets and widget icons:
 --  * http://awesome.naquadah.org/wiki/Nice_Icons
 
+-- {{{ Colors
+color00 = "#151515"
+color01 = "#202020"
+color02 = "#303030"
+color03 = "#505050"
+color04 = "#B0B0B0"
+color05 = "#D0D0D0"
+color06 = "#E0E0E0"
+color07 = "#F5F5F5"
+color08 = "#AC4142" -- red
+color09 = "#D28445" -- orange
+color0A = "#F4BF75" -- yellow
+color0B = "#90A959" -- green
+color0C = "#75B5AA" -- cyan
+color0D = "#6A9FB5" -- blue
+color0E = "#AA759F" -- purple
+color0F = "#8F5536" -- brown
+-- }}}
+
+
 -- {{{ Main
 theme = {}
-theme.wallpaper_cmd = { "awsetbg /usr/share/awesome/themes/zenburn/zenburn-background.png" }
+theme.wallpaper_cmd = { "awsetbg /home/littlec8/.config/awesome/themes/cstm-apexskier/bg.jpg" }
 -- }}}
 
 -- {{{ Styles
-theme.font      = "sans 8"
+theme.font      = "DejaVu Sans Mono 8"
 
 -- {{{ Colors
-theme.fg_normal = "#DCDCCC"
-theme.fg_focus  = "#F0DFAF"
-theme.fg_urgent = "#CC9393"
-theme.bg_normal = "#3F3F3F"
-theme.bg_focus  = "#1E2320"
-theme.bg_urgent = "#3F3F3F"
+theme.fg_normal = color04
+theme.fg_focus  = color06
+theme.fg_urgent = color07
+
+theme.bg_normal = color01
+theme.bg_focus  = color02
+theme.bg_urgent = color08
+theme.bg_minimize = color00
 -- }}}
 
 -- {{{ Borders
-theme.border_width  = "4"
-theme.border_normal = "#3F3F3F"
-theme.border_focus  = "#6F6F6F"
-theme.border_marked = "#CC9393"
+theme.border_width  = "2"
+theme.border_normal = color02
+theme.border_focus  = color03
+theme.border_marked = color0F
 -- }}}
 
 -- {{{ Titlebars
-theme.titlebar_bg_focus  = "#3F3F3F"
-theme.titlebar_bg_normal = "#3F3F3F"
+theme.titlebar_bg_focus  = theme.bg_focus
+theme.titlebar_bg_normal = theme.bg_normal
+theme.titlebar_bg_urgent = theme.bg_urgent
+theme.titlebar_fg_focus = theme.fg_focus
+theme.titlebar_fg_normal = theme.fg_normal
+theme.titlebar_fg_urgent = theme.fg_urgent
+-- }}}
+
+-- {{{ Notifications
 -- }}}
 
 -- There are other variable sets
@@ -57,7 +85,7 @@ theme.titlebar_bg_normal = "#3F3F3F"
 -- }}}
 
 -- {{{ Mouse finder
-theme.mouse_finder_color = "#CC9393"
+theme.mouse_finder_color = color09
 -- mouse_finder_[timeout|animate_timeout|radius|factor]
 -- }}}
 
@@ -67,7 +95,7 @@ theme.mouse_finder_color = "#CC9393"
 -- menu_[border_color|border_width]
 theme.menu_height = "16"
 theme.menu_width  = "128"
-theme.menu_border_width = "0"
+theme.menu_border_width = "1"
 -- }}}
 
 -- {{{ Icons
