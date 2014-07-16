@@ -117,7 +117,7 @@ function set_prompt() {
     local -i err=$?
     local cmd_info=""
     if (( err != 0 )); then
-        cmd_info="$red$err↩$nocol "
+        cmd_info="$red$err ↩$nocol "
     else
         cmd_info=""
     fi
