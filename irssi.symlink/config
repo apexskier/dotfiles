@@ -254,7 +254,8 @@ ignores = (
   {
     level = "JOINS PARTS QUITS MODES NICKS";
     channels = ( "#webplatform" );
-  }
+  },
+  { level = "JOINS PARTS QUITS MODES"; channels = ( "##bootstrap" ); }
 );
 hilights = (
   { text = "apexskier"; nick = "no"; word = "yes"; },
