@@ -7,6 +7,7 @@ then
     brew install wget
     brew install bash-completion
     brew install cmake
+    brew install git bash-completion
 
     echo "Installing cask"
     brew tap caskroom/cask
