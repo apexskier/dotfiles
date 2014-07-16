@@ -12,27 +12,25 @@ fi
 git_branch() {
   echo $($git symbolic-ref HEAD 2>/dev/null | awk -F/ {'print $NF'})
 }
-git_dirty() {
-  if $(! $git status -s &> /dev/null)
+git_stuff() {
+  if $($git status -s &> /dev/null)
   then
-    echo ""
-  else
+    echo -n "(±"
     if [[ $($git status --porcelain) == "" ]]
     then
-        echo -n "(±%{$fg[white]%}$(git_prompt_info)%{$reset_color%}"
+      echo -n "%{$fg[white]%}$(git_prompt_info)%{$reset_color%}"
     else
-        echo -n "(±%{$fg_bold[white]%}$(git_prompt_info)%{$reset_color%}"
+      echo -n "%{$fg_bold[white]%}$(git_prompt_info)%{$reset_color%}"
     fi
+    echo -n "$(need_push)"
+    echo ") "
   fi
-  echo "$(unpushed)) "
 }
-
 git_prompt_info () {
   ref=$($git symbolic-ref HEAD 2>/dev/null) || return
   # echo "(%{\e[0;33m%}${ref#refs/heads/}%{\e[0m%})"
   echo "${ref#refs/heads/}"
 }
-
 unpushed () {
   $git cherry -v @{upstream} 2>/dev/null
 }
@@ -42,7 +40,7 @@ need_push () {
   then
     echo ""
   else
-    echo " %{$fg[grey]%}needs push%{$reset_color%}"
+    echo " %{$fg[white]%}ahead%{$reset_color%}"
   fi
 }
 
@@ -80,6 +78,7 @@ cmd_info() {
   then
     echo "%{$fg_bold[red]%}%?↩%{$reset_color%} "
   fi
+  # echo "%{$fg_bold[red]%}$(runtime)%{$reset_color%} "
 }
 
 username="%{$fg[cyan]%}%n%{$reset_color%}"
@@ -104,12 +103,7 @@ else
     mark="%{$fg[white]%}$mark$reset_color"
 fi
 
-export PROMPT=$'$(cmd_info)${username}${mark}$(rb_prompt)${hostname}$(rw)$(directory) $(virtualenv)$(git_dirty)\n› '
+export PROMPT=$'$(cmd_info)${username}${mark}$(rb_prompt)${hostname}$(rw)$(directory) $(virtualenv)$(git_stuff)\n› '
 set_prompt () {
   export RPROMPT="%{$fg_bold[cyan]%}%{$reset_color%}"
-}
-
-precmd() {
-  title "zsh" "%m" "%55<...<%~"
-  set_prompt
 }
