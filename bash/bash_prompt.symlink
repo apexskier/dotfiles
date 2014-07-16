@@ -41,29 +41,29 @@ lt_purple="\[\033[1;35m\]"
     white="\[\033[1;37m\]"
 
 
-last_seconds=$SECONDS
-runtime() {
-    if [[ $cmd_seconds -ge 2 ]]; then
-        echo -ne "$brown"
-        # display runtime seconds as days, hours, minutes, and seconds
-        [[ "$cmd_seconds" -ge 86400 ]] && echo -ne $((cmd_seconds / 86400))d
-        [[ "$cmd_seconds" -ge 3600 ]] && echo -ne $((cmd_seconds % 86400 / 3600))h
-        [[ "$cmd_seconds" -ge 60 ]] && echo -ne $((cmd_seconds % 3600 / 60))m
-        echo -ne $((cmd_seconds % 60))s
-        echo -ne "$nocol"
-    fi
-}
-reset_runtime() {
-    # Compute number of seconds since program was started
-    cmd_seconds=$((SECONDS - last_seconds))
-    # Reset when no command actually executed
-    [ "$cmd_executed" != 1 ] && last_seconds=$SECONDS && cmd_seconds=0
-    # Make sure last command wasn't setting the prompt
-    [ "$BASH_COMMAND" = set_prompt ] && cmd_executed=0 && return
-    cmd_executed=1
-}
-# call whenever bash executes a command
-trap 'reset_runtime' DEBUG
+#last_seconds=$SECONDS
+#runtime() {
+#    if [[ $cmd_seconds -ge 2 ]]; then
+#        echo -ne "$brown"
+#        # display runtime seconds as days, hours, minutes, and seconds
+#        [[ "$cmd_seconds" -ge 86400 ]] && echo -ne $((cmd_seconds / 86400))d
+#        [[ "$cmd_seconds" -ge 3600 ]] && echo -ne $((cmd_seconds % 86400 / 3600))h
+#        [[ "$cmd_seconds" -ge 60 ]] && echo -ne $((cmd_seconds % 3600 / 60))m
+#        echo -ne $((cmd_seconds % 60))s
+#        echo -ne "$nocol"
+#    fi
+#}
+#reset_runtime() {
+#    # Compute number of seconds since program was started
+#    cmd_seconds=$((SECONDS - last_seconds))
+#    # Reset when no command actually executed
+#    [ "$cmd_executed" != 1 ] && last_seconds=$SECONDS && cmd_seconds=0
+#    # Make sure last command wasn't setting the prompt
+#    [ "$BASH_COMMAND" = set_prompt ] && cmd_executed=0 && return
+#    cmd_executed=1
+#}
+## call whenever bash executes a command
+#trap 'reset_runtime' DEBUG
 
 _USER=""
 # Yellow for root, bold if the user is not the login one, else no color.
@@ -121,7 +121,7 @@ function set_prompt() {
     else
         cmd_info=""
     fi
-    cmd_info+=$(runtime)
+    #cmd_info+=$(runtime)
     if [[ -n "$cmd_info" ]] ; then
         cmd_info+="\n"
     fi

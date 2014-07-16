@@ -40,7 +40,7 @@ need_push () {
   then
     echo ""
   else
-    echo " %{$fg[white]%}ahead%{$reset_color%}"
+    echo " %{$fg[white]%}unpushed%{$reset_color%}"
   fi
 }
 
