@@ -3,6 +3,20 @@
 
 [hub]
     protocol = https
+[user]
+    name = AUTHORNAME
+    email = AUTHOREMAIL
+[credential]
+    helper = GIT_CREDENTIAL_HELPER
+[alias]
+    st = status -sb
+    lg = log --graph --decorate --oneline
+    lga = log --graph --decorate --oneline --all
+    co = checkout
+    promote = !$ZSH/bin/git-promote
+    wtf     = !$ZSH/bin/git-wtf
+    rank-contributors = !$ZSH/bin/git-rank-contributors
+    count   = !git shortlog -sn
 [color]
     diff = auto
     status = auto
@@ -17,7 +31,3 @@
     tool = vimdiff
 [diff]
     tool = vimdiff
-[alias]
-    st = status -sb
-    lg = log --graph --decorate --oneline
-    lga = log --graph --decorate --oneline --all
