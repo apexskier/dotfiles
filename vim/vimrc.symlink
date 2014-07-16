@@ -67,7 +67,7 @@ autocmd FileType aspx set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType wsgi set syntax=python
 
 set ruler           " always show current pos
-set number          " display line numbers
+set relativenumber  " display relative line numbers
 set cmdheight=2     " more room for commands
 set laststatus=2    " makes status bar 2 lines tall
 " Format the status line

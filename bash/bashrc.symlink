@@ -126,3 +126,4 @@ if [ -f "/Applications/Octave.app/Contents/Resources/bin/octave" ]; then
     export PATH=$PATH:/Applications/Octave.app/Contents/Resources/bin
 fi
 export PATH=$HOME/local/bin:$PATH
+export PATH=$HOME/local/bin:$PATH

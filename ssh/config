@@ -41,3 +41,7 @@ Host cflinux linux.cs.wwu.edu
 Host cflinux9 linux-09.cs.wwu.edu
     Hostname linux-09.cs.wwu.edu
     User littlec8
+
+Host kulshan kulshan.restek.wwu.edu
+    Hostname kulshan.restek.wwu.edu
+    User littlec8

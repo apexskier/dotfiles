@@ -25,10 +25,11 @@ alias .....='cd ../../../..'
 
 alias 'ssh-gp'='ssh -L 8009:localhost:8009 gp -t "ssh -L 8009:localhost:8009 nari.housing.wwu.edu -t tmux attach -d"'
 alias 'ssh-alvis'='ssh alvis -t tmux attach -d'
-alias 'ssh-jb'='ssh littlec8@juicebox.restek.wwu.edu -t startirc'
 alias 'ssh-nari'='ssh -L 8009:localhost:8009 nari.housing.wwu.edu -t tmux attach -d'
+alias 'ssh-irc'='ssh nari -t startirc'
 
 alias 'git-clch'='(cd ./$(git rev-parse --show-cdup) && git checkout -- $(git status --porcelain | sed s/^...//))'
+alias 'nodebin'='export PATH=$PATH:$(npm bin)'
 
 alias 'classinfo'='xpop= $( xprop | grep --color=none "WM_CLASS\|^WM_NAME" | xmessage -file - )'
 
