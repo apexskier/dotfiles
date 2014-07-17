@@ -8,10 +8,3 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-# if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc (and bash_profile) if it exists
-    if [ -f "$HOME/.bash_profile" ]; then
-	. "$HOME/.bash_profile"
-    fi
-fi

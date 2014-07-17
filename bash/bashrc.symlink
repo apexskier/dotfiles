@@ -110,3 +110,10 @@ fi
 if [ -f "/Applications/Octave.app/Contents/Resources/bin/octave" ]; then
     export PATH=$PATH:/Applications/Octave.app/Contents/Resources/bin
 fi
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+export PATH="$PATH:$HOME/.rvm/rubies/ruby-2.1.2/bin/" # Add RVM to PATH for scripting
+
+if [ -f "$HOME/.profile" ]; then
+    source ~/.profile
+fi
