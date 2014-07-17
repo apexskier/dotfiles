@@ -1,3 +1,5 @@
+alias reload!='. ~/.zshrc'
+
 # ls aliases
 alias ls='ls -F'
 alias ll='ls -lh'
@@ -5,7 +7,7 @@ alias la='ls -A'
 alias lal='ls -lhA'
 
 # enable color support of ls and redefine aliases if able
-if [ -x /usr/bin/dircolors ]; then
+if [[ -x /usr/bin/dircolors ]]; then
     alias ls='ls -F --color=auto'
     # alias ll='ls -lh'
     # alias la='ls -A'
@@ -30,14 +32,3 @@ alias 'ssh-irc'='ssh nari -t startirc'
 
 alias 'git-clch'='(cd ./$(git rev-parse --show-cdup) && git checkout -- $(git status --porcelain | sed s/^...//))'
 alias 'nodebin'='export PATH=$PATH:$(npm bin)'
-
-alias 'classinfo'='xpop= $( xprop | grep --color=none "WM_CLASS\|^WM_NAME" | xmessage -file - )'
-
-cs_print() {
-    a2ps -v --landscape --columns=2 --printer=$1 -s2 $2
-}
-alias 'cs-print'=cs_print
-
-# Add an "alert" alias for long running commands.  Use like so:
-#   sleep 10; alert
-alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'

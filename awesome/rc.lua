@@ -9,7 +9,6 @@ require("naughty")
 
 -- Load Debian menu entries
 require("debian.menu")
-
 require("volume")
 
 -- {{{ Error handling
@@ -77,9 +76,9 @@ layouts =
     -- awful.layout.suit.fair,
     -- awful.layout.suit.fair.horizontal,
     -- awful.layout.suit.spiral,
-    awful.layout.suit.spiral.dwindle,   -- 6
-    awful.layout.suit.max,              -- 7
-    awful.layout.suit.max.fullscreen,   -- 8
+    awful.layout.suit.spiral.dwindle,   -- 4
+    awful.layout.suit.max,              -- 5
+    awful.layout.suit.max.fullscreen,   -- 6
     -- awful.layout.suit.magnifier
 }
 -- }}}
@@ -87,92 +86,41 @@ layouts =
 -- {{{ Tags
 -- Define a tag table which hold all screen tags.
 tags = {}
-tag_layouts = { -- defualt layouts for the specified tags
-    main = layouts[2],
-    www = layouts[2],
-    files = layouts[1],
-    ide = layouts[5],
-    irc = layouts[3]
+tag_layouts = { -- default layouts for the specified tags
+    tileright = layouts[2],
+    tileleft  = layouts[3],
+    floating  = layouts[1],
+    maximize  = layouts[5],
+    spiral    = layouts[4]
 }
 for s = 1, screen.count() do
     -- Each screen has its own tag table.
-    if s == 1 then -- first screen
-        if screen.count() == 1 then -- one screen
-            tags[s] = awful.tag(
-                { "main", "www", "files", "ide", "irc", 6, 7, 8 },
-                s,
-                {
-                    tag_layouts["main"], -- main
-                    tag_layouts["www"], -- www
-                    tag_layouts["files"], -- files
-                    tag_layouts["ide"], -- ide
-                    tag_layouts["irc"], -- irc
-                    layouts[4], --
-                    layouts[5], --
-                    layouts[4], --
-                })
-
-        else                        -- multiple monitors
-            tags[s] = awful.tag(
-                { "main", "www", "files", "ide", 5, 6, 7, 8 },
-                s,
-                {
-                    layouts[3], -- main
-                    tag_layouts["www"], -- www
-                    tag_layouts["files"], -- files
-                    tag_layouts["ide"], -- ide
-                    layouts[5], --
-                    layouts[4], --
-                    layouts[5], --
-                    layouts[4], --
-                })
-        end
-    elseif s == screen.count() then -- last screen
-        tags[s] = awful.tag(
-            { "main", "www", "files", "irc", 5, 6, 7, 8 },
-            s,
-            {
-                tag_layouts["main"], -- main
-                tag_layouts["www"], -- www
-                tag_layouts["files"], -- files
-                tag_layouts["irc"], -- irc
-                layouts[5], --
-                layouts[4], --
-                layouts[5], --
-                layouts[4], --
-            })
-    else
-        tags[s] = awful.tag(
-            { "main", "www", "files", 4, 5, 6, 7, 8 },
-            s,
-            {
-                tag_layouts["main"], -- main
-                tag_layouts["www"], -- www
-                layouts["files"], -- files
-                layouts[2], --
-                layouts[5], --
-                layouts[4], --
-                layouts[5], --
-                layouts[4], --
-            })
-    end
+    tags[s] = awful.tag(
+        { "r", "l", "f", "m", "s", 6, 7, 8 },
+        s,
+        {
+            tag_layouts["tileright"],
+            tag_layouts["tileleft"],
+            tag_layouts["floating"],
+            tag_layouts["maximize"],
+            tag_layouts["spiral"],
+            tag_layouts["tileleft"],
+            tag_layouts["tileright"],
+            tag_layouts["floating"],
+        })
 end
 -- }}}
 
 -- {{{ Menu
 -- Create a laucher widget and a main menu
-myawesomemenu = {
-   { "manual", terminal .. " -e man awesome" },
-   { "edit config", editor_cmd .. " " .. awesome.conffile },
-   { "restart", awesome.restart },
-   { "exit", awesome.quit }
-}
+myawesomemenu = { { "manual", terminal .. " -e man awesome" },
+                  { "edit config", editor_cmd .. " " .. awesome.conffile },
+                  { "restart", awesome.restart },
+                  { "exit", awesome.quit } }
 
 mymainmenu = awful.menu({ items = { { "awesome", myawesomemenu, beautiful.awesome_icon },
                                     { "Debian", debian.menu.Debian_menu.Debian },
-                                    { "open terminal", terminal }
-                                  }
-                        })
+                                    { "open terminal", terminal } } })
 
 mylauncher = awful.widget.launcher({ image = image(beautiful.awesome_icon),
                                      menu = mymainmenu })
