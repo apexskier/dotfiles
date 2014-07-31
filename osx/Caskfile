@@ -4,19 +4,22 @@
 install caskroom/cask/brew-cask
 tap caskroom/versions
 
-cask install caffeine 2> /dev/null
-cask install coda 2> /dev/null
-cask install colloquy 2> /dev/null
-cask install dropbox 2> /dev/null
-cask install google-chrome 2> /dev/null
-cask install google-chrome-canary 2> /dev/null
-cask install handbrake 2> /dev/null
-cask install iterm2 2> /dev/null
-cask install macvim 2> /dev/null
-cask install minecraft 2> /dev/null
-cask install onepassword 2> /dev/null
-cask install the-unarchiver 2> /dev/null
-cask install transmit 2> /dev/null
-cask install utorrent 2> /dev/null
-cask install virtualbox 2> /dev/null
-cask install vlc 2> /dev/null
+cask install caffeine
+cask install coda
+cask install colloquy
+cask install dropbox
+cask install google-chrome
+cask install google-chrome-canary
+cask install google-earth
+cask install handbrake
+cask install iterm2
+cask install macvim
+cask install minecraft
+cask install onepassword
+cask install the-unarchiver
+cask install transmit
+#cask install utorrent
+cask install virtualbox
+cask install vlc
+
+cleanup

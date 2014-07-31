@@ -28,7 +28,7 @@ install wget --enable-iri
 install vim --override-system-vi
 install homebrew/dupes/grep
 install homebrew/dupes/screen
-install homebrew/php/php55 --with-gmp
+# install homebrew/php/php55 --with-gmp
 
 # Install other useful binaries
 install ack
@@ -40,7 +40,7 @@ install nmap
 install node # This installs `npm` too using the recommended installation method
 install tree
 install ucspi-tcp # `tcpserver` et al.
-install xpdf
+#install xpdf
 install mercurial
 install tmux
 install cmake
