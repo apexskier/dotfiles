@@ -36,6 +36,13 @@ source ~/.bash_prompt
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
+if [ -f `brew --prefix`/etc/bash_completion ]; then
+    . `brew --prefix`/etc/bash_completion
+fi
+
+if [ -f `brew --prefix coreutils`/libexec/gnubin ]; then
+    export PATH=$PATH:`brew --prefix`/etc/bash_completion
+fi
 
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
