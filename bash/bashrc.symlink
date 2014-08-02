@@ -36,13 +36,6 @@ source ~/.bash_prompt
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
     . /etc/bash_completion
 fi
-if [ -f `brew --prefix`/etc/bash_completion ]; then
-    . `brew --prefix`/etc/bash_completion
-fi
-
-if [ -f `brew --prefix coreutils`/libexec/gnubin ]; then
-    export PATH=$PATH:`brew --prefix`/etc/bash_completion
-fi
 
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
@@ -72,6 +65,9 @@ fi
 if [ -n "$(which brew 2>/dev/null)" ]; then
     [ -f $(brew --prefix)/etc/bash_completion ] && . $(brew --prefix)/etc/bash_completion
     [ -f $(brew --prefix)git/contrib/completion/git-completion.bash ] && . $(brew --prefix)git/contrib/completion/git-completion.bash
+    if [ -f `brew --prefix coreutils`/libexec/gnubin ]; then
+        export PATH=$PATH:`brew --prefix`/etc/bash_completion
+    fi
 fi
 [ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
 [ "$(uname -s)" == "Darwin" ] && export DISPLAY=localhost:0.0
