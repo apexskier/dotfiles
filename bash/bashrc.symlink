@@ -68,15 +68,6 @@ if [ -n "$(which brew 2>/dev/null)" ]; then
     if [ -f `brew --prefix coreutils`/libexec/gnubin ]; then
         export PATH=$PATH:`brew --prefix`/etc/bash_completion
     fi
-
-    function gostuff() {
-        local gopath=`which go`
-        local godir=`dirname $gopath`
-        local gopath_brew_relative=`readlink $gopath`
-        local gopath_brew=`dirname $gopath_brew_relative`
-        export GOROOT=`cd $godir; cd $gopath_brew/..; pwd`
-    }
-    gostuff
 fi
 [ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
 [ "$(uname -s)" == "Darwin" ] && export DISPLAY=localhost:0.0
@@ -84,6 +75,7 @@ fi
 # go stuff
 if [ -d "$HOME/Dropbox/Projects/go" ]; then
     export GOPATH="$HOME/Dropbox/Projects/go"
+    export GOROOT=/usr/local/go
     export PATH=$PATH:$GOPATH/bin
 else
     if [ -d "$HOME/bin/go" ]; then
