@@ -65,6 +65,7 @@ autocmd FileType aspnet set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType aspx set omnifunc=xmlcomplete#CompleteTags
 
 autocmd FileType wsgi set syntax=python
+autocmd FileType sig set syntax=sml
 
 set ruler           " always show current pos
 set relativenumber  " display relative line numbers
@@ -158,8 +159,6 @@ nnoremap <silent> N Nzz
 " Remap j and k to scroll by visual lines
 nnoremap j gj
 nnoremap k gk
-" set sytnax to django template with html
-nnoremap sdh :setfiletype htmldjango<C-m>
 
 " Insert Mode Mappings "
 " A quicker alternative to pushing <ESC>
@@ -211,6 +210,9 @@ vnoremap > >gv
 " Leave escape mode by pressing jk/kj
 cnoremap jk <ESC>
 cnoremap kj <ESC>
+" set sytnax to django template with html
+cnoremap sdh :setfiletype htmldjango<C-m>
+cnoremap shd :setfiletype htmldjango<C-m>
 
 " .vimrc references "
 " https://github.com/edlandm/vim
