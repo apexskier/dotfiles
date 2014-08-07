@@ -23,7 +23,7 @@ set smartcase       " unless capital characters are used
 set incsearch       " find the next match as search is type
 set hlsearch        " highlight results
 set magic           " for regular expressions use magic (?)
-" Search for selected tet, forwards or backwards.
+" Search for selected text, forwards or backwards.
 vnoremap <silent> * :<C-U>
   \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
   \gvy/<C-R><C-R>=substitute(
