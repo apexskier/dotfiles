@@ -1,0 +1,7 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =5
+let g:netrw_dirhist_1='/home/pinnown'
+let g:netrw_dirhist_2='/home/pinnown/330Assignment1'
+let g:netrw_dirhist_3='/home/littlec8/cs450/project-old'
+let g:netrw_dirhist_4='/home/littlec8/.local/share/applications'
+let g:netrw_dirhist_5='/home/littlec8/public_html/dokuwiki/inc/lang/en'
