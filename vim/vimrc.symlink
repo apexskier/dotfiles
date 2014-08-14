@@ -237,3 +237,5 @@ function! PasteSpace()
     en
     return ''
 endfunction
+
+autocmd FileType diff set nofoldenable " prevent folding on diffs
