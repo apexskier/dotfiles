@@ -8,6 +8,7 @@ set completion-ignore-case on
 set completion-map-case on
 
 set editing-mode vi
+set keymap vi-command
 
 set prefer-visible-bell
 

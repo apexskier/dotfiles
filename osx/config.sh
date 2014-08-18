@@ -227,4 +227,7 @@ then
     defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
     mkdir "${HOME}/Downloads/Torrents"
     defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Downloads/Torrents"
+
+    # enable vnc and remote desktop
+    sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -off -restart -agent -privs -all -allowAccessFor -allUsers
 fi
