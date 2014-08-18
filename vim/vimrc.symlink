@@ -76,6 +76,8 @@ autocmd FileType sig set sw=2
 autocmd FileType sig set ts=2
 autocmd FileType sig set sts=2
 
+autocmd BufNewFile,BufRead bash* setf sh " When editing stuff from bash vi-mode (Esc v), set proper syntax highlighting
+
 set ruler           " always show current pos
 set relativenumber  " display relative line numbers
 set cmdheight=2     " more room for commands
