@@ -7,3 +7,4 @@ atom.symlink/themes
 git/gitconfig.symlink
 vim/tmp
 vim/undo
+vim/vim.symlink/.netrwhist

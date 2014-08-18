@@ -65,7 +65,16 @@ autocmd FileType aspnet set omnifunc=xmlcomplete#CompleteTags
 autocmd FileType aspx set omnifunc=xmlcomplete#CompleteTags
 
 autocmd FileType wsgi set syntax=python
+autocmd FileType python set sw=4
+autocmd FileType python set ts=4
+autocmd FileType python set sts=4
+autocmd FileType sml set sw=2
+autocmd FileType sml set ts=2
+autocmd FileType sml set sts=2
 autocmd FileType sig set syntax=sml
+autocmd FileType sig set sw=2
+autocmd FileType sig set ts=2
+autocmd FileType sig set sts=2
 
 set ruler           " always show current pos
 set relativenumber  " display relative line numbers
@@ -149,7 +158,7 @@ autocmd BufReadPost *
 " Normal Mode Mappings "
 " Makes J insert a <CR> it's like the opposite of J
 nnoremap K i<C-m><Esc>
-" Execute Macros with Q
+" Execute q macros with Q
 nnoremap Q @q
 " Y yanks to end of line, making it consistant with D and C
 nnoremap Y y$
@@ -184,8 +193,6 @@ inoremap << <C-d>
 inoremap >> <C-t>
 " Go to beginning of line in insert mode
 inoremap <C-a> <ESC>I
-inoremap Higgenson Higginson
-inoremap higgenson higginson
 
 " Go to end of line in insert mode
 inoremap <C-e> <ESC>A
@@ -197,7 +204,6 @@ inoremap <C-u> <ESC>o
 inoremap <silent><C-k> <ESC>mz:m-2<CR>`zi
 " Move current line down one line (switches places with below line)
 inoremap <silent><C-j> <ESC>mz:m+<CR>`zi
-""" css snippets
 
 " Visual Mode Mappings "
 " Yank highlighted text and searches it
@@ -211,20 +217,17 @@ vnoremap > >gv
 cnoremap jk <ESC>
 cnoremap kj <ESC>
 " set sytnax to django template with html
-cnoremap sdh :setfiletype htmldjango<C-m>
-cnoremap shd :setfiletype htmldjango<C-m>
+command Sdh :setfiletype htmldjango
+command Shd :setfiletype htmldjango
 
 " .vimrc references "
 " https://github.com/edlandm/vim
 " http://vimdoc.sourceforge.net/htmldoc/intro.html#keycodes
 
+inoremap Higgenson Higginson
+inoremap higgenson higginson
 
-" workspace specific
-" touch wsgi on save python file
-" autocmd BufWritePre *.py :! touch ~/django/wwu_housing/wsgi.py
-
-
-" Returns true if paste mode is enabled
+" Returns paste mode text
 function! HasPaste()
     if &paste
         return 'paste'
@@ -237,3 +240,14 @@ function! PasteSpace()
     en
     return ''
 endfunction
+
+" Autocomplete with TAB
+function! Tab_Or_Complete()
+    if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
+        return "\<C-N>"
+    else
+        return "\<Tab>"
+    endif
+endfunction
+inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
+set dictionary="/usr/dict/words"
