@@ -1,3 +1,6 @@
+html5.vim
 neobundle.vim
+python-mode
+vim-css3-syntax
 vim-less
 vim-surround

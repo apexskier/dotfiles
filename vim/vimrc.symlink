@@ -14,6 +14,9 @@ NeoBundleFetch 'Shougo/neobundle.vim'
 
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'tpope/vim-surround'
+NeoBundle 'othree/html5.vim'
+NeoBundle 'klen/python-mode'
+NeoBundle 'hail2u/vim-css3-syntax'
 
 call neobundle#end()
 
@@ -90,6 +93,8 @@ autocmd FileType sig set syntax=sml
 autocmd FileType sig set sw=2
 autocmd FileType sig set ts=2
 autocmd FileType sig set sts=2
+
+autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0]) " start git commits at beginning
 
 autocmd BufNewFile,BufRead bash* setf sh " When editing stuff from bash vi-mode (Esc v), set proper syntax highlighting
 
