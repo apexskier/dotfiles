@@ -25,15 +25,15 @@ set hlsearch        " highlight results
 set magic           " for regular expressions use magic (?)
 " Search for selected text, forwards or backwards.
 vnoremap <silent> * :<C-U>
-  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-  \gvy/<C-R><C-R>=substitute(
-  \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-  \gV:call setreg('"', old_reg, old_regtype)<CR>
+            \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+            \gvy/<C-R><C-R>=substitute(
+            \escape(@", '/\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+            \gV:call setreg('"', old_reg, old_regtype)<CR>
 vnoremap <silent> # :<C-U>
-  \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
-  \gvy?<C-R><C-R>=substitute(
-  \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
-  \gV:call setreg('"', old_reg, old_regtype)<CR>
+            \let old_reg=getreg('"')<Bar>let old_regtype=getregtype('"')<CR>
+            \gvy?<C-R><C-R>=substitute(
+            \escape(@", '?\.*$^~['), '\_s\+', '\\_s\\+', 'g')<CR><CR>
+            \gV:call setreg('"', old_reg, old_regtype)<CR>
 " Disable highlight when <leader><cr> is pressed
 map <silent> <leader><cr> :noh<cr>
 
@@ -83,17 +83,26 @@ set laststatus=2    " makes status bar 2 lines tall
 " Format the status line
 hi User1 ctermbg=white ctermfg=blue guibg=red guifg=green
 set statusline=
+function! GetCWD()
+    let cwd = getcwd()
+    let s = substitute(cwd, $HOME, "~", "")
+    return s
+endfunction
+function! GetFile()
+    let file = substitute(expand("%f"), $HOME, "~", "")
+    return file
+endfunction
 set statusline+=\ %#todo#%{HasPaste()}%*%{PasteSpace()} " paste mode
-set statusline+=%1*%{getcwd()}      " current dir
-set statusline+=/%*%f               " file
+set statusline+=%1*%{GetCWD()}      " current dir
+set statusline+=/%*%{GetFile()}     " file
 set statusline+=%m                  " modified?
 set statusline+=\ %y                " type?
 set statusline+=%#error#%r%*        " readonly?
 set statusline+=%w                  " preview?
-" set statusline+=\ buff:\ %n         " buffer num
+set statusline+=\ \{%n\}            " buffer num
 set statusline+=%=                  " right align
 set statusline+=%10((%l,%c%V)%)     " line and column
-set statusline+=\ \ %P              " percent through file
+set statusline+=\ %P              " percent through file
 set statusline+=\ %*                " ending space
 " set statusline=[%n]\ %<%.99f\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%y%=%-16(\ %l,%c-%v\ %)%P
 set showcmd         " show incomplete commands at bottom
@@ -217,20 +226,19 @@ vnoremap > >gv
 cnoremap jk <ESC>
 cnoremap kj <ESC>
 " set sytnax to django template with html
-command Sdh :setfiletype htmldjango
-command Shd :setfiletype htmldjango
+command! Sdh :setfiletype htmldjango
+command! Shd :setfiletype htmldjango
+
+set dictionary=/usr/share/dict/words
 
 " .vimrc references "
 " https://github.com/edlandm/vim
 " http://vimdoc.sourceforge.net/htmldoc/intro.html#keycodes
 
-inoremap Higgenson Higginson
-inoremap higgenson higginson
-
 " Returns paste mode text
 function! HasPaste()
     if &paste
-        return 'paste'
+        return 'P'
     en
     return ''
 endfunction
@@ -241,15 +249,15 @@ function! PasteSpace()
     return ''
 endfunction
 
-" Autocomplete with TAB
-function! Tab_Or_Complete()
-    if col('.')>1 && strpart( getline('.'), col('.')-2, 3 ) =~ '^\w'
-        return "\<C-N>"
-    else
-        return "\<Tab>"
+" Server specific stuff
+if hostname() == "nari"
+    let patharr = split(expand("%:p"), "/")
+    if len(patharr) > 3 && patharr[2] == "django"
+        autocmd BufWritePre *.py :! touch ~/django/wwu_housing/wsgi.py
     endif
-endfunction
-inoremap <Tab> <C-R>=Tab_Or_Complete()<CR>
-set dictionary="/usr/dict/words"
+
+    inoremap Higgenson Higginson
+    inoremap higgenson higginson
+endif
 
 autocmd FileType diff set nofoldenable " prevent folding on diffs
