@@ -2,7 +2,22 @@
 " Cameron Little's .vimrc file  "
 " " " " " " " " " " " " " " " " "
 
-set nocompatible    " use Vim settings rather than Vi settings
+if has('vim_starting')
+    set nocompatible    " use Vim settings rather than Vi settings
+
+    set runtimepath+=/home/littlec8/.vim/bundle/neobundle.vim/
+endif
+
+call neobundle#begin(expand('/home/littlec8/.vim/bundle'))
+
+NeoBundleFetch 'Shougo/neobundle.vim'
+
+NeoBundle 'groenewege/vim-less'
+NeoBundle 'tpope/vim-surround'
+
+call neobundle#end()
+
+NeoBundleCheck
 
 set visualbell      " visual error alert
 set t_vb=           " helps with errors
