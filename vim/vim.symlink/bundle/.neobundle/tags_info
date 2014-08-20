@@ -1,5 +1,6 @@
 html5.vim
 neobundle.vim
+pydiction
 python-mode
 vim-css3-syntax
 vim-less
