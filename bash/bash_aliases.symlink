@@ -15,7 +15,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-alias ack='ack-grep'
 alias c=clear
 alias ud='cd ~/.dotfiles && git pull'
 alias ..='cd ..'

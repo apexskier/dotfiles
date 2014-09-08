@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # cleanup files
 find . -type f -name "\.*\.un~" -exec rm -vf {} \; # find and remove undo files
