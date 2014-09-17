@@ -198,7 +198,7 @@ for s = 1, screen.count() do
         },
         mylayoutbox[s],
         mytextclock,
-        volume_widget,
+        -- volume_widget,
         s == 1 and mysystray or nil,
         mytasklist[s],
         layout = awful.widget.layout.horizontal.rightleft
@@ -300,12 +300,12 @@ globalkeys = awful.util.table.join(globalkeys,
                   mypromptbox[mouse.screen].widget,
                   awful.util.eval, nil,
                   awful.util.getdir("cache") .. "/history_eval")
-              end),
+              end)
 
     -- volume
-    awful.key({ modkey, "Control" }, "m",    vol_mute),
-    awful.key({ modkey, "Control" }, "Up",   vol_up),
-    awful.key({ modkey, "Control" }, "Down", vol_down)
+    -- awful.key({ modkey, "Control" }, "m",    vol_mute),
+    --awful.key({ modkey, "Control" }, "Up",   vol_up),
+    --awful.key({ modkey, "Control" }, "Down", vol_down)
 )
 
 clientkeys = awful.util.table.join(
@@ -501,3 +501,4 @@ end)
 client.add_signal("focus", function(c) c.border_color = beautiful.border_focus end)
 client.add_signal("unfocus", function(c) c.border_color = beautiful.border_normal end)
 -- }}}
+

@@ -1,0 +1,37 @@
+[global_config]
+[keybindings]
+[profiles]
+  [[default]]
+    scrollbar_position = hidden
+    palette = "#151515:#ac4142:#90a959:#d28445:#6a9fb5:#aa759f:#75b5aa:#d0d0d0:#303030:#ac4142:#90a959:#f4bf75:#6a9fb5:#aa759f:#75b5aa:#f5f5f5"
+    font = Droid Sans Mono 10
+    visible_bell = True
+    background_darkness = 0.88
+    scrollback_lines = 1000
+    background_type = transparent
+    background_image = None
+    icon_bell = False
+    show_titlebar = False
+    copy_on_selection = True
+  [[juicebox]]
+    background_image = None
+    exit_action = restart
+    visible_bell = True
+    background_darkness = 0.8
+    background_type = transparent
+    scrollbar_position = hidden
+    use_custom_command = True
+    icon_bell = False
+    show_titlebar = False
+    custom_command = ssh juicebox -t startirc
+    copy_on_selection = True
+[layouts]
+  [[default]]
+    [[[child1]]]
+      type = Terminal
+      parent = window0
+      profile = default
+    [[[window0]]]
+      type = Window
+      parent = ""
+[plugins]
