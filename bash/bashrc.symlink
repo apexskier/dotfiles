@@ -81,11 +81,10 @@ else
     if [ -d "$HOME/bin/go" ]; then
         export GOROOT=$HOME/bin/go
         export PATH=$PATH:$HOME/bin/go/bin
-    else
-        if [ -d "$HOME/go" ]; then
-            export GOPATH="$HOME/go"
-            export PATH=$PATH:$GOPATH/bin
-        fi
+    fi
+    if [ -d "$HOME/go" ]; then
+        export GOPATH="$HOME/go"
+        export PATH=$PATH:$GOPATH/bin
     fi
 fi
 
