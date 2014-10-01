@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# Git submodule update
+
+(cd `git rev-parse --show-toplevel` && git submodule $1)
