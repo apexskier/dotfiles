@@ -56,9 +56,10 @@ export EDITOR=vim
 if hash brew 2>/dev/null; then
     export DISPLAY=localhost:0.0
 
-    local bp=$(brew --prefix)
+    bp=$(brew --prefix)
     [ -f "$bp/git/contrib/completion/git-completion.bash" ] && . "$bp/git/contrib/completion/git-completion.bash"
     [ -f "$bp/etc/bash_completion" ] && . "$bp/etc/bash_completion"
+    unset bp
 fi
 
 # go stuff
