@@ -1,13 +1,13 @@
 servers = (
   { address = "irc.stealth.net"; chatnet = "IRCnet"; port = "6668"; },
   { address = "irc.efnet.org"; chatnet = "EFNet"; port = "6667"; },
-  { 
+  {
     address = "irc.undernet.org";
     chatnet = "Undernet";
     port = "6667";
   },
   { address = "irc.dal.net"; chatnet = "DALnet"; port = "6667"; },
-  { 
+  {
     address = "irc.quakenet.org";
     chatnet = "QuakeNet";
     port = "6667";
@@ -39,7 +39,7 @@ chatnets = {
     max_whois = "4";
     max_query_chans = "5";
   };
-  EFNet = { 
+  EFNet = {
     type = "IRC";
     max_kicks = "4";
     max_msgs = "3";
@@ -257,12 +257,6 @@ ignores = (
   },
   { level = "JOINS PARTS QUITS MODES"; channels = ( "##bootstrap" ); }
 );
-hilights = (
-  { text = "apexskier"; nick = "no"; word = "yes"; },
-  { text = "apexskier_"; nick = "no"; word = "yes"; },
-  { text = "littlec8"; nick = "no"; word = "yes"; },
-  { text = "cameron"; nick = "no"; word = "yes"; }
-);
 windows = {
   1 = { immortal = "yes"; name = "(status)"; level = "ALL"; };
   2 = {
@@ -285,19 +279,4 @@ windows = {
       }
     );
   };
-  4 = {
-    items = (
-      {
-        type = "CHANNEL";
-        chat_type = "IRC";
-        name = "#apexskier";
-        tag = "Glacier";
-      }
-    );
-  };
-  5 = { name = "hilight"; sticky = "yes"; };
-};
-mainwindows = {
-  1 = { first_line = "6"; lines = "68"; };
-  5 = { first_line = "1"; lines = "5"; };
 };
