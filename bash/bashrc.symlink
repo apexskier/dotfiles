@@ -27,8 +27,8 @@ shopt -s nocaseglob
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-source ~/.bash_aliases
-source ~/.bash_prompt
+. ~/.bash_aliases
+. ~/.bash_prompt
 
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
@@ -43,6 +43,7 @@ bind 'set show-all-if-ambiguous on'
 bind 'set completion-ignore-case on'
 
 [ -n "$DISPLAY" ] && BROWSER=firefox
+export EDITOR=vim
 
 # Add stuff to my PATH
 [ -d "$HOME/.bin" ] && export PATH="$PATH:$HOME/.bin"
@@ -51,24 +52,17 @@ bind 'set completion-ignore-case on'
 [ -d "$HOME/.dotfiles/bin" ] && export PATH="$PATH:$HOME/.dotfiles/bin"
 
 # Mac OS X stuff
-if [ "$(uname -s)" == "Darwin" ]; then
+#if [ "$(uname -s)" == "Darwin" ]; then
+if hash brew 2>/dev/null; then
     export DISPLAY=localhost:0.0
 
-    if [ -n "$(which brew 2>/dev/null)" ]; then
-        [ -f $(brew --prefix)/etc/bash_completion ] && . $(brew --prefix)/etc/bash_completion
-        [ -f $(brew --prefix)git/contrib/completion/git-completion.bash ] && . $(brew --prefix)git/contrib/completion/git-completion.bash
-        if [ -f `brew --prefix coreutils`/libexec/gnubin ]; then
-            export PATH="$PATH:`brew --prefix`/etc/bash_completion"
-        fi
-    fi
-
-    if [ -f "/Applications/Octave.app/Contents/Resources/bin/octave" ]; then
-        export PATH="$PATH:/Applications/Octave.app/Contents/Resources/bin"
-    fi
+    local bp=$(brew --prefix)
+    [ -f "$bp/git/contrib/completion/git-completion.bash" ] && . "$bp/git/contrib/completion/git-completion.bash"
+    [ -f "$bp/etc/bash_completion" ] && . "$bp/etc/bash_completion"
 fi
 
 # go stuff
-if [ `which go` ]; then
+if hash go 2>/dev/null; then
     if [ -d "$HOME/Dropbox/Projects/go" ]; then
         export GOPATH="$HOME/Dropbox/Projects/go"
         export GOROOT=/usr/local/go
@@ -87,7 +81,7 @@ if [ `which go` ]; then
 fi
 
 # python stuff
-if [ `which python` ]; then
+if hash python 2>/dev/null; then
     mkdir -p $HOME/.virtualenvs
     export WORKON_HOME="$HOME/.virtualenvs"
     export PIP_VIRTUALENV_BASE=$WORKON_HOME
@@ -100,11 +94,11 @@ if [ `which python` ]; then
     #     export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages
     # fi
 
-    [ -f /usr/local/bin/virtualenvwrapper.sh ] && source /usr/local/bin/virtualenvwrapper.sh
+    [ -f /usr/local/bin/virtualenvwrapper.sh ] && . /usr/local/bin/virtualenvwrapper.sh
 fi
 
 # ruby stuff
-if [ `which ruby` ]; then
+if hash ruby 2>/dev/null; then
     export GEM_HOME="$HOME/.gems"
     mkdir -p $HOME/.gems
     export PATH="$PATH:$HOME/.gems/bin"
@@ -120,13 +114,13 @@ if [ `which ruby` ]; then
         export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
         export PATH="$PATH:$HOME/.rvm/rubies/ruby-2.1.2/bin" # Add RVM to PATH for scripting
 
-        source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+        . "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
     fi
 fi
 
 # node stuff
-if [ `which node` ]; then
-    [ `which npm` ] && export PATH="$PATH:$(npm bin)"
+if hash node 2>/dev/null; then
+    hash npm 2>/dev/null && export PATH="$PATH:$(npm bin)"
 
     if [ -d $HOME/.node-completion ]; then
         # {{{
@@ -147,4 +141,4 @@ export REPO_PATH=boar+ssh://boar@odin.restek.wwu.edu/home/boar/repo
 
 [ -d "$HOME/projects" ] && export PROJECT_HOME=$HOME/projects
 
-[ -f "$HOME/.profile" ] && source ~/.profile
+[ -f "$HOME/.profile" ] && . ~/.profile
