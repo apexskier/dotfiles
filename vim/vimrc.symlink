@@ -97,7 +97,7 @@ autocmd FileType sig set sw=2
 autocmd FileType sig set ts=2
 autocmd FileType sig set sts=2
 
-autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0]) " start git commits at beginning
+autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0]) " start git commits at beginning TODO: not working
 
 autocmd BufNewFile,BufRead bash* setf sh " When editing stuff from bash vi-mode (Esc v), set proper syntax highlighting
 
