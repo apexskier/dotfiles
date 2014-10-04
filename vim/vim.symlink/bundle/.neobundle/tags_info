@@ -4,4 +4,6 @@ pydiction
 python-mode
 vim-css3-syntax
 vim-less
+vim-sensible
 vim-surround
+vim-unimpaired

@@ -213,7 +213,7 @@ neobundle#get({bundle-name})			 *neobundle#get()*
 		Example:
 >
 	NeoBundleLazy 'tyru/open-browser.vim', '', 'same', { 'autoload' : {
-	      \ 'mappings' : '<Plug>(open-browser-wwwsearch)',
+	      \ 'mappings' : '<Plug>',
 	      \ }}
 	nmap gs <Plug>(open-browser-wwwsearch)
 
@@ -587,6 +587,13 @@ g:neobundle#types#git#clone_depth
 
 		Defaults to 0.
 
+				*g:neobundle#types#git#pull_command*
+g:neobundle#types#git#pull_command
+		The git command used to pull updates.
+		The previous default has been "pull --rebase".
+
+		Defaults to "pull --ff --ff-only".
+
 				*g:neobundle#types#hg#command_path*
 g:neobundle#types#hg#command_path
 		The "hg" command path used for hg type.
@@ -779,20 +786,27 @@ OPTIONS 					*neobundle-options*
 			cygwin		(String)
 			Specify Cygwin environment build script.
 
+			linux		(String)
+			Specify Linux environment build script.
+			Note: It is detected if "gmake" command is not
+			executable.
+
 			unix		(String)
 			Specify Unix environment build script.
 
 			others		(String)
 			Specify others environment build script.
+			If you don't specify other keys, it means "all".
 
 		Example:
 >
 	      NeoBundle 'Shougo/vimproc.vim', {
 	      \ 'build' : {
-	      \     'windows' : 'make -f make_mingw32.mak',
+	      \     'windows' : 'tools\\update-dll-mingw',
 	      \     'cygwin' : 'make -f make_cygwin.mak',
 	      \     'mac' : 'make -f make_mac.mak',
-	      \     'unix' : 'make -f make_unix.mak',
+	      \     'linux' : 'make',
+	      \     'unix' : 'gmake',
 	      \    },
 	      \ }
 <
@@ -914,9 +928,11 @@ OPTIONS 					*neobundle-options*
 						*neobundle-options-disabled*
 		disabled		(Number)
 		If set to 1, neobundle will disable the plugin.
+		Note: Disabled plugins are ignored when install/update
+		plugins.
 
 		Example: >
-	" neocomplete requires vim 7.3.885 or above.
+	" neocomplete requires Vim 7.3.885 or above.
 	NeoBundle 'Shougo/neocomplete', {
 	    \ 'depends' : 'Shougo/context_filetype.vim',
 	    \ 'disabled' : !has('lua'),
@@ -954,16 +970,25 @@ OPTIONS 					*neobundle-options*
 
 			commands	(List) or (String)
 			Command list. The item can be following dictionary.
-				name		(String)
-				Command name.
+				name		(String) or (List)
+				Command name or the list of command names.
 
 				complete	(String)
 				The type of completion supported for the
 				input.  Refer to |:command-completion| for
 				information.
 
-				Example:
-
+				Example: >
+			NeoBundleLazy 'Shougo/vimfiler.vim', {
+			      \ 'depends' : 'Shougo/unite.vim',
+			      \ 'commands' : [
+			      \ {'name' : ['VimFiler', 'Edit', 'Write'],
+			      \  'complete' : 'customlist,vimfiler#complete'},
+			      \ 'Read', 'Source'],
+			      \ 'mappings' : '<Plug>',
+			      \ 'explorer' : 1,
+			      \ }
+<
 			functions	(List) or (String)
 			Functions list.
 
@@ -1039,6 +1064,15 @@ OPTIONS 					*neobundle-options*
 			Example: If you use "unite.vim", "unite" function
 			prefix is used.
 
+			command_prefix	(String)
+			Autoload command prefix in commands.
+			If the prefix is set, commands were loaded
+			automatically.
+			If omitted it, automatically generated prefix is used.
+			Example: If you use "unite.vim", "Unite" command
+			prefix is used.
+			Note: It requires Vim 7.4.414 or above.
+
 		Examples:
 >
 	NeoBundleLazy 'Rip-Rip/clang_complete', {
@@ -1064,7 +1098,7 @@ OPTIONS 					*neobundle-options*
 	      \                   'complete' : 'customlist,vimshell#complete'},
 	      \                 'VimShellExecute', 'VimShellInteractive',
 	      \                 'VimShellTerminal', 'VimShellPop'],
-	      \   'mappings' : ['<Plug>(vimshell_']
+	      \   'mappings' : '<Plug>'
 	      \ }})
 	NeoBundleLazy 'Shougo/vimfiler', {
 	      \ 'depends' : 'Shougo/unite.vim',
@@ -1073,7 +1107,7 @@ OPTIONS 					*neobundle-options*
 	      \                    'complete' : 'customlist,vimfiler#complete' },
 	      \                  'VimFilerExplorer',
 	      \                  'Edit', 'Read', 'Source', 'Write'],
-	      \    'mappings' : ['<Plug>(vimfiler_'],
+	      \    'mappings' : '<Plug>',
 	      \    'explorer' : 1,
 	      \ }
 	      \ }
@@ -1084,7 +1118,7 @@ OPTIONS 					*neobundle-options*
 	      \ }}
 	NeoBundleLazy 'tyru/winmove.vim', { 'autoload' : {
 	      \ 'mappings' : [
-	      \   ['n', '<Plug>(winmove-']],
+	      \   ['n', '<Plug>']],
 	      \ },
 	      \ 'gui' : 1,
 	      \ 'augroup' : 'winmove',
@@ -1094,7 +1128,7 @@ OPTIONS 					*neobundle-options*
 	      \}}
 	" Omit autoload dictionary.
 	NeoBundleLazy 'LeafCage/cmdlineplus.vim', {
-	      \ 'mappings': [['c', '<Plug>(cmdlineplus-']]}
+	      \ 'mappings': [['c', '<Plug>']]}
 <
 						*neobundle-options-hooks*
 		hooks			(Dictionary)
@@ -1215,6 +1249,9 @@ OPTIONS 					*neobundle-options*
 ==============================================================================
 EXAMPLES					*neobundle-examples*
 >
+	" Note: Skip initialization for vim-tiny or vim-small.
+	if !1 | finish | endif
+
 	if has('vim_starting')
 	  set nocompatible                " Recommend
 	  set runtimepath+={path to neobundle directory}
@@ -1292,12 +1329,8 @@ Here let me explain about a source for |unite| provided in neobundle.
 neobundle
 		Nominates bundles as a candidate.
 
-		Note: On windows
-		If argument is bang(!), print plugins path instead of plugins
-		status.
-		Note: Other platforms
-		If argument is bang(!), print plugins status instead of plugins
-		path.
+		Note:
+		If argument is bang(!), print plugins status.
 
 		http://github.com/Shougo/vimproc.vim
 
@@ -1653,6 +1686,12 @@ feature in git. I cannot fix it.  You should change
 Q: I want to use shallow clone in git.
 
 A: See |neobundle-options-type__depth|.
+
+Q: I want to use lockfile feature like "Gemfile.lock" in neobundle.
+https://github.com/Shougo/neobundle.vim/issues/222
+
+A: You can copy "NeoBundle.lock" to another machine from neobundle base path
+directory.  It is used when install plugins.
 
 ==============================================================================
 vim:tw=78:ts=8:ft=help:norl:noet:fen:
