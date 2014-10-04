@@ -1,5 +1,5 @@
 #!/bin/sh
 #
-# Git submodule update
+# Git submodule but works outside of the top level
 
-(cd `git rev-parse --show-toplevel` && git submodule $1)
+(cd `git rev-parse --show-toplevel` && git submodule $@)

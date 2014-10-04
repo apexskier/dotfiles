@@ -1,7 +1,0 @@
-#!/bin/bash
-
-if [ -n "$1" ] ; then
-    gnome-terminal -e "vim -u ~/.vimrc $1"
-else
-    exit 1
-fi
