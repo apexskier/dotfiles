@@ -57,6 +57,7 @@ export EDITOR=vim
 #if [ "$(uname -s)" == "Darwin" ]; then
 if hash brew 2>/dev/null; then
     export DISPLAY=localhost:0.0
+    export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
     bp=$(brew --prefix)
     [ -f "$bp/git/contrib/completion/git-completion.bash" ] && . "$bp/git/contrib/completion/git-completion.bash"

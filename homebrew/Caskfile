@@ -1,0 +1,25 @@
+# install native apps
+# usage `brew bundle Caskfile`
+
+brew install caskroom/cask/brew-cask
+brew tap caskroom/versions
+
+brew cask install caffeine
+brew cask install coda
+brew cask install colloquy
+brew cask install dropbox
+brew cask install google-chrome
+brew cask install google-chrome-canary
+brew cask install google-earth
+brew cask install handbrake
+brew cask install iterm2
+brew cask install macvim
+brew cask install minecraft
+#cask install onepassword # install via mac app store
+brew cask install the-unarchiver
+brew cask install transmit
+#cask install utorrent
+brew cask install virtualbox
+brew cask install vlc
+
+brew cleanup
