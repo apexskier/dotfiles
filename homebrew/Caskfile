@@ -1,6 +1,8 @@
 # install native apps
 # usage `brew bundle Caskfile`
 
+HOMEBREW_CASK_OPTS="--appdir=/Applications"
+
 brew install caskroom/cask/brew-cask
 brew tap caskroom/versions
 
@@ -15,11 +17,11 @@ brew cask install handbrake
 brew cask install iterm2
 brew cask install macvim
 brew cask install minecraft
-#cask install onepassword # install via mac app store
 brew cask install the-unarchiver
 brew cask install transmit
-#cask install utorrent
 brew cask install virtualbox
 brew cask install vlc
+#cask install onepassword # install via mac app store
+#cask install utorrent
 
 brew cleanup
