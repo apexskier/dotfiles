@@ -9,6 +9,7 @@ brew tap caskroom/versions
 brew cask install caffeine
 brew cask install coda
 brew cask install colloquy
+brew cask install disk-inventory-x
 brew cask install dropbox
 brew cask install google-chrome
 brew cask install google-chrome-canary
