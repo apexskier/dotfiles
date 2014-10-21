@@ -149,3 +149,6 @@ export REPO_PATH=boar+ssh://boar@odin.restek.wwu.edu/home/boar/repo
 if [ -d "/home/phil/blitz" ]; then
     export PATH="$PATH:/home/phil/blitz"
 fi
+
+# my bash completion
+. ~/.bash_completion
