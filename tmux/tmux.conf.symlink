@@ -13,6 +13,9 @@ set -g status-keys "vi"
 set-option -g base-index 1
 setw -g pane-base-index 1
 
+# open new windows in current path
+bind c new-window -c "#{pane_current_path}"
+
 # bind r to reload this config file
 unbind r
 bind r source-file ~/.tmux.conf \; display "Reloaded tmux config file."
