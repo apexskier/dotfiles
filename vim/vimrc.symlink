@@ -104,6 +104,11 @@ autocmd FileType gitcommit call setpos('.', [0, 1, 1, 0]) " start git commits at
 autocmd BufNewFile,BufRead bash* setf sh " When editing stuff from bash vi-mode (Esc v), set proper syntax highlighting
 
 set ruler           " always show current pos
+if exists('+colorcolumn') " highlight 80 cols
+  set colorcolumn=80
+else
+  au BufWinEnter * let w:m2=matchadd('ErrorMsg', '\%>80v.\+', -1)
+endif
 set relativenumber  " display relative line numbers
 set number          "   with the current line number at the cursor
 set cmdheight=2     " more room for commands
