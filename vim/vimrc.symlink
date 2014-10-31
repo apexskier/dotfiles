@@ -17,7 +17,7 @@ NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'groenewege/vim-less'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'hail2u/vim-css3-syntax'
-NeoBundle 'klen/python-mode'
+" NeoBundle 'klen/python-mode'
 NeoBundle 'rkulla/pydiction'
 
 call neobundle#end()
@@ -105,6 +105,7 @@ autocmd BufNewFile,BufRead bash* setf sh " When editing stuff from bash vi-mode 
 
 set ruler           " always show current pos
 set relativenumber  " display relative line numbers
+set number          "   with the current line number at the cursor
 set cmdheight=2     " more room for commands
 set laststatus=2    " makes status bar 2 lines tall
 " Format the status line
