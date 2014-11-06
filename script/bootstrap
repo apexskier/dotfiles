@@ -136,25 +136,8 @@ install_dotfiles () {
   done
 }
 
-install_neobundle () {
-    curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh 2> /dev/null > /dev/null | sh > /dev/null
-}
-
 setup_gitconfig
 install_dotfiles
-install_neobundle
-
-# If we're on a Mac, let's install and setup homebrew.
-if [ "$(uname -s)" == "Darwin" ]
-then
-  info "installing dependencies"
-  if source bin/dot > /tmp/dotfiles-dot 2>&1
-  then
-    success "dependencies installed"
-  else
-    fail "error installing dependencies"
-  fi
-fi
 
 echo ''
 echo '  All installed!'
