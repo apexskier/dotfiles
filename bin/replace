@@ -15,7 +15,5 @@ grep -ri "$pattern" .
 read -p "replace \"$pattern\" with \"$replacement\"? ([y], n) " response
 [ -z "$response" ] && response="y"
 if [ "$response" = "y" ]; then
-    sed -i "s|${pattern}|${replacement}|g" $(grep -ril "$pattern")
+    sed -i "s|${pattern}|${replacement}|g" $(grep -ril "$pattern" .)
 fi
-
-
