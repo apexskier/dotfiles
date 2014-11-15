@@ -152,3 +152,8 @@ fi
 
 # my bash completion
 . ~/.bash_completion
+
+# CS 509 Spring 2014
+if [ -d "/home/phil/blitz" ]; then
+    export PATH="$PATH:/home/phil/blitz"
+fi
