@@ -27,6 +27,11 @@ fail () {
   exit
 }
 
+setup_awesome () {
+  rm -rf "$HOME/.config/awesome"
+  link_file "$DOTFILES_ROOT/awesome" "$HOME/.config/awesome"
+}
+
 setup_gitconfig () {
   if ! [ -f git/gitconfig.symlink ]
   then
@@ -48,7 +53,6 @@ setup_gitconfig () {
     success 'gitconfig'
   fi
 }
-
 
 link_file () {
   local src=$1 dst=$2
@@ -149,6 +153,7 @@ install_dotfiles () {
 }
 
 setup_gitconfig
+setup_awesome
 install_dotfiles
 
 echo ''
