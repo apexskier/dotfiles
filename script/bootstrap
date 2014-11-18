@@ -58,20 +58,15 @@ link_file () {
 
   if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]
   then
-
     if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]
     then
-
       local currentSrc="$(readlink $dst)"
 
       if [ "$currentSrc" == "$src" ]
       then
-
         skip=true;
-
       else
-
-        user "File already exists: $(basename "$src"), what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+        user "File already exists: $src, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
         read -n 1 action
 
         case "$action" in
@@ -90,9 +85,7 @@ link_file () {
           * )
             ;;
         esac
-
       fi
-
     fi
 
     overwrite=${overwrite:-$overwrite_all}
@@ -129,9 +122,28 @@ install_dotfiles () {
 
   local overwrite_all=false backup_all=false skip_all=false
 
-  for src in $(find "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink')
+  # install simple symlinks
+  for src in $(find "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink' -not -path "$DOTFILES_ROOT/.*")
   do
     dst="$HOME/.$(basename "${src%.*}")"
+    link_file "$src" "$dst"
+  done
+
+  # install files of the form ~/.topic/config
+  for src in $(find "$DOTFILES_ROOT" -maxdepth 2 -name 'config' -not -path "$DOTFILES_ROOT/.*")
+  do
+    dst="$HOME/.$(basename $(dirname $src))/$(basename $src)"
+    mkdir -p $(dirname $dst)
+    link_file "$src" "$dst"
+  done
+
+  # install files in the .config directory
+  for src in $(find "$DOTFILES_ROOT" -maxdepth 2 -name '*.config' -not -path "$DOTFILES_ROOT/.*")
+  do
+    # works for now
+    str=${src#$DOTFILES_ROOT/}
+    dst="$HOME/.config/${str%.*}"
+    mkdir -p $(dirname $dst)
     link_file "$src" "$dst"
   done
 }
