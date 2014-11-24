@@ -19,6 +19,7 @@ NeoBundle 'othree/html5.vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 " NeoBundle 'klen/python-mode'
 NeoBundle 'rkulla/pydiction'
+NeoBundle 'tikhomirov/vim-glsl'
 
 call neobundle#end()
 
@@ -261,6 +262,7 @@ cnoremap kj <ESC>
 " set sytnax to django template with html
 command! Sdh :setfiletype htmldjango
 command! Shd :setfiletype htmldjango
+cmap w!! w !sudo tee % >/dev/null
 
 set dictionary=/usr/share/dict/words
 
