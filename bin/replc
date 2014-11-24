@@ -9,11 +9,14 @@ replacement=$2
 [ -z "$pattern" ] && echo "missing pattern" && exit 1
 [ -z "$replacement" ] && echo "missing replacement" && exit 1
 
-grep -ri "$pattern" .
-[ $? -ne 0 ] && echo "no matches" && exit 1
+grep -r "$pattern" .
+[ $? -ne 0 ] && echo "no matches" && exit 2
 
 read -p "replace \"$pattern\" with \"$replacement\"? ([y], n) " response
 [ -z "$response" ] && response="y"
 if [ "$response" = "y" ]; then
-    sed -i "s|${pattern}|${replacement}|g" $(grep -ril "$pattern" .)
+    sed -i "s|${pattern}|${replacement}|g" $(grep -rl "$pattern" .)
+else
+    echo "cancelled"
+    exit 1
 fi
