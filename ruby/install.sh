@@ -11,3 +11,5 @@ then
   echo "  Installing ruby-build for you."
   brew install ruby-build > /tmp/ruby-build-install.log
 fi
+
+gem install compass >/dev/null

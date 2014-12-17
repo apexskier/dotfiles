@@ -1,4 +1,4 @@
-if ! hash mkvirtualenv
+if ! hash mkvirtualenv 2> /dev/null
 then
     echo "  Installing pip/virtualenv..."
     easy_install -U pip > /dev/null

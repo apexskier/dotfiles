@@ -157,3 +157,6 @@ fi
 if [ -d "/home/phil/blitz" ]; then
     export PATH="$PATH:/home/phil/blitz"
 fi
+
+export NVM_DIR="/Users/cameronlittle/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
