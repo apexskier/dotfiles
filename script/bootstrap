@@ -70,7 +70,9 @@ link_file () {
       then
         skip=true;
       else
-        user "File already exists: $src, what do you want to do? [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+
+        user "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
+        [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
         read -n 1 action
 
         case "$action" in
@@ -128,7 +130,7 @@ install_dotfiles () {
   local overwrite_all=false backup_all=false skip_all=false
 
   # install simple symlinks
-  for src in $(find "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink' -not -path "$DOTFILES_ROOT/.*")
+  for src in $(find "$DOTFILES_ROOT/" -maxdepth 2 -name '*.symlink' -not -path "$DOTFILES_ROOT/.*")
   do
     dst="$HOME/.$(basename "${src%.*}")"
     link_file "$src" "$dst"
