@@ -163,8 +163,8 @@ if [ -d "$NVM_DIR" ]; then
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 fi
 
-if hash boot2docker 2>/dev/null; then
-    export DOCKER_HOST=tcp://$(boot2docker ip):2376
+if hash boot2docker 2>/dev/null && boot2docker status >/dev/null 2>/dev/null; then
+    export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2376
     export DOCKER_CERT_PATH=$HOME/.boot2docker/certs/boot2docker-vm
     export DOCKER_TLS_VERIFY=1
 fi
