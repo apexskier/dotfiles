@@ -1,6 +1,6 @@
 #!/bin/sh
 
-if hash apt-get
+if command -v apt-get >/dev/null 2>&1
 then
     echo "  Installing linux utilities"
     sudo apt-get update

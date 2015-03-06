@@ -20,6 +20,7 @@ NeoBundle 'hail2u/vim-css3-syntax'
 " NeoBundle 'klen/python-mode'
 NeoBundle 'rkulla/pydiction'
 NeoBundle 'tikhomirov/vim-glsl'
+NeoBundle 'editorconfig/editorconfig-vim'
 
 call neobundle#end()
 

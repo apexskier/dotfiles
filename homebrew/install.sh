@@ -6,13 +6,13 @@
 # using Homebrew.
 
 # Check for Homebrew
-if ! hash brew
+if ! command -v brew >/dev/null 2>&1
 then
   echo "  Installing Homebrew for you."
   ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 fi
 
-if hash brew
+if command -v brew >/dev/null 2>&1
 then
     HOMEBREW_CASK_OPTS="--appdir=/Applications"
     echo "  Installing command line tools"

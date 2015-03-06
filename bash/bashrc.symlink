@@ -55,7 +55,7 @@ export EDITOR=vim
 
 # Mac OS X stuff
 #if [ "$(uname -s)" == "Darwin" ]; then
-if hash brew 2>/dev/null; then
+if command -v brew >/dev/null 2>&1; then
     export DISPLAY=localhost:0.0
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
@@ -66,7 +66,7 @@ if hash brew 2>/dev/null; then
 fi
 
 # go stuff
-if hash go 2>/dev/null; then
+if command -v go >/dev/null 2>&1; then
     if [ -d "$HOME/Dropbox/Projects/go" ]; then
         export GOPATH="$HOME/Dropbox/Projects/go"
         export GOROOT=/usr/local/go
@@ -85,7 +85,7 @@ if hash go 2>/dev/null; then
 fi
 
 # python stuff
-if hash python 2>/dev/null; then
+if command -v python >/dev/null 2>&1; then
     mkdir -p $HOME/.virtualenvs
     export WORKON_HOME="$HOME/.virtualenvs"
     export PIP_VIRTUALENV_BASE=$WORKON_HOME
@@ -102,7 +102,7 @@ if hash python 2>/dev/null; then
 fi
 
 # ruby stuff
-if hash ruby 2>/dev/null; then
+if command -v ruby >/dev/null 2>&1; then
     export GEM_HOME="$HOME/.gems"
     mkdir -p $HOME/.gems
     export PATH="$PATH:$HOME/.gems/bin"
@@ -123,8 +123,8 @@ if hash ruby 2>/dev/null; then
 fi
 
 # node stuff
-if hash node 2>/dev/null; then
-    hash npm 2>/dev/null && export PATH="$PATH:$(npm bin)"
+if command -v node >/dev/null 2>&1; then
+    command -v npm >/dev/null 2>&1 && export PATH="$PATH:$(npm bin)"
 
     if [ -d $HOME/.node-completion ]; then
         # {{{
@@ -163,7 +163,7 @@ if [ -d "$NVM_DIR" ]; then
     [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 fi
 
-if hash boot2docker 2>/dev/null && boot2docker status >/dev/null 2>/dev/null; then
+if command -v boot2docker >/dev/null 2>&1 && boot2docker status >/dev/null 2>&1; then
     export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2376
     export DOCKER_CERT_PATH=$HOME/.boot2docker/certs/boot2docker-vm
     export DOCKER_TLS_VERIFY=1
