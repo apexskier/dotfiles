@@ -1,9 +1,9 @@
 # ls aliases
 alias sl='ls'
 alias ls='ls -F'
-alias ll='ls -lh'
-alias la='ls -A'
-alias lal='ls -lhA'
+alias ll='ls -l'
+alias la='ls -a'
+alias lal='ls -la'
 
 alias gti='git'
 
