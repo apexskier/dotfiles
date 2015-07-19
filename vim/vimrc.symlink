@@ -18,7 +18,7 @@ NeoBundle 'groenewege/vim-less'
 NeoBundle 'othree/html5.vim'
 NeoBundle 'hail2u/vim-css3-syntax'
 " NeoBundle 'klen/python-mode'
-NeoBundle 'rkulla/pydiction'
+" NeoBundle 'rkulla/pydiction'
 NeoBundle 'tikhomirov/vim-glsl'
 NeoBundle 'editorconfig/editorconfig-vim'
 
@@ -26,7 +26,7 @@ call neobundle#end()
 
 NeoBundleCheck
 
-let g:pydiction_location = '~/.vim/bundle/pydiction/complete-dict'
+" let g:pydiction_location = '~/.vim/bundle/pydiction/complete-dict'
 
 set visualbell      " visual error alert
 set t_vb=           " helps with errors
@@ -264,6 +264,8 @@ cnoremap kj <ESC>
 command! Sdh :setfiletype htmldjango
 command! Shd :setfiletype htmldjango
 cmap w!! w !sudo tee % >/dev/null
+" adds vimdiff mergetool command as one string
+command! WincJ :wincmd J
 
 set dictionary=/usr/share/dict/words
 

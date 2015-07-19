@@ -67,8 +67,8 @@ fi
 
 # go stuff
 if command -v go >/dev/null 2>&1; then
-    if [ -d "$HOME/Dropbox/Projects/go" ]; then
-        export GOPATH="$HOME/Dropbox/Projects/go"
+    if [ -d "$HOME/Projects/go" ]; then
+        export GOPATH="$HOME/Projects/go"
         export GOROOT=/usr/local/go
     elif [ -d "/usr/local/go/" ]; then
         export GOROOT=/usr/local/go
