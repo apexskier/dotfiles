@@ -1,13 +1,7 @@
-# Sample gitconfig
-#
-
 [hub]
     protocol = https
-[user]
-    name = AUTHORNAME
-    email = AUTHOREMAIL
 [credential]
-    helper = GIT_CREDENTIAL_HELPER
+    helper = osxkeychain
 [alias]
     st = status -sb
     lg = log --graph --decorate --oneline
@@ -31,3 +25,7 @@
     tool = vimdiff
 [diff]
     tool = vimdiff
+[push]
+	default = simple
+[mergetool]
+	keepBackup = false
