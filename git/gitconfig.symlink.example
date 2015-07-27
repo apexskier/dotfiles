@@ -29,3 +29,5 @@
 	default = simple
 [mergetool]
 	keepBackup = false
+[diff "spaceman-diff"]
+    command = ~/.gitignore/bin/spaceman-diff

@@ -32,7 +32,29 @@ Thumbs.db
 nbproject
 *.sublime-project
 *.sublime-workspace
-.idea
+
+# pycharm
+#   User-specific stuff:
+.idea/workspace.xml
+.idea/tasks.xml
+.idea/dictionaries
+
+#   Sensitive or high-churn files:
+.idea/dataSources.ids
+.idea/dataSources.xml
+.idea/sqlDataSources.xml
+.idea/dynamic.xml
+.idea/uiDesigner.xml
+
+#   File-based project format:
+*.ipr
+*.iws
+
+#   IntelliJ
+/out/
+
+#   mpeltonen/sbt-idea plugin
+.idea_modules/
 
 # Komodo
 *.komodoproject
