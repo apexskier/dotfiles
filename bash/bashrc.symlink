@@ -50,6 +50,7 @@ export EDITOR=vim
 [ -d "$HOME/bin" ] && export PATH="$PATH:$HOME/bin"
 [ -d "$HOME/local/bin" ] && export PATH="$PATH:$HOME/local/bin"
 [ -d "$HOME/.dotfiles/bin" ] && export PATH="$PATH:$HOME/.dotfiles/bin"
+[ -d "/usr/local/sbin" ] && export PATH="/usr/local/sbin:$PATH"
 
 [ -f "$HOME/.profile" ] && . ~/.profile
 
