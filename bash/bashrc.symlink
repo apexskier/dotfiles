@@ -31,6 +31,7 @@ bind 'set completion-ignore-case on'
 
 . ~/.bash_aliases
 . ~/.bash_prompt
+[ -f "/etc/bashrc_Apple_Terminal" ] && . /etc/bashrc_Apple_Terminal
 [ -f "$HOME/.bash_private" ] && . ~/.bash_private
 
 if [ -f /etc/bash_completion ] && ! shopt -oq posix; then

@@ -156,7 +156,8 @@ function set_prompt() {
 #export PROMPT_COMMAND=""
 #export PS1="\u@\h:\w\n$ "
 
-export PROMPT_COMMAND=set_prompt
+# export PROMPT_COMMAND=set_prompt
+export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} set_prompt"
 
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
