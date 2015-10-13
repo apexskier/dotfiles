@@ -15,10 +15,19 @@ _fab()
     local cur commands
     COMPREPLY=()
     cur="${COMP_WORDS[COMP_CWORD]}"
-    fab_l=$(fab 2>/dev/null --list | sed '0,/^Available commands:$/d' | sed '/^$/d' | sed 's/^....//' | cut -d " " -f1)
-    commands=$(for x in ${fab_l}; do echo ${x} ; done)
-    COMPREPLY=( $(compgen -W "${commands}" -- ${cur}) )
-
+    list=$(fab 2>/dev/null --list | sed '0,/^Available commands:$/d' | sed '/^$/d' | sed 's/^....//' | cut -d " " -f1)
+    COMPREPLY=( $(compgen -W "${list}" -- ${cur}) )
     return 0
 }
 complete -F _fab fab
+
+_gulp()
+{
+    local cur commands
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    list=$(gulp --tasks | tail -n +3 | cut -d' ' -f3 | grep -v '[├└]')
+    COMPREPLY=( $(compgen -W "${list}" -- ${cur}) )
+    return 0
+}
+complete -F _gulp gulp

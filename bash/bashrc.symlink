@@ -11,38 +11,35 @@ HISTCONTROL=ignoredups:ignorespace
 # append to the history file, don't overwrite it
 shopt -s histappend
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=1000
-HISTFILESIZE=2000
+HISTSIZE=10000
+HISTFILESIZE=20000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
 
-# when using cd, minor errors will be corrected
-shopt -s cdspell
-
-# case insensitive filename expansion
-shopt -s nocaseglob
+shopt -s cdspell # when using cd, minor errors will be corrected
+shopt -s nocaseglob # case insensitive filename expansion
 
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-. ~/.bash_aliases
-. ~/.bash_prompt
-
-# enable programmable completion features (you don't need to enable
-# this, if it's already enabled in /etc/bash.bashrc and /etc/profile
-# sources /etc/bash.bashrc).
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
-fi
 
 bind '"\e[A": history-search-backward'
 bind '"\e[B": history-search-forward'
 bind 'set show-all-if-ambiguous on'
 bind 'set completion-ignore-case on'
 
-[ -n "$DISPLAY" ] && BROWSER=firefox
+. ~/.bash_aliases
+. ~/.bash_prompt
+[ -f "$HOME/.bash_private" ] && . ~/.bash_private
+
+if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
+    . /etc/bash_completion
+fi
+. ~/.bash_completion
+
+. ~/.profile
+
 export EDITOR=vim
 
 # Add stuff to my PATH
@@ -51,8 +48,6 @@ export EDITOR=vim
 [ -d "$HOME/local/bin" ] && export PATH="$PATH:$HOME/local/bin"
 [ -d "$HOME/.dotfiles/bin" ] && export PATH="$PATH:$HOME/.dotfiles/bin"
 [ -d "/usr/local/sbin" ] && export PATH="/usr/local/sbin:$PATH"
-
-[ -f "$HOME/.profile" ] && . ~/.profile
 
 # Mac OS X stuff
 #if [ "$(uname -s)" == "Darwin" ]; then
@@ -64,6 +59,9 @@ if command -v brew >/dev/null 2>&1; then
     [ -f "$bp/git/contrib/completion/git-completion.bash" ] && . "$bp/git/contrib/completion/git-completion.bash"
     [ -f "$bp/etc/bash_completion" ] && . "$bp/etc/bash_completion"
     unset bp
+
+    # autojump
+    [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
 fi
 
 # go stuff
@@ -92,11 +90,6 @@ if command -v python >/dev/null 2>&1; then
     export PIP_RESPECT_VIRTUALENV=true
     export VIRTUALENVWRAPPER_VIRTUALENV="virtualenv"
     export PIP_DOWNLOAD_CACHE=$HOME/.pip/caches
-    # export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/dist-packages/:/usr/lib/pymodules/python2.7/
-    #
-    # if [ -d "/usr/local/lib/python2.7/site-packages" ]; then
-    #     export PYTHONPATH=$PYTHONPATH:/usr/local/lib/python2.7/site-packages
-    # fi
 
     [ -f /usr/local/bin/virtualenvwrapper.sh ] && . /usr/local/bin/virtualenvwrapper.sh
 fi
@@ -107,9 +100,6 @@ if command -v ruby >/dev/null 2>&1; then
     mkdir -p $HOME/.gems
     export PATH="$PATH:$HOME/.gems/bin"
 
-    if [ -d "$HOME/.gem/bin" ]; then
-        export PATH="$PATH:$HOME/.gem/bin"
-    fi
     if [ -d "/var/lib/gems" ]; then
         export GEM_PATH="$GEM_PATH:/var/lib/gems"
     fi
@@ -117,7 +107,6 @@ if command -v ruby >/dev/null 2>&1; then
     if [ -d "$HOME/.rvm" ]; then
         export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
         export PATH="$PATH:$HOME/.rvm/rubies/ruby-2.1.2/bin" # Add RVM to PATH for scripting
-
         . "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
     fi
 fi
@@ -136,35 +125,9 @@ if command -v node >/dev/null 2>&1; then
         done
         # }}}
     fi
-fi
 
-export REPO_PATH=boar+ssh://boar@odin.restek.wwu.edu/home/boar/repo
-
-# WWU CS stuff
-[ -d "$HOME/cs352w14/CVSrep" ] && export CVSROOT=$HOME/cs352w14/CVSrep
-
-[ -d "$HOME/projects" ] && export PROJECT_HOME=$HOME/projects
-
-# CS 509 Spring 2014
-if [ -d "/home/phil/blitz" ]; then
-    export PATH="$PATH:/home/phil/blitz"
-fi
-
-# my bash completion
-. ~/.bash_completion
-
-# CS 509 Spring 2014
-if [ -d "/home/phil/blitz" ]; then
-    export PATH="$PATH:/home/phil/blitz"
-fi
-
-export NVM_DIR="/Users/cameronlittle/.nvm"
-if [ -d "$NVM_DIR" ]; then
-    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-fi
-
-if command -v boot2docker >/dev/null 2>&1 && boot2docker status >/dev/null 2>&1; then
-    export DOCKER_HOST=tcp://$(boot2docker ip 2>/dev/null):2376
-    export DOCKER_CERT_PATH=$HOME/.boot2docker/certs/boot2docker-vm
-    export DOCKER_TLS_VERIFY=1
+    export NVM_DIR="/Users/cameronlittle/.nvm"
+    if [ -d "$NVM_DIR" ]; then
+        [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+    fi
 fi
