@@ -130,7 +130,7 @@ function set_prompt() {
 
     local venv
     if [[ -n "$VIRTUAL_ENV" ]] ; then
-        venv="(⊙${VIRTUAL_ENV#$WORKON_HOME/}) "
+        venv=" (⊙${VIRTUAL_ENV#$WORKON_HOME/}) "
     fi
 
     local write=":"
@@ -142,11 +142,19 @@ function set_prompt() {
 
     local gitbranch="$(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
     if [[ -n "$gitbranch" ]] ; then
-        gitbranch="(±$gitbranch) "
+        gitbranch=" (±$gitbranch)"
     fi
 
+    # local size=($(stty size))
+    # local rows=${size[0]}
+    # local cols=${size[1]}
+
     ret+="$cmd_info$_USER$mark$connectionmark$green\h$nocol$write"
-    ret+="$yellow\w$nocol $gitbranch$venv"
+    ret+="$yellow\w$nocol"
+    # test "$(expr ${#ret} + ${#gitbranch})" -gt "$cols" && ret+="\n"
+    ret+="$gitbranch"
+    # test "$(expr ${#ret} + ${#venv})" -gt "$cols" && ret+="\n"
+    ret+="$venv"
     ret+="\n$ "
 
     PS1=$ret
@@ -157,7 +165,9 @@ function set_prompt() {
 #export PS1="\u@\h:\w\n$ "
 
 # export PROMPT_COMMAND=set_prompt
-export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} set_prompt"
+# update_terminal_cwd is for autojump
+export PROMPT_COMMAND="update_terminal_cwd; set_prompt"
+# export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} set_prompt"
 
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
