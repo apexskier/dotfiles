@@ -7,10 +7,12 @@
     lg = log --graph --decorate --oneline
     lga = log --graph --decorate --oneline --all
     co = checkout
-    promote = !$ZSH/bin/git-promote
-    wtf     = !$ZSH/bin/git-wtf
+    promote = !~/.dotfiles/bin/git-promote
+    wtf     = !~/.dotfiles/bin/git-wtf
     rank-contributors = !$ZSH/bin/git-rank-contributors
-    count   = !git shortlog -sn
+    count   = shortlog -sn
+    clear = !rm -r $(git status | grep '\t')
+    checkout-all = !(cd ./$(git rev-parse --show-cdup) && git checkout -- $(git status --porcelain | grep -v ^?? | sed s/^...//))
 [color]
     diff = auto
     status = auto
