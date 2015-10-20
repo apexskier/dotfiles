@@ -30,7 +30,7 @@ alias 'ssh-nari'='ssh -L 8009:localhost:8009 nari.housing.wwu.edu -t tmux attach
 alias 'ssh-irc'='ssh nari -t startirc'
 
 # TODO: make this automatic
-alias 'nodebin'='export PATH=$PATH:$(npm bin)'
+alias 'npmbin'='export PATH=$PATH:$(npm bin)'
 
 alias 'classinfo'='xpop= $( xprop | grep --color=none "WM_CLASS\|^WM_NAME" | xmessage -file - )'
 

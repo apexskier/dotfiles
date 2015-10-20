@@ -166,7 +166,7 @@ function set_prompt() {
 
 # export PROMPT_COMMAND=set_prompt
 # update_terminal_cwd is for autojump
-export PROMPT_COMMAND="update_terminal_cwd; set_prompt"
+export PROMPT_COMMAND="set_prompt; update_terminal_cwd"
 # export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} set_prompt"
 
 export CLICOLOR=1

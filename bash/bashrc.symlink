@@ -30,7 +30,6 @@ bind 'set show-all-if-ambiguous on'
 bind 'set completion-ignore-case on'
 
 . ~/.bash_aliases
-. ~/.bash_prompt
 [ -f "/etc/bashrc_Apple_Terminal" ] && . /etc/bashrc_Apple_Terminal
 [ -f "$HOME/.bash_private" ] && . ~/.bash_private
 
@@ -132,3 +131,5 @@ if command -v node >/dev/null 2>&1; then
         [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
     fi
 fi
+
+. ~/.bash_prompt
