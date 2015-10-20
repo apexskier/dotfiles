@@ -32,19 +32,23 @@ brew install homebrew/dupes/screen
 
 # Install other useful binaries
 brew install ack
+brew install cmake
 brew install foremost
 brew install git
+brew install git bash-completion
+brew install hub
+brew install gifsicle
 brew install imagemagick --with-webp
 brew install lynx
+brew install mercurial
 brew install nmap
 brew install node # This installs `npm` too using the recommended installation method
+brew install ruby
+brew install ruby-build
+brew install tmux
 brew install tree
 brew install ucspi-tcp # `tcpserver` et al.
-brew install mercurial
-brew install tmux
-brew install cmake
-brew install git bash-completion
+brew install xctool
 
 # Remove outdated versions from the cellar
 brew cleanup
-
