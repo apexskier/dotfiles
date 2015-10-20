@@ -18,7 +18,7 @@ then
   then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)"
   fi
-  
+
 fi
 
 if command -v brew >/dev/null 2>&1
@@ -26,8 +26,8 @@ then
     HOMEBREW_CASK_OPTS="--appdir=/Applications"
     echo "  Installing command line tools"
     bash `git rev-parse --show-cdup`homebrew/Brewfile
-    echo "  Installing apps"
-    bash `git rev-parse --show-cdup`homebrew/Caskfile
+    # echo "  Installing apps"
+    # bash `git rev-parse --show-cdup`homebrew/Caskfile
 
     echo "    you may want to install xQuartz -> http://xquartz.macosforge.org/landing/"
 fi
