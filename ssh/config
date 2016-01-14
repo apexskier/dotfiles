@@ -34,9 +34,9 @@ Host yildun yildun.dreamhost.com
     Hostname yildun.dreamhost.com
     User camlittle
 
-Host nodmhosting ps267313 ps267313.dreamhost.com
-    Hostname ps267313.dreamhost.com
-    User nodm
+Host nodmhosting wp471723.dreamhostps.com
+    Hostname wp471723.dreamhostps.com
+    User wp_6t5tyg
 
 Host cf cflinux9 linux-09.cs.wwu.edu
     Hostname linux-09.cs.wwu.edu
@@ -45,3 +45,6 @@ Host cf cflinux9 linux-09.cs.wwu.edu
 Host kulshan kulshan.restek.wwu.edu
     Hostname kulshan.restek.wwu.edu
     User littlec8
+
+Host *
+UseRoaming no
