@@ -40,3 +40,21 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 
 # Remitly
 alias forge='docker run -i -t --rm -v $PWD:/app -e USER=$USER -e UID=`id -u` -e GID=`id -g` remitly/forge'
+
+j () {
+    if [[ ${1} == -* ]] && [[ ${1} != "--" ]]; then
+        autojump ${@};
+    return;
+    fi;
+    output="$(autojump ${@})";
+    if [[ -d "${output}" ]]; then
+        echo -e "\\033[37m${output}\\033[0m";
+    cd "${output}";
+    else
+        echo "autojump: directory '${@}' not found";
+    echo "\n${output}\n";
+    echo "Try \`autojump --help\` for more information.";
+    false;
+    fi
+}
+
