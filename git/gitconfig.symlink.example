@@ -1,7 +1,5 @@
 [hub]
-    protocol = https
-[credential]
-    helper = osxkeychain
+    protocol = git
 [alias]
     st = status -sb
     lg = log --graph --decorate --oneline
@@ -11,8 +9,9 @@
     wtf     = !~/.dotfiles/bin/git-wtf
     rank-contributors = !$ZSH/bin/git-rank-contributors
     count   = shortlog -sn
-    clear = !rm -r $(git status --porcelain | grep '^??' | sed s/^...//)
-    checkout-all = !(cd ./$(git rev-parse --show-cdup) && git checkout -- $(git status --porcelain | grep -v ^?? | sed s/^...//))
+    clear = !(cd ./$(git rev-parse --show-cdup) && rm -r $(git status --porcelain | grep '^??' | sed s/^...//))
+    checkout-all = !(cd ./$(git rev-parse --show-cdup) && git checkout -- $(git status --porcelain | grep '^ [MDA]' | sed s/^...//))
+    git = !echo git $@ && git $!
 [color]
     diff = auto
     status = auto
@@ -27,8 +26,6 @@
     tool = vimdiff
 [diff]
     tool = vimdiff
-[push]
-	default = simple
 [mergetool]
 	keepBackup = false
 [diff "spaceman-diff"]
