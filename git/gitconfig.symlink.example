@@ -12,6 +12,7 @@
     clear = !(cd ./$(git rev-parse --show-cdup) && rm -r $(git status --porcelain | grep '^??' | sed s/^...//))
     checkout-all = !(cd ./$(git rev-parse --show-cdup) && git checkout -- $(git status --porcelain | grep '^ [MDA]' | sed s/^...//))
     git = !echo git $@ && git $!
+    abort = !~/.dotfiles/bin/git-abort
 [color]
     diff = auto
     status = auto
