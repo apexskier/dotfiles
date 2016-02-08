@@ -18,7 +18,6 @@ then
   then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/linuxbrew/go/install)"
   fi
-
 fi
 
 if command -v brew >/dev/null 2>&1
