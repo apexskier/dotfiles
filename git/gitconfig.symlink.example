@@ -31,3 +31,6 @@
 	keepBackup = false
 [diff "spaceman-diff"]
     command = ~/.gitignore/bin/spaceman-diff
+[user]
+    name=AUTHORNAME
+    email=AUTHOREMAIL
