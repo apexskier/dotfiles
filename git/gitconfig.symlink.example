@@ -13,6 +13,7 @@
     checkout-all = !(cd ./$(git rev-parse --show-cdup) && git checkout -- $(git status --porcelain | grep '^ [MDA]' | sed s/^...//))
     git = !echo git $@ && git $!
     abort = !~/.dotfiles/bin/git-abort
+    diff-here = !~/.dotfiles/bin/git-diff-here
 [color]
     diff = auto
     status = auto
@@ -27,10 +28,23 @@
     tool = vimdiff
 [diff]
     tool = vimdiff
+[push]
+	default = current
 [mergetool]
 	keepBackup = false
 [diff "spaceman-diff"]
     command = ~/.gitignore/bin/spaceman-diff
+[url "git@github.com:"]
+    insteadOf = "gh:"
+    insteadOf = "git://github.com"
+    pushInsteadOf = "github:"
+    pushInsteadOf = "git://github.com/"
+    pushInsteadOf = "https://github.com/"
+[url "git@gist.github.com:"]
+    insteadOf = "gst:"
+    pushInsteadOf = "gist:"
+    pushInsteadOf = "git://gist.github.com/"
+    pushInsteadOf = "https://gist.github.com/"
 [user]
     name=AUTHORNAME
     email=AUTHOREMAIL
