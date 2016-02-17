@@ -33,6 +33,7 @@ brew install homebrew/dupes/screen
 # Install other useful binaries
 brew install ack
 brew install cmake
+brew install diff-so-fancy
 brew install foremost
 brew install git
 brew install git bash-completion
