@@ -46,6 +46,7 @@ brew install nmap
 brew install node # This installs `npm` too using the recommended installation method
 brew install ruby
 brew install ruby-build
+brew install spark
 brew install tmux
 brew install tree
 brew install ucspi-tcp # `tcpserver` et al.
