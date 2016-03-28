@@ -1,3 +1,5 @@
+[user]
+	useconfigonly = true
 [hub]
     protocol = git
 [alias]

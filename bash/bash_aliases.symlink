@@ -38,9 +38,6 @@ alias 'classinfo'='xpop= $( xprop | grep --color=none "WM_CLASS\|^WM_NAME" | xme
 #   sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
 
-# Remitly
-alias forge='docker run -i -t --rm -v $PWD:/app -e USER=$USER -e UID=`id -u` -e GID=`id -g` remitly/forge'
-
 j () {
     if [[ ${1} == -* ]] && [[ ${1} != "--" ]]; then
         autojump ${@};

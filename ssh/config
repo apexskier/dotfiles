@@ -46,5 +46,27 @@ Host kulshan kulshan.restek.wwu.edu
     Hostname kulshan.restek.wwu.edu
     User littlec8
 
+Host *.remitly.lep
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+    LogLevel ERROR
+
+
+Host *.remitly.internal
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+    LogLevel ERROR
+
+Host 10.1.*.*
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+    LogLevel ERROR
+
+Host 10.0.*.*
+    StrictHostKeyChecking no
+    UserKnownHostsFile /dev/null
+    LogLevel ERROR
+
 Host *
-UseRoaming no
+    UseRoaming no
+

@@ -64,7 +64,6 @@ validation-status.json
 validation-report.json
 
 # Folders to ignore
-node_modules
 bower_components
 metadata.pickle
 
@@ -96,3 +95,5 @@ Icon
 Network Trash Folder
 Temporary Items
 .apdisk
+
+phpunit
