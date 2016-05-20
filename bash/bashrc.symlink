@@ -96,18 +96,8 @@ fi
 
 # ruby stuff
 if command -v ruby >/dev/null 2>&1; then
-    export GEM_HOME="$HOME/.gems"
-    mkdir -p $HOME/.gems
-    export PATH="$PATH:$HOME/.gems/bin"
-
-    if [ -d "/var/lib/gems" ]; then
-        export GEM_PATH="$GEM_PATH:/var/lib/gems"
-    fi
-
-    if [ -d "$HOME/.rvm" ]; then
-        export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-        export PATH="$PATH:$HOME/.rvm/rubies/ruby-2.1.2/bin" # Add RVM to PATH for scripting
-        . "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+    if command -v rbenv >/dev/null 2>&1; then
+        eval "$(rbenv init -)"
     fi
 fi
 

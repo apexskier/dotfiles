@@ -10,47 +10,14 @@ Host camlittle camlittle.com
     User cameronlittle
     Hostname camlittle.com
 
-Host nari nari.housing.wwu.edu
-    Hostname nari.housing.wwu.edu
-    User littlec8
-
-Host gravelpit gp gravelpit.housing.wwu.edu
-    Hostname gravelpit.housing.wwu.edu
-    User littlec8
-
-Host alvis alvis.restek.wwu.edu
-    Hostname alvis.restek.wwu.edu
-    User littlec8
-
-Host juicebox jb juicebox.restek.wwu.edu
-    Hostname juicebox.restek.wwu.edu
-    User littlec8
-
-Host goldenstar goldenstar.dreamhost.com
-    Hostname goldenstar.dreamhost.com
-    User camlittle
-
-Host yildun yildun.dreamhost.com
-    Hostname yildun.dreamhost.com
-    User camlittle
-
 Host nodmhosting wp471723.dreamhostps.com
     Hostname wp471723.dreamhostps.com
     User wp_6t5tyg
-
-Host cf cflinux9 linux-09.cs.wwu.edu
-    Hostname linux-09.cs.wwu.edu
-    User littlec8
-
-Host kulshan kulshan.restek.wwu.edu
-    Hostname kulshan.restek.wwu.edu
-    User littlec8
 
 Host *.remitly.lep
     StrictHostKeyChecking no
     UserKnownHostsFile /dev/null
     LogLevel ERROR
-
 
 Host *.remitly.internal
     StrictHostKeyChecking no
