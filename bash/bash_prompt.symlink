@@ -158,6 +158,15 @@ function set_prompt() {
     ret+="\n$ "
 
     PS1=$ret
+
+
+    # Add stuff to path
+    # this might end up being laggier than I want to deal with
+    if command -v npm >/dev/null 2>&1
+    then
+        PATH="$PATH:$(npm bin)"
+    fi
+    PATH="$PATH:."
 }
 
 #simple prompt

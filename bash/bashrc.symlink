@@ -102,24 +102,13 @@ if command -v ruby >/dev/null 2>&1; then
 fi
 
 # node stuff
-if command -v node >/dev/null 2>&1; then
-    command -v npm >/dev/null 2>&1 && export PATH="$PATH:$(npm bin)"
+export NVM_DIR="$HOME/.nvm"
+if [ -d "$NVM_DIR" ]; then
+    [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+fi
 
-    if [ -d $HOME/.node-completion ]; then
-        # {{{
-        # Node Completion - Auto-generated, do not touch.
-        shopt -s progcomp
-        for f in $(command ls ~/.node-completion); do
-          f="$HOME/.node-completion/$f"
-          test -f "$f" && . "$f"
-        done
-        # }}}
-    fi
-
-    export NVM_DIR="/Users/cameronlittle/.nvm"
-    if [ -d "$NVM_DIR" ]; then
-        [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-    fi
+if command -v nvm >/dev/null 2>&1; then
+    nvm use > /dev/null # load most recent version of node
 fi
 
 # java stuff
