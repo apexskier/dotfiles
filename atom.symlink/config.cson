@@ -1,0 +1,32 @@
+"*":
+  core:
+    disabledPackages: [
+      "git-plus"
+      "linter-scss-lint"
+      "git-blame"
+      "platformio-ide"
+      "platformio-ide-terminal"
+    ]
+  editor:
+    fontSize: 12
+    invisibles: {}
+  "exception-reporting":
+    userId: "c3d84b23-10eb-9ba6-49fb-96acda42fdcf"
+  "linter-stylelint":
+    disableWhenNoConfig: true
+    useStandard: true
+  minimap:
+    plugins:
+      "identifier-highlight": true
+      "identifier-highlightDecorationsZIndex": 0
+  pigments:
+    groupPaletteColors: "by file"
+    markerType: "dot"
+    mergeColorDuplicates: true
+  "save-session":
+    dataSaveFolder: "/Users/cameronlittle/.atom/packages/save-session/projects"
+  "tool-bar":
+    position: "Left"
+  "tree-view": {}
+  welcome:
+    showOnStartup: false
