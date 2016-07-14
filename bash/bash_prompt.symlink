@@ -166,7 +166,6 @@ function set_prompt() {
     then
         PATH="$PATH:$(npm bin)"
     fi
-    PATH="$PATH:."
 }
 
 #simple prompt

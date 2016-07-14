@@ -1,4 +1,5 @@
 "*":
+  "atom-typescript": {}
   core:
     disabledPackages: [
       "git-plus"
@@ -6,15 +7,34 @@
       "git-blame"
       "platformio-ide"
       "platformio-ide-terminal"
+      "color-picker"
+      "build"
+      "linter-stylelint"
     ]
+    ignoredNames: [
+      ".git"
+      ".hg"
+      ".svn"
+      ".DS_Store"
+      "._*"
+      "Thumbs.db"
+      "node_modules"
+      "vendor"
+    ]
+    projectHome: "/Users/cameronlittle/Projects"
   editor:
     fontSize: 12
     invisibles: {}
+    lineHeight: 1.4
+    preferredLineLength: 120
+    showIndentGuide: true
+    tabLength: 4
   "exception-reporting":
     userId: "c3d84b23-10eb-9ba6-49fb-96acda42fdcf"
+  "linter-eslint":
+    fixOnSave: true
   "linter-stylelint":
     disableWhenNoConfig: true
-    useStandard: true
   minimap:
     plugins:
       "identifier-highlight": true
@@ -30,3 +50,12 @@
   "tree-view": {}
   welcome:
     showOnStartup: false
+".source.ts":
+  editor:
+    preferredLineLength: 123
+    showIndentGuide: true
+    tabLength: 4
+".source.tsx":
+  editor:
+    preferredLineLength: 123
+    tabLength: 4
