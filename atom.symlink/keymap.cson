@@ -1,0 +1,16 @@
+'body':
+    'ctrl-tab': 'pane:show-next-item'
+    'ctrl-tab ^ctrl': 'unset!'
+    'ctrl-shift-tab': 'pane:show-previous-item'
+    'ctrl-shift-tab ^ctrl': 'unset!'
+    'cmd-b': 'symbols-view:go-to-declaration'
+
+'.platform-darwin':
+    'cmd-b': 'unset!'
+    'cmd-b': 'symbols-view:go-to-declaration'
+
+'atom-workspace atom-text-editor:not([mini])':
+    'cmd-]': 'unset!'
+    'cmd-]': 'last-cursor-position:next'
+    'cmd-[': 'unset!'
+    'cmd-[': 'last-cursor-position:previous'

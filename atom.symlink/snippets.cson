@@ -16,3 +16,23 @@
 # This file uses CoffeeScript Object Notation (CSON).
 # If you are unfamiliar with CSON, you can read more about it here:
 # https://github.com/bevry/cson#what-is-cson
+
+'.source.js':
+  'Narwhal Screen':
+    'prefix': 'narwhal-screen'
+    'body': """
+export const $1Screen = {
+    component: $1,
+    bindProps(data, onSubmit) {
+        return {
+            $2
+            submit: $3 => {
+                action(() => {
+                    $4
+                })();
+                onSubmit();
+            },
+        }
+    }
+}
+"""

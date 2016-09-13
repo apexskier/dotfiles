@@ -1,5 +1,7 @@
 "*":
+  "activate-power-mode": {}
   "atom-typescript": {}
+  "autocomplete-plus": {}
   core:
     disabledPackages: [
       "git-plus"
@@ -9,7 +11,15 @@
       "platformio-ide-terminal"
       "color-picker"
       "build"
-      "linter-stylelint"
+      "autocomplete-python"
+      "symbols-view"
+      "symbol-gen"
+      "dash"
+      "hyperclick"
+      "js-hyperclick"
+      "last-cursor-position"
+      "go-to-line"
+      "you-complete-me"
     ]
     ignoredNames: [
       ".git"
@@ -21,11 +31,15 @@
       "node_modules"
       "vendor"
     ]
+    packagesWithKeymapsDisabled: [
+      "tree-view"
+    ]
     projectHome: "/Users/cameronlittle/Projects"
   editor:
-    fontSize: 12
+    fontFamily: "Fira Code, menlo"
+    fontSize: 11
     invisibles: {}
-    lineHeight: 1.4
+    lineHeight: 1.2
     preferredLineLength: 120
     showIndentGuide: true
     tabLength: 4
@@ -39,17 +53,40 @@
     plugins:
       "identifier-highlight": true
       "identifier-highlightDecorationsZIndex": 0
+  "one-dark-ui": {}
   pigments:
     groupPaletteColors: "by file"
     markerType: "dot"
     mergeColorDuplicates: true
+  react:
+    enabledForAllJavascriptFiles: true
+  "relative-numbers": {}
   "save-session":
     dataSaveFolder: "/Users/cameronlittle/.atom/packages/save-session/projects"
+  "tab-switcher":
+    fadeInDelay: 0.05
   "tool-bar":
     position: "Left"
-  "tree-view": {}
+  "tree-view":
+    squashDirectoryNames: true
   welcome:
     showOnStartup: false
+".coffee.jsx.source":
+  editor:
+    preferredLineLength: 120
+    tabLength: 4
+".js.jsx.source":
+  editor:
+    preferredLineLength: 120
+    tabLength: 4
+".shell-session.text":
+  editor:
+    preferredLineLength: 120
+    tabLength: 4
+".shell.source":
+  editor:
+    preferredLineLength: 120
+    tabLength: 4
 ".source.ts":
   editor:
     preferredLineLength: 123
