@@ -1,26 +1,7 @@
-# set a fancy prompt (non-color, unless we know we "want" color)
-case "$TERM" in
-    xterm-color) color_prompt=yes;;
-esac
-
-# colored prompt
-if [ -n "$force_color_prompt" ]; then
-    if [ -x /usr/bin/tput ] && tput setaf 1 >&/dev/null; then
-        # We have color support; assume it's compliant with Ecma-48
-        # (ISO/IEC-6429). (Lack of such support is extremely rare, and such
-        # a case would tend to support setf rather than setaf.)
-        color_prompt=yes
-    else
-        color_prompt=
-    fi
+if ! [ -z ${BASHDEBUG+x} ]; then
+    stime_bash_prompt=$(gdate +%s.%N)
+    echo "[EXECUTING .bash_prompt]"
 fi
-
-#if [ "$color_prompt" = yes ]; then
-#    PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\n$ "
-#else
-#    PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\n$ "
-#fi
-unset color_prompt force_color_prompt
 
     nocol="\[\033[m\]"
     black="\[\033[0;30m\]"
@@ -40,34 +21,8 @@ lt_purple="\[\033[1;35m\]"
    yellow="\[\033[1;33m\]"
     white="\[\033[1;37m\]"
 
-
-#last_seconds=$SECONDS
-#runtime() {
-#    if [[ $cmd_seconds -ge 2 ]]; then
-#        echo -ne "$brown"
-#        # display runtime seconds as days, hours, minutes, and seconds
-#        [[ "$cmd_seconds" -ge 86400 ]] && echo -ne $((cmd_seconds / 86400))d
-#        [[ "$cmd_seconds" -ge 3600 ]] && echo -ne $((cmd_seconds % 86400 / 3600))h
-#        [[ "$cmd_seconds" -ge 60 ]] && echo -ne $((cmd_seconds % 3600 / 60))m
-#        echo -ne $((cmd_seconds % 60))s
-#        echo -ne "$nocol"
-#    fi
-#}
-#reset_runtime() {
-#    # Compute number of seconds since program was started
-#    cmd_seconds=$((SECONDS - last_seconds))
-#    # Reset when no command actually executed
-#    [ "$cmd_executed" != 1 ] && last_seconds=$SECONDS && cmd_seconds=0
-#    # Make sure last command wasn't setting the prompt
-#    [ "$BASH_COMMAND" = set_prompt ] && cmd_executed=0 && return
-#    cmd_executed=1
-#}
-## call whenever bash executes a command
-#trap 'reset_runtime' DEBUG
-
 _USER=""
-# Yellow for root, bold if the user is not the login one, else no color.
-if [[ "$EUID" -ne "0" ]] ; then  # if user is not root
+if [[ "$EUID" -ne "0" ]]; then  # if user is not root
     # if user is not login user
     if [[ $USER != "$(logname 2>/dev/null || echo $LOGNAME)" ]]; then
         _USER="$lt_grey"
@@ -80,91 +35,82 @@ fi
 _USER+="\u$nocol"
 
 connection_type() {
-    if [[ -n "$SSH_CLIENT$SSH2_CLIENT$SSH_TTY" ]] ; then
+    if [[ -n "$SSH_CLIENT$SSH2_CLIENT$SSH_TTY" ]]; then
         echo ssh
     else
         # TODO check on *BSD
         local sess_src="$(who am i | sed -n 's/.*(\(.*\))/\1/p')"
         local sess_parent="$(ps -o comm= -p $PPID 2> /dev/null)"
-        if [[ -z "$sess_src" || "$sess_src" = ":"* ]] ; then
+        if [[ -z "$sess_src" || "$sess_src" = ":"* ]]; then
             echo lcl # Local
-        elif [[ "$sess_parent" = "su" || "$sess_parent" = "sudo" ]] ; then
+        elif [[ "$sess_parent" = "su" || "$sess_parent" = "sudo" ]]; then
             echo su  # Remote su/sudo
         else
             echo tel # Telnet
         fi
     fi
 }
-case "$(connection_type)" in
+
+case $(connection_type) in
 ssh)
-    connectionmark="⇝" ;;
+    mark="⇝" ;;
 tel)
-    connectionmark="⇢" ;;
+    mark="⇢" ;;
+*)
+    mark="@" ;;
 esac
 unset connection_type
 
-mark="@"
 # If we are connected with a X11 support
-if [[ -n "$DISPLAY" ]] ; then
+if [[ -n "$DISPLAY" ]]; then
     mark="$white$mark$nocol"
 else
     mark="$lt_grey$mark$nocol"
 fi
 
-
 function set_prompt() {
     # get return code of last cmd
     local -i err=$?
+
+    if ! [ -z ${BASHDEBUG+x} ]; then
+        stime_bash_prompt_set_prompt=$(gdate +%s.%N)
+        echo "[EXECUTING set_prompt]"
+    fi
+
     local cmd_info=""
     if (( err != 0 )); then
-        cmd_info="$red$err ↩$nocol "
-    else
-        cmd_info=""
-    fi
-    #cmd_info+=$(runtime)
-    if [[ -n "$cmd_info" ]] ; then
-        cmd_info+="\n"
+        cmd_info="$red$err ↩$nocol \n"
     fi
 
-    local ret
-
-    local venv
-    if [[ -n "$VIRTUAL_ENV" ]] ; then
+    local venv=""
+    if [[ -n "$VIRTUAL_ENV" ]]; then
         venv=" (⊙${VIRTUAL_ENV#$WORKON_HOME/}) "
     fi
 
-    local write=":"
-    if [[ -w "$PWD" ]] ; then
-        write="$green$write$nocol"
+    local writable=":"
+    if [[ -w "$PWD" ]]; then
+        writable="$green$writable$nocol"
     else
-        write="$red$write$nocol"
+        writable="$red$writable$nocol"
     fi
 
     local gitbranch="$(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
-    if [[ -n "$gitbranch" ]] ; then
+    if [[ -n "$gitbranch" ]]; then
         gitbranch=" (±$gitbranch)"
     fi
 
-    # local size=($(stty size))
-    # local rows=${size[0]}
-    # local cols=${size[1]}
-
-    ret+="$cmd_info$_USER$mark$connectionmark$green\h$nocol$write"
-    ret+="$yellow\w$nocol"
-    # test "$(expr ${#ret} + ${#gitbranch})" -gt "$cols" && ret+="\n"
-    ret+="$gitbranch"
-    # test "$(expr ${#ret} + ${#venv})" -gt "$cols" && ret+="\n"
-    ret+="$venv"
-    ret+="\n$ "
-
-    PS1=$ret
-
+    PS1="$cmd_info$_USER$mark$green\h$nocol$writable$yellow\w$nocol$gitbranch$venv\n$ "
 
     # Add stuff to path
-    # this might end up being laggier than I want to deal with
-    if command -v npm >/dev/null 2>&1
-    then
-        PATH="$PATH:$(npm bin)"
+    # this is slower than I want to deal with
+    #if command -v npm >/dev/null 2>&1
+    #then
+    #    PATH="$PATH:$(npm bin)"
+    #fi
+
+    if ! [ -z ${BASHDEBUG+x} ]; then
+        etime_bash_prompt_set_prompt=$(gdate +%s.%N)
+        echo "[EXECUTED set_prompt ($(echo "$etime_bash_prompt_set_prompt - $stime_bash_prompt_set_prompt" | bc)s)]"
     fi
 }
 
@@ -172,7 +118,6 @@ function set_prompt() {
 #export PROMPT_COMMAND=""
 #export PS1="\u@\h:\w\n$ "
 
-# export PROMPT_COMMAND=set_prompt
 # update_terminal_cwd is for autojump
 if [ -n "$(type -t autojump_add_to_database)" ] && [ "$(type -t autojump_add_to_database)" = function ]
 then
@@ -180,7 +125,12 @@ then
 else
     export PROMPT_COMMAND="set_prompt"
 fi
-# export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} set_prompt"
 
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
+
+if ! [ -z ${BASHDEBUG+x} ]; then
+    etime_bash_prompt=$(gdate +%s.%N)
+    echo "[EXECUTED .bash_prompt ($(echo "$etime_bash_prompt - $stime_bash_prompt" | bc)s)]"
+fi
+
