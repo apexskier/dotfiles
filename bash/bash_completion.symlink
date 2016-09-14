@@ -1,4 +1,5 @@
 #!bash
+# vim: ft=sh
 
 # bash/zsh completion support for Fabric
 #

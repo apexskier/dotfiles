@@ -1,3 +1,5 @@
+# vim: ft=sh
+
 # uncomment next line to get timing information printed to console
 # export BASHDEBUG='1'
 

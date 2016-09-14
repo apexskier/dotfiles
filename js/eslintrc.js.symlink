@@ -1,10 +1,10 @@
-{
+// vim: ft=javascript
 
+module.exports = {
     "env": {
         "browser": true,
         "node": true
     },
-
     "rules": {
         "block-scoped-var": 0,
         "brace-style": [1, "1tbs", { "allowSingleLine": false }],
@@ -62,5 +62,4 @@
         "wrap-iife": [2, "outside"],
         "yoda": 2,
     }
-
-}
+};

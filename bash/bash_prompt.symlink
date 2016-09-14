@@ -1,3 +1,5 @@
+# vim: ft=sh
+
 if ! [ -z ${BASHDEBUG+x} ]; then
     stime_bash_prompt=$(gdate +%s.%N)
     echo "[EXECUTING .bash_prompt]"

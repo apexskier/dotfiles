@@ -1,3 +1,4 @@
+# vim: ft=conf
 # XScreenSaver Preferences File
 # Written by xscreensaver-demo 5.15 for littlec8 on Thu Aug  7 16:21:39 2014.
 # http://www.jwz.org/xscreensaver/
@@ -32,14 +33,14 @@ dpmsOff:	4:00:00
 grabDesktopImages:  True
 grabVideoFrames:    False
 chooseRandomImages: False
-imageDirectory:	
+imageDirectory:
 
 mode:		random
 selected:	106
 
 textMode:	program
 textLiteral:	XScreenSaver
-textFile:	
+textFile:
 textProgram:	fortune
 textURL:	http://fridge.ubuntu.com/node/feed
 

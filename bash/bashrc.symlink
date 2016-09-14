@@ -1,3 +1,5 @@
+# vim: ft=sh
+
 if ! [ -z ${BASHDEBUG+x} ]; then
     stime_bashrc=$(gdate +%s.%N)
     echo "[EXECUTING .bashrc]"

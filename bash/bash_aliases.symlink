@@ -1,3 +1,5 @@
+# vim: ft=sh
+
 if ! [ -z ${BASHDEBUG+x} ]; then
     stime_bash_aliases=$(gdate +%s.%N)
     echo "[EXECUTING .bash_aliases]"

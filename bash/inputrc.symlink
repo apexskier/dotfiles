@@ -1,3 +1,4 @@
+# vim: ft=conf
 # https://github.com/paulirish/dotfiles/blob/master/.inputrc
 
 set input-meta on

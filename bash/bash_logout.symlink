@@ -1,4 +1,5 @@
 # ~/.bash_logout: executed by bash(1) when login shell exits.
+# vim: ft=sh
 
 if ! [ -z ${BASHDEBUG+x} ]; then
     stime_bash_logout=$(gdate +%s.%N)

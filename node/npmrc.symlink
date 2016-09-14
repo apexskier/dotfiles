@@ -1,4 +1,4 @@
-//registry.npmjs.org/:_authToken=d3edaf9b-db51-4f37-8441-0b9e5cdf7fba
+// registry.npmjs.org/:_authToken=d3edaf9b-db51-4f37-8441-0b9e5cdf7fba
 sign-git-tag=true
 init-author-name=Cameron Little
 init-author-email=cameron@camlittle.com
