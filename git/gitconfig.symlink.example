@@ -25,6 +25,7 @@
     diff-here = !~/.dotfiles/bin/git-diff-here
     up = !gitup
     metadiff = !~/.dotfiles/bin/git-metadiff
+    ff = !~/.dotfiles/bin/git-ff
 [color]
     diff = auto
     status = auto
