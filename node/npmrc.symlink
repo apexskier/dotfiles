@@ -3,4 +3,3 @@ sign-git-tag=true
 init-author-name=Cameron Little
 init-author-email=cameron@camlittle.com
 init-license=MIT
-progress=true

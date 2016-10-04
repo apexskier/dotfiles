@@ -1,7 +1,14 @@
+# vim: ft=gitconfig
+
 [user]
+	name=AUTHORNAME
+	email=AUTHOREMAIL
 	useconfigonly = true
 [hub]
-    protocol = git
+	protocol = git
+# OS X only
+# [credential]
+# 	helper = osxkeychain
 [alias]
     st = status -sb
     lg = log --graph --decorate --oneline
@@ -16,11 +23,33 @@
     git = !echo git $@ && git $!
     abort = !~/.dotfiles/bin/git-abort
     diff-here = !~/.dotfiles/bin/git-diff-here
+    up = !gitup
+    metadiff = !~/.dotfiles/bin/git-metadiff
 [color]
     diff = auto
     status = auto
     branch = auto
     ui = true
+[color "diff"]
+    meta = yellow bold
+    commit = green bold
+    frag = magenta bold
+    old = red bold
+    new = green bold
+    whitespace = red reverse
+[color "diff-highlight"]
+    oldNormal = red bold
+    oldHighlight = "red bold 52"
+    newNormal = "green bold"
+    newHighlight = "green bold 22"
+[color "branch"]
+    current = yellow reverse
+    local = yellow
+    remote = green
+[color "status"]
+    added = yellow
+    changed = green
+    untracked = cyan
 [core]
     excludesfile = ~/.gitignore
     editor = vim
@@ -47,6 +76,5 @@
     pushInsteadOf = "gist:"
     pushInsteadOf = "git://gist.github.com/"
     pushInsteadOf = "https://gist.github.com/"
-[user]
-    name=AUTHORNAME
-    email=AUTHOREMAIL
+# [commit]
+#  	gpgsign = true

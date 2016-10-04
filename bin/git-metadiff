@@ -1,0 +1,19 @@
+#!/bin/bash
+#
+# show differences between what two commits did (useful for comparing commits in rebases)
+#
+# examples
+# `git metadiff origin/branch branch` <- what did a rebase do?
+# `git metadiff HEAD [commit]...[commit]` <- did my squash change things?
+
+a=`git rev-parse "$1"`
+b=`git rev-parse "$2"`
+af="/tmp/git-metadiff-$a"
+bf="/tmp/git-metadiff-$b"
+
+git show "$1" > "$af"
+git show "$2" > "$bf"
+
+`git config diff.tool` "$af" "$bf"
+
+rm "$af" "$bf"

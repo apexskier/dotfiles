@@ -20,6 +20,8 @@
       "last-cursor-position"
       "go-to-line"
       "you-complete-me"
+      "project-switcher"
+      "tab-switcher"
     ]
     ignoredNames: [
       ".git"
@@ -35,6 +37,10 @@
       "tree-view"
     ]
     projectHome: "/Users/cameronlittle/Projects"
+    themes: [
+      "one-light-ui"
+      "one-light-syntax"
+    ]
   editor:
     fontFamily: "Fira Code, menlo"
     fontSize: 11
@@ -45,6 +51,8 @@
     tabLength: 4
   "exception-reporting":
     userId: "c3d84b23-10eb-9ba6-49fb-96acda42fdcf"
+  linter:
+    errorPanelHeight: 24
   "linter-eslint":
     fixOnSave: true
   "linter-stylelint":
@@ -89,7 +97,7 @@
     tabLength: 4
 ".source.ts":
   editor:
-    preferredLineLength: 123
+    preferredLineLength: 120
     showIndentGuide: true
     tabLength: 4
 ".source.tsx":
