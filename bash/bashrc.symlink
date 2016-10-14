@@ -114,6 +114,8 @@ if command -v nvm >/dev/null 2>&1; then
 fi
 
 # java stuff
-export JAVA_HOME=$(/usr/libexec/java_home)
+if [ -d "/usr/libexec/java_home" ]; then
+    export JAVA_HOME=$(/usr/libexec/java_home)
+fi
 
 . ~/.bash_prompt
