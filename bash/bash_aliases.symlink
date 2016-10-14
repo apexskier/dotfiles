@@ -1,10 +1,5 @@
 # vim: ft=sh
 
-if ! [ -z ${BASHDEBUG+x} ]; then
-    stime_bash_aliases=$(gdate +%s.%N)
-    echo "[EXECUTING .bash_aliases]"
-fi
-
 # ls aliases
 alias sl='ls'
 alias ls='ls -F'
@@ -61,9 +56,4 @@ j () {
     false;
     fi
 }
-
-if ! [ -z ${BASHDEBUG+x} ]; then
-    etime_bash_aliases=$(gdate +%s.%N)
-    echo "[EXECUTED .bash_aliases ($(echo "$etime_bash_aliases - $stime_bash_aliases" | bc)s)]"
-fi
 

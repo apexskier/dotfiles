@@ -9,16 +9,6 @@
 #
 # To install see
 # http://danilodellaquila.com/blog/how-to-add-bash-completion-to-fabric
-
-if ! [ -z ${BASHDEBUG+x} ]; then
-    stime_bash_completion=$(gdate +%s.%N)
-    echo "[EXECUTING .bash_completion]"
-fi
-
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
-fi
-
 _fab()
 {
     local cur commands
@@ -98,9 +88,3 @@ elif type compctl &>/dev/null; then
   compctl -K _npm_completion npm
 fi
 ###-end-npm-completion-###
-
-if ! [ -z ${BASHDEBUG+x} ]; then
-    etime_bash_completion=$(gdate +%s.%N)
-    echo "[EXECUTED .bash_completion ($(echo "$etime_bash_completion - $stime_bash_completion" | bc)s)]"
-fi
-

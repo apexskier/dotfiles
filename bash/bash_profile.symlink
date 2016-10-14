@@ -1,26 +1,8 @@
 # vim: ft=sh
 
-# uncomment next line to get timing information printed to console
-# export BASHDEBUG='1'
-
 # stuff here is run once per login shell
 # bashrc is run every prompt
-
-if ! [ -z ${BASHDEBUG+x} ]; then
-    echo "[EXECUTING .bash_profile]"
-    stime_bash_profile=$(gdate +%s.%N)
-fi
-
-if [ -f ~/.profile ]; then
-    source ~/.profile
-fi
 
 if [ -f ~/.bashrc ]; then
     source ~/.bashrc
 fi
-
-if ! [ -z ${BASHDEBUG+x} ]; then
-    etime_bash_profile=$(gdate +%s.%N)
-    echo "[EXECUTED .bash_profile ($(echo "$etime_bash_profile - $stime_bash_profile" | bc)s)]"
-fi
-
