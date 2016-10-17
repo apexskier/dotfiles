@@ -22,6 +22,7 @@
       "you-complete-me"
       "project-switcher"
       "tab-switcher"
+      "react"
     ]
     ignoredNames: [
       ".git"
@@ -37,6 +38,7 @@
       "tree-view"
     ]
     projectHome: "/Users/cameronlittle/Projects"
+    telemetryConsent: "limited"
     themes: [
       "one-light-ui"
       "one-light-syntax"
@@ -102,5 +104,5 @@
     tabLength: 4
 ".source.tsx":
   editor:
-    preferredLineLength: 123
+    preferredLineLength: 120
     tabLength: 4

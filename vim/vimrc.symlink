@@ -27,6 +27,7 @@ NeoBundle 'rodjek/vim-puppet'
 NeoBundle 'rizzatti/dash.vim'
 NeoBundle 'sirtaj/vim-openscad'
 NeoBundle 'junegunn/vim-emoji'
+NeoBundle 'ConradIrwin/vim-bracketed-paste'
 
 call neobundle#end()
 
