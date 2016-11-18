@@ -3,14 +3,10 @@
     'ctrl-tab ^ctrl': 'unset!'
     'ctrl-shift-tab': 'pane:show-previous-item'
     'ctrl-shift-tab ^ctrl': 'unset!'
-    'cmd-b': 'symbols-view:go-to-declaration'
 
-'.platform-darwin':
-    'cmd-b': 'unset!'
-    'cmd-b': 'symbols-view:go-to-declaration'
+'atom-text-editor.vim-mode-plus-search':
+    'cmd-enter': 'vim-mode-plus-user:project-find-from-search'
 
-'atom-workspace atom-text-editor:not([mini])':
-    'cmd-]': 'unset!'
-    'cmd-]': 'last-cursor-position:next'
-    'cmd-[': 'unset!'
-    'cmd-[': 'last-cursor-position:previous'
+'atom-text-editor.vim-mode-plus.normal-mode':
+    ':': 'vim-mode-plus-ex-mode:open'
+    '!': 'vim-mode-plus-ex-mode:toggle-setting'

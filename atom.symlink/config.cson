@@ -1,28 +1,20 @@
 "*":
   "activate-power-mode": {}
-  "atom-typescript": {}
+  "atom-typescript":
+    showSemanticView: true
   "autocomplete-plus": {}
   core:
+    allowPendingPaneItems: false
     disabledPackages: [
       "git-plus"
       "linter-scss-lint"
-      "git-blame"
       "platformio-ide"
       "platformio-ide-terminal"
       "color-picker"
       "build"
       "autocomplete-python"
       "symbols-view"
-      "symbol-gen"
-      "dash"
-      "hyperclick"
-      "js-hyperclick"
-      "last-cursor-position"
       "go-to-line"
-      "you-complete-me"
-      "project-switcher"
-      "tab-switcher"
-      "react"
     ]
     ignoredNames: [
       ".git"
@@ -45,7 +37,7 @@
     ]
   editor:
     fontFamily: "Fira Code, menlo"
-    fontSize: 11
+    fontSize: 10
     invisibles: {}
     lineHeight: 1.2
     preferredLineLength: 120
@@ -53,6 +45,8 @@
     tabLength: 4
   "exception-reporting":
     userId: "c3d84b23-10eb-9ba6-49fb-96acda42fdcf"
+  "highlight-selected":
+    lightTheme: true
   linter:
     errorPanelHeight: 24
   "linter-eslint":
@@ -79,9 +73,22 @@
     position: "Left"
   "tree-view":
     squashDirectoryNames: true
+  "vim-mode-plus":
+    highlightSearch: true
+    incrementalSearch: true
+    useSmartcaseForSearch: true
   welcome:
     showOnStartup: false
+  whitespace: {}
 ".coffee.jsx.source":
+  editor:
+    preferredLineLength: 120
+    tabLength: 4
+".editorconfig.source":
+  editor:
+    preferredLineLength: 120
+    tabLength: 4
+".ini.source":
   editor:
     preferredLineLength: 120
     tabLength: 4
@@ -100,7 +107,9 @@
 ".source.ts":
   editor:
     preferredLineLength: 120
+    scrollPastEnd: true
     showIndentGuide: true
+    showInvisibles: true
     tabLength: 4
 ".source.tsx":
   editor:
