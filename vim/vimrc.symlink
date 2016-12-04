@@ -24,10 +24,10 @@ NeoBundle 'hail2u/vim-css3-syntax'
 NeoBundle 'tikhomirov/vim-glsl'
 NeoBundle 'editorconfig/editorconfig-vim'
 NeoBundle 'rodjek/vim-puppet'
-NeoBundle 'rizzatti/dash.vim'
 NeoBundle 'sirtaj/vim-openscad'
 NeoBundle 'junegunn/vim-emoji'
 NeoBundle 'ConradIrwin/vim-bracketed-paste'
+NeoBundle 'leafgarland/typescript-vim'
 
 call neobundle#end()
 
