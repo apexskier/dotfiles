@@ -154,9 +154,9 @@ function set_prompt() {
 # update_terminal_cwd is for autojump
 if [ -n "$(type -t autojump_add_to_database)" ] && [ "$(type -t autojump_add_to_database)" = function ]
 then
-    export PROMPT_COMMAND="set_prompt; update_terminal_cwd; autojump_add_to_database"
+    export PROMPT_COMMAND="set_prompt; update_terminal_cwd; autojump_add_to_database; $PROMPT_COMMAND"
 else
-    export PROMPT_COMMAND="set_prompt"
+    export PROMPT_COMMAND="set_prompt; $PROMPT_COMMAND"
 fi
 # export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} set_prompt"
 
