@@ -1,14 +1,10 @@
 # vim: ft=gitconfig
 
-[user]
-	name=AUTHORNAME
-	email=AUTHOREMAIL
-	useconfigonly = true
+# Local/private config goes in the include
+[include]
+    path = ~/.gitconfig.local
 [hub]
 	protocol = git
-# OS X only
-# [credential]
-# 	helper = osxkeychain
 [alias]
     st = status -sb
     lg = log --graph --decorate --oneline
@@ -77,5 +73,3 @@
     pushInsteadOf = "gist:"
     pushInsteadOf = "git://gist.github.com/"
     pushInsteadOf = "https://gist.github.com/"
-# [commit]
-#  	gpgsign = true

@@ -1,0 +1,7 @@
+[user]
+    name = AUTHORNAME
+    email = AUTHOREMAIL
+[credential]
+    helper = GIT_CREDENTIAL_HELPER
+[commit]
+  	gpgsign = true

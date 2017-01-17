@@ -6,9 +6,12 @@ atom.symlink/compile-cache/
 atom.symlink/packages
 atom.symlink/storage
 atom.symlink/themes
+atom.symlink/blob-store
+atom.symlink/recovery
 
 git/gitconfig.symlink
 vim/tmp
 vim/undo
 vim/vim.symlink/.netrwhist
 vim/vim.symlink/bundle
+git/gitconfig.local.symlink

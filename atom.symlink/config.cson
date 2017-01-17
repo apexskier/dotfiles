@@ -15,6 +15,9 @@
       "autocomplete-python"
       "go-to-line"
       "jsonlint"
+      "background-tips"
+      "exception-reporting"
+      "metrics"
     ]
     ignoredNames: [
       ".git"
@@ -73,6 +76,13 @@
   "relative-numbers": {}
   "save-session":
     dataSaveFolder: "/Users/cameronlittle/.atom/packages/save-session/projects"
+  "spell-check":
+    grammars: [
+      "text.plain"
+      "source.gfm"
+      "text.git-commit"
+      "text.html.basic"
+    ]
   "tab-switcher":
     fadeInDelay: 0.05
   "tool-bar":
@@ -85,39 +95,3 @@
     useSmartcaseForSearch: true
   welcome:
     showOnStartup: false
-  whitespace: {}
-".coffee.jsx.source":
-  editor:
-    preferredLineLength: 120
-    tabLength: 4
-".editorconfig.source":
-  editor:
-    preferredLineLength: 120
-    tabLength: 4
-".ini.source":
-  editor:
-    preferredLineLength: 120
-    tabLength: 4
-".js.jsx.source":
-  editor:
-    preferredLineLength: 120
-    tabLength: 4
-".shell-session.text":
-  editor:
-    preferredLineLength: 120
-    tabLength: 4
-".shell.source":
-  editor:
-    preferredLineLength: 120
-    tabLength: 4
-".source.ts":
-  editor:
-    preferredLineLength: 120
-    scrollPastEnd: true
-    showIndentGuide: true
-    showInvisibles: true
-    tabLength: 4
-".source.tsx":
-  editor:
-    preferredLineLength: 120
-    tabLength: 4
