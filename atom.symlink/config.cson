@@ -13,8 +13,8 @@
       "color-picker"
       "build"
       "autocomplete-python"
-      "symbols-view"
       "go-to-line"
+      "jsonlint"
     ]
     ignoredNames: [
       ".git"
@@ -37,7 +37,7 @@
     ]
   editor:
     fontFamily: "Fira Code, menlo"
-    fontSize: 10
+    fontSize: 12
     invisibles: {}
     lineHeight: 1.2
     preferredLineLength: 120
@@ -47,12 +47,14 @@
     userId: "c3d84b23-10eb-9ba6-49fb-96acda42fdcf"
   "highlight-selected":
     lightTheme: true
+  jsonlint: {}
   linter:
     errorPanelHeight: 24
   "linter-eslint":
     fixOnSave: true
   "linter-stylelint":
     disableWhenNoConfig: true
+  "linter-tslint": {}
   minimap:
     plugins:
       "identifier-highlight": true
@@ -62,6 +64,10 @@
     groupPaletteColors: "by file"
     markerType: "dot"
     mergeColorDuplicates: true
+  "prettier-atom":
+    singleQuote: true
+    tabWidth: 4
+    trailingComma: true
   react:
     enabledForAllJavascriptFiles: true
   "relative-numbers": {}
