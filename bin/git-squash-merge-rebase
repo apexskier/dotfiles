@@ -1,0 +1,31 @@
+#!/bin/bash
+#
+# When you squash and merge a branch on github, any work you've done
+# off of a fork of that branch is now part of revised history.
+#
+# After pulling master, run this script with the first paramter the location
+# you forked from. It'll run through all commits on the current branch,
+# apply them to a new branch, and set you there.
+#
+
+set -e
+
+if [ -z "$1" ]
+then
+    echo "usage: $0 [fork point]"
+    exit 1
+fi
+
+MERGED_BRANCH=$(git rev-parse $1)
+CURRENT_BRANCH=$(git rev-parse HEAD)
+
+git checkout -q -b "${CURRENT_BRANCH}-temp" master
+
+for commit in $(git rev-list "$MERGED_BRANCH".."$CURRENT_BRANCH" | tail -r)
+do
+    git cherry-pick $commit > /dev/null
+done
+
+git checkout -q -
+git reset -q --hard "${CURRENT_BRANCH}-temp"
+git branch -q -D "${CURRENT_BRANCH}-temp"
