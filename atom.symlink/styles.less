@@ -27,11 +27,11 @@ atom-text-editor {
 }
 
 // To style other content in the text editor's shadow DOM, use the ::shadow expression
-atom-text-editor::shadow .cursor {
+atom-text-editor .syntax--cursor {
   // border-color: red;
 }
 
-atom-text-editor::shadow .string.quoted,
-atom-text-editor::shadow .string.regexp {
+atom-text-editor .syntax--string.syntax--quoted,
+atom-text-editor .syntax--string.syntax--regexp {
   -webkit-font-feature-settings: "liga" off, "calt" off;
 }

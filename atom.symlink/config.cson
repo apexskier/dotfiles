@@ -18,6 +18,7 @@
       "background-tips"
       "exception-reporting"
       "metrics"
+      "es-identifier-highlight"
     ]
     ignoredNames: [
       ".git"
@@ -40,7 +41,7 @@
     ]
   editor:
     fontFamily: "Fira Code, menlo"
-    fontSize: 12
+    fontSize: 13
     invisibles: {}
     lineHeight: 1.2
     preferredLineLength: 120
