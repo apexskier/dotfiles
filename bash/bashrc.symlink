@@ -121,3 +121,5 @@ if [ -d "/usr/libexec/java_home" ]; then
 fi
 
 . ~/.bash_prompt
+
+export PATH="$HOME/.yarn/bin:$PATH"

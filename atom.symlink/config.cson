@@ -16,9 +16,10 @@
       "go-to-line"
       "jsonlint"
       "background-tips"
-      "exception-reporting"
       "metrics"
       "es-identifier-highlight"
+      "es6-javascript"
+      "css-snippets"
     ]
     ignoredNames: [
       ".git"
@@ -75,6 +76,8 @@
   react:
     enabledForAllJavascriptFiles: true
   "relative-numbers": {}
+  "save-autorun":
+    notifications: false
   "save-session":
     dataSaveFolder: "/Users/cameronlittle/.atom/packages/save-session/projects"
   "spell-check":
