@@ -5,6 +5,18 @@
   "autocomplete-plus": {}
   core:
     allowPendingPaneItems: false
+    customFileTypes:
+      "source.ini": [
+        ".buckconfig"
+        ".hgrc"
+      ]
+      "source.json": [
+        ".arcconfig"
+        "BUCK.autodeps"
+      ]
+      "source.python": [
+        "BUCK"
+      ]
     disabledPackages: [
       "git-plus"
       "linter-scss-lint"
@@ -20,6 +32,7 @@
       "es-identifier-highlight"
       "es6-javascript"
       "css-snippets"
+      "tree-view"
     ]
     ignoredNames: [
       ".git"
@@ -53,8 +66,7 @@
   "highlight-selected":
     lightTheme: true
   jsonlint: {}
-  linter:
-    errorPanelHeight: 24
+  linter: {}
   "linter-eslint":
     fixOnSave: true
   "linter-stylelint":

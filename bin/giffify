@@ -14,7 +14,13 @@ fi
 SCALE=$2
 if [ -z "$SCALE" ]
 then
-    SCALE=320
+    SCALE=375
+fi
+
+FPS=$2
+if [ -z "$FPS" ]
+then
+    FPS=30
 fi
 
 PALLETE_FILE="/tmp/gif_pallete_${RANDOM}.png";
@@ -23,13 +29,13 @@ OUTPUT_FILE="${OUTPUT_FILE%.*}.gif"
 
 ffmpeg -y \
     -i "${MOVIE}" \
-    -vf fps=10,scale="${SCALE}":-1:flags=lanczos,palettegen \
+    -vf fps=${FPS},scale="${SCALE}":-1:flags=lanczos,palettegen \
     "${PALLETE_FILE}"
 
 ffmpeg \
     -i "${MOVIE}" \
     -i "${PALLETE_FILE}" \
-    -filter_complex "fps=15,scale=320:-1:flags=lanczos[x];[x][1:v]paletteuse" \
+    -filter_complex "fps=${FPS},scale=${SCALE}:-1:flags=lanczos[x];[x][1:v]paletteuse" \
     "${OUTPUT_FILE}"
 
 rm "${PALLETE_FILE}"

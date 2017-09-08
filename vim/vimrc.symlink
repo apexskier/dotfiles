@@ -207,7 +207,7 @@ autocmd BufReadPost *
      \ endif
 
 " Normal Mode Mappings "
-" Makes J insert a <CR> it's like the opposite of J
+" Makes K insert a <CR> it's like the opposite of J
 nnoremap K i<C-m><Esc>
 " Execute q macros with Q
 nnoremap Q @q
