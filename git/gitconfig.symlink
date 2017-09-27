@@ -16,7 +16,7 @@
     count   = shortlog -sn
     clear = !(cd ./$(git rev-parse --show-cdup) && rm -r $(git status --porcelain | grep '^??' | sed s/^...//))
     checkout-all = !(cd ./$(git rev-parse --show-cdup) && git checkout -- $(git status --porcelain | grep '^ [MDA]' | sed s/^...//))
-    git = !echo git $@ && git $!
+    git = !exec git
     abort = !~/.dotfiles/bin/git-abort
     diff-here = !~/.dotfiles/bin/git-diff-here
     up = !gitup
