@@ -1,23 +1,35 @@
 #!/bin/bash
 
+set -e
+
 GIT_DIR="`git rev-parse --git-dir`"
 
 if [ -e "${GIT_DIR}/CHERRY_PICK_HEAD" ]
 then
     git cherry-pick --abort
-else
-    if [ -d "${GIT_DIR}/rebase-merge" -o -d "${GIT_DIR}/rebase-apply" ]
-    then
-        git rebase --abort
-    else
-        if [ -e "${GIT_DIR}/MERGE_HEAD" ]
-        then
-            git merge --abort
-        else
-            echo "Nothing to abort?"
-            exit 1
-        fi
-    fi
+    exit $?
 fi
 
-exit $?
+if [ -d "${GIT_DIR}/rebase-merge" -o -d "${GIT_DIR}/rebase-apply" ]
+then
+    git rebase --abort
+    exit $?
+fi
+
+if [ -e "${GIT_DIR}/MERGE_HEAD" ]
+then
+    git merge --abort
+    exit $?
+fi
+
+if [ -e "${GIT_DIR}/BISECT_LOG" ]
+then
+    HEAD="$(git rev-parse HEAD)"
+    git bisect reset
+    git checkout "$HEAD"
+    exit 0
+fi
+
+echo "Nothing to abort?"
+exit 1
+

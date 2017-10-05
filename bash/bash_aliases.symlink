@@ -27,14 +27,7 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
-alias 'ssh-alvis'='ssh alvis -t tmux attach -d'
-alias 'ssh-nari'='ssh -L 8009:localhost:8009 nari.housing.wwu.edu -t tmux attach -d'
-alias 'ssh-irc'='ssh nari -t startirc'
-
-# TODO: make this automatic
-alias 'npmbin'='export PATH=$PATH:$(npm bin)'
-
-alias 'classinfo'='xpop= $( xprop | grep --color=none "WM_CLASS\|^WM_NAME" | xmessage -file - )'
+alias classinfo='xpop= $( xprop | grep --color=none "WM_CLASS\|^WM_NAME" | xmessage -file - )'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -57,3 +50,5 @@ j () {
     fi
 }
 
+# macos quicklook from the terminal
+alias ql="qlmanage -p ${@} > /dev/null 2> /dev/null"
