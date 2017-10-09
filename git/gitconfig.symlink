@@ -61,7 +61,7 @@
 [mergetool]
 	keepBackup = false
 [diff "spaceman-diff"]
-    command = ~/.gitignore/bin/spaceman-diff
+    command = ~/.dotfiles/bin/spaceman-diff
 [url "git@github.com:"]
     insteadOf = "gh:"
     insteadOf = "git://github.com"

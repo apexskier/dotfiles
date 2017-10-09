@@ -1,0 +1,3 @@
+[submodule "bin/spaceman-diff-repo"]
+	path = bin/spaceman-diff-repo
+	url = git@github.com:holman/spaceman-diff.git
