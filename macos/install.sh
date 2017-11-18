@@ -5,3 +5,5 @@
 
 echo "› sudo softwareupdate -i -a"
 sudo softwareupdate -i -a
+
+curl -o ~/.yarn-completion https://raw.githubusercontent.com/dsifford/yarn-completion/master/yarn-completion.bash

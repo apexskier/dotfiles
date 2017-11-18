@@ -36,7 +36,7 @@ brew install cmake
 brew install diff-so-fancy
 brew install foremost
 brew install git
-brew install git bash-completion
+brew install bash-completion
 brew install hub
 brew install gifsicle
 brew install imagemagick --with-webp
