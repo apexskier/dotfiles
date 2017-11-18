@@ -60,10 +60,10 @@ if command -v brew >/dev/null 2>&1; then
     bp=$(brew --prefix)
     [ -f "$bp/git/contrib/completion/git-completion.bash" ] && . "$bp/git/contrib/completion/git-completion.bash"
     [ -f "$bp/etc/bash_completion" ] && . "$bp/etc/bash_completion"
-    unset bp
 
     # autojump
-    [[ -s $(brew --prefix)/etc/profile.d/autojump.sh ]] && . $(brew --prefix)/etc/profile.d/autojump.sh
+    [[ -s "$bp/etc/profile.d/autojump.sh" ]] && . "$bp/etc/profile.d/autojump.sh"
+    unset bp
 fi
 
 # go stuff
@@ -94,6 +94,10 @@ if command -v python >/dev/null 2>&1; then
     export PIP_DOWNLOAD_CACHE=$HOME/.pip/caches
 
     [ -f /usr/local/bin/virtualenvwrapper.sh ] && . /usr/local/bin/virtualenvwrapper.sh
+
+    if [ -d "$HOME/Library/Python/3.6/bin/" ]; then
+        export PATH="$PATH:$HOME/Library/Python/3.6/bin/"
+    fi
 fi
 
 # ruby stuff
