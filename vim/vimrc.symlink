@@ -83,6 +83,9 @@ if &t_Co > 2 || has("gui_running")
 endif
 syntax on           " turn on syntax highlighting
 syntax enable
+if &diff
+    colorscheme mycolorscheme
+endif
 
 " Turns autocompletion on for various filetypes "
 autocmd FileType python set omnifunc=pythoncomplete#Complete

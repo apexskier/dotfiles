@@ -131,3 +131,5 @@ export REACT_EDITOR_PATTERN="-r -g {filename}:{line}:{column}"
 
 # narwhal tests
 export ALLOW_CONSOLE_IN_TESTS=true
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
