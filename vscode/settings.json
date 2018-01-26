@@ -12,17 +12,69 @@
 
     "vim.ignorecase": false,
     "vim.smartcase": true,
-    "vim.hlsearch": false,
+    "vim.hlsearch": true,
     "vim.incsearch": true,
+    "vim.history": 500,
+    "vim.otherModesKeyBindingsNonRecursive": [
+        // unhighlight search (hlsearch) with `\⏎`
+        {
+            "before": [
+                "<leader>",
+                "<cr>"
+            ],
+            "after": [],
+            "commands": [
+                {
+                    "command": ":nohl"
+                }
+            ]
+        },
+        // execute q macro with Q
+        {
+            "before": [
+                "Q"
+            ],
+            "after": [
+                "@",
+                "q"
+            ]
+        },
+        {
+            "before": [
+                "g",
+                "r"
+            ],
+            "commands": [
+                {
+                    "command": "editor.action.referenceSearch.trigger",
+                    "args": []
+                }
+            ]
+        }
+    ],
 
     "javascript.validate.enable": false,
     "eslint.autoFixOnSave": true,
     "tslint.autoFixOnSave": true,
-
-    "workbench.welcome.enabled": true,
-
-    // enable "preview" (non-persistent opened files) from search, but not ‚åòP
-    "workbench.editor.enablePreview": true,
-    "workbench.editor.enablePreviewFromQuickOpen": false
+    
+    // enable "preview" (non-persistent opened files) from search, but not ⌘P
+    "workbench.editor.enablePreview": false,
+    "workbench.editor.enablePreviewFromQuickOpen": false,
+    "window.zoomLevel": 0,
+    "typescript.check.npmIsInstalled": false,
+    "typescript.tsserver.log": "normal",
+    "emmet.showAbbreviationSuggestions": false,
+    "emmet.showExpandedAbbreviation": "never",
+    "npm.autoDetect": "off",
+    "gulp.autoDetect": "off",
+    "grunt.autoDetect": "off",
+    "jake.autoDetect": "off",
+    "terminal.explorerKind": "external",
+    "scss.validate": false,
+    "jest.enableSnapshotUpdateMessages": false,
+    "explorer.confirmDragAndDrop": false,
+    "go.useLanguageServer": true,
+    "flow.enabled": false,
+    "workbench.editor.tabSizing": "shrink",
+    "svgviewer.enableautopreview": true
 }
-
