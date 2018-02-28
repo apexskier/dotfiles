@@ -94,10 +94,6 @@ if command -v python >/dev/null 2>&1; then
     export PIP_DOWNLOAD_CACHE=$HOME/.pip/caches
 
     [ -f /usr/local/bin/virtualenvwrapper.sh ] && . /usr/local/bin/virtualenvwrapper.sh
-
-    if [ -d "$HOME/Library/Python/3.6/bin/" ]; then
-        export PATH="$PATH:$HOME/Library/Python/3.6/bin/"
-    fi
 fi
 
 # ruby stuff
@@ -122,6 +118,7 @@ fi
 # android dev
 if [ -d "$HOME/Library/Android/sdk" ]; then
     export ANDROID_HOME="$HOME/Library/Android/sdk"
+    export PATH="$PATH:$ANDROID_HOME/platform-tools"
 fi
 
 . ~/.bash_prompt

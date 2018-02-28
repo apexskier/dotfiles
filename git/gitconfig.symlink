@@ -55,12 +55,12 @@
     autocorrect = 1
 [merge]
     tool = vimdiff
-[diff]
-    tool = vimdiff
-[push]
-	default = current
+[mergetool "mergepbx"]
+	cmd = mergepbx "$BASE" "$LOCAL" "$REMOTE" -o "$MERGED"
 [mergetool]
 	keepBackup = false
+[push]
+	default = current
 [diff "spaceman-diff"]
     command = ~/.dotfiles/bin/spaceman-diff
 [url "git@github.com:"]

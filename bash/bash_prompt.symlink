@@ -1,11 +1,5 @@
 # vim: ft=sh
 
-
-#if [ "$color_prompt" = yes ]; then
-#    PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\n$ "
-#else
-#    PS1="\[\033[36m\]\u\[\033[m\]@\[\033[32m\]\h:\[\033[33;1m\]\w\[\033[m\]\n$ "
-#fi
 unset color_prompt force_color_prompt
 
     nocol="\[\033[m\]"
@@ -26,30 +20,6 @@ lt_purple="\[\033[1;35m\]"
    yellow="\[\033[1;33m\]"
     white="\[\033[1;37m\]"
 
-
-#last_seconds=$SECONDS
-#runtime() {
-#    if [[ $cmd_seconds -ge 2 ]]; then
-#        echo -ne "$brown"
-#        # display runtime seconds as days, hours, minutes, and seconds
-#        [[ "$cmd_seconds" -ge 86400 ]] && echo -ne $((cmd_seconds / 86400))d
-#        [[ "$cmd_seconds" -ge 3600 ]] && echo -ne $((cmd_seconds % 86400 / 3600))h
-#        [[ "$cmd_seconds" -ge 60 ]] && echo -ne $((cmd_seconds % 3600 / 60))m
-#        echo -ne $((cmd_seconds % 60))s
-#        echo -ne "$nocol"
-#    fi
-#}
-#reset_runtime() {
-#    # Compute number of seconds since program was started
-#    cmd_seconds=$((SECONDS - last_seconds))
-#    # Reset when no command actually executed
-#    [ "$cmd_executed" != 1 ] && last_seconds=$SECONDS && cmd_seconds=0
-#    # Make sure last command wasn't setting the prompt
-#    [ "$BASH_COMMAND" = set_prompt ] && cmd_executed=0 && return
-#    cmd_executed=1
-#}
-## call whenever bash executes a command
-#trap 'reset_runtime' DEBUG
 
 _USER=""
 # Yellow for root, bold if the user is not the login one, else no color.
@@ -103,13 +73,7 @@ function set_prompt() {
     local -i err=$?
     local cmd_info=""
     if (( err != 0 )); then
-        cmd_info="$red$err ↩$nocol "
-    else
-        cmd_info=""
-    fi
-    #cmd_info+=$(runtime)
-    if [[ -n "$cmd_info" ]] ; then
-        cmd_info+="\n"
+        cmd_info="$red$err ↩$nocol\n"
     fi
 
     local ret
@@ -146,19 +110,22 @@ function set_prompt() {
     PS1=$ret
 }
 
-#simple prompt
-#export PROMPT_COMMAND=""
-#export PS1="\u@\h:\w\n$ "
+# don't add duplicate commands to the prompt command
 
-# export PROMPT_COMMAND=set_prompt
-# update_terminal_cwd is for autojump
-if [ -n "$(type -t autojump_add_to_database)" ] && [ "$(type -t autojump_add_to_database)" = function ]
+function echo_unique_prompt_commands() {
+    for command in $(echo ${PROMPT_COMMAND//;/ })
+    do
+        echo $command
+    done
+}
+
+new_prompt_command=$(echo_unique_prompt_commands | awk '!x[$0]++' | tr '\n' ';')
+if ! echo_unique_prompt_commands | grep '^set_prompt$'
 then
-    export PROMPT_COMMAND="set_prompt; update_terminal_cwd; autojump_add_to_database; $PROMPT_COMMAND"
-else
-    export PROMPT_COMMAND="set_prompt; $PROMPT_COMMAND"
+    new_prompt_command="set_prompt;$new_prompt_command"
 fi
-# export PROMPT_COMMAND="${PROMPT_COMMAND:+$PROMPT_COMMAND ;} set_prompt"
+
+export PROMPT_COMMAND="$new_prompt_command"
 
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
