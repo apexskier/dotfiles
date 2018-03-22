@@ -105,7 +105,7 @@ function set_prompt() {
     ret+="$gitbranch"
     # test "$(expr ${#ret} + ${#venv})" -gt "$cols" && ret+="\n"
     ret+="$venv"
-    ret+="\n$ "
+    ret+="\n${lt_grey}$ ${nocol}"
 
     PS1=$ret
 }
@@ -120,7 +120,7 @@ function echo_unique_prompt_commands() {
 }
 
 new_prompt_command=$(echo_unique_prompt_commands | awk '!x[$0]++' | tr '\n' ';')
-if ! echo_unique_prompt_commands | grep '^set_prompt$'
+if ! echo_unique_prompt_commands | grep '^set_prompt$' > /dev/null
 then
     new_prompt_command="set_prompt;$new_prompt_command"
 fi
