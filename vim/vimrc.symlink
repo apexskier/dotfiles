@@ -28,6 +28,8 @@ NeoBundle 'sirtaj/vim-openscad'
 NeoBundle 'junegunn/vim-emoji'
 NeoBundle 'ConradIrwin/vim-bracketed-paste'
 NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'junegunn/fzf'
+NeoBundle 'junegunn/fzf.vim'
 
 call neobundle#end()
 
