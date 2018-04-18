@@ -67,6 +67,8 @@ else
     mark="$lt_grey$mark$nocol"
 fi
 
+# make this a little less prominant and different from normal text
+PS2="${lt_grey}> ${nocol}"
 
 function set_prompt() {
     # get return code of last cmd
@@ -105,7 +107,9 @@ function set_prompt() {
     ret+="$gitbranch"
     # test "$(expr ${#ret} + ${#venv})" -gt "$cols" && ret+="\n"
     ret+="$venv"
-    ret+="\n${lt_grey}$ ${nocol}"
+
+    # use multi-line prompt as the main prompt as well
+    ret+="\n$PS2"
 
     PS1=$ret
 }
