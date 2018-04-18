@@ -60,7 +60,7 @@ esac
 unset connection_type
 
 mark="@"
-# If we are connected with a X11 support
+# If we are connected with X11 support (remote windowing on linux)
 if [[ -n "$DISPLAY" ]] ; then
     mark="$white$mark$nocol"
 else
@@ -68,6 +68,7 @@ else
 fi
 
 # make this a little less prominant and different from normal text
+# I don't use $ because it means something in bash
 PS2="${lt_grey}> ${nocol}"
 
 function set_prompt() {
