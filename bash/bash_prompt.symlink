@@ -69,7 +69,8 @@ fi
 
 # make this a little less prominant and different from normal text
 # I don't use $ because it means something in bash
-PS2="${lt_grey}> ${nocol}"
+PS2="${lt_grey}▻ ${nocol}"
+ps1line="${lt_grey}► ${nocol}"
 
 function set_prompt() {
     # get return code of last cmd
@@ -110,7 +111,7 @@ function set_prompt() {
     ret+="$venv"
 
     # use multi-line prompt as the main prompt as well
-    ret+="\n$PS2"
+    ret+="\n$ps1line"
 
     PS1=$ret
 }
