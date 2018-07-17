@@ -64,14 +64,14 @@ link_file () {
   then
     if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]
     then
-      local currentSrc="$(readlink $dst)"
+      local currentSrc="$(readlink "$dst")"
 
       if [ "$currentSrc" == "$src" ]
       then
         skip=true;
       else
 
-        user "File already exists: $dst ($(basename "$src")), what do you want to do?\n\
+        user "File already exists: $dst ($(basename "$src")), what do you want to do?\\n\
         [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
         read -n 1 action
 
@@ -118,9 +118,9 @@ link_file () {
 
   if [ "$skip" != "true" ]  # "false" or empty
   then
-    mkdir -p $(dirname "$2")
-    ln -s "$1" "$2"
-    success "linked $1 to $2"
+    mkdir -p $(dirname "$dst")
+    ln -s "$src" "$dst"
+    success "linked $src to $dst"
   fi
 }
 
@@ -139,8 +139,7 @@ install_dotfiles () {
   # install files of the form ~/.topic/config
   for src in $(find "$DOTFILES_ROOT" -maxdepth 2 -name 'config' -not -path "$DOTFILES_ROOT/.*")
   do
-    dst="$HOME/.$(basename $(dirname $src))/$(basename $src)"
-    mkdir -p $(dirname $dst)
+    dst="$HOME/.$(basename $(dirname "$src"))/$(basename "$src")"
     link_file "$src" "$dst"
   done
 
@@ -150,13 +149,24 @@ install_dotfiles () {
     # works for now
     str=${src#$DOTFILES_ROOT/}
     dst="$HOME/.config/${str%.*}"
-    mkdir -p $(dirname $dst)
     link_file "$src" "$dst"
   done
+
+  if [ "$(uname -s)" == "Darwin" ]
+  then
+    # install files that go in macos's app support
+    # note: -u 3 opens a new file descriptor to read from so we don't clobber stdin
+    while read -u 3 -r line
+    do
+      src="$DOTFILES_ROOT/$(echo "$line" | cut -d: -f1)"
+      dst="$HOME/Library/Application Support/$(echo "$line" | cut -d: -f2)"
+      link_file "$src" "$dst"
+    done 3< "$DOTFILES_ROOT/appsupport"
+  fi
 }
 
-setup_gitconfig
-setup_awesome
+# setup_gitconfig
+# setup_awesome
 install_dotfiles
 
 echo ''
