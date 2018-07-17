@@ -32,18 +32,20 @@ brew install homebrew/dupes/screen
 
 # Install other useful binaries
 brew install ack
+brew install bash-completion
 brew install cmake
 brew install diff-so-fancy
 brew install foremost
-brew install git
-brew install bash-completion
-brew install hub
 brew install gifsicle
+brew install git
+brew install hub
 brew install imagemagick --with-webp
+brew install jq
 brew install lynx
 brew install mercurial
 brew install nmap
 brew install node # This installs `npm` too using the recommended installation method
+brew install noti
 brew install ruby
 brew install ruby-build
 brew install spark
@@ -51,7 +53,6 @@ brew install tmux
 brew install tree
 brew install ucspi-tcp # `tcpserver` et al.
 brew install xctool
-brew install noti
 
 # Remove outdated versions from the cellar
 brew cleanup
