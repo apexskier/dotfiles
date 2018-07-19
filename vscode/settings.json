@@ -9,24 +9,19 @@
     "editor.minimap.enabled": false,
     "editor.minimap.renderCharacters": false,
     "editor.minimap.maxColumn": 120,
-
-    "vim.ignorecase": false,
     "vim.smartcase": true,
     "vim.hlsearch": true,
     "vim.incsearch": true,
     "vim.history": 500,
-    "vim.otherModesKeyBindingsNonRecursive": [
+    "vim.normalModeKeyBindingsNonRecursive": [
         // unhighlight search (hlsearch) with `\⏎`
         {
             "before": [
                 "<leader>",
                 "<cr>"
             ],
-            "after": [],
             "commands": [
-                {
-                    "command": ":nohl"
-                }
+                ":nohl"
             ]
         },
         // execute q macro with Q
@@ -39,18 +34,74 @@
                 "q"
             ]
         },
+        // show usages
         {
             "before": [
                 "g",
                 "r"
             ],
             "commands": [
-                {
-                    "command": "editor.action.referenceSearch.trigger",
-                    "args": []
-                }
+                "editor.action.referenceSearch.trigger"
+            ]
+        },
+        // preview definition
+        {
+            "before": [
+                "g",
+                "R"
+            ],
+            "commands": [
+                "editor.action.previewDeclaration"
+            ]
+        },
+        // jump to definition
+        {
+            "before": [
+                "g",
+                "d"
+            ],
+            "commands": [
+                "editor.action.goToDeclaration"
+            ]
+        },
+        // jump to type definition
+        {
+            "before": [
+                "g",
+                "D"
+            ],
+            "commands": [
+                "editor.action.goToTypeDefinition"
+            ]
+        },
+        {
+            "before": [
+                "c",
+                "n"
+            ],
+            "commands": [
+                "editor.action.rename"
             ]
         }
+    ],
+    "vim.visualModeKeyBindingsNonRecursive": [
+        // nicer indentation
+        {
+            "before": [
+                ">"
+            ],
+            "commands": [
+                "editor.action.indentLines"
+            ]
+        },
+        {
+            "before": [
+                "<"
+            ],
+            "commands": [
+                "editor.action.outdentLines"
+            ]
+        },
     ],
 
     "javascript.validate.enable": false,
@@ -166,5 +217,6 @@
     "workbench.editor.labelFormat": "short",
     "cSpell.language": "en,en-US",
     "gitlens.historyExplorer.enabled": true,
-    "stylelint.enable": false
+    "stylelint.enable": false,
+    "workbench.colorTheme": "Night Owl No Italics"
 }
