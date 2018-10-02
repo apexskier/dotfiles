@@ -22,6 +22,12 @@ then
     exit $?
 fi
 
+if [ -e "${GIT_DIR}/REVERT_HEAD" ]
+then
+    git revert --abort
+    exit $?
+fi
+
 if [ -e "${GIT_DIR}/BISECT_LOG" ]
 then
     HEAD="$(git rev-parse HEAD)"
