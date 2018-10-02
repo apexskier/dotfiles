@@ -185,9 +185,11 @@
         "locme",
         "mailto",
         "nolink",
+        "pollyjs",
         "react",
         "recurse",
         "remitly",
+        "rerequest",
         "sassify",
         "serializable",
         "serializers",
@@ -218,5 +220,14 @@
     "cSpell.language": "en,en-US",
     "gitlens.historyExplorer.enabled": true,
     "stylelint.enable": false,
-    "workbench.colorTheme": "Night Owl No Italics"
+    "workbench.colorTheme": "Solarized Dark",
+    "workbench.statusBar.feedback.visible": false,
+    "gutterpreview.showimagepreviewongutter": false,
+    "inlineTypes.decorationStyle": {
+        "opacity": 0.4,
+        "warnColor": "rgba(220, 50, 47, 0.6)" // solarized red
+    },
+    "inlineTypes.updateDelay": 200,
+    "breadcrumbs.enabled": true,
+    "typescript.preferences.quoteStyle": "double"
 }
