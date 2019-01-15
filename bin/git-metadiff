@@ -6,14 +6,15 @@
 # `git metadiff origin/branch branch` <- what did a rebase do?
 # `git metadiff HEAD [commit]...[commit]` <- did my squash change things?
 
-a=`git rev-parse "$1"`
-b=`git rev-parse "$2"`
-af="/tmp/git-metadiff-$a"
-bf="/tmp/git-metadiff-$b"
+set -ex
 
-git show "$1" > "$af"
-git show "$2" > "$bf"
+dir=$(mktemp -d)
+af="$dir/git-metadiff-a"
+bf="$dir/git-metadiff-b"
 
-`git config diff.tool` "$af" "$bf"
+git diff "$1" > "$af"
+git diff "$2" > "$bf"
+
+$(git config diff.tool || echo "diff") "$af" "$bf"
 
 rm "$af" "$bf"

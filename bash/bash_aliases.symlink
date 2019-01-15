@@ -28,7 +28,11 @@ alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
 function findport() {
-  lsof -n -i4TCP:"$1" | grep LISTEN
+    lsof -n -i4TCP:"$1" | grep LISTEN
+}
+
+function killport() {
+    kill -9 $(findport 7777 | tr -s ' ' | cut -d' ' -f2)
 }
 
 # macos quicklook from the terminal

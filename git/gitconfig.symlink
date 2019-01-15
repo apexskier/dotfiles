@@ -6,23 +6,22 @@
 [hub]
 	protocol = git
 [alias]
-    st = status -sb
+    abort = !~/.dotfiles/bin/git-abort
+    co = checkout
+    count = shortlog -sn
+    diff-here = !~/.dotfiles/bin/git-diff-here
+    ff = !~/.dotfiles/bin/git-ff
+    git = !exec git
     lg = log --graph --decorate --oneline
     lga = log --graph --decorate --oneline --all
-    co = checkout
-    promote = !~/.dotfiles/bin/git-promote
-    wtf     = !~/.dotfiles/bin/git-wtf
-    rank-contributors = !$ZSH/bin/git-rank-contributors
-    count   = shortlog -sn
-    clear = !(cd ./$(git rev-parse --show-cdup) && rm -r $(git status --porcelain | grep '^??' | sed s/^...//))
-    checkout-all = !(cd "./$(git rev-parse --show-cdup)" && git checkout -- "$(git status --porcelain | grep '^ [MDA]' | sed s/^...//)")
-    git = !exec git
-    abort = !~/.dotfiles/bin/git-abort
-    diff-here = !~/.dotfiles/bin/git-diff-here
-    up = !gitup
     metadiff = !~/.dotfiles/bin/git-metadiff
-    ff = !~/.dotfiles/bin/git-ff
     permission-reset = "!git diff -p | grep -E \"^(diff|old mode|new mode)\" | sed -e \"s/^old/NEW/;s/^new/old/;s/^NEW/new/\" | git apply"
+    promote = !~/.dotfiles/bin/git-promote
+    rank-contributors = !$ZSH/bin/git-rank-contributors
+    st = status -sb
+    tidy = !~/.dotfiles/bin/git-tidy
+    up = !gitup
+    wtf = !~/.dotfiles/bin/git-wtf
 [color]
     diff = auto
     status = auto

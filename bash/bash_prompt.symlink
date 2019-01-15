@@ -1,5 +1,7 @@
 # vim: ft=sh
 
+#set -x
+
 unset color_prompt force_color_prompt
 
     nocol="\[\033[m\]"
@@ -35,7 +37,9 @@ else # root!
 fi
 _USER+="\u$nocol"
 
-connection_type() {
+STATIC_TITLE_TEXT=""
+
+get_connection_type() {
     if [[ -n "$SSH_CLIENT$SSH2_CLIENT$SSH_TTY" ]] ; then
         echo ssh
     else
@@ -51,13 +55,15 @@ connection_type() {
         fi
     fi
 }
-case "$(connection_type)" in
+CONNECTION_TYPE=$(get_connection_type)
+case "$CONNECTION_TYPE" in
 ssh)
-    connectionmark="⇝" ;;
+    connectionmark="⇝"
+    ;;
 tel)
-    connectionmark="⇢" ;;
+    connectionmark="⇢"
+    ;;
 esac
-unset connection_type
 
 mark="@"
 # If we are connected with X11 support (remote windowing on linux)
@@ -113,6 +119,9 @@ function set_prompt() {
     ret+="\n$PS2"
 
     PS1=$ret
+
+    # custom terminal title
+    # echo -ne "\033]0;${connectionmark}\007"
 }
 
 # don't add duplicate commands to the prompt command

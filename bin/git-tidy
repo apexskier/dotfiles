@@ -1,0 +1,7 @@
+#!/bin/bash
+
+# delete merged branches
+git branch -d $(git branch --merged=master | grep -v master)
+
+# prune remote branches
+git fetch --prune

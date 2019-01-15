@@ -74,9 +74,10 @@
                 "editor.action.goToTypeDefinition"
             ]
         },
+        // rename
         {
             "before": [
-                "c",
+                "g",
                 "n"
             ],
             "commands": [
@@ -126,7 +127,6 @@
     "go.useLanguageServer": true,
     "flow.enabled": false,
     "workbench.editor.tabSizing": "shrink",
-    "svgviewer.enableautopreview": true,
     "cSpell.showStatus": false,
     "cSpell.allowCompoundWords": true,
     "cSpell.words": [
@@ -168,7 +168,7 @@
         "line"
     ],
     "gitlens.statusBar.enabled": false,
-    "gitlens.currentLine.format": "${ago}",
+    "gitlens.currentLine.format": "${authorAgo}",
     "cSpell.userWords": [
         "csrf",
         "decamelize",
@@ -194,6 +194,7 @@
         "serializable",
         "serializers",
         "signup",
+        "sjcl",
         "stateful",
         "symlinks",
         "transpilation",
@@ -222,12 +223,22 @@
     "stylelint.enable": false,
     "workbench.colorTheme": "Solarized Dark",
     "workbench.statusBar.feedback.visible": false,
-    "gutterpreview.showimagepreviewongutter": false,
-    "inlineTypes.decorationStyle": {
-        "opacity": 0.4,
-        "warnColor": "rgba(220, 50, 47, 0.6)" // solarized red
-    },
-    "inlineTypes.updateDelay": 200,
     "breadcrumbs.enabled": true,
-    "typescript.preferences.quoteStyle": "double"
+    "typescript.preferences.quoteStyle": "double",
+    "typescript.updateImportsOnFileMove.enabled": "never",
+    "search.useGlobalIgnoreFiles": true,
+    "workbench.editor.highlightModifiedTabs": true,
+    "scss.lint.validProperties": [
+        "appearance"
+    ],
+    "gitlens.explorers.avatars": false,
+    "gitlens.hovers.avatars": false,
+    "gitlens.hovers.currentLine.changes": false,
+    "gitlens.views.repositories.enabled": false,
+    "gitlens.views.fileHistory.enabled": true,
+    "gitlens.views.lineHistory.enabled": true,
+    "gitlens.views.avatars": false,
+    "gitlens.views.compare.avatars": false,
+    "gitlens.views.repositories.avatars": false,
+    "gitlens.views.search.avatars": false
 }
