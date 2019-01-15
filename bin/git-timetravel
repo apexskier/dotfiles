@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# Checkout a commit at a particular time.
+
+git checkout $(git rev-list -n 1 --before="$1" master)

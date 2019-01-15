@@ -22,6 +22,7 @@
     tidy = !~/.dotfiles/bin/git-tidy
     up = !gitup
     wtf = !~/.dotfiles/bin/git-wtf
+    timetravel = !~/.dotfiles/bin/git-timetravel
 [color]
     diff = auto
     status = auto
