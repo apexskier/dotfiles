@@ -1,7 +1,11 @@
 #!/bin/bash
 
 # delete merged branches
-git branch -d $(git branch --merged=master | grep -v master)
+MERGED=$(git branch --merged=master | grep -v master)
+if [ ! -z "$MERGED" ]
+then
+    git branch -d $MERGED
+fi
 
 # prune remote branches
 git fetch --prune

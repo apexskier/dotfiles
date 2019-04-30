@@ -153,7 +153,6 @@
         "types",
         "unmount"
     ],
-    "gitlens.gitExplorer.enabled": false,
     "gitlens.codeLens.authors.enabled": false,
     "gitlens.codeLens.recentChange.enabled": false,
     "gitlens.codeLens.enabled": false,
@@ -170,6 +169,8 @@
     "gitlens.statusBar.enabled": false,
     "gitlens.currentLine.format": "${authorAgo}",
     "cSpell.userWords": [
+        "Quovo",
+        "authed",
         "csrf",
         "decamelize",
         "deduping",
@@ -184,6 +185,8 @@
         "ifsc",
         "locme",
         "mailto",
+        "memoized",
+        "memoizes",
         "nolink",
         "pollyjs",
         "react",
@@ -219,7 +222,6 @@
     "flow.runOnEdit": false,
     "workbench.editor.labelFormat": "short",
     "cSpell.language": "en,en-US",
-    "gitlens.historyExplorer.enabled": true,
     "stylelint.enable": false,
     "workbench.colorTheme": "Solarized Dark",
     "workbench.statusBar.feedback.visible": false,
@@ -231,14 +233,21 @@
     "scss.lint.validProperties": [
         "appearance"
     ],
-    "gitlens.explorers.avatars": false,
     "gitlens.hovers.avatars": false,
     "gitlens.hovers.currentLine.changes": false,
     "gitlens.views.repositories.enabled": false,
     "gitlens.views.fileHistory.enabled": true,
     "gitlens.views.lineHistory.enabled": true,
-    "gitlens.views.avatars": false,
     "gitlens.views.compare.avatars": false,
     "gitlens.views.repositories.avatars": false,
-    "gitlens.views.search.avatars": false
+    "gitlens.views.search.avatars": false,
+    // "[javascript]": {
+    //     "editor.formatOnSave": true,
+    // },
+    // "[typescript]": {
+    //     "editor.formatOnSave": true,
+    // },
+    // "[scss]": {
+    //     "editor.formatOnSave": true,
+    // }
 }

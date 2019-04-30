@@ -112,6 +112,8 @@ export PATH="$PATH:./node_modules/.bin"
 export PATH="$HOME/.yarn/bin:$PATH"
 # [ -f "$HOME/.yarn-completion" ] && . "$HOME/.yarn-completion"
 
+REACT_DEBUGGER="open -g 'rndebugger://set-debugger-loc?port=8001'"
+
 # java stuff
 if [ -d "/usr/libexec/java_home" ]; then
     export JAVA_HOME=$(/usr/libexec/java_home)
@@ -132,3 +134,5 @@ export REACT_EDITOR_PATTERN="-r -g {filename}:{line}:{column}"
 export ALLOW_CONSOLE_IN_TESTS=true
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+export GPG_TTY=$(tty)

@@ -32,8 +32,13 @@ function findport() {
 }
 
 function killport() {
-    kill -9 $(findport 7777 | tr -s ' ' | cut -d' ' -f2)
+    kill -9 $(findport "$1" | tr -s ' ' | cut -d' ' -f2)
 }
 
 # macos quicklook from the terminal
 alias ql="qlmanage -p ${@} > /dev/null 2> /dev/null"
+
+function unescapewhitespace() {
+	gsed 's|\\n|\
+|g' | gsed 's|\\t|\t|g'
+}
