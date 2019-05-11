@@ -1,6 +1,6 @@
 # utf8
-set -g utf8
-setw -g utf8 on
+#set -g utf8
+#setw -g utf8 on
 
 # set different prefix key
 unbind C-b
@@ -27,7 +27,7 @@ bind _ split-window -v
 # contents of status bar
 set -g status on
 set -g status-interval 2
-set -g status-utf8 on
+#set -g status-utf8 on
 set -g status-right-length 80
 set -g status-left " [#S] •"
 set -g status-right " #[fg=cyan]#(echo $USER)#[fg=white]@#[fg=green]#H#[fg=white] • %a %d-%b %l:%M %P "
