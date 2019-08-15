@@ -7,7 +7,6 @@
 	protocol = git
 [alias]
     abort = !~/.dotfiles/bin/git-abort
-    co = checkout
     count = shortlog -sn
     diff-here = !~/.dotfiles/bin/git-diff-here
     ff = !~/.dotfiles/bin/git-ff

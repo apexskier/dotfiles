@@ -167,8 +167,9 @@
         "line"
     ],
     "gitlens.statusBar.enabled": false,
-    "gitlens.currentLine.format": "${authorAgo}",
+    "gitlens.currentLine.format": "${author}, ${ago}",
     "cSpell.userWords": [
+        "Apptentive",
         "Quovo",
         "authed",
         "csrf",
