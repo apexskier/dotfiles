@@ -31,10 +31,10 @@ then
     defaults write com.apple.finder ShowRemovableMediaOnDesktop -bool true
 
     # Set up Safari for development.
+    defaults write com.apple.Safari.SandboxBroker ShowDevelopMenu -bool true
     defaults write com.apple.Safari IncludeInternalDebugMenu -bool true
     defaults write com.apple.Safari IncludeDevelopMenu -bool true
     defaults write com.apple.Safari WebKitDeveloperExtrasEnabledPreferenceKey -bool true
-    defaults write com.apple.Safari "com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled" -bool true
     defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 
     # Expand save panel by default
@@ -75,13 +75,16 @@ then
     # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
     defaults write com.apple.finder QuitMenuItem -bool true
 
-    # Set Dropbox as the default location for new Finder windows
+    # Set the default location for new Finder windows
     # For other paths, use `PfLo` and `file:///full/path/here/`
     defaults write com.apple.finder NewWindowTarget -string "PfLo"
-    defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Dropbox/"
+    # defaults write com.apple.finder NewWindowTargetPath -string "file://${HOME}/Dev/"
 
     # Finder: show path bar
     defaults write com.apple.finder ShowPathbar -bool true
+
+    # Finder: show status bar
+    defaults write com.apple.finder ShowStatusBar -bool true
 
     # Finder: allow text selection in Quick Look
     defaults write com.apple.finder QLEnableTextSelection -bool true
@@ -135,11 +138,6 @@ then
 
     # Make Dock icons of hidden applications translucent
     defaults write com.apple.dock showhidden -bool true
-
-    # Add a spacer to the left side of the Dock (where the applications are)
-    #defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}'
-    # Add a spacer to the right side of the Dock (where the Trash is)
-    #defaults write com.apple.dock persistent-others -array-add '{tile-data={}; tile-type="spacer-tile";}'
 
     # Hot corners
     # Possible values:
@@ -230,4 +228,17 @@ then
 
     # enable vnc and remote desktop
     sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -off -restart -agent -privs -all -allowAccessFor -allUsers
+
+    # Apple Calendar
+    defaults write com.apple.iCal "number of hours displayed" -int 7
+    defaults write com.apple.iCal "first day of week" -int 1
+
+    # touch bar
+    defaults write com.apple.controlstrip MiniCustomized "( \
+        com.apple.system.brightness, \
+        com.apple.system.volume, \
+        com.apple.system.mute, \
+        com.apple.system.screen-lock \
+    )"
+    killall ControlStrip
 fi
