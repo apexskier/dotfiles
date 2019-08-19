@@ -43,7 +43,7 @@ if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
 fi
 . ~/.bash_completion
 
-. ~/.profile
+[ -f "~/.profile" ] && . ~/.profile
 
 export EDITOR=vim
 

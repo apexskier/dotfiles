@@ -17,18 +17,51 @@ then
   elif test "$(expr substr $(uname -s) 1 5)" = "Linux"
   then
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install)"
+  else
+    echo "Homebrew not available on this system"
+    exit 0
   fi
+else
+  # Make sure we're using the latest Homebrew
+  brew update
 fi
 
-if command -v brew >/dev/null 2>&1
-then
-    HOMEBREW_CASK_OPTS="--appdir=/Applications"
-    echo "  Installing command line tools"
-    bash `git rev-parse --show-cdup`homebrew/Brewfile
-    # echo "  Installing apps"
-    # bash `git rev-parse --show-cdup`homebrew/Caskfile
+# Upgrade any already-installed formulae
+brew upgrade
 
-    echo "    you may want to install xQuartz -> http://xquartz.macosforge.org/landing/"
-fi
+brew install bash-completion
+brew install git
+brew install hub
+brew install imagemagick
+brew install jq
+brew install fzf
+brew install rg
+brew install node # and `npm`
+brew install tmux
 
-exit 0
+# I'm not sure about all this stuff yet
+
+# # Install GNU core utilities (those that come with OS X are outdated)
+# # Don't forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
+# brew install coreutils
+# # Install some other useful utilities like `sponge`
+# brew install moreutils
+# # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
+# brew install findutils
+# # Install Bash 4
+# # Note: don't forget to add `/usr/local/bin/bash` to `/etc/shells` before running `chsh`.
+# brew install bash
+# brew install bash-completion
+brew install gnu-sed
+
+# # Install wget with IRI support
+# brew install wget --enable-iri
+
+# # Install more recent versions of some OS X tools
+brew install vim
+# brew install homebrew/dupes/grep
+
+# brew install ack
+
+# Remove outdated versions from the cellar
+brew cleanup
