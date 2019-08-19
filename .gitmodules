@@ -1,3 +1,0 @@
-[submodule "bin/spaceman-diff-repo"]
-	path = bin/spaceman-diff-repo
-	url = git@github.com:apexskier/spaceman-diff.git

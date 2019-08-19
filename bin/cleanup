@@ -1,8 +1,0 @@
-#!/bin/sh
-
-# cleanup files
-find . -type f -name "\.*\.un~" -exec rm -vf {} \; # find and remove undo files
-find . -type f -name "\.*\.swp" -exec rm -vf {} \; # find and remove swp files
-find . -type f -name "\.*\.tmp" -exec rm -vf {} \; # find and remove tmp files
-find . -type f -name "*\.pyc" -exec rm -vf {} \; # find and remove pyc files
-find . -type f -name "*\.orig" -exec rm -vf {} \; # find and remove pyc files
