@@ -23,11 +23,6 @@ Host *.remitly.lep
     UserKnownHostsFile /dev/null
     LogLevel ERROR
 
-Host *.remitly.internal
-    StrictHostKeyChecking no
-    UserKnownHostsFile /dev/null
-    LogLevel ERROR
-
 Host 10.1.*.*
     StrictHostKeyChecking no
     UserKnownHostsFile /dev/null
