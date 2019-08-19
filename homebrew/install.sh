@@ -38,6 +38,7 @@ brew install fzf
 brew install rg
 brew install node # and `npm`
 brew install tmux
+brew install spaceman-diff
 
 # I'm not sure about all this stuff yet
 
