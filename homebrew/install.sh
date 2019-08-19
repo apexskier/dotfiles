@@ -30,39 +30,20 @@ fi
 brew upgrade
 
 brew install bash-completion
+brew install fzf
 brew install git
+brew install gnu-sed
 brew install hub
 brew install imagemagick
 brew install jq
-brew install fzf
-brew install rg
 brew install node # and `npm`
-brew install tmux
+brew install node@10
+brew install node@8
+brew install ripgrep
 brew install spaceman-diff
-
-# I'm not sure about all this stuff yet
-
-# # Install GNU core utilities (those that come with OS X are outdated)
-# # Don't forget to add `$(brew --prefix coreutils)/libexec/gnubin` to `$PATH`.
-# brew install coreutils
-# # Install some other useful utilities like `sponge`
-# brew install moreutils
-# # Install GNU `find`, `locate`, `updatedb`, and `xargs`, `g`-prefixed
-# brew install findutils
-# # Install Bash 4
-# # Note: don't forget to add `/usr/local/bin/bash` to `/etc/shells` before running `chsh`.
-# brew install bash
-# brew install bash-completion
-brew install gnu-sed
-
-# # Install wget with IRI support
-# brew install wget --enable-iri
-
-# # Install more recent versions of some OS X tools
+brew install tmux
 brew install vim
-# brew install homebrew/dupes/grep
-
-# brew install ack
+brew install yarn
 
 # Remove outdated versions from the cellar
 brew cleanup
