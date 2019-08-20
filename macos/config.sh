@@ -241,4 +241,8 @@ then
         com.apple.system.screen-lock \
     )"
     killall ControlStrip
+
+    # menu bar date and time
+    defaults write com.apple.menuextra.clock "DateFormat" 'E, MMM d, hh:mm a'
+    killall -KILL SystemUIServer
 fi
