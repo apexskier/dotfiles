@@ -124,9 +124,6 @@ then
         OpenWith -bool true \
         Privileges -bool true
 
-    # Hide indicator lights for open applications in the Dock
-    defaults write com.apple.dock show-process-indicators -bool false
-
     # Speed up Mission Control animations
     defaults write com.apple.dock expose-animation-duration -float 0.1
 
@@ -138,6 +135,9 @@ then
 
     # Make Dock icons of hidden applications translucent
     defaults write com.apple.dock showhidden -bool true
+
+    # hide dock
+    defaults write com.apple.dock autohide -bool true
 
     # Hot corners
     # Possible values:
@@ -223,7 +223,6 @@ then
     defaults write org.m0k.transmission DownloadAsk -bool false
     # Use `~/Documents/Torrents` to store incomplete downloads
     defaults write org.m0k.transmission UseIncompleteDownloadFolder -bool true
-    mkdir "${HOME}/Downloads/Torrents"
     defaults write org.m0k.transmission IncompleteDownloadFolder -string "${HOME}/Downloads/Torrents"
 
     # enable vnc and remote desktop
