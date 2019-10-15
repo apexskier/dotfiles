@@ -1,0 +1,12 @@
+#!/bin/bash
+#
+# graceful version of jq that ignores invalid json and outputs it as is
+
+if [ -z "$1" ]
+then
+    cmd='.'
+else
+    cmd="$1"
+fi
+
+cat | jq -Rr ". as \$line | try (fromjson | ${cmd}) catch \$line"
