@@ -107,8 +107,28 @@
 
     "javascript.validate.enable": false,
     "eslint.autoFixOnSave": true,
-    "tslint.autoFixOnSave": true,
-    
+    "editor.codeActionsOnSave": {
+        "source.fixAll.tslint": true
+    },
+    "[javascript]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[typescript]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[typescriptreact]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+    },
+    "[scss]": {
+        "editor.formatOnSave": true,
+    },
+    // "[markdown]": {
+    //     "editor.formatOnSave": true,
+    // },
+
     // enable "preview" (non-persistent opened files) from search, but not ⌘P
     "workbench.editor.enablePreview": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
@@ -183,6 +203,7 @@
         "deserializer",
         "directionality",
         "forex",
+        "hackathon",
         "ifsc",
         "locme",
         "mailto",
@@ -242,13 +263,8 @@
     "gitlens.views.compare.avatars": false,
     "gitlens.views.repositories.avatars": false,
     "gitlens.views.search.avatars": false,
-    // "[javascript]": {
-    //     "editor.formatOnSave": true,
-    // },
-    // "[typescript]": {
-    //     "editor.formatOnSave": true,
-    // },
-    // "[scss]": {
-    //     "editor.formatOnSave": true,
-    // }
+    "puppet.editorService.enable": false,
+    "puppet.editorService.hover.showMetadataInfo": false,
+    "puppet.pdk.checkVersion": false,
+    "puppet.titleBar.pdkNewModule.enable": false
 }
