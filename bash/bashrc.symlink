@@ -65,6 +65,7 @@ if command -v brew >/dev/null 2>&1; then
     [ -f "$bp/etc/bash_completion" ] && . "$bp/etc/bash_completion"
 
     export PATH="$bp/opt/curl/bin:$PATH"
+    [ -d "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" ] && export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 fi
 
 # go stuff
@@ -95,6 +96,9 @@ if command -v python >/dev/null 2>&1; then
     export PIP_DOWNLOAD_CACHE=$HOME/.pip/caches
 
     [ -f /usr/local/bin/virtualenvwrapper.sh ] && . /usr/local/bin/virtualenvwrapper.sh
+    if [ -d ~/Library/Python/3.7/bin ]; then
+        export PATH="$PATH:~/Library/Python/3.7/bin"
+    fi
 fi
 
 # ruby stuff

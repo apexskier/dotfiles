@@ -191,6 +191,7 @@
     "cSpell.userWords": [
         "Apptentive",
         "Quovo",
+        "Remitly's",
         "authed",
         "csrf",
         "decamelize",
@@ -266,5 +267,8 @@
     "puppet.editorService.enable": false,
     "puppet.editorService.hover.showMetadataInfo": false,
     "puppet.pdk.checkVersion": false,
-    "puppet.titleBar.pdkNewModule.enable": false
+    "puppet.titleBar.pdkNewModule.enable": false,
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    }
 }
