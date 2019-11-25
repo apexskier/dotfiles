@@ -1,27 +1,22 @@
-Host matheny matheny.camlittle.com
+Host camlittle camlittle.com
     User cameronlittle
-    Hostname matheny.camlittle.com
-
-Host glacier glacier.camlittle.com
-    User cameronlittle
-    Hostname glacier.camlittle.com
+    Hostname camlittle.com
 
 Host elwha elwha.camlittle.com
     User cameronlittle
     Hostname elwha.camlittle.com
 
-Host camlittle camlittle.com
+Host glacier glacier.camlittle.com
     User cameronlittle
-    Hostname camlittle.com
+    Hostname glacier.camlittle.com
 
-Host nodmhosting wp471723.dreamhostps.com
-    Hostname wp471723.dreamhostps.com
-    User wp_6t5tyg
+Host matheny matheny.camlitte.com
+    User cameronlittle
+    Hostname matheny.camlittle.com
 
-Host *.remitly.lep
-    StrictHostKeyChecking no
-    UserKnownHostsFile /dev/null
-    LogLevel ERROR
+Host methow methow.camlitte.com
+    User cameronlittle
+    Hostname methow.camlittle.com
 
 Host 10.1.*.*
     StrictHostKeyChecking no
