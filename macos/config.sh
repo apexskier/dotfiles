@@ -14,8 +14,8 @@ then
     mkdir -p ~/Dev
     touch ~/Dev/.metadata_never_index
 
-    # Disable press-and-hold for keys in favor of key repeat.
-    defaults write -g ApplePressAndHoldEnabled -bool false
+    # Enable press-and-hold for keys - used to be disabled in favor of key repeat.
+    defaults write -g ApplePressAndHoldEnabled -bool true
 
     # Use AirDrop over every interface. srsly this should be a default.
     defaults write com.apple.NetworkBrowser BrowseAllInterfaces 1
@@ -27,7 +27,7 @@ then
     chflags nohidden ~/Library
 
     # Set a really fast key repeat.
-    defaults write NSGlobalDomain KeyRepeat -int 1
+    defaults write NSGlobalDomain KeyRepeat -int 2
     defaults write NSGlobalDomain InitialKeyRepeat -int 20
 
     # Set the Finder prefs for showing a few different volumes on the Desktop.
