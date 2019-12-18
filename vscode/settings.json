@@ -190,8 +190,12 @@
     "gitlens.currentLine.format": "${author}, ${ago}",
     "cSpell.userWords": [
         "Apptentive",
+        "IBAN",
+        "OPROD",
         "Quovo",
         "Remitly's",
+        "SEPA",
+        "SOFORT",
         "authed",
         "csrf",
         "debounced",
@@ -245,7 +249,6 @@
         "suppressShowKeyBindingsNotice": true
     },
     "flow.runOnEdit": false,
-    "workbench.editor.labelFormat": "short",
     "cSpell.language": "en,en-US",
     "stylelint.enable": false,
     "workbench.colorTheme": "Solarized Dark",
