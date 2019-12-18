@@ -1,2 +1,4 @@
+# this is a map of local files to their locations in "~/Library/Application Support" on macOS
+
 vscode/settings.json:Code/User/settings.json
 vscode/keybindings.json:Code/User/keybindings.json

@@ -9,9 +9,8 @@ atom.symlink/themes
 atom.symlink/blob-store
 atom.symlink/recovery
 
-git/gitconfig.symlink
+ssh/ssh/authorized_keys.symlink
 vim/tmp
 vim/undo
 vim/vim.symlink/.netrwhist
 vim/vim.symlink/bundle
-git/gitconfig.local.symlink

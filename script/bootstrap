@@ -27,31 +27,41 @@ fail () {
   exit
 }
 
-setup_awesome () {
-  rm -rf "$HOME/.config/awesome"
-  link_file "$DOTFILES_ROOT/awesome" "$HOME/.config/awesome"
-}
-
 setup_gitconfig () {
-  if ! [ -f git/gitconfig.local.symlink ]
+  info 'setup local gitconfig'
+
+  gitconfig_local_file="$HOME/.gitconfig.local"
+
+  touch "$gitconfig_local_file"
+
+  git_credential='cache'
+  if [ "$(uname -s)" == "Darwin" ]
   then
-    info 'setup gitconfig'
+    git_credential='osxkeychain'
+  fi
+  git config --file "$gitconfig_local_file" credential.helper "$git_credential"
 
-    git_credential='cache'
-    if [ "$(uname -s)" == "Darwin" ]
-    then
-      git_credential='osxkeychain'
-    fi
-
+  if [ -z "$(git config user.name)" ]
+  then
     user ' - What is your github author name?'
     read -e git_authorname
+    git config --file "$gitconfig_local_file" user.name "$git_authorname"
+  fi
+
+  if [ -z "$(git config user.email)" ]
+  then
     user ' - What is your github author email?'
     read -e git_authoremail
-
-    sed -e "s/AUTHORNAME/$git_authorname/g" -e "s/AUTHOREMAIL/$git_authoremail/g" -e "s/GIT_CREDENTIAL_HELPER/$git_credential/g" git/gitconfig.local.symlink.example > git/gitconfig.local.symlink
-
-    success 'gitconfig'
+    git config --file "$gitconfig_local_file" user.email "$git_authoremail"
   fi
+
+  success 'local gitconfig'
+}
+
+setup_ssh () {
+  info 'setup ssh'
+  curl --silent --output "$HOME/.ssh/authorized_keys" https://github.com/apexskier.keys
+  success 'ssh'
 }
 
 link_file () {
@@ -60,7 +70,7 @@ link_file () {
   local overwrite= backup= skip=
   local action=
 
-  if [ -f "$dst" -o -d "$dst" -o -L "$dst" ]
+  if [ -f "$dst" ] || [ -d "$dst" ] || [ -L "$dst" ]
   then
     if [ "$overwrite_all" == "false" ] && [ "$backup_all" == "false" ] && [ "$skip_all" == "false" ]
     then
@@ -70,7 +80,6 @@ link_file () {
       then
         skip=true;
       else
-
         user "File already exists: $dst ($(basename "$src")), what do you want to do?\\n\
         [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
         read -n 1 action
@@ -127,8 +136,6 @@ link_file () {
 install_dotfiles () {
   info 'installing dotfiles'
 
-  local overwrite_all=false backup_all=false skip_all=false
-
   # install simple symlinks
   for src in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name '*.symlink' -not -path "$DOTFILES_ROOT/.*")
   do
@@ -151,13 +158,21 @@ install_dotfiles () {
     dst="$HOME/.config/${str%.*}"
     link_file "$src" "$dst"
   done
+}
 
+install_appsupport () {
   if [ "$(uname -s)" == "Darwin" ]
   then
+    info 'installing Application Support files'
+
     # install files that go in macos's app support
     # note: -u 3 opens a new file descriptor to read from so we don't clobber stdin
     while read -u 3 -r line
     do
+      if [ -z "$line" ] || [ "${line:0:1}" == "#" ]
+      then
+        continue
+      fi
       src="$DOTFILES_ROOT/$(echo "$line" | cut -d: -f1)"
       dst="$HOME/Library/Application Support/$(echo "$line" | cut -d: -f2)"
       link_file "$src" "$dst"
@@ -165,9 +180,19 @@ install_dotfiles () {
   fi
 }
 
-# setup_gitconfig
-# setup_awesome
-install_dotfiles
+install () {
+  local overwrite_all=false backup_all=false skip_all=false
+
+  setup_gitconfig
+  echo
+  setup_ssh
+  echo
+  install_dotfiles
+  echo
+  install_appsupport
+}
+
+install
 
 echo ''
 echo '  All installed!'
