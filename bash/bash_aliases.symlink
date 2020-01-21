@@ -42,3 +42,8 @@ function unescapewhitespace() {
 	gsed 's|\\n|\
 |g' | gsed 's|\\t|\t|g'
 }
+
+function chnode() {
+    brew unlink $(brew list | grep node)
+    brew link --overwrite --force node@$1
+}
