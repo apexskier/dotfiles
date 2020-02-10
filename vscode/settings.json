@@ -100,41 +100,6 @@
 
     "explorer.confirmDragAndDrop": false,
 
-    "gitlens.codeLens.authors.enabled": false,
-    "gitlens.codeLens.recentChange.enabled": false,
-    "gitlens.codeLens.enabled": false,
-    "gitlens.blame.heatmap.enabled": false,
-    "gitlens.blame.avatars": false,
-    "gitlens.blame.highlight.enabled": false,
-    "gitlens.hovers.annotations.over": "annotation",
-    "gitlens.hovers.annotations.enabled": false,
-    "gitlens.recentChanges.highlight.locations": [
-        "gutter",
-        "overview",
-        "line"
-    ],
-    "gitlens.statusBar.enabled": false,
-    "gitlens.currentLine.format": "${author}, ${ago}",
-    "gitlens.keymap": "chorded",
-    "gitlens.advanced.messages": {
-        "suppressCommitHasNoPreviousCommitWarning": false,
-        "suppressCommitNotFoundWarning": false,
-        "suppressFileNotUnderSourceControlWarning": false,
-        "suppressGitVersionWarning": false,
-        "suppressLineUncommittedWarning": false,
-        "suppressNoRepositoryWarning": false,
-        "suppressResultsExplorerNotice": false,
-        "suppressShowKeyBindingsNotice": true
-    },
-    "gitlens.hovers.avatars": false,
-    "gitlens.hovers.currentLine.changes": false,
-    "gitlens.views.repositories.enabled": false,
-    "gitlens.views.fileHistory.enabled": true,
-    "gitlens.views.lineHistory.enabled": true,
-    "gitlens.views.compare.avatars": false,
-    "gitlens.views.repositories.avatars": false,
-    "gitlens.views.search.avatars": false,
-
     "go.autocompleteUnimportedPackages": true,
     "go.formatTool": "gofmt",
     "go.useLanguageServer": true,
