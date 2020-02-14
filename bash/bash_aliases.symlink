@@ -52,3 +52,7 @@ function chnode() {
     brew unlink $(brew list | grep node)
     brew link --overwrite --force "node$version"
 }
+
+function returnwith() {
+    return $1
+}
