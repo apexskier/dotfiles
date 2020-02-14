@@ -85,6 +85,8 @@ function set_prompt() {
         cmd_info="$red$err ↩$nocol\n"
     fi
 
+    history -a
+
     local ret
 
     local venv
@@ -139,7 +141,7 @@ then
     new_prompt_command="set_prompt;$new_prompt_command"
 fi
 
-export PROMPT_COMMAND="history -a; $new_prompt_command"
+export PROMPT_COMMAND=$new_prompt_command
 
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
