@@ -44,6 +44,11 @@ function unescapewhitespace() {
 }
 
 function chnode() {
+    local version
+    if [ -n "$1" ]
+    then
+        version="@$1"
+    fi
     brew unlink $(brew list | grep node)
-    brew link --overwrite --force node@$1
+    brew link --overwrite --force "node$version"
 }
