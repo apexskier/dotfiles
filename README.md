@@ -10,9 +10,7 @@ machines. The actual contents were inspired from a multitude of sources.
 
 Everything's built around topic areas. If you're adding a new area to your
 forked dotfiles — say, "Java" — you can simply add a `java` directory and put
-files in there. Anything with an extension of `.zsh` will get automatically
-included into your shell. Anything with an extension of `.symlink` will get
-symlinked without extension into `$HOME` when you run `script/bootstrap`.
+files in there.
 
 ## what's inside
 
@@ -23,7 +21,7 @@ use, and build on what you do use.
 
 ## components
 
-There's a few special files in the hierarchy.
+There's a few special files and file types in the hierarchy.
 
 - **bin/**: Anything in `bin/` will get added to your `$PATH` and be made
   available everywhere.
@@ -32,7 +30,8 @@ There's a few special files in the hierarchy.
   but still keep those autoloaded files in your home directory. These get
   symlinked in when you run `script/bootstrap`.
 - **appsupport**: This is a map of files that should be linked to macOS's
-  application support directory
+  application support directory. This is useful for programs like VSCode that
+  use this config location.
 
 ## install
 
