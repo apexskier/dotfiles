@@ -59,7 +59,7 @@
 [mergetool]
 	keepBackup = false
 [push]
-	default = simple
+	default = current
 [diff "spaceman-diff"]
     command = ~/.dotfiles/bin/spaceman-diff
 [url "git@github.com:"]
