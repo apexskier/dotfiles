@@ -37,15 +37,17 @@ brew install gnu-sed
 brew install hub
 brew install imagemagick
 brew install jq
+brew install kubernetes-cli
 brew install macvim
 brew install node # and `npm`
 brew install node@10
-brew install node@8
+brew install node@12
 brew install ripgrep
 brew install spaceman-diff
 brew install terminal-notifier
 brew install tmux
 brew install vim
+brew install watchman
 brew install yarn
 
 # Remove outdated versions from the cellar
