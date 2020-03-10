@@ -4,6 +4,7 @@
 HISTCONTROL=ignoreboth:erasedups
 # append to the history file, don't overwrite it
 shopt -s histappend
+
 # unlimited history
 # https://stackoverflow.com/a/19533853/2178159
 export HISTFILESIZE=

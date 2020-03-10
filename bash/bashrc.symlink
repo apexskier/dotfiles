@@ -17,6 +17,8 @@ shopt -s nocaseglob # case insensitive filename expansion
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
+bind '"\e[A": history-search-backward'
+bind '"\e[B": history-search-forward'
 bind 'set show-all-if-ambiguous on'
 bind 'set completion-ignore-case on'
 
