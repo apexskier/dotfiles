@@ -7,17 +7,6 @@
 # If not running interactively, don't do anything
 [ -z "$PS1" ] && return
 
-# don't put duplicate lines in the history
-HISTCONTROL=ignoreboth:erasedups
-# append to the history file, don't overwrite it
-shopt -s histappend
-# unlimited history
-# https://stackoverflow.com/a/19533853/2178159
-export HISTFILESIZE=
-export HISTSIZE=
-export HISTTIMEFORMAT="[%F %T] "
-export HISTFILE=~/.bash_eternal_history
-
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
 shopt -s checkwinsize
@@ -28,24 +17,21 @@ shopt -s nocaseglob # case insensitive filename expansion
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-bind '"\e[A": history-search-backward'
-bind '"\e[B": history-search-forward'
 bind 'set show-all-if-ambiguous on'
 bind 'set completion-ignore-case on'
 
+. ~/.bash_history
 . ~/.bash_aliases
+. ~/.bash_completion
+. ~/.bash_prompt
 [ -f "/etc/bashrc_Apple_Terminal" ] && . /etc/bashrc_Apple_Terminal
 [ -f "$HOME/.bash_private" ] && . ~/.bash_private
 [ -f "$HOME/.bash_local" ] && . ~/.bash_local
-
-if [ -f /etc/bash_completion ] && ! shopt -oq posix; then
-    . /etc/bash_completion
-fi
-. ~/.bash_completion
-
 [ -f "~/.profile" ] && . ~/.profile
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export EDITOR=vim
+export GPG_TTY=$(tty)
 
 # Add stuff to my PATH
 [ -d "/usr/local/sbin" ] && export PATH="/usr/local/sbin:$PATH"
@@ -54,12 +40,14 @@ export EDITOR=vim
 [ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
 [ -d "$HOME/.dotfiles/bin" ] && export PATH="$HOME/.dotfiles/bin:$PATH"
 
-# macOS stuff
+# macOS
 if [ "$(uname -s)" == "Darwin" ]; then
     export DISPLAY=localhost:0.0
 
     [ -d "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" ] && export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 fi
+
+# homebrew
 if command -v brew >/dev/null 2>&1; then
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
@@ -70,7 +58,7 @@ if command -v brew >/dev/null 2>&1; then
     export PATH="$bp/opt/curl/bin:$PATH"
 fi
 
-# go stuff
+# go
 if command -v go >/dev/null 2>&1; then
     if [ -d "/usr/local/go/" ]; then
         export GOROOT=/usr/local/go
@@ -78,7 +66,7 @@ if command -v go >/dev/null 2>&1; then
     export PATH="$PATH:$GOROOT/bin"
 fi
 
-# python stuff
+# python
 if command -v python >/dev/null 2>&1; then
     mkdir -p $HOME/.virtualenvs
     export WORKON_HOME="$HOME/.virtualenvs"
@@ -93,11 +81,10 @@ if command -v python >/dev/null 2>&1; then
     fi
 fi
 
-# node stuff
-[ -f "/usr/local/bin/chnode" ] && . "/usr/local/bin/chnode"
+# nodejs
+# also see bin/chnode
 export PATH="$PATH:./node_modules/.bin"
 export PATH="$HOME/.yarn/bin:$PATH"
-
 export REACT_DEBUGGER="open -g 'rndebugger://set-debugger-loc?port=8001'"
 export REACT_EDITOR_CMD=code
 export REACT_EDITOR_PATTERN="-r -g {filename}:{line}:{column}"
@@ -107,14 +94,9 @@ if [ -d "/usr/libexec/java_home" ]; then
     export JAVA_HOME=$(/usr/libexec/java_home)
 fi
 
-# android dev
+# android
 if [ -d "$HOME/Library/Android/sdk" ]; then
     export ANDROID_HOME="$HOME/Library/Android/sdk"
     export PATH="$PATH:$ANDROID_HOME/platform-tools"
 fi
 
-. ~/.bash_prompt
-
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
-export GPG_TTY=$(tty)
