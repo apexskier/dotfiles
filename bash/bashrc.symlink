@@ -54,10 +54,13 @@ export EDITOR=vim
 [ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
 [ -d "$HOME/.dotfiles/bin" ] && export PATH="$HOME/.dotfiles/bin:$PATH"
 
-# Mac OS X stuff
-#if [ "$(uname -s)" == "Darwin" ]; then
-if command -v brew >/dev/null 2>&1; then
+# macOS stuff
+if [ "$(uname -s)" == "Darwin" ]; then
     export DISPLAY=localhost:0.0
+
+    [ -d "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" ] && export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
+fi
+if command -v brew >/dev/null 2>&1; then
     export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 
     bp=$(brew --prefix)
@@ -65,25 +68,14 @@ if command -v brew >/dev/null 2>&1; then
     [ -f "$bp/etc/bash_completion" ] && . "$bp/etc/bash_completion"
 
     export PATH="$bp/opt/curl/bin:$PATH"
-    [ -d "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" ] && export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 fi
 
 # go stuff
-[ -d "/usr/local/go/bin" ] && export PATH="$PATH:/usr/local/go/bin"
 if command -v go >/dev/null 2>&1; then
-    if [ -d "$HOME/Projects/go" ]; then
-        export GOPATH="$HOME/Projects/go"
+    if [ -d "/usr/local/go/" ]; then
         export GOROOT=/usr/local/go
-    elif [ -d "/usr/local/go/" ]; then
-        export GOROOT=/usr/local/go
-    elif [ -d "$HOME/bin/go" ]; then
-        export GOROOT=$HOME/bin/go
-    fi
-    if [ -d "$HOME/go" ]; then
-        export GOPATH="$HOME/go"
     fi
     export PATH="$PATH:$GOROOT/bin"
-    export PATH="$PATH:$GOPATH/bin"
 fi
 
 # python stuff
@@ -101,21 +93,14 @@ if command -v python >/dev/null 2>&1; then
     fi
 fi
 
-# ruby stuff
-if command -v ruby >/dev/null 2>&1; then
-    if command -v rbenv >/dev/null 2>&1; then
-        eval "$(rbenv init -)"
-        export PATH="$HOME/.rbenv/bin:$PATH"
-    fi
-fi
-
 # node stuff
 [ -f "/usr/local/bin/chnode" ] && . "/usr/local/bin/chnode"
 export PATH="$PATH:./node_modules/.bin"
 export PATH="$HOME/.yarn/bin:$PATH"
-# [ -f "$HOME/.yarn-completion" ] && . "$HOME/.yarn-completion"
 
-REACT_DEBUGGER="open -g 'rndebugger://set-debugger-loc?port=8001'"
+export REACT_DEBUGGER="open -g 'rndebugger://set-debugger-loc?port=8001'"
+export REACT_EDITOR_CMD=code
+export REACT_EDITOR_PATTERN="-r -g {filename}:{line}:{column}"
 
 # java stuff
 if [ -d "/usr/libexec/java_home" ]; then
@@ -129,12 +114,6 @@ if [ -d "$HOME/Library/Android/sdk" ]; then
 fi
 
 . ~/.bash_prompt
-
-export REACT_EDITOR_CMD=code
-export REACT_EDITOR_PATTERN="-r -g {filename}:{line}:{column}"
-
-# narwhal tests
-export ALLOW_CONSOLE_IN_TESTS=true
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
