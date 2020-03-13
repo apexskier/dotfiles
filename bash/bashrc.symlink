@@ -22,7 +22,7 @@ bind '"\e[B": history-search-forward'
 bind 'set show-all-if-ambiguous on'
 bind 'set completion-ignore-case on'
 
-. ~/.bash_history
+. ~/.bash_history_setup
 . ~/.bash_aliases
 . ~/.bash_completion
 . ~/.bash_prompt
