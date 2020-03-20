@@ -264,6 +264,8 @@
     },
     "debug.inlineValues": true,
     "debug.toolBarLocation": "docked",
+    "npm.fetchOnlinePackageInfo": false,
+    "markdown-preview-enhanced.codeBlockTheme": "github.css",
     // "[markdown]": {
     //     "editor.formatOnSave": true,
     // },
