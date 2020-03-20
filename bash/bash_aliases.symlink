@@ -57,5 +57,20 @@ function returnwith() {
     return $1
 }
 
+function splitlines() {
+    if [ -z "$1" ]
+    then
+        echo "usage: splitlines [delimiter]"
+        return 1
+    fi
+
+    # https://stackoverflow.com/a/918931
+    while IFS="$1" read -ra LINES; do
+        for i in "${LINES[@]}"; do
+            echo $i
+        done
+    done
+}
+
 alias mvn='docker run -it --rm -e AWS_SECRET_ACCESS_KEY -e AWS_ACCESS_KEY_ID -v "$HOME/.m2":/root/.m2 -v $PWD:/src -w /src maven:3.3-jdk-8 mvn'
 
