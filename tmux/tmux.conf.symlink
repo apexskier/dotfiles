@@ -1,0 +1,83 @@
+# vim: ft=conf
+#
+# https://www.hamvocke.com/blog/a-guide-to-customizing-your-tmux-conf/
+
+# remap prefix from 'C-b' to 'C-a'
+unbind C-b
+set-option -g prefix C-a
+bind-key C-a send-prefix
+
+# vim mode
+set -g status-keys "vi"
+
+# split panes using | and -
+bind | split-window -h
+bind - split-window -v
+unbind '"'
+unbind %
+
+# reload config file (change file location to your the tmux.conf you want to use)
+bind r source-file ~/.tmux.conf \; display "Reloaded tmux config file."
+
+# switch panes using Alt-arrow without prefix
+bind -n M-Left select-pane -L
+bind -n M-Right select-pane -R
+bind -n M-Up select-pane -U
+bind -n M-Down select-pane -D
+
+# Enable mouse control (clickable windows, panes, resizable panes)
+set -g mouse on
+
+# Start windows and panes at 1, not 0
+set -g base-index 1
+setw -g pane-base-index 1
+
+# open new windows in current path
+bind c new-window -c "#{pane_current_path}"
+
+######################
+### DESIGN CHANGES ###
+######################
+
+set -g default-terminal "screen-256color"
+
+# loud or quiet?
+set -g visual-activity off
+set -g visual-bell on
+set -g visual-silence off
+setw -g monitor-activity on
+set -g bell-action none
+
+# modes
+setw -g clock-mode-colour colour5
+setw -g clock-mode-style 24
+setw -g mode-style 'fg=colour1 bg=colour18 bold'
+
+# panes
+set -g pane-border-style 'fg=black'
+set -g pane-active-border-style 'fg=colour6'
+
+# statusbar
+set -g status-position bottom
+set -g status-justify left
+set -g status-style 'bg=black fg=white'
+set -g status-left " #S • "
+set -g status-right " #[fg=cyan]#(echo $USER)#[fg=white]@#[fg=green]#H#[fg=white] • %a %d-%b %H:%M "
+set -g status-right-length 80
+set -g status-left-length 20
+
+setw -g window-status-style 'fg=colour6'
+setw -g window-status-format '#I#[fg=colour249]:#[fg=colour250]#W#[fg=colour244]'
+
+setw -g window-status-current-style 'fg=colour14 bg=colour236'
+setw -g window-status-current-format ' #I#[fg=colour249]:#[fg=colour255]#W#[fg=colour249] '
+
+setw -g window-status-bell-style 'fg=colour6 bg=black bold'
+
+# messages
+set -g message-style 'fg=white bg=black bold'
+
+# terminal window titles
+setw -g automatic-rename on
+set -g set-titles on
+set -g set-titles-string "#T"
