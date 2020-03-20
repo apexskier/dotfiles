@@ -25,7 +25,6 @@ bind 'set completion-ignore-case on'
 . ~/.bash_history_setup
 . ~/.bash_aliases
 . ~/.bash_completion
-. ~/.bash_prompt
 [ -f "/etc/bashrc_Apple_Terminal" ] && . /etc/bashrc_Apple_Terminal
 [ -f "$HOME/.bash_private" ] && . ~/.bash_private
 [ -f "$HOME/.bash_local" ] && . ~/.bash_local
@@ -102,3 +101,5 @@ if [ -d "$HOME/Library/Android/sdk" ]; then
     export PATH="$PATH:$ANDROID_HOME/platform-tools"
 fi
 
+# this needs to be loaded last in order for return code printing to work
+. ~/.bash_prompt
