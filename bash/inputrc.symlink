@@ -1,6 +1,9 @@
 # vim: ft=conf
 # https://github.com/paulirish/dotfiles/blob/master/.inputrc
 
+# include system defaults
+$include /etc/inputrc
+
 set input-meta on
 set output-meta on
 
@@ -26,8 +29,35 @@ set mark-symlinked-directories on
 # Do not autocomplete hidden files unless the pattern explicitly begins with a dot
 set match-hidden-files off
 
+# allow vim-style editing
 set editing-mode vi
-set keymap vi-command
+
+# Use the text that has already been typed as the prefix for searching through
+# commands (basically more intelligent Up/Down behavior)
+$if mode=vi
+    set keymap vi-command
+    "\e[A": history-search-backward
+    "\e[B": history-search-forward
+    j: history-search-forward
+    k: history-search-backward
+
+    set keymap vi-insert
+    "\e[A": history-search-backward
+    "\e[B": history-search-forward
+$else
+    "\e[A": history-search-backward
+    "\e[B": history-search-forward
+$endif
+
+# use different cursor styles for vim insert/command modes
+set show-mode-in-prompt on
+$if term=linux
+	set vi-ins-mode-string \1\e[?0c\2
+	set vi-cmd-mode-string \1\e[?8c\2
+$else
+	set vi-ins-mode-string \1\e[6 q\2
+	set vi-cmd-mode-string \1\e[2 q\2
+$endif
 
 set prefer-visible-bell
 
@@ -36,11 +66,6 @@ set completion-prefix-display-length 2
 
 # Show extra file information when completing, like `ls -F` does
 set visible-stats on
-
-# Use the text that has already been typed as the prefix for searching through
-# commands (basically more intelligent Up/Down behavior)
-"\e[A": history-search-backward
-"\e[B": history-search-forward
 
 # Be more intelligent when autocompleting by also looking at the text after
 # the cursor. For example, when the current line is "cd ~/src/mozil", and
