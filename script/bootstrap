@@ -28,6 +28,11 @@ fail () {
 }
 
 setup_gitconfig () {
+  if ! command -v git >/dev/null 2>&1 || [ "$DOTFILES_SKIP_GIT" == true ]; then
+    info 'skipping git'
+    return 0
+  fi
+
   info 'setup local gitconfig'
 
   gitconfig_local_file="$HOME/.gitconfig.local"
@@ -67,8 +72,7 @@ setup_ssh () {
 link_file () {
   local src=$1 dst=$2
 
-  local overwrite= backup= skip=
-  local action=
+  local overwrite= backup= skip= action=
 
   if [ -f "$dst" ] || [ -d "$dst" ] || [ -L "$dst" ]
   then
@@ -181,7 +185,7 @@ install_appsupport () {
 }
 
 install () {
-  local overwrite_all=false backup_all=false skip_all=false
+  local overwrite_all=$DOTFILES_OVERWRITE backup_all=false skip_all=false
 
   setup_gitconfig
   echo
