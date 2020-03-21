@@ -185,7 +185,7 @@ install_appsupport () {
 }
 
 install () {
-  local overwrite_all=$DOTFILES_OVERWRITE backup_all=false skip_all=false
+  local overwrite_all=${DOTFILES_OVERWRITE:-false} backup_all=false skip_all=false
 
   setup_gitconfig
   echo
