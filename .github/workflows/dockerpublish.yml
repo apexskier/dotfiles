@@ -6,7 +6,7 @@ on:
       - master
 
 env:
-  IMAGE_NAME: bash
+  IMAGE_NAME: toolbox
 
 jobs:
   build:
@@ -17,7 +17,7 @@ jobs:
 
       - name: Build image
         run:
-            docker build -t $IMAGE_NAME .
+            docker build -t $IMAGE_NAME ./docker
 
       - name: Log into registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login docker.pkg.github.com -u ${{ github.actor }} --password-stdin
