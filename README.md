@@ -3,8 +3,11 @@
 For the real readme, check out [@holman's
 dotfiles](https://github.com/holman/dotfiles).
 
-I'm using his system to organize and propagate my configurations across
-machines. The actual contents were inspired from a multitude of sources.
+This was original forked from his repository, but due to some limitations of
+forked repositories on github I've unforked.
+
+I'm using a variation of his system to organize and propagate my configurations
+across machines. The actual contents were inspired from a multitude of sources.
 
 ## topical
 
