@@ -6,6 +6,17 @@ then
 fi
 
 echo "  Installing linux utilities"
-sudo apt-get update
-sudo apt-get upgrade
-sudo apt-get install wget curl tmux vim git
+apt-get update
+apt-get install -y \
+    bash-completion \
+    curl \
+    dnsutils \
+    fzf \
+    git \
+    jq \
+    ripgrep \
+    tmux \
+    vim \
+    wget \
+    ""
+# dnsutils contains dig

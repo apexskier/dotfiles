@@ -1,6 +1,11 @@
 #!bash
 # vim: ft=sh
 
+if shopt -oq posix; then
+    # non-interactive shell
+    exit 0
+fi
+
 # bash/zsh completion support for Fabric
 #
 # Copyright (C) 2013 Danilo Dellaquila <danilo@dellaquila.es>
@@ -88,3 +93,11 @@ elif type compctl &>/dev/null; then
   compctl -K _npm_completion npm
 fi
 ###-end-npm-completion-###
+
+[ -f ~/.fzf.bash ] && source ~/.fzf.bash
+
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+    . /usr/share/bash-completion/bash_completion
+elif [ -f /etc/bash_completion ]; then
+    . /etc/bash_completion
+fi

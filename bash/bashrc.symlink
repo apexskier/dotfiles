@@ -24,7 +24,6 @@ shopt -s nocaseglob # case insensitive filename expansion
 [ -f "$HOME/.bash_private" ] && . ~/.bash_private
 [ -f "$HOME/.bash_local" ] && . ~/.bash_local
 [ -f "~/.profile" ] && . ~/.profile
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
 
 export EDITOR=vim
 export GPG_TTY=$(tty)
