@@ -1,0 +1,55 @@
+#!/bin/sh
+#
+# dot
+#
+# `dot` handles installation, updates, things like that. Run it periodically
+# to make sure you're on the latest and greatest.
+
+set -e
+
+parent_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+dotfiles_dir="$(cd "$(dirname "$parent_dir")" && pwd -P)"
+
+help() {
+	echo "dot -- dotfiles management"
+	echo ""
+	echo "Usage: dot [options]"
+	echo ""
+	echo "Options:"
+	echo "  -e, --edit    Open dotfiles directory for editing"
+	echo "  -h, --help    Show this help message and exit"
+	echo "  -i, --install Run installers"
+	exit
+}
+
+should_install=false
+
+while test $# -gt 0; do
+	case "$1" in
+		"-h"|"--help")
+			help
+			;;
+		"-e"|"--edit")
+			exec "$EDITOR" "$dotfiles_dir"
+			exit
+			;;
+		"-i"|"--install")
+			should_install=true
+			;;
+		*)
+			echo "Invalid option: $1"
+			help
+			;;
+	esac
+	shift
+done
+
+$dotfiles_dir/macos/config.sh
+$dotfiles_dir/script/bootstrap
+
+if [ "$should_install" = "true" ]
+then
+	$dotfiles_dir/script/install
+fi
+
+. ~/.bashrc
