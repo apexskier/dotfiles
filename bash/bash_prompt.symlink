@@ -106,6 +106,21 @@ function set_prompt() {
         gitbranch=" (±$gitbranch)"
     fi
 
+    local nodejs
+    if command -v node >/dev/null 2>&1; then
+        local npm_prefix=$(npm prefix)
+        if [[ -f "$npm_prefix/package.json" ]] ; then
+            local node_version="$(node --version)"
+            nodejs+=" (node "
+            # if ! npx -q check-node-version --node "$(node -e "process.stdout.write((require('./package.json').engines || {}).node || '')")" > /dev/null 2>&1 ; then
+            #     nodejs+="$red"
+            # fi
+
+            nodejs+="$node_version$nocol"
+            nodejs+=")"
+        fi
+    fi
+
     # this stuff can be used for _responsive_ design
     # local size=($(stty size))
     # local rows=${size[0]}
@@ -117,6 +132,7 @@ function set_prompt() {
     ret+="$gitbranch"
     # test "$(expr ${#ret} + ${#venv})" -gt "$cols" && ret+="\n"
     ret+="$venv"
+    ret+="$nodejs"
 
     # use multi-line prompt as the main prompt as well
     ret+="\n$PS2"
