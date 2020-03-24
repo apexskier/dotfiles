@@ -2,5 +2,6 @@ ssh/ssh/authorized_keys.symlink
 vim/tmp
 vim/undo
 vim/vim.symlink/.netrwhist
-vim/vim.symlink/bundle
+vim/vim.symlink/autoload/plug.vim
+vim/vim.symlink/vim-plug
 git/gitconfig.local.symlink

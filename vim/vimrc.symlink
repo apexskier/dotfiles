@@ -2,40 +2,39 @@
 " Cameron Little's .vimrc file  "
 " " " " " " " " " " " " " " " " "
 
-if has('vim_starting')
-    set nocompatible    " use Vim settings rather than Vi settings
-    set runtimepath+=~/.vim/bundle/neobundle.vim/
+if &compatible
+  set nocompatible
 endif
 
-" TODO: replace with https://github.com/junegunn/vim-plug
+" plugin management
 
-call neobundle#begin(expand('~/.vim/bundle'))
+" install plugin manager if not installed yet
+if empty(glob('~/.vim/autoload/plug.vim'))
+  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
+    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
+endif
 
-NeoBundleFetch 'Shougo/neobundle.vim'
+call plug#begin('~/.vim/vim-plug')
 
-NeoBundle 'tpope/vim-sensible'
-NeoBundle 'tpope/vim-surround'
-NeoBundle 'tpope/vim-unimpaired'
-NeoBundle 'groenewege/vim-less'
-NeoBundle 'othree/html5.vim'
-NeoBundle 'hail2u/vim-css3-syntax'
-" NeoBundle 'klen/python-mode'
-" NeoBundle 'rkulla/pydiction'
-NeoBundle 'tikhomirov/vim-glsl'
-NeoBundle 'editorconfig/editorconfig-vim'
-NeoBundle 'rodjek/vim-puppet'
-NeoBundle 'sirtaj/vim-openscad'
-NeoBundle 'junegunn/vim-emoji'
-NeoBundle 'ConradIrwin/vim-bracketed-paste'
-NeoBundle 'leafgarland/typescript-vim'
-NeoBundle 'junegunn/fzf'
-NeoBundle 'junegunn/fzf.vim'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-unimpaired'
+Plug 'groenewege/vim-less'
+Plug 'othree/html5.vim'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'tikhomirov/vim-glsl'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'rodjek/vim-puppet'
+Plug 'sirtaj/vim-openscad'
+Plug 'junegunn/vim-emoji'
+Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'leafgarland/typescript-vim'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'Raimondi/delimitMate'
 
-call neobundle#end()
-
-NeoBundleCheck
-
-" let g:pydiction_location = '~/.vim/bundle/pydiction/complete-dict'
+call plug#end()
 
 set visualbell      " visual error alert
 set t_vb=           " helps with errors
@@ -149,7 +148,7 @@ set statusline+=%w                  " preview?
 set statusline+=\ \{%n\}            " buffer num
 set statusline+=%=                  " right align
 set statusline+=%10((%l,%c%V)%)     " line and column
-set statusline+=\ %P              " percent through file
+set statusline+=\ %P                " percent through file
 set statusline+=\ %*                " ending space
 " set statusline=[%n]\ %<%.99f\ %h%w%m%r%{exists('*CapsLockStatusline')?CapsLockStatusline():''}%y%=%-16(\ %l,%c-%v\ %)%P
 set showcmd         " show incomplete commands at bottom
@@ -161,6 +160,12 @@ set wildmenu        " show list instead of just completing
 set wildmode=list:longest,full " command <tab> completion, list matches, then longest common part, then all.
 set background=dark
 set title           " shows title of open file in terminal
+
+" set cursor style for different modes
+" https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
+let &t_SI.="\e[6 q" " SI = INSERT mode
+let &t_SR.="\e[4 q" " SR = REPLACE mode
+let &t_EI.="\e[2 q" " EI = NORMAL mode (ELSE)
 
 " editing stuff "
 set autoindent      " automatically indent
@@ -234,40 +239,25 @@ nnoremap j gj
 nnoremap k gk
 
 " Insert Mode Mappings "
-" A quicker alternative to pushing <ESC>
-inoremap jk <ESC>
-" Autoclosing parenthesis/brackets
-inoremap ( ()<Left>
-inoremap (<Right> (
-inoremap (<BS> (<BS>
-inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
-inoremap (<C-m> (<C-m><BS>)<Up><Esc>$i<Right><C-m>
-inoremap { {}<Left>
-inoremap {<Right> {
-inoremap {<BS> {<BS>
-inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
-inoremap {<C-m> {<C-m><BS>}<Up><Esc>$i<Right><C-m>
-inoremap [ []<Left>
-inoremap [<Right> [
-inoremap [<BS> [<BS>
-inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
-inoremap [<C-m> [<C-m><BS>]<Up><Esc>$i<Right><C-m>
+"" Autoclosing parenthesis/brackets
+"inoremap ( ()<Left>
+"inoremap (<Right> (
+"inoremap (<BS> (<BS>
+"inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
+"inoremap (<C-m> (<C-m><BS>)<Up><Esc>$i<Right><C-m>
+"inoremap { {}<Left>
+"inoremap {<Right> {
+"inoremap {<BS> {<BS>
+"inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
+"inoremap {<C-m> {<C-m><BS>}<Up><Esc>$i<Right><C-m>
+"inoremap [ []<Left>
+"inoremap [<Right> [
+"inoremap [<BS> [<BS>
+"inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
+"inoremap [<C-m> [<C-m><BS>]<Up><Esc>$i<Right><C-m>
 " set indenting in insert-mode
 inoremap << <C-d>
 inoremap >> <C-t>
-" Go to beginning of line in insert mode
-inoremap <C-a> <ESC>I
-
-" Go to end of line in insert mode
-inoremap <C-e> <ESC>A
-" Start editing on new line above current line
-inoremap <C-p> <ESC>O
-" Start editing on new line below current line
-inoremap <C-u> <ESC>o
-" Move current line up one line (switches places with above line)
-inoremap <silent><C-k> <ESC>mz:m-2<CR>`zi
-" Move current line down one line (switches places with below line)
-inoremap <silent><C-j> <ESC>mz:m+<CR>`zi
 
 " Visual Mode Mappings "
 " Yank highlighted text and searches it
@@ -277,12 +267,6 @@ vnoremap < <gv
 vnoremap > >gv
 
 " Command Mode Mappings "
-" Leave escape mode by pressing jk/kj
-cnoremap jk <ESC>
-cnoremap kj <ESC>
-" set sytnax to django template with html
-command! Sdh :setfiletype htmldjango
-command! Shd :setfiletype htmldjango
 cmap w!! w !sudo tee % >/dev/null
 " adds vimdiff mergetool command as one string
 command! WincJ :wincmd J
@@ -306,17 +290,6 @@ function! PasteSpace()
     en
     return ''
 endfunction
-
-" Server specific stuff
-if hostname() == "nari"
-    let patharr = split(expand("%:p"), "/")
-    if len(patharr) > 3 && patharr[2] == "django"
-        autocmd BufWritePre *.py :! touch ~/django/wwu_housing/wsgi.py
-    endif
-
-    inoremap Higgenson Higginson
-    inoremap higgenson higginson
-endif
 
 " enable emoji :syntax:
 set completefunc=emoji#complete
