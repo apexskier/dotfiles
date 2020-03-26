@@ -266,6 +266,7 @@
     "debug.toolBarLocation": "docked",
     "npm.fetchOnlinePackageInfo": false,
     "markdown-preview-enhanced.codeBlockTheme": "github.css",
+    "git.confirmSync": false,
     // "[markdown]": {
     //     "editor.formatOnSave": true,
     // },
