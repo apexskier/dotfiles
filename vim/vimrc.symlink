@@ -88,6 +88,14 @@ if &diff
     colorscheme mycolorscheme
 endif
 
+" show whitespace characters, but try to make them invisible until visual mode
+" is used. Matches a new vscode feature
+set list
+set listchars=eol:¬,tab:↦\ ,trail:~,extends:>,precedes:<,space:·
+hi Normal ctermbg=233 ctermfg=NONE guibg=NONE guifg=NONE cterm=NONE gui=NONE
+hi SpecialKey ctermbg=NONE ctermfg=233 guibg=NONE guifg=NONE cterm=NONE gui=NONE
+hi NonText ctermbg=NONE ctermfg=233 guibg=NONE guifg=NONE cterm=NONE gui=NONE
+
 " Turns autocompletion on for various filetypes "
 autocmd FileType python set omnifunc=pythoncomplete#Complete
 autocmd FileType javascript set omnifunc=javascriptcomplete#CompleteJS
@@ -154,12 +162,17 @@ set statusline+=\ %*                " ending space
 set showcmd         " show incomplete commands at bottom
 set showmode        " show current mode at bottomi
 set showmatch       " show matching brakets/parthesis
-set cursorline
 set virtualedit=onemore " allow for cursor beyond character
 set wildmenu        " show list instead of just completing
 set wildmode=list:longest,full " command <tab> completion, list matches, then longest common part, then all.
 set background=dark
 set title           " shows title of open file in terminal
+
+" set cursor line color
+set cursorline
+hi CursorLine ctermbg=235 cterm=NONE
+set cursorcolumn
+hi CursorColumn ctermbg=234 cterm=NONE
 
 " set cursor style for different modes
 " https://vim.fandom.com/wiki/Change_cursor_shape_in_different_modes
@@ -239,22 +252,6 @@ nnoremap j gj
 nnoremap k gk
 
 " Insert Mode Mappings "
-"" Autoclosing parenthesis/brackets
-"inoremap ( ()<Left>
-"inoremap (<Right> (
-"inoremap (<BS> (<BS>
-"inoremap <expr> ) strpart(getline('.'), col('.')-1, 1) == ")" ? "\<Right>" : ")"
-"inoremap (<C-m> (<C-m><BS>)<Up><Esc>$i<Right><C-m>
-"inoremap { {}<Left>
-"inoremap {<Right> {
-"inoremap {<BS> {<BS>
-"inoremap <expr> } strpart(getline('.'), col('.')-1, 1) == "}" ? "\<Right>" : "}"
-"inoremap {<C-m> {<C-m><BS>}<Up><Esc>$i<Right><C-m>
-"inoremap [ []<Left>
-"inoremap [<Right> [
-"inoremap [<BS> [<BS>
-"inoremap <expr> ] strpart(getline('.'), col('.')-1, 1) == "]" ? "\<Right>" : "]"
-"inoremap [<C-m> [<C-m><BS>]<Up><Esc>$i<Right><C-m>
 " set indenting in insert-mode
 inoremap << <C-d>
 inoremap >> <C-t>
@@ -291,5 +288,3 @@ function! PasteSpace()
     return ''
 endfunction
 
-" enable emoji :syntax:
-set completefunc=emoji#complete
