@@ -17,22 +17,23 @@ endif
 
 call plug#begin('~/.vim/vim-plug')
 
+Plug 'ConradIrwin/vim-bracketed-paste'
+Plug 'Raimondi/delimitMate'
+Plug 'editorconfig/editorconfig-vim'
+Plug 'groenewege/vim-less'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'junegunn/fzf'
+Plug 'junegunn/fzf.vim'
+Plug 'junegunn/vim-emoji'
+Plug 'leafgarland/typescript-vim'
+Plug 'othree/html5.vim'
+Plug 'prettier/vim-prettier'
+Plug 'rodjek/vim-puppet'
+Plug 'sirtaj/vim-openscad'
+Plug 'tikhomirov/vim-glsl'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 Plug 'tpope/vim-unimpaired'
-Plug 'groenewege/vim-less'
-Plug 'othree/html5.vim'
-Plug 'hail2u/vim-css3-syntax'
-Plug 'tikhomirov/vim-glsl'
-Plug 'editorconfig/editorconfig-vim'
-Plug 'rodjek/vim-puppet'
-Plug 'sirtaj/vim-openscad'
-Plug 'junegunn/vim-emoji'
-Plug 'ConradIrwin/vim-bracketed-paste'
-Plug 'leafgarland/typescript-vim'
-Plug 'junegunn/fzf'
-Plug 'junegunn/fzf.vim'
-Plug 'Raimondi/delimitMate'
 
 call plug#end()
 
