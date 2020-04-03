@@ -80,6 +80,9 @@
         "unmount"
     ],
 
+    "debug.inlineValues": true,
+    "debug.toolBarLocation": "docked",
+
     "editor.codeActionsOnSave": {
         "source.fixAll.tslint": true,
         "source.fixAll.eslint": true
@@ -101,6 +104,10 @@
 
     "explorer.confirmDragAndDrop": false,
 
+    "files.trimTrailingWhitespace": true,
+
+    "git.confirmSync": false,
+
     "go.autocompleteUnimportedPackages": true,
     "go.formatTool": "gofmt",
     "go.useLanguageServer": true,
@@ -113,12 +120,10 @@
 
     "javascript.validate.enable": false,
 
-    "npm.autoDetect": "off",
+    "markdown-preview-enhanced.codeBlockTheme": "github.css",
 
-    "puppet.editorService.enable": false,
-    "puppet.editorService.hover.showMetadataInfo": false,
-    "puppet.pdk.checkVersion": false,
-    "puppet.titleBar.pdkNewModule.enable": false,
+    "npm.autoDetect": "off",
+    "npm.fetchOnlinePackageInfo": false,
 
     "scss.validate": false,
 
@@ -251,6 +256,11 @@
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
+    "[markdown]": {
+        "editor.formatOnSave": false,
+        "editor.trimAutoWhitespace": false,
+        "files.trimTrailingWhitespace": false
+    },
     "[typescript]": {
         "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
@@ -262,12 +272,5 @@
     "[scss]": {
         "editor.formatOnSave": true,
     },
-    "debug.inlineValues": true,
-    "debug.toolBarLocation": "docked",
-    "npm.fetchOnlinePackageInfo": false,
-    "markdown-preview-enhanced.codeBlockTheme": "github.css",
-    "git.confirmSync": false,
-    // "[markdown]": {
-    //     "editor.formatOnSave": true,
-    // },
+    "markdown.preview.lineHeight": 1.4,
 }
