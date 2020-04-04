@@ -30,9 +30,9 @@ test -z "$WHERE_TO_TRY" && open "$XCODE_PATH"
 
 WHAT_TO_OPEN=$( \
     (test -f "$WHERE_TO_TRY" && echo "$WHERE_TO_TRY") || \
-    (test ${WHERE_TO_TRY##*.} == "xcworkspace" && echo $WHERE_TO_TRY) || \
-    (test ${WHERE_TO_TRY##*.} == "xcodeproj" && echo $WHERE_TO_TRY) || \
-    (test ${WHERE_TO_TRY##*.} == "playground" && echo $WHERE_TO_TRY) || \
+    (test "${WHERE_TO_TRY##*.}" == "xcworkspace" && echo "$WHERE_TO_TRY") || \
+    (test "${WHERE_TO_TRY##*.}" == "xcodeproj" && echo "$WHERE_TO_TRY") || \
+    (test "${WHERE_TO_TRY##*.}" == "playground" && echo "$WHERE_TO_TRY") || \
     (find "$WHERE_TO_TRY" -maxdepth 1 -name '*.xcworkspace' -print -quit | grep '.*') || \
     (find "$WHERE_TO_TRY" -maxdepth 1 -name '*.xcodeproj' -print -quit | grep '.*') || \
     (test -f "$WHERE_TO_TRY"/Package.swift && echo ".") || \
