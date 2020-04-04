@@ -1,0 +1,48 @@
+#!/bin/bash
+#
+# vim: ft=sh
+#
+# Inspired by https://github.com/soffes/dotfiles/blob/7c1b917b64a0387f7aaa990b7cb50ff5a630251d/bin/x
+#
+# What's this do?
+# Opens Xcode. Is smart about what it opens
+# 1. if no params, just open xcode
+# otherwise, check what's been given: open the first thing that's found
+# 2. a file
+# 3. a workspace
+# 4. a project
+# 5. a playground
+# 6. a workspace in the directory
+# 7. a project in the directory
+# 8. a package in the directory
+# 9. a playground in the directory
+#
+# Why not xed?
+# * terrible error handling/behavior when nothing found to open
+# * reports online of it being slow (not in my experience)
+
+set -e
+
+XCODE_PATH="$(xcode-select -p)/../.." # find the currently selected xcode
+WHERE_TO_TRY="${1%/}" # remove trailing slash
+
+test -z "$WHERE_TO_TRY" && open "$XCODE_PATH"
+
+WHAT_TO_OPEN=$( \
+    (test -f "$WHERE_TO_TRY" && echo "$WHERE_TO_TRY") || \
+    (test ${WHERE_TO_TRY##*.} == "xcworkspace" && echo $WHERE_TO_TRY) || \
+    (test ${WHERE_TO_TRY##*.} == "xcodeproj" && echo $WHERE_TO_TRY) || \
+    (test ${WHERE_TO_TRY##*.} == "playground" && echo $WHERE_TO_TRY) || \
+    (find "$WHERE_TO_TRY" -maxdepth 1 -name '*.xcworkspace' -print -quit | grep '.*') || \
+    (find "$WHERE_TO_TRY" -maxdepth 1 -name '*.xcodeproj' -print -quit | grep '.*') || \
+    (test -f "$WHERE_TO_TRY"/Package.swift && echo ".") || \
+    (find "$WHERE_TO_TRY" -maxdepth 1 -name '*.playground' -print -quit | grep '.*') \
+) || \
+(>&2 echo "Couldn't find something to open." ; exit 1)
+
+if [ -n "$DEBUG" ]
+then
+    echo "opening $WHAT_TO_OPEN"
+fi
+
+open -a "$XCODE_PATH" "$WHAT_TO_OPEN"
