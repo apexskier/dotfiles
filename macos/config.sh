@@ -7,18 +7,28 @@ fi
 # configuration stuff
 # Sets reasonable OS X defaults.
 #
-# Or, in other words, set shit how I like in OS X.
-#
 # The original idea (and a couple settings) were grabbed from:
 #   https://github.com/mathiasbynens/dotfiles/blob/master/.osx
 #
-# Run ./set-defaults.sh and you'll be good to go.
+# These can be difficult to discover, here are some tips:
+# - https://www.defaults-write.com/
+# - `defaults read NSGlobalDomain`
+#   Show global settings (settable with `defaults write -g`)
+# - `defaults domains | splitlines ', '`
+#   Show possible setting domains
+# - `defaults read $domain`
+#   Show what's set in a domain
+# - Many of these won't apply until a restart of some process or the full
+#   machine
 
 mkdir -p ~/Dev
 touch ~/Dev/.metadata_never_index
 
 # Disable press-and-hold for keys. I use option instead for special chars
 defaults write -g ApplePressAndHoldEnabled -bool false
+
+# Jump to spot that's clicked in scroll bar
+defaults write -g AppleScrollerPagingBehavior 1
 
 # Use AirDrop over every interface.
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces 1
@@ -196,9 +206,6 @@ defaults write com.apple.terminal StringEncodings -array 4
 # Prevent Time Machine from prompting to use new hard drives as backup volume
 defaults write com.apple.TimeMachine DoNotOfferNewDisksForBackup -bool true
 
-# Visualize CPU usage in the Activity Monitor Dock icon
-defaults write com.apple.ActivityMonitor IconType -int 5
-
 # Use plain text mode for new TextEdit documents
 defaults write com.apple.TextEdit RichText -int 0
 # Open and save files as UTF-8 in TextEdit
@@ -215,7 +222,6 @@ defaults write com.google.Chrome.canary ExtensionInstallSources -array "https://
 
 # Trash original torrent files
 defaults write org.m0k.transmission DeleteOriginalTorrent -bool true
-
 # Hide the donate message
 defaults write org.m0k.transmission WarningDonate -bool false
 # Hide the legal disclaimer
