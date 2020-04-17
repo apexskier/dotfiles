@@ -85,17 +85,21 @@ if &t_Co > 2 || has("gui_running")
 endif
 syntax on           " turn on syntax highlighting
 syntax enable
-if &diff
-    colorscheme mycolorscheme
+
+if !has("gui_running")
+    " show whitespace characters, but try to make them invisible until visual mode
+    " is used. Matches a new vscode feature
+    set list
+    set listchars=eol:¬,tab:↦\ ,trail:~,extends:>,precedes:<,space:·
+    hi Normal ctermbg=233 ctermfg=NONE guibg=#121212 guifg=NONE cterm=NONE gui=NONE
+    hi SpecialKey ctermbg=NONE ctermfg=233 guibg=NONE guifg=#121212	cterm=NONE gui=NONE
+    hi NonText ctermbg=NONE ctermfg=233 guibg=NONE guifg=#121212 cterm=NONE gui=NONE
 endif
 
-" show whitespace characters, but try to make them invisible until visual mode
-" is used. Matches a new vscode feature
-set list
-set listchars=eol:¬,tab:↦\ ,trail:~,extends:>,precedes:<,space:·
-hi Normal ctermbg=233 ctermfg=NONE guibg=NONE guifg=NONE cterm=NONE gui=NONE
-hi SpecialKey ctermbg=NONE ctermfg=233 guibg=NONE guifg=NONE cterm=NONE gui=NONE
-hi NonText ctermbg=NONE ctermfg=233 guibg=NONE guifg=NONE cterm=NONE gui=NONE
+if has("gui_running")
+    colorscheme macvim
+    set bg=dark
+endif
 
 " Turns autocompletion on for various filetypes "
 autocmd FileType python set omnifunc=pythoncomplete#Complete
