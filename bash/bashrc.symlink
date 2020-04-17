@@ -17,9 +17,6 @@ shopt -s nocaseglob # case insensitive filename expansion
 # make less more friendly for non-text input files, see lesspipe(1)
 [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
 
-. ~/.bash_history_setup
-. ~/.bash_aliases
-. ~/.bash_completion
 [ -f "/etc/bashrc_Apple_Terminal" ] && . /etc/bashrc_Apple_Terminal
 [ -f "$HOME/.bash_private" ] && . ~/.bash_private
 [ -f "$HOME/.bash_local" ] && . ~/.bash_local
@@ -35,65 +32,10 @@ export GPG_TTY=$(tty)
 [ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
 [ -d "$HOME/.dotfiles/bin" ] && export PATH="$HOME/.dotfiles/bin:$PATH"
 
-# macOS
-if [ "$(uname -s)" == "Darwin" ]; then
-    export DISPLAY=localhost:0.0
-
-    [ -d "/Applications/Visual Studio Code.app/Contents/Resources/app/bin" ] && export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
-fi
-
-# homebrew
-if command -v brew >/dev/null 2>&1; then
-    export HOMEBREW_CASK_OPTS="--appdir=/Applications"
-
-    bp=$(brew --prefix)
-    [ -f "$bp/git/contrib/completion/git-completion.bash" ] && . "$bp/git/contrib/completion/git-completion.bash"
-    [ -f "$bp/etc/bash_completion" ] && . "$bp/etc/bash_completion"
-
-    export PATH="$bp/opt/curl/bin:$PATH"
-fi
-
-# go
-if command -v go >/dev/null 2>&1; then
-    if [ -d "/usr/local/go/" ]; then
-        export GOROOT=/usr/local/go
-    fi
-    export PATH="$PATH:$GOROOT/bin"
-fi
-
-# python
-if command -v python >/dev/null 2>&1; then
-    mkdir -p $HOME/.virtualenvs
-    export WORKON_HOME="$HOME/.virtualenvs"
-    export PIP_VIRTUALENV_BASE=$WORKON_HOME
-    export PIP_RESPECT_VIRTUALENV=true
-    export VIRTUALENVWRAPPER_VIRTUALENV="virtualenv"
-    export PIP_DOWNLOAD_CACHE=$HOME/.pip/caches
-
-    [ -f /usr/local/bin/virtualenvwrapper.sh ] && . /usr/local/bin/virtualenvwrapper.sh
-    if [ -d ~/Library/Python/3.7/bin ]; then
-        export PATH="$PATH:~/Library/Python/3.7/bin"
-    fi
-fi
-
-# nodejs
-# also see bin/chnode
-export PATH="$PATH:./node_modules/.bin"
-export PATH="$HOME/.yarn/bin:$PATH"
-export REACT_DEBUGGER="open -g 'rndebugger://set-debugger-loc?port=8001'"
-export REACT_EDITOR_CMD=code
-export REACT_EDITOR_PATTERN="-r -g {filename}:{line}:{column}"
-
-# java stuff
-if [ -d "/usr/libexec/java_home" ]; then
-    export JAVA_HOME=$(/usr/libexec/java_home)
-fi
-
-# android
-if [ -d "$HOME/Library/Android/sdk" ]; then
-    export ANDROID_HOME="$HOME/Library/Android/sdk"
-    export PATH="$PATH:$ANDROID_HOME/platform-tools"
-fi
+# load *.bash files in dotfiles
+while IFS='' read -r -d '' filename; do
+  source "$filename"
+done < <(find ~/.dotfiles -maxdepth 2 -type f -name '*.bash' -print0)
 
 # this needs to be loaded last in order for return code printing to work
-. ~/.bash_prompt
+. $HOME/.dotfiles/bash/bash_prompt

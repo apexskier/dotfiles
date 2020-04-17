@@ -89,16 +89,16 @@ function set_prompt() {
 
     local ret
 
-    local venv
-    if [[ -n "$VIRTUAL_ENV" ]] ; then
-        venv=" (⊙${VIRTUAL_ENV#$WORKON_HOME/}) "
-    fi
-
     local write=":"
     if [[ -w "$PWD" ]] ; then
         write="$green$write$nocol"
     else
         write="$red$write$nocol"
+    fi
+
+    local venv
+    if [[ -n "$VIRTUAL_ENV" ]] ; then
+        venv=" (⊙${VIRTUAL_ENV#$WORKON_HOME/}) "
     fi
 
     local gitbranch="$(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
@@ -121,6 +121,11 @@ function set_prompt() {
         fi
     fi
 
+    local kube="$(kube_ps1)"
+    if [[ -n "$kube" ]] ; then
+        kube=" $kube"
+    fi
+
     # this stuff can be used for _responsive_ design
     # local size=($(stty size))
     # local rows=${size[0]}
@@ -133,6 +138,7 @@ function set_prompt() {
     # test "$(expr ${#ret} + ${#venv})" -gt "$cols" && ret+="\n"
     ret+="$venv"
     ret+="$nodejs"
+    ret+="$kube"
 
     # use multi-line prompt as the main prompt as well
     ret+="\n$PS2"

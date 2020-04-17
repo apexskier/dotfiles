@@ -43,16 +43,6 @@ function unescapewhitespace() {
 |g' | gsed 's|\\t|\t|g'
 }
 
-function chnode() {
-    local version
-    if [ -n "$1" ]
-    then
-        version="@$1"
-    fi
-    brew unlink $(brew list | grep node)
-    brew link --overwrite --force "node$version"
-}
-
 function returnwith() {
     return $1
 }
@@ -74,3 +64,4 @@ function splitlines() {
 
 alias mvn='docker run -it --rm -e AWS_SECRET_ACCESS_KEY -e AWS_ACCESS_KEY_ID -v "$HOME/.m2":/root/.m2 -v $PWD:/src -w /src maven:3.3-jdk-8 mvn'
 
+alias pbpastehtml="osascript -e 'the clipboard as «class HTML»' | perl -ne 'print chr foreach unpack(\"C*\",pack(\"H*\",substr(\$_,11,-3)))'"
