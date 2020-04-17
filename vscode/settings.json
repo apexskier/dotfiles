@@ -10,6 +10,7 @@
         "OPROD",
         "Quovo",
         "Remitly's",
+        "Remitly’s",
         "SEPA",
         "SOFORT",
         "Sprintf",
@@ -124,6 +125,7 @@
 
     "javascript.validate.enable": false,
 
+    "markdown.preview.lineHeight": 1.4,
     "markdown-preview-enhanced.codeBlockTheme": "github.css",
 
     "npm.autoDetect": "off",
@@ -276,5 +278,7 @@
     "[scss]": {
         "editor.formatOnSave": true,
     },
-    "markdown.preview.lineHeight": 1.4,
+    "[yaml]": {
+        "editor.defaultFormatter": "redhat.vscode-yaml"
+    },
 }
