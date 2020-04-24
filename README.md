@@ -32,6 +32,8 @@ There's a few special files and file types in the hierarchy.
   your `$HOME`. This is so you can keep all of those versioned in your dotfiles
   but still keep those autoloaded files in your home directory. These get
   symlinked in when you run `script/bootstrap`.
+- **\*.bash**: Any file ending in `*.bash` gets sourced into bash. This lets
+  you split up your bash configuration into more logical, topic based chunks.
 - **appsupport**: This is a map of files that should be linked to macOS's
   application support directory. This is useful for programs like VSCode that
   use this config location.
