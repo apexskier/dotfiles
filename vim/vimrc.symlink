@@ -204,6 +204,13 @@ fun! StripTrailingWhiteSpace()
 endfun
 autocmd bufwritepre * :call StripTrailingWhiteSpace()
 
+if empty(glob('~/.vim/tmp'))
+  silent !mkdir -p ~/.vim/tmp
+endif
+if empty(glob('~/.vim/undo'))
+  silent !mkdir -p ~/.vim/undo
+endif
+
 set backspace=indent,eol,start  " allow backspace in insert mode
 set scrolloff=5     " start scrolling when 5 lines away from margins
 set sidescrolloff=10
@@ -211,12 +218,12 @@ set sidescroll=1
 set encoding=utf8    " Set utf8 as standard encoding and en_US as the standard language
 set ffs=unix,dos,mac " Use Unix as the standard file type
 set history=1000     " more history storage
-set undodir=~/.dotfiles/vim/undo
+set undodir=~/.vim/undo
 set undofile
 set undolevels=1000
 set undoreload=10000
-set backupdir=~/.dotfiles/vim/tmp
-set directory=~/.dotfiles/vim/tmp
+set backupdir=~/.vim/tmp
+set directory=~/.vim/tmp
 inoremap <// </<C-x><C-o>
 " Pressing <leader>ss will toggle and untoggle spell checking
 map <leader>ss :setlocal spell!<cr>

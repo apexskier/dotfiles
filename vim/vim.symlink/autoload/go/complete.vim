@@ -1,1 +1,0 @@
-/home/littlec8/bin/go/misc/vim/autoload/go/complete.vim
