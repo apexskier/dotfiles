@@ -12,7 +12,7 @@ across machines. The actual contents were inspired from a multitude of sources.
 ## topical
 
 Everything's built around topic areas. If you're adding a new area to your
-forked dotfiles — say, "Java" — you can simply add a `java` directory and put
+forked dotfiles — say, "SNOBOL" — you can simply add a `snobol` directory and put
 files in there.
 
 ## what's inside
@@ -32,7 +32,7 @@ There's a few special files and file types in the hierarchy.
   your `$HOME`. This is so you can keep all of those versioned in your dotfiles
   but still keep those autoloaded files in your home directory. These get
   symlinked in when you run `script/bootstrap`.
-- **\*.bash**: Any file ending in `*.bash` gets sourced into bash. This lets
+- **\*.bash**: Files ending in `*.bash` gets sourced into bash. This lets
   you split up your bash configuration into more logical, topic based chunks.
 - **appsupport**: This is a map of files that should be linked to macOS's
   application support directory. This is useful for programs like VSCode that
@@ -50,3 +50,5 @@ cd ~/.dotfiles
 
 This will symlink the appropriate files in `.dotfiles` to your home directory.
 Everything is configured and tweaked within `~/.dotfiles`.
+
+Run `dot` to refresh everything on occation.
