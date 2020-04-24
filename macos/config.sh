@@ -8,7 +8,7 @@ fi
 # Sets reasonable OS X defaults.
 #
 # The original idea (and a couple settings) were grabbed from:
-#   https://github.com/mathiasbynens/dotfiles/blob/master/.osx
+#   https://github.com/mathiasbynens/dotfiles/blob/master/.macos
 #
 # These can be difficult to discover, here are some tips:
 # - https://www.defaults-write.com/
@@ -30,8 +30,8 @@ defaults write -g ApplePressAndHoldEnabled -bool false
 # Jump to spot that's clicked in scroll bar
 defaults write -g AppleScrollerPagingBehavior 1
 
-# Use AirDrop over every interface.
-defaults write com.apple.NetworkBrowser BrowseAllInterfaces 1
+# Enable AirDrop over Ethernet and on unsupported Macs running Lion
+defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
 # Show the ~/Library folder.
 chflags nohidden ~/Library
@@ -39,10 +39,6 @@ chflags nohidden ~/Library
 # Set a faster key repeat.
 defaults write NSGlobalDomain KeyRepeat -int 2
 defaults write NSGlobalDomain InitialKeyRepeat -int 20
-
-# Set the Finder prefs for showing a few different volumes on the Desktop.
-defaults write com.apple.Finder ShowExternalHardDrivesOnDesktop -bool true
-defaults write com.apple.Finder ShowRemovableMediaOnDesktop -bool true
 
 # Set up Safari for development.
 defaults write com.apple.Safari.SandboxBroker ShowDevelopMenu -bool true
@@ -77,11 +73,18 @@ defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int
 # (e.g. enable Tab in modal dialogs)
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
+# Disable automatic period substitution as it’s annoying when typing code
+defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+
 # Save screenshots to downloads
 defaults write com.apple.screencapture location -string "${HOME}/Downloads"
 
 # Save screenshots in PNG format (other options: BMP, GIF, JPG, PDF, TIFF)
 defaults write com.apple.screencapture type -string "png"
+
+# Set the Finder prefs for showing a few different volumes on the Desktop.
+defaults write com.apple.Finder ShowExternalHardDrivesOnDesktop -bool true
+defaults write com.apple.Finder ShowRemovableMediaOnDesktop -bool true
 
 # Finder: allow quitting via ⌘ + Q; doing so will also hide desktop icons
 defaults write com.apple.Finder QuitMenuItem -bool true
@@ -117,9 +120,6 @@ defaults write com.apple.Finder OpenWindowForNewRemovableDisk -bool true
 # Use column view in all Finder windows by default
 # Four-letter codes for the other view modes: `Nlsv`, `icnv`, `clmv`, `Flwv`
 defaults write com.apple.Finder FXPreferredViewStyle "clmv"
-
-# Enable AirDrop over Ethernet and on unsupported Macs running Lion
-defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
 
 # Show the ~/Library folder
 chflags nohidden ~/Library
@@ -250,7 +250,28 @@ killall ControlStrip
 
 # menu bar date and time
 defaults write com.apple.menuextra.clock "DateFormat" 'E, MMM d, hh:mm a'
-killall -KILL SystemUIServer
+
+# Set localization formatting
+defaults write NSGlobalDomain AppleLanguages -array "en-US" "pl-US"
+defaults write NSGlobalDomain AppleLocale -string "en_US@currency=USD"
+defaults write NSGlobalDomain AppleMeasurementUnits -string "Centimeters"
+defaults write NSGlobalDomain AppleMetricUnits -bool true
+defaults write NSGlobalDomain AppleICUDateFormatStrings -dict \
+    1 -string "y-MM-dd" \
+    2 -string "y MMM d" \
+    3 -string "y MMMM d" \
+    4 -string "EEEE, d MMMM y"
+defaults write NSGlobalDomain AppleICUForce24HourTime -bool true
+defaults write NSGlobalDomain AppleFirstWeekday -int 2
+defaults write NSGlobalDomain AppleTemperatureUnit -string "Celsius"
 
 # disable chrome swipe to go forward and back
 defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool FALSE
+defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -bool false
+defaults write com.google.Chrome AppleEnableMouseSwipeNavigateWithScrolls -bool false
+defaults write com.google.Chrome.canary AppleEnableMouseSwipeNavigateWithScrolls -bool false
+
+
+# refresh things
+
+killall -KILL SystemUIServer
