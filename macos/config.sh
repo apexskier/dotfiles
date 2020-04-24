@@ -251,3 +251,6 @@ killall ControlStrip
 # menu bar date and time
 defaults write com.apple.menuextra.clock "DateFormat" 'E, MMM d, hh:mm a'
 killall -KILL SystemUIServer
+
+# disable chrome swipe to go forward and back
+defaults write com.google.Chrome AppleEnableSwipeNavigateWithScrolls -bool FALSE

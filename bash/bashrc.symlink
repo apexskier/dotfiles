@@ -24,6 +24,8 @@ shopt -s nocaseglob # case insensitive filename expansion
 
 export EDITOR=vim
 export GPG_TTY=$(tty)
+export XDG_CONFIG_HOME="$HOME/.config"
+export XDG_CACHE_HOME="$HOME/.cache"
 
 # Add stuff to my PATH
 [ -d "/usr/local/sbin" ] && export PATH="/usr/local/sbin:$PATH"

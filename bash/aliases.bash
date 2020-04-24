@@ -62,6 +62,4 @@ function splitlines() {
     done
 }
 
-alias mvn='docker run -it --rm -e AWS_SECRET_ACCESS_KEY -e AWS_ACCESS_KEY_ID -v "$HOME/.m2":/root/.m2 -v $PWD:/src -w /src maven:3.3-jdk-8 mvn'
-
 alias pbpastehtml="osascript -e 'the clipboard as «class HTML»' | perl -ne 'print chr foreach unpack(\"C*\",pack(\"H*\",substr(\$_,11,-3)))'"
