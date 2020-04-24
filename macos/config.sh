@@ -21,6 +21,9 @@ fi
 # - Many of these won't apply until a restart of some process or the full
 #   machine
 
+# if system preferences stays open it can override stuff set here
+osascript -e 'tell application "System Preferences" to quit'
+
 mkdir -p ~/Dev
 touch ~/Dev/.metadata_never_index
 
