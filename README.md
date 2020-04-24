@@ -55,3 +55,23 @@ There's a few special files and file types in the hierarchy.
   application support directory. This is useful for programs like VSCode that
   use this config location.
 
+## Docker image
+
+A github action maintains a
+[docker image](https://github.com/apexskier/dotfiles/packages/158802) I use to
+quickly debug docker and kubernetes with a familiar shell and debugging tools.
+
+On `dot --install`, it's tagged locally as `toolbox` and can be started with
+`docker run -it toolbox`. To try it somewhere else, run
+
+```sh
+docker run -it docker.pkg.github.com/apexskier/dotfiles/toolbox:latest
+```
+
+Unfortunately, you'll [need to authenticate with github for this](https://github.community/t5/GitHub-API-Development-and/Download-from-Github-Package-Registry-without-authentication/td-p/35255).
+You can use the [docker hub mirror](https://hub.docker.com/repository/docker/apexskier/toolbox)
+if you can't configure auth in your environment.
+
+```sh
+docker run -it apexskier/toolbox
+```
