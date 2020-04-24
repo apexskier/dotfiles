@@ -23,4 +23,3 @@ Host 10.0.*.*
     StrictHostKeyChecking no
     UserKnownHostsFile /dev/null
     LogLevel ERROR
-

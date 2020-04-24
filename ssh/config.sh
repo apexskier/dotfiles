@@ -1,3 +1,3 @@
-#!/bin/bash
+#!/usr/bin/env bash
 
-curl -o ~/.ssh/authorized_keys https://github.com/apexskier.keys
+curl -s -o "$HOME/.ssh/authorized_keys" https://github.com/apexskier.keys

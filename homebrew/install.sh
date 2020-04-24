@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/usr/bin/env bash
 #
 # Homebrew
 #
@@ -39,7 +39,7 @@ brew install imagemagick
 brew install jq
 brew install kubernetes-cli
 brew install macvim
-brew install node # and `npm`
+brew install node # and `npm`, most recent versions
 brew install node@10
 brew install node@12
 brew install ripgrep

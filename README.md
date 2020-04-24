@@ -1,28 +1,45 @@
 # Cameron Little's dotfiles
 
-For the real readme, check out [@holman's
-dotfiles](https://github.com/holman/dotfiles).
-
-This was original forked from his repository, but due to some limitations of
-forked repositories on github I've unforked.
+This was original forked from [@holman's dotfiles](https://github.com/holman/dotfiles),
+but due to some limitations of forked repositories on GitHub I've unforked.
 
 I'm using a variation of his system to organize and propagate my configurations
-across machines. The actual contents were inspired from a multitude of sources.
+across machines. The actual contents were inspired from a multitude of sources
+which I've tried to attribute inline.
 
-## topical
+## Setup
 
-Everything's built around topic areas. If you're adding a new area to your
-forked dotfiles — say, "SNOBOL" — you can simply add a `snobol` directory and put
-files in there.
+Run this:
 
-## what's inside
+```sh
+git clone https://github.com/apexskier/dotfiles.git ~/.dotfiles
+cd ~/.dotfiles
+./script/bootstrap
+```
+
+This will symlink the appropriate files in `.dotfiles` to your home directory
+and configure your machine, which may require your input. Everything is
+configured and tweaked within that `~/.dotfiles` folder.
+
+It adds a `dot` command to your `PATH` to manage your dotfiles.
+
+Run `dot` periodically to keep everything up to date.
+
+Run `dot --install` to run system-level installers for various tools. This
+will take a while, so it's not automatic.
+
+Run `dot --edit` to open your dotfiles for editing.
+
+## What's inside
 
 A lot of stuff. Seriously, a lot of stuff. Check them out in the file browser
 above and see what components may mesh up with you.
 [Fork it](https://github.com/apexskier/dotfiles/fork), remove what you don't
 use, and build on what you do use.
 
-## components
+Everything's built around topic areas. If you're adding a new area to your
+forked dotfiles — say, "SNOBOL" — you can simply add a `snobol` directory and
+put files in there.
 
 There's a few special files and file types in the hierarchy.
 
@@ -38,17 +55,3 @@ There's a few special files and file types in the hierarchy.
   application support directory. This is useful for programs like VSCode that
   use this config location.
 
-## install
-
-Run this:
-
-```sh
-git clone https://github.com/apexskier/dotfiles.git ~/.dotfiles
-cd ~/.dotfiles
-./script/bootstrap
-```
-
-This will symlink the appropriate files in `.dotfiles` to your home directory.
-Everything is configured and tweaked within `~/.dotfiles`.
-
-Run `dot` to refresh everything on occation.

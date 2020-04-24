@@ -24,49 +24,18 @@ success () {
 fail () {
   printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
   echo ''
-  exit
+  exit 1
 }
 
-setup_gitconfig () {
-  if ! command -v git >/dev/null 2>&1 || [ "$DOTFILES_SKIP_GIT" == true ]; then
-    info 'skipping git'
-    return 0
-  fi
-
-  info 'setup local gitconfig'
-
-  gitconfig_local_file="$HOME/.gitconfig.local"
-
-  touch "$gitconfig_local_file"
-
-  git_credential='cache'
-  if [ "$(uname -s)" == "Darwin" ]
-  then
-    git_credential='osxkeychain'
-  fi
-  git config --file "$gitconfig_local_file" credential.helper "$git_credential"
-
-  if [ -z "$(git config user.name)" ]
-  then
-    user ' - What is your github author name?'
-    read -e git_authorname
-    git config --file "$gitconfig_local_file" user.name "$git_authorname"
-  fi
-
-  if [ -z "$(git config user.email)" ]
-  then
-    user ' - What is your github author email?'
-    read -e git_authoremail
-    git config --file "$gitconfig_local_file" user.email "$git_authoremail"
-  fi
-
-  success 'local gitconfig'
-}
-
-setup_ssh () {
-  info 'setup ssh'
-  curl --silent --output "$HOME/.ssh/authorized_keys" https://github.com/apexskier.keys
-  success 'ssh'
+configure () {
+  # install simple symlinks
+  for config in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name 'config.sh' -not -path "$DOTFILES_ROOT/.*")
+  do
+    topic=$(basename $(dirname $config))
+    info "configuring $topic"
+    bash -c "$config"
+    success "configured $topic"
+  done
 }
 
 link_file () {
@@ -153,15 +122,6 @@ install_dotfiles () {
     dst="$HOME/.$(basename $(dirname "$src"))/$(basename "$src")"
     link_file "$src" "$dst"
   done
-
-  # install files in the .config directory
-  for src in $(find "$DOTFILES_ROOT" -maxdepth 2 -name '*.config' -not -path "$DOTFILES_ROOT/.*")
-  do
-    # works for now
-    str=${src#$DOTFILES_ROOT/}
-    dst="$HOME/.config/${str%.*}"
-    link_file "$src" "$dst"
-  done
 }
 
 install_appsupport () {
@@ -187,9 +147,7 @@ install_appsupport () {
 install () {
   local overwrite_all=${DOTFILES_OVERWRITE:-false} backup_all=false skip_all=false
 
-  setup_gitconfig
-  echo
-  setup_ssh
+  configure
   echo
   install_dotfiles
   echo

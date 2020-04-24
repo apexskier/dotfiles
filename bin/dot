@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 #
 # dot
 #
@@ -44,7 +44,6 @@ while test $# -gt 0; do
 	shift
 done
 
-$dotfiles_dir/macos/config.sh
 $dotfiles_dir/script/bootstrap
 
 if [ "$should_install" = "true" ]
