@@ -73,3 +73,8 @@
     pushInsteadOf = "gist:"
     pushInsteadOf = "git://gist.github.com/"
     pushInsteadOf = "https://gist.github.com/"
+[filter "lfs"]
+    process = git-lfs filter-process
+    required = true
+    clean = git-lfs clean -- %f
+    smudge = git-lfs smudge -- %f
