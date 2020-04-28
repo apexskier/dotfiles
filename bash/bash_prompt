@@ -108,16 +108,28 @@ function set_prompt() {
 
     local nodejs
     if command -v node >/dev/null 2>&1; then
-        local npm_prefix=$(npm prefix)
-        if [[ -f "$npm_prefix/package.json" ]] ; then
-            local node_version="$(node --version)"
-            nodejs+=" (node "
-            # if ! npx -q check-node-version --node "$(node -e "process.stdout.write((require('./package.json').engines || {}).node || '')")" > /dev/null 2>&1 ; then
-            #     nodejs+="$red"
-            # fi
+        local node_version="$(node --version)"
+        # alt ⬡
+        nodejs+=" ("
 
-            nodejs+="$node_version$nocol"
-            nodejs+=")"
+        # too slow
+        # if command -v npm >/dev/null 2>&1; then
+        #     local npm_prefix=$(npm prefix)
+        #     if [[ -f "$npm_prefix/package.json" ]] ; then
+        #         if ! npx -q check-node-version --node "$(node -e "process.stdout.write((require('$npm_prefix/package.json').engines || {}).node || '')")" > /dev/null 2>&1 ; then
+        #             nodejs+="$red"
+        #         fi
+        #     fi
+        # fi
+
+        nodejs+="⬢$nocol $node_version)"
+    fi
+
+    local k8s
+    if command -v kubectl >/dev/null 2>&1; then
+        local context=$(kubectl config view --minify --output=go-template --template='{{ index . "current-context" }}' 2> /dev/null)
+        if [[ -n "$context" ]] ; then
+            k8s+=" (⎈$context)"
         fi
     fi
 
@@ -133,6 +145,7 @@ function set_prompt() {
     # test "$(expr ${#ret} + ${#venv})" -gt "$cols" && ret+="\n"
     ret+="$venv"
     ret+="$nodejs"
+    ret+="$k8s"
 
     # use multi-line prompt as the main prompt as well
     ret+="\n$PS2"
