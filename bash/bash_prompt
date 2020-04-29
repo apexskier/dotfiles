@@ -77,6 +77,43 @@ fi
 # I don't use $ because it means something in bash
 PS2="${lt_grey}▻ ${nocol}"
 
+function gitinfo() {
+    local gitbranch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
+    if [[ -n "$gitbranch" ]] ; then
+        printf " (±$gitbranch)"
+    fi
+}
+
+function nodeinfo() {
+    if command -v node >/dev/null 2>&1; then
+        local node_version="$(node --version)"
+        # alt ⬡
+        printf " ("
+
+        # too slow :(
+        # if command -v npm >/dev/null 2>&1; then
+        #     local npm_prefix=$(npm prefix)
+        #     if [[ -f "$npm_prefix/package.json" ]] ; then
+        #         if ! npx -q check-node-version --node "$(node -e "process.stdout.write((require('$npm_prefix/package.json').engines || {}).node || '')")" > /dev/null 2>&1 ; then
+        #             printf "$red"
+        #         fi
+        #     fi
+        # fi
+
+        printf "⬢$nocol $node_version)"
+    fi
+}
+
+function k8sinfo() {
+    local k8s
+    if command -v kubectl >/dev/null 2>&1; then
+        local context=$(kubectl config view --minify --output=go-template --template='{{ index . "current-context" }}' 2> /dev/null)
+        if [[ -n "$context" ]] ; then
+            printf " (⎈$context)"
+        fi
+    fi
+}
+
 function set_prompt() {
     # get return code of last cmd
     local -i last_err=$?
@@ -101,37 +138,18 @@ function set_prompt() {
         venv=" (⊙${VIRTUAL_ENV#$WORKON_HOME/}) "
     fi
 
-    local gitbranch="$(git rev-parse --abbrev-ref HEAD 2> /dev/null)"
-    if [[ -n "$gitbranch" ]] ; then
-        gitbranch=" (±$gitbranch)"
-    fi
+    local gitinfo_file=$(mktemp)
+    gitinfo > "$gitinfo_file" &
+    local nodeinfo_file=$(mktemp)
+    nodeinfo > "$nodeinfo_file" &
+    local k8sinfo_file=$(mktemp)
+    k8sinfo > "$k8sinfo_file" &
 
-    local nodejs
-    if command -v node >/dev/null 2>&1; then
-        local node_version="$(node --version)"
-        # alt ⬡
-        nodejs+=" ("
+    wait
 
-        # too slow
-        # if command -v npm >/dev/null 2>&1; then
-        #     local npm_prefix=$(npm prefix)
-        #     if [[ -f "$npm_prefix/package.json" ]] ; then
-        #         if ! npx -q check-node-version --node "$(node -e "process.stdout.write((require('$npm_prefix/package.json').engines || {}).node || '')")" > /dev/null 2>&1 ; then
-        #             nodejs+="$red"
-        #         fi
-        #     fi
-        # fi
-
-        nodejs+="⬢$nocol $node_version)"
-    fi
-
-    local k8s
-    if command -v kubectl >/dev/null 2>&1; then
-        local context=$(kubectl config view --minify --output=go-template --template='{{ index . "current-context" }}' 2> /dev/null)
-        if [[ -n "$context" ]] ; then
-            k8s+=" (⎈$context)"
-        fi
-    fi
+    gitinfo=$(cat "$gitinfo_file")
+    nodeinfo=$(cat "$nodeinfo_file")
+    k8sinfo=$(cat "$k8sinfo_file")
 
     # this stuff can be used for _responsive_ design
     # local size=($(stty size))
@@ -140,12 +158,12 @@ function set_prompt() {
 
     ret+="$cmd_info$_USER$mark$connectionmark$green\h$nocol$write"
     ret+="$yellow\w$nocol"
-    # test "$(expr ${#ret} + ${#gitbranch})" -gt "$cols" && ret+="\n"
-    ret+="$gitbranch"
+    # test "$(expr ${#ret} + ${#gitinfo})" -gt "$cols" && ret+="\n"
+    ret+="$gitinfo"
     # test "$(expr ${#ret} + ${#venv})" -gt "$cols" && ret+="\n"
     ret+="$venv"
-    ret+="$nodejs"
-    ret+="$k8s"
+    ret+="$nodeinfo"
+    ret+="$k8sinfo"
 
     # use multi-line prompt as the main prompt as well
     ret+="\n$PS2"
