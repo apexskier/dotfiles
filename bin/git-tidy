@@ -1,10 +1,10 @@
 #!/bin/bash
 
-# delete merged branches
-MERGED=$(git branch --merged=master | grep -v master)
+# delete merged branches that we're not currently on
+MERGED=$(git branch --merged=master | grep -v '* ' | cut -c3- | grep -v master)
 if [ ! -z "$MERGED" ]
 then
-    git branch -d $MERGED
+    git branch -d "$MERGED"
 fi
 
 # prune remote branches
