@@ -1,12 +1,8 @@
 #!/usr/bin/env bash
-# Use this to compare what's currently installed with what's listed here:
+#
+# Use this to compare what's currently installed with what's in the dotfiles
+#
+# I have a bunch of stuff installed on my work computer that I don't actually
+# want in my dotfiles, so I don't want to just dump directly
 
-A=$(mktemp)
-B=$(mktemp)
-echo "Installed" > $A
-echo "---" >> $A
-brew leaves | sort >> $A
-echo "In Config" > $B
-echo "---" >> $B
-cat ~/.dotfiles/homebrew/install.sh | grep '^brew install' | cut -d' ' -f3 | sort >> $B
-vimdiff "$A" "$B"
+vimdiff <(brew bundle --describe dump --file=-) ~/.dotfiles/homebrew/Brewfile

@@ -1,0 +1,52 @@
+tap "homebrew/bundle"
+tap "homebrew/cask"
+tap "homebrew/core"
+# Bourne-Again SHell, a UNIX command interpreter
+brew "bash"
+# Programmable completion for Bash 4.1+
+brew "bash-completion@2"
+# Clone of cat(1) with syntax highlighting and Git integration
+brew "bat"
+# Get a file from an HTTP, HTTPS or FTP server
+brew "curl"
+# Command-line fuzzy finder written in Go
+brew "fzf"
+# Distributed revision control system
+brew "git"
+# Syntax-highlighting pager for git and diff output
+brew "git-delta"
+# GNU implementation of the famous stream editor
+brew "gnu-sed"
+# Add GitHub support to git on the command-line
+brew "hub"
+# Tools and libraries to manipulate images in many formats
+brew "imagemagick"
+# Lightweight and flexible command-line JSON processor
+brew "jq"
+# Kubernetes command-line interface
+brew "kubernetes-cli"
+# GUI for vim, made for macOS
+brew "macvim", link: false
+# Platform built on V8 to build network applications
+brew "node", link: true
+# Platform built on V8 to build network applications
+brew "node@10", link: false
+# Platform built on V8 to build network applications
+brew "node@12", link: false
+# Search tool like grep and The Silver Searcher
+brew "ripgrep"
+# Send macOS User Notifications from the command-line
+brew "terminal-notifier"
+# Terminal multiplexer
+brew "tmux"
+# Vi 'workalike' with many additional features
+brew "vim"
+# Watch files and take action when they change
+brew "watchman"
+# JavaScript package manager
+brew "yarn"
+cask "charles"
+cask "macvim"
+cask "ngrok"
+cask "qlcolorcode"
+cask "qlstephen"

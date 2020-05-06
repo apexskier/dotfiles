@@ -5,6 +5,8 @@
 # This installs some of the common dependencies needed (or at least desired)
 # using Homebrew.
 
+set -e
+
 # Check for Homebrew
 if ! command -v brew >/dev/null 2>&1
 then
@@ -29,26 +31,7 @@ fi
 # Upgrade any already-installed formulae
 brew upgrade
 
-brew install bash-completion
-brew install curl
-brew install fzf
-brew install git
-brew install gnu-sed
-brew install hub
-brew install imagemagick
-brew install jq
-brew install kubernetes-cli
-brew install macvim
-brew install node # and `npm`, most recent versions
-brew install node@10
-brew install node@12
-brew install ripgrep
-brew install spaceman-diff
-brew install terminal-notifier
-brew install tmux
-brew install vim
-brew install watchman
-brew install yarn
+brew bundle install --no-lock --file ~/.dotfiles/homebrew/Brewfile
 
 # Remove outdated versions from the cellar
 brew cleanup
