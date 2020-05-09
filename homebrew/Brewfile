@@ -34,6 +34,8 @@ brew "jq"
 brew "kubernetes-cli"
 # GUI for vim, made for macOS
 brew "macvim", link: false
+# Mac App Store command-line interface
+brew "mas"
 # Platform built on V8 to build network applications
 brew "node"
 # Platform built on V8 to build network applications
@@ -64,3 +66,12 @@ cask "ngrok"
 cask "qlcolorcode"
 cask "qlstephen"
 cask "wireshark"
+mas "1Blocker", id: 1107421413
+mas "Amphetamine", id: 937984704
+mas "Default Browser", id: 1055264211
+mas "Gifski", id: 1351639930
+mas "GPX Reader", id: 543327839
+mas "Magnet", id: 441258766
+mas "Numbers", id: 409203825
+mas "Pages", id: 409201541
+mas "Xcode", id: 497799835
