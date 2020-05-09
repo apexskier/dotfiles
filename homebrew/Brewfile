@@ -1,3 +1,4 @@
+tap "caskroom/versions"
 tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/core"
@@ -7,8 +8,12 @@ brew "bash"
 brew "bash-completion@2"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
+# Decentralized dependency manager for Cocoa
+brew "carthage"
 # Get a file from an HTTP, HTTPS or FTP server
 brew "curl"
+# Pack, ship and run any application as a lightweight container
+brew "docker", link: false
 # Command-line fuzzy finder written in Go
 brew "fzf"
 # Distributed revision control system
@@ -17,6 +22,8 @@ brew "git"
 brew "git-delta"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
+# Open source programming language to build simple/reliable/efficient software
+brew "go"
 # Add GitHub support to git on the command-line
 brew "hub"
 # Tools and libraries to manipulate images in many formats
@@ -28,13 +35,15 @@ brew "kubernetes-cli"
 # GUI for vim, made for macOS
 brew "macvim", link: false
 # Platform built on V8 to build network applications
-brew "node", link: true
+brew "node"
 # Platform built on V8 to build network applications
-brew "node@10", link: false
+brew "node@10"
 # Platform built on V8 to build network applications
-brew "node@12", link: false
+brew "node@12"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
+# Static analysis and lint tool, for (ba)sh scripts
+brew "shellcheck"
 # Send macOS User Notifications from the command-line
 brew "terminal-notifier"
 # Terminal multiplexer
@@ -45,8 +54,13 @@ brew "vim"
 brew "watchman"
 # JavaScript package manager
 brew "yarn"
+cask "asset-catalog-tinkerer"
 cask "charles"
+cask "docker"
+cask "gitup"
+cask "hex-fiend"
 cask "macvim"
 cask "ngrok"
 cask "qlcolorcode"
 cask "qlstephen"
+cask "wireshark"
