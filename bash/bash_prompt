@@ -172,6 +172,7 @@ function set_prompt() {
 
     # custom terminal title
     # echo -ne "\033]0;${connectionmark}\007"
+    echo -ne "\033]0;\007\c"
 }
 
 function list_prompt_commands() {
