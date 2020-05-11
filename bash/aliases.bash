@@ -27,6 +27,14 @@ alias ...='cd ../..'
 alias ....='cd ../../..'
 alias .....='cd ../../../..'
 
+function y() {
+    # This fixes a weird issue I see sometimes when I accidentally pipe garbage
+    # into a shell and the screen turns white
+    printf '\e[?5h' # Turn on reverse video
+    sleep 0.1
+    printf '\e[?5l' # Turn on normal video
+}
+
 function findport() {
     lsof -n -i4TCP:"$1" | grep LISTEN
 }
@@ -34,9 +42,6 @@ function findport() {
 function killport() {
     kill -9 $(findport "$1" | tr -s ' ' | cut -d' ' -f2)
 }
-
-# macos quicklook from the terminal
-alias ql="qlmanage -p ${@} > /dev/null 2> /dev/null"
 
 function unescapewhitespace() {
 	gsed 's|\\n|\
@@ -62,4 +67,3 @@ function splitlines() {
     done
 }
 
-alias pbpastehtml="osascript -e 'the clipboard as «class HTML»' | perl -ne 'print chr foreach unpack(\"C*\",pack(\"H*\",substr(\$_,11,-3)))'"

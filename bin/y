@@ -1,5 +1,0 @@
-#!/bin/bash
-
-printf '\e[?5h'  # Turn on reverse video
-sleep 0.1
-printf '\e[?5l'  # Turn on normal video
