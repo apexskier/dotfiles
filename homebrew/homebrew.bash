@@ -5,5 +5,5 @@ if command -v brew >/dev/null 2>&1; then
     [ -f "$bp/git/contrib/completion/git-completion.bash" ] && . "$bp/git/contrib/completion/git-completion.bash"
     [ -f "$bp/etc/bash_completion" ] && . "$bp/etc/bash_completion"
 
-    export PATH="$bp/opt/curl/bin:$PATH"
+    export PATH="$PATH:$bp/opt/curl/bin"
 fi
