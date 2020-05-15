@@ -104,6 +104,13 @@ function nodeinfo() {
     fi
 }
 
+function goinfo() {
+    if command -v go >/dev/null 2>&1; then
+        local go_version=$(go version | cut -d' ' -f3)
+        printf " ($go_version)"
+    fi
+}
+
 function k8sinfo() {
     local k8s
     if command -v kubectl >/dev/null 2>&1; then
@@ -142,6 +149,8 @@ function set_prompt() {
     gitinfo > "$gitinfo_file" &
     local nodeinfo_file=$(mktemp)
     nodeinfo > "$nodeinfo_file" &
+    local goinfo_file=$(mktemp)
+    goinfo > "$goinfo_file" &
     local k8sinfo_file=$(mktemp)
     k8sinfo > "$k8sinfo_file" &
 
@@ -149,6 +158,7 @@ function set_prompt() {
 
     gitinfo=$(cat "$gitinfo_file")
     nodeinfo=$(cat "$nodeinfo_file")
+    goinfo=$(cat "$goinfo_file")
     k8sinfo=$(cat "$k8sinfo_file")
 
     # this stuff can be used for _responsive_ design
@@ -163,6 +173,7 @@ function set_prompt() {
     # test "$(expr ${#ret} + ${#venv})" -gt "$cols" && ret+="\n"
     ret+="$venv"
     ret+="$nodeinfo"
+    ret+="$goinfo"
     ret+="$k8sinfo"
 
     # use multi-line prompt as the main prompt as well

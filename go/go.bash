@@ -1,9 +1,14 @@
 if command -v go >/dev/null 2>&1; then
-    if [ -d "/usr/local/go/" ]; then
-        export GOROOT=/usr/local/go
-    fi
-
     export GOPATH="$HOME/.go"
+    export PATH="$PATH:$GOPATH/bin"
 
-    export PATH="$PATH:$GOPATH/bin:$GOROOT/bin"
+    function chgo() {
+        local version
+        if [ -n "$1" ]
+        then
+            version="@$1"
+        fi
+        brew unlink $(brew list | grep '^go')
+        brew link --overwrite --force "go$version"
+    }
 fi
