@@ -276,6 +276,14 @@ defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -boo
 defaults write com.google.Chrome AppleEnableMouseSwipeNavigateWithScrolls -bool false
 defaults write com.google.Chrome.canary AppleEnableMouseSwipeNavigateWithScrolls -bool false
 
+# don't show gitup help messages - I've seen them before
+defaults write co.gitup.mac "HelpShown_COMMIT" -int 999
+defaults write co.gitup.mac "HelpShown_MAP" -int 999
+defaults write co.gitup.mac "HelpShown_QUICKVIEW" -int 999
+defaults write co.gitup.mac "HelpShown_SEARCH" -int 999
+defaults write co.gitup.mac "HelpShown_STASHES" -int 999
+defaults write co.gitup.mac "HelpShown_TAGS" -int 999
+
 "$DIR/keyboard_config.sh"
 
 # refresh things
