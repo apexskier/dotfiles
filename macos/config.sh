@@ -4,6 +4,8 @@ then
     exit 0
 fi
 
+DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
+
 # configuration stuff
 # Sets reasonable OS X defaults.
 #
@@ -274,6 +276,7 @@ defaults write com.google.Chrome.canary AppleEnableSwipeNavigateWithScrolls -boo
 defaults write com.google.Chrome AppleEnableMouseSwipeNavigateWithScrolls -bool false
 defaults write com.google.Chrome.canary AppleEnableMouseSwipeNavigateWithScrolls -bool false
 
+"$DIR/keyboard_config.sh"
 
 # refresh things
 
