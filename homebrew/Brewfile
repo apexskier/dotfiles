@@ -56,22 +56,33 @@ brew "vim"
 brew "watchman"
 # JavaScript package manager
 brew "yarn"
+cask "1password"
 cask "asset-catalog-tinkerer"
 cask "charles"
 cask "docker"
 cask "gitup"
+cask "google-chrome"
 cask "hex-fiend"
 cask "macvim"
 cask "ngrok"
 cask "qlcolorcode"
 cask "qlstephen"
+cask "rescuetime"
+cask "sketch"
+cask "visual-studio-code"
 cask "wireshark"
 mas "1Blocker", id: 1107421413
 mas "Amphetamine", id: 937984704
+mas "DaisyDisk", id: 411643860
 mas "Default Browser", id: 1055264211
 mas "Gifski", id: 1351639930
 mas "GPX Reader", id: 543327839
+mas "iMovie", id: 408981434
+mas "Keynote", id: 409183694
 mas "Magnet", id: 441258766
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
+mas "Parcel", id: 639968404
+mas "Reeder", id: 1449412482
+mas "The Clock", id: 488764545
 mas "Xcode", id: 497799835
