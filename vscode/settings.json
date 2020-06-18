@@ -58,6 +58,7 @@
         "truthy",
         "unauthed",
         "uncancelable",
+        "uncommented",
         "unhydrated",
         "unmounts",
         "verdaccio"
@@ -261,7 +262,7 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[javascript]": {
-        "editor.formatOnSave": true,
+        // "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[markdown]": {
@@ -270,11 +271,11 @@
         "files.trimTrailingWhitespace": false
     },
     "[typescript]": {
-        "editor.formatOnSave": true,
+        // "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[typescriptreact]": {
-        "editor.formatOnSave": true,
+        // "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[scss]": {
