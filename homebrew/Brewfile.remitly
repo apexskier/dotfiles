@@ -6,7 +6,12 @@ tap "homebrew/core"
 tap "remitly/internal"
 # Dependency manager for Cocoa projects
 brew "cocoapods"
-cask "adoptopenjdk8"
+brew "go", link: false
+brew "go@1.13", link: true
+brew "node", link: false
+brew "node@10", link: false
+brew "node@12", link: true
+cask "adoptopenjdk/openjdk/adoptopenjdk8"
 cask "android-studio"
 cask "intellij-idea"
 cask "postman"
