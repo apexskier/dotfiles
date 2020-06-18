@@ -6,3 +6,5 @@ https://dae.me/blog/2516/downgrade-any-homebrew-package-easily/
 
 To setup private github tap credentials, see
 https://gist.github.com/mlafeldt/8e7d50ee0b1de44e256d
+
+To use newer bash https://itnext.io/upgrading-bash-on-macos-7138bd1066ba.

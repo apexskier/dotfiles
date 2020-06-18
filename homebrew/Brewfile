@@ -70,6 +70,7 @@ cask "qlcolorcode"
 cask "qlstephen"
 cask "rescuetime"
 cask "sketch"
+cask "transmit"
 cask "visual-studio-code"
 cask "wireshark"
 mas "1Blocker", id: 1107421413
