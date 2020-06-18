@@ -4,7 +4,7 @@
 [include]
     path = ~/.gitconfig.local
 [hub]
-	protocol = git
+    protocol = git
 [alias]
     abort = !~/.dotfiles/bin/git-abort
     count = shortlog -sn
@@ -55,11 +55,13 @@
 [merge]
     tool = vimdiff
 [mergetool "mergepbx"]
-	cmd = mergepbx "$BASE" "$LOCAL" "$REMOTE" -o "$MERGED"
+    cmd = mergepbx "$BASE" "$LOCAL" "$REMOTE" -o "$MERGED"
 [mergetool]
-	keepBackup = false
+    keepBackup = false
 [push]
-	default = current
+    default = current
+[pull]
+	ff = only
 [diff "spaceman-diff"]
     command = ~/.dotfiles/bin/spaceman-diff
 [url "git@github.com:"]
