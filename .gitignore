@@ -1,5 +1,3 @@
 ssh/ssh/authorized_keys.symlink
-vim/vim.symlink/.netrwhist
-vim/vim.symlink/autoload/plug.vim
-vim/vim.symlink/vim-plug
 git/gitconfig.local.symlink
+aws/aws.symlink/credentials
