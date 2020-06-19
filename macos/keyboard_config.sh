@@ -43,7 +43,8 @@ US_MAPPINGS=$(cat << EOM
         }
     ]
 }
-EOM)
+EOM
+)
 
 # 1. Caps lock to escape
 # 2. §£ to `~
@@ -65,7 +66,8 @@ EU_MAPPINGS=$(cat << EOM
         }
     ]
 }
-EOM)
+EOM
+)
 
 # not using yet
 # 4. \| to Enter
