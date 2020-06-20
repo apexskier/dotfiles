@@ -44,6 +44,8 @@ while test $# -gt 0; do
 	shift
 done
 
+(cd $dotfiles_dir && git pull -q --ff-only && echo "Updated" || echo "Couldn't update dotfiles")
+
 $dotfiles_dir/script/bootstrap
 
 if [ "$should_install" = "true" ]
