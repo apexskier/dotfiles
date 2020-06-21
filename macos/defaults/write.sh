@@ -47,7 +47,7 @@ function write_plist() {
 
     if [ -n "$REOPEN" ]
     then
-        open "$REOPEN"
+        open -g "$REOPEN"
     fi
 }
 
