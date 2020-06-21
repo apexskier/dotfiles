@@ -142,7 +142,7 @@ function set_prompt() {
 
     local venv
     if [[ -n "$VIRTUAL_ENV" ]] ; then
-        venv=" (⊙${VIRTUAL_ENV#$WORKON_HOME/}) "
+        venv=" (⊙${VIRTUAL_ENV#$WORKON_HOME/})"
     fi
 
     local gitinfo_file=$(mktemp)
