@@ -12,7 +12,7 @@
     <true />
     <!-- Speed up Mission Control animations -->
     <key>expose-animation-duration</key>
-    <float>0.1</float>
+    <real>0.1</real>
 
     <!--
     Hot corners
