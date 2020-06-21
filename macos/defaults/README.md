@@ -1,4 +1,4 @@
-This is some mucking around with sharing macOS preferences
+This is some mucking around with sharing macOS preferences between computers.
 
 The original idea (and a couple settings) were grabbed from:
 https://github.com/mathiasbynens/dotfiles/blob/master/.macos
@@ -9,7 +9,7 @@ I can't just import defaults files because they often contain timestamps or comm
 
 [`write.sh`](./write.sh) runs through (a) plist file(s) and generates and executes defaults commands for it to merge it into the system settings.
 
-Add the xml attribute `eval=true` to `<string>` nodes to expand bash variables.
+Add the xml attribute `eval="true"` to `<string>` nodes to expand bash variables.
   
 ## Tips
 
@@ -29,6 +29,12 @@ Defaults can be difficult to discover, here are some tips:
   Show what's set for an app
 - `defaults find "search term"`
 - Many of these won't apply until a restart of some process or the full machine
+
+I often will `defaults read $DOMAIN > old.defaults` and diff that after tweaking
+preferences in the UI to see what changes and if I can save it.
+
+I'd also like to explore snapshotting defaults and seeing what changes over time
+to know what I _shouldn't_ change.
 
 ### Plutil
 
