@@ -86,7 +86,10 @@ EOM
 EOM
 
 # https://stackoverflow.com/a/57296366/2178159
-PHYSICAL_KEYBOARD=$(ioreg -a -r -k KeyboardLanguage | plutil -extract 0.KeyboardLanguage xml1 -o - - | xmllint --xpath 'string(/plist/string)' -)
+FILE=$(mktemp)
+ioreg -a -r -k KeyboardLanguage > $FILE
+PHYSICAL_KEYBOARD=$(/usr/libexec/PlistBuddy $FILE -c 'Print :0:KeyboardLanguage')
+rm $FILE
 
 case "$PHYSICAL_KEYBOARD" in
     "US International Keyboard")

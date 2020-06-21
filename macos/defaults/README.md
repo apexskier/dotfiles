@@ -42,6 +42,8 @@ See `man plutil`. It lists valid types.
 
 Note that these will fully reformat (reorder + strip comments).
 
+`/usr/libexec/PlistBuddy` is also an option, but it doesn't support piping from stdin and is not as similar to `defaults`.
+
 Initial creation of a dotfiles plist file
 
 ```

@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 <!--
-this file is just used for writing initial content
+this file is just used for writing initial content.
 since plutil defaults to mutating files it's readonly
 -->
 </dict>
