@@ -33,6 +33,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 [ -d "$HOME/.bin" ] && export PATH="$HOME/.bin:$PATH"
 [ -d "$HOME/bin" ] && export PATH="$HOME/bin:$PATH"
 [ -d "$HOME/.dotfiles/bin" ] && export PATH="$HOME/.dotfiles/bin:$PATH"
+[ -d "$HOME/.dotfiles/git/bin" ] && export PATH="$HOME/.dotfiles/git/bin:$PATH"
 
 # load *.bash files in dotfiles
 while IFS='' read -r -d '' filename; do

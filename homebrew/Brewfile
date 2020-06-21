@@ -2,6 +2,7 @@ tap "homebrew/bundle"
 tap "homebrew/cask"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
+tap "nvie/tap"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
 # Programmable completion for Bash 4.1+
@@ -57,6 +58,8 @@ brew "watchman"
 # JavaScript package manager
 brew "yarn"
 cask "1password"
+# Suite of useful Git commands
+brew "nvie/tap/git-toolbelt"
 cask "asset-catalog-tinkerer"
 cask "charles"
 cask "docker"

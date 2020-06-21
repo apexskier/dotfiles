@@ -6,22 +6,13 @@
 [hub]
     protocol = git
 [alias]
-    abort = !~/.dotfiles/bin/git-abort
     count = shortlog -sn
-    diff-here = !~/.dotfiles/bin/git-diff-here
-    ff = !~/.dotfiles/bin/git-ff
     git = !exec git
     lg = log --graph --decorate --oneline
     lga = log --graph --decorate --oneline --all
-    metadiff = !~/.dotfiles/bin/git-metadiff
     permission-reset = "!git diff -p | grep -E \"^(diff|old mode|new mode)\" | sed -e \"s/^old/NEW/;s/^new/old/;s/^NEW/new/\" | git apply"
-    promote = !~/.dotfiles/bin/git-promote
-    rank-contributors = !$ZSH/bin/git-rank-contributors
     st = status -sb
-    tidy = !~/.dotfiles/bin/git-tidy
     up = !gitup
-    wtf = !~/.dotfiles/bin/git-wtf
-    timetravel = !~/.dotfiles/bin/git-timetravel
 [color]
     diff = auto
     status = auto
