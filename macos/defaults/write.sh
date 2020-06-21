@@ -23,7 +23,10 @@ function write_plist() {
     # and reopen them once done
     if [ "$DOMAIN" != "com.app.terminal" ]
     then
-        APP_PATH=$(mdfind kMDItemCFBundleIdentifier = "$DOMAIN")
+        # This can have multiple results (e.g. if I have an app I'm working on in XCode and installed from the app)
+        # since pkill can't tell which one was running, I'm just going to reopen
+        # the first
+        APP_PATH=$(mdfind kMDItemCFBundleIdentifier = "$DOMAIN" | head -n 1)
         if [ -n "$APP_PATH" ]
         then
             APP_NAME_DOTAPP=$(basename "$APP_PATH")
@@ -33,6 +36,9 @@ function write_plist() {
                 REOPEN="$APP_PATH"
             fi
         fi
+    elif [ "$DOMAIN" == "NSGlobalDomain" ]
+    then
+        osascript -e 'tell application "System Preferences" to quit'
     fi
 
     COUNT=$(xmllint --xpath 'count(/plist/dict/*)' "$FILE")
