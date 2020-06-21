@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<!-- other options: BMP, GIF, JPG, PDF, TIFF -->
-	<key>type</key>
-	<string>png</string>
-	<key>location</key>
-	<string eval="true">~/Downloads</string>
-</dict>
+  <dict>
+    <!-- other options: BMP, GIF, JPG, PDF, TIFF -->
+    <key>type</key>
+    <string>png</string>
+    <key>location</key>
+    <string eval="true">~/Downloads</string>
+  </dict>
 </plist>

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
+  <dict>
     <!-- Don't show Dashboard as a Space -->
     <key>dashboard-in-overlay</key>
     <true/>
@@ -9,11 +9,10 @@
     <key>showhidden</key>
     <true/>
     <key>autohide</key>
-    <true />
+    <true/>
     <!-- Speed up Mission Control animations -->
     <key>expose-animation-duration</key>
     <real>0.1</real>
-
     <!--
     Hot corners
     Possible values:
@@ -48,6 +47,5 @@
     <integer>4</integer>
     <key>wvous-bl-modifier</key>
     <integer>0</integer>
-
-</dict>
+  </dict>
 </plist>

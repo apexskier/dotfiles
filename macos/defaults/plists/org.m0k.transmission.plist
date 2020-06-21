@@ -1,18 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>DeleteOriginalTorrent</key>
-	<true/>
-	<key>DownloadAsk</key>
-	<false/>
-	<key>UseIncompleteDownloadFolder</key>
-	<true/>
-	<key>WarningDonate</key>
-	<false/>
-	<key>WarningLegal</key>
-	<false/>
-	<key>IncompleteDownloadFolder</key>
-	<string eval="true">~/Downloads/Torrents</string>
-</dict>
+  <dict>
+    <key>DeleteOriginalTorrent</key>
+    <true/>
+    <key>DownloadAsk</key>
+    <false/>
+    <key>UseIncompleteDownloadFolder</key>
+    <true/>
+    <key>WarningDonate</key>
+    <false/>
+    <key>WarningLegal</key>
+    <false/>
+    <key>IncompleteDownloadFolder</key>
+    <string eval="true">~/Downloads/Torrents</string>
+  </dict>
 </plist>

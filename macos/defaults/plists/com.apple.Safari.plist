@@ -1,20 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>IncludeDevelopMenu</key>
-	<true/>
-	<key>IncludeInternalDebugMenu</key>
-	<true/>
-	<key>WebKitDeveloperExtras</key>
-	<true/>
-	<key>WebKitDeveloperExtrasEnabledPreferenceKey</key>
-	<true/>
-	<key>com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled</key>
-	<true />
-
-	<!-- Make Safari's search banners default to Contains instead of Starts With -->
-	<key>FindOnPageMatchesWordStartsOnly</key>
-	<false/>
-</dict>
+  <dict>
+    <key>IncludeDevelopMenu</key>
+    <true/>
+    <key>IncludeInternalDebugMenu</key>
+    <true/>
+    <key>WebKitDeveloperExtras</key>
+    <true/>
+    <key>WebKitDeveloperExtrasEnabledPreferenceKey</key>
+    <true/>
+    <key>com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled</key>
+    <true/>
+    <!-- Make Safari's search banners default to Contains instead of Starts With -->
+    <key>FindOnPageMatchesWordStartsOnly</key>
+    <false/>
+  </dict>
 </plist>

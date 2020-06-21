@@ -7,9 +7,15 @@ Preferences internally are stored in plist files, and the `defaults` command wri
 
 I can't just `defaults export` because they often contain timestamps or commonly changing lists of recently accessed items.
 
-[`write.sh`](./write.sh) runs through (a) plist file(s) and generates and executes defaults commands for it to merge it into the system settings.
+[`write.sh`](./write.sh) runs through plist files and generates and executes defaults commands for it to merge it into the system settings.
+
+[`clean.sh`](./clean.sh) runs through plist files and clean formats them.
+
+(all commands accept a filepath to run on a single file)
 
 Add the xml attribute `eval="true"` to `<string>` nodes to expand bash variables.
+
+This _attempts_ to only use builtin macOS tools.
   
 ## Tips
 

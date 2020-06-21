@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
+  <dict>
     <key>ShowExternalHardDrivesOnDesktop</key>
     <true/>
     <key>ShowRemovableMediaOnDesktop</key>
@@ -45,12 +45,12 @@
     -->
     <key>FXInfoPanesExpanded</key>
     <dict>
-        <key>General</key>
-        <true/>
-        <key>OpenWith</key>
-        <true/>
-        <key>Privileges</key>
-        <true/>
+      <key>General</key>
+      <true/>
+      <key>OpenWith</key>
+      <true/>
+      <key>Privileges</key>
+      <true/>
     </dict>
-</dict>
+  </dict>
 </plist>

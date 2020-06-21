@@ -1,66 +1,66 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<!-- Key Repeat -->
-	<key>InitialKeyRepeat</key>
-	<integer>20</integer>
-	<key>KeyRepeat</key>
-	<integer>2</integer>
-	<!-- Add a context menu item for showing the Web Inspector in web views -->
-	<key>WebKitDeveloperExtras</key>
-	<true/>
-	<!-- expand save panel by default -->
-	<key>NSNavPanelExpandedStateForSaveMode</key>
-	<true/>
-	<key>NSNavPanelExpandedStateForSaveMode2</key>
-	<true/>
-	<!-- Expand print panel by default -->
-	<key>PMPrintingExpandedStateForPrint</key>
-	<true/>
-	<key>PMPrintingExpandedStateForPrint2</key>
-	<true/>
-	<!--
+  <dict>
+    <!-- Key Repeat -->
+    <key>InitialKeyRepeat</key>
+    <integer>20</integer>
+    <key>KeyRepeat</key>
+    <integer>2</integer>
+    <!-- Add a context menu item for showing the Web Inspector in web views -->
+    <key>WebKitDeveloperExtras</key>
+    <true/>
+    <!-- expand save panel by default -->
+    <key>NSNavPanelExpandedStateForSaveMode</key>
+    <true/>
+    <key>NSNavPanelExpandedStateForSaveMode2</key>
+    <true/>
+    <!-- Expand print panel by default -->
+    <key>PMPrintingExpandedStateForPrint</key>
+    <true/>
+    <key>PMPrintingExpandedStateForPrint2</key>
+    <true/>
+    <!--
 	Enable full keyboard access for all controls
 	(e.g. enable Tab in modal dialogs)
 	-->
-	<key>AppleKeyboardUIMode</key>
-	<integer>3</integer>
-	<!-- Disable automatic period substitution as it’s annoying when typing code -->
-	<key>NSAutomaticPeriodSubstitutionEnabled</key>
-	<false/>
-	<!-- Disable press-and-hold for keys. I use option instead for special chars -->
-	<key>ApplePressAndHoldEnabled</key>
-	<false/>
-	<!-- Jump to spot that's clicked in scroll bar -->
-	<key>AppleScrollerPagingBehavior</key>
-	<integer>1</integer>
-	<!-- localization -->
-	<key>AppleLanguages</key>
-	<array>
-		<string>en-US</string>
-		<string>pl-US</string>
-	</array>
-	<key>AppleICUForce24HourTime</key>
-	<true/>
-	<key>AppleLocale</key>
-	<string>en_US@currency=USD</string>
-	<key>AppleMeasurementUnits</key>
-	<string>Centimeters</string>
-	<key>AppleMetricUnits</key>
-	<true/>
-	<key>AppleTemperatureUnit</key>
-	<string>Celsius</string>
-	<key>AppleICUDateFormatStrings</key>
-	<dict>
-		<key>1</key>
-		<string>y-MM-dd</string>
-		<key>2</key>
-		<string>y MMM d</string>
-		<key>3</key>
-		<string>y MMMM d</string>
-		<key>4</key>
-		<string>EEEE, d MMMM y</string>
-	</dict>
-</dict>
+    <key>AppleKeyboardUIMode</key>
+    <integer>3</integer>
+    <!-- Disable automatic period substitution as it’s annoying when typing code -->
+    <key>NSAutomaticPeriodSubstitutionEnabled</key>
+    <false/>
+    <!-- Disable press-and-hold for keys. I use option instead for special chars -->
+    <key>ApplePressAndHoldEnabled</key>
+    <false/>
+    <!-- Jump to spot that's clicked in scroll bar -->
+    <key>AppleScrollerPagingBehavior</key>
+    <integer>1</integer>
+    <!-- localization -->
+    <key>AppleLanguages</key>
+    <array>
+      <string>en-US</string>
+      <string>pl-US</string>
+    </array>
+    <key>AppleICUForce24HourTime</key>
+    <true/>
+    <key>AppleLocale</key>
+    <string>en_US@currency=USD</string>
+    <key>AppleMeasurementUnits</key>
+    <string>Centimeters</string>
+    <key>AppleMetricUnits</key>
+    <true/>
+    <key>AppleTemperatureUnit</key>
+    <string>Celsius</string>
+    <key>AppleICUDateFormatStrings</key>
+    <dict>
+      <key>1</key>
+      <string>y-MM-dd</string>
+      <key>2</key>
+      <string>y MMM d</string>
+      <key>3</key>
+      <string>y MMMM d</string>
+      <key>4</key>
+      <string>EEEE, d MMMM y</string>
+    </dict>
+  </dict>
 </plist>

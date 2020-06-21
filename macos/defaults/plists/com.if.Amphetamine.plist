@@ -1,153 +1,153 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
-<dict>
-	<key>Adjust Volume For CDM Warning</key>
-	<integer>0</integer>
-	<key>Allow Closed-Display Sleep</key>
-	<integer>1</integer>
-	<key>Allow Display Sleep</key>
-	<integer>0</integer>
-	<key>Allow Display Sleep When Screen Is Locked</key>
-	<integer>0</integer>
-	<key>Allow Screen Saver</key>
-	<integer>0</integer>
-	<key>Always Ask to End For Low Battery</key>
-	<integer>0</integer>
-	<key>Auto Remove Notifications</key>
-	<integer>1</integer>
-	<key>Default Duration</key>
-	<integer>0</integer>
-	<key>DefaultHotkeyAction</key>
-	<integer>0</integer>
-	<key>Drive Alive Data</key>
-	<array/>
-	<key>Drive Wake Interval</key>
-	<string>10</string>
-	<key>Enable CDM Warning</key>
-	<integer>0</integer>
-	<key>Enable Drive Alive</key>
-	<integer>0</integer>
-	<key>Enable Mouse Movement</key>
-	<integer>0</integer>
-	<key>Enable Notification Sound</key>
-	<integer>1</integer>
-	<key>Enable Session Auto End Notifications</key>
-	<integer>1</integer>
-	<key>Enable Session Auto Start Notifications</key>
-	<integer>1</integer>
-	<key>Enable Session Notifications</key>
-	<integer>0</integer>
-	<key>Enable Session State Sound</key>
-	<integer>0</integer>
-	<key>Enable Statistics</key>
-	<integer>1</integer>
-	<key>Enable Triggers</key>
-	<integer>0</integer>
-	<key>Enable Triggers On Launch</key>
-	<false/>
-	<key>End Session On Low Battery</key>
-	<integer>0</integer>
-	<key>End Sessions On Forced Sleep</key>
-	<integer>0</integer>
-	<key>End Sessions when FUS</key>
-	<integer>0</integer>
-	<key>Hide Dock Icon</key>
-	<integer>1</integer>
-	<key>Icon Style</key>
-	<integer>4</integer>
-	<key>Ignore Battery on AC</key>
-	<integer>0</integer>
-	<key>Lock Screen After Inactivity</key>
-	<integer>0</integer>
-	<key>Lock Screen For CDM</key>
-	<integer>0</integer>
-	<key>Lock Screen Inactivity Delay</key>
-	<integer>60</integer>
-	<key>Low Battery Percent</key>
-	<integer>10</integer>
-	<key>Lower Icon Opacity</key>
-	<integer>1</integer>
-	<key>Manage Status Item Image Padding</key>
-	<integer>0</integer>
-	<key>Mouse Movement Inactivity Delay</key>
-	<integer>300</integer>
-	<key>Mouse Movement Interval</key>
-	<integer>60</integer>
-	<key>Mouse Movement Smoothness</key>
-	<integer>1</integer>
-	<key>Notification Sound End</key>
-	<integer>0</integer>
-	<key>Notification Sound Start</key>
-	<integer>0</integer>
-	<key>Power Assertion State</key>
-	<false/>
-	<key>Reduce Motion</key>
-	<integer>0</integer>
-	<key>Repeat CDM Warning</key>
-	<integer>0</integer>
-	<key>Repeat Interval For CDM Warning</key>
-	<integer>300</integer>
-	<key>Restart DD Session on AC Reconnect</key>
-	<integer>0</integer>
-	<key>Screen Lock Uses Mouse Activity</key>
-	<integer>0</integer>
-	<key>Screen Saver Delay</key>
-	<integer>5</integer>
-	<key>Session Durations</key>
-	<array>
-		<integer>0</integer>
-		<integer>2</integer>
-		<integer>1</integer>
-		<integer>2</integer>
-		<integer>4</integer>
-		<integer>254795</integer>
-	</array>
-	<key>Session End Time Calcuation</key>
-	<integer>0</integer>
-	<key>Session Notification Interval</key>
-	<integer>60</integer>
-	<key>Show Seconds In Bar Time Remaining</key>
-	<integer>0</integer>
-	<key>Show Session Details In Menu</key>
-	<integer>1</integer>
-	<key>Show Session Time In Status Bar</key>
-	<integer>0</integer>
-	<key>Show Welcome Window</key>
-	<integer>0</integer>
-	<key>Show Woke Drives In Menu</key>
-	<integer>0</integer>
-	<key>Start Session At Launch</key>
-	<integer>0</integer>
-	<key>Start Session On Wake</key>
-	<integer>0</integer>
-	<key>StartNewSessionHotkeyDuration</key>
-	<integer>0</integer>
-	<key>Status Bar Font Size</key>
-	<integer>0</integer>
-	<key>Status Bar Session Time Format</key>
-	<integer>0</integer>
-	<key>Status Item Click</key>
-	<integer>0</integer>
-	<key>Status Item Image Padding</key>
-	<integer>8</integer>
-	<key>Stop Mouse Movement</key>
-	<integer>0</integer>
-	<key>Stop Mouse Movement Inactivity Delay</key>
-	<integer>1800</integer>
-	<key>Suppress Closed Display Warning</key>
-	<false/>
-	<key>Total Session Run Time</key>
-	<integer>254804</integer>
-	<key>Trigger Data</key>
-	<array/>
-	<key>Use 24 Hour Clock</key>
-	<integer>0</integer>
-	<key>Use Color For Quick Prefs Status</key>
-	<integer>1</integer>
-	<key>Volume Level For CDM Warning</key>
-	<integer>5</integer>
-	<key>cdmEnabled</key>
-	<false/>
-</dict>
+  <dict>
+    <key>Adjust Volume For CDM Warning</key>
+    <integer>0</integer>
+    <key>Allow Closed-Display Sleep</key>
+    <integer>1</integer>
+    <key>Allow Display Sleep</key>
+    <integer>0</integer>
+    <key>Allow Display Sleep When Screen Is Locked</key>
+    <integer>0</integer>
+    <key>Allow Screen Saver</key>
+    <integer>0</integer>
+    <key>Always Ask to End For Low Battery</key>
+    <integer>0</integer>
+    <key>Auto Remove Notifications</key>
+    <integer>1</integer>
+    <key>Default Duration</key>
+    <integer>0</integer>
+    <key>DefaultHotkeyAction</key>
+    <integer>0</integer>
+    <key>Drive Alive Data</key>
+    <array/>
+    <key>Drive Wake Interval</key>
+    <string>10</string>
+    <key>Enable CDM Warning</key>
+    <integer>0</integer>
+    <key>Enable Drive Alive</key>
+    <integer>0</integer>
+    <key>Enable Mouse Movement</key>
+    <integer>0</integer>
+    <key>Enable Notification Sound</key>
+    <integer>1</integer>
+    <key>Enable Session Auto End Notifications</key>
+    <integer>1</integer>
+    <key>Enable Session Auto Start Notifications</key>
+    <integer>1</integer>
+    <key>Enable Session Notifications</key>
+    <integer>0</integer>
+    <key>Enable Session State Sound</key>
+    <integer>0</integer>
+    <key>Enable Statistics</key>
+    <integer>1</integer>
+    <key>Enable Triggers</key>
+    <integer>0</integer>
+    <key>Enable Triggers On Launch</key>
+    <false/>
+    <key>End Session On Low Battery</key>
+    <integer>0</integer>
+    <key>End Sessions On Forced Sleep</key>
+    <integer>0</integer>
+    <key>End Sessions when FUS</key>
+    <integer>0</integer>
+    <key>Hide Dock Icon</key>
+    <integer>1</integer>
+    <key>Icon Style</key>
+    <integer>4</integer>
+    <key>Ignore Battery on AC</key>
+    <integer>0</integer>
+    <key>Lock Screen After Inactivity</key>
+    <integer>0</integer>
+    <key>Lock Screen For CDM</key>
+    <integer>0</integer>
+    <key>Lock Screen Inactivity Delay</key>
+    <integer>60</integer>
+    <key>Low Battery Percent</key>
+    <integer>10</integer>
+    <key>Lower Icon Opacity</key>
+    <integer>1</integer>
+    <key>Manage Status Item Image Padding</key>
+    <integer>0</integer>
+    <key>Mouse Movement Inactivity Delay</key>
+    <integer>300</integer>
+    <key>Mouse Movement Interval</key>
+    <integer>60</integer>
+    <key>Mouse Movement Smoothness</key>
+    <integer>1</integer>
+    <key>Notification Sound End</key>
+    <integer>0</integer>
+    <key>Notification Sound Start</key>
+    <integer>0</integer>
+    <key>Power Assertion State</key>
+    <false/>
+    <key>Reduce Motion</key>
+    <integer>0</integer>
+    <key>Repeat CDM Warning</key>
+    <integer>0</integer>
+    <key>Repeat Interval For CDM Warning</key>
+    <integer>300</integer>
+    <key>Restart DD Session on AC Reconnect</key>
+    <integer>0</integer>
+    <key>Screen Lock Uses Mouse Activity</key>
+    <integer>0</integer>
+    <key>Screen Saver Delay</key>
+    <integer>5</integer>
+    <key>Session Durations</key>
+    <array>
+      <integer>0</integer>
+      <integer>2</integer>
+      <integer>1</integer>
+      <integer>2</integer>
+      <integer>4</integer>
+      <integer>254795</integer>
+    </array>
+    <key>Session End Time Calcuation</key>
+    <integer>0</integer>
+    <key>Session Notification Interval</key>
+    <integer>60</integer>
+    <key>Show Seconds In Bar Time Remaining</key>
+    <integer>0</integer>
+    <key>Show Session Details In Menu</key>
+    <integer>1</integer>
+    <key>Show Session Time In Status Bar</key>
+    <integer>0</integer>
+    <key>Show Welcome Window</key>
+    <integer>0</integer>
+    <key>Show Woke Drives In Menu</key>
+    <integer>0</integer>
+    <key>Start Session At Launch</key>
+    <integer>0</integer>
+    <key>Start Session On Wake</key>
+    <integer>0</integer>
+    <key>StartNewSessionHotkeyDuration</key>
+    <integer>0</integer>
+    <key>Status Bar Font Size</key>
+    <integer>0</integer>
+    <key>Status Bar Session Time Format</key>
+    <integer>0</integer>
+    <key>Status Item Click</key>
+    <integer>0</integer>
+    <key>Status Item Image Padding</key>
+    <integer>8</integer>
+    <key>Stop Mouse Movement</key>
+    <integer>0</integer>
+    <key>Stop Mouse Movement Inactivity Delay</key>
+    <integer>1800</integer>
+    <key>Suppress Closed Display Warning</key>
+    <false/>
+    <key>Total Session Run Time</key>
+    <integer>254804</integer>
+    <key>Trigger Data</key>
+    <array/>
+    <key>Use 24 Hour Clock</key>
+    <integer>0</integer>
+    <key>Use Color For Quick Prefs Status</key>
+    <integer>1</integer>
+    <key>Volume Level For CDM Warning</key>
+    <integer>5</integer>
+    <key>cdmEnabled</key>
+    <false/>
+  </dict>
 </plist>
