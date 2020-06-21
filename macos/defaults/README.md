@@ -5,7 +5,7 @@ https://github.com/mathiasbynens/dotfiles/blob/master/.macos
 
 Preferences internally are stored in plist files, and the `defaults` command writes them. My original `config.sh` script using manual defaults commands, but is hard to keep organized. I'm now storing these as real plist files. They're more diffable, human readable, and domains provide an organization system.
 
-I can't just `defaults –import` because system prefs often contain timestamps or commonly changing lists of recently accessed items.
+I can't just import defaults files because they often contain timestamps or commonly changing lists of recently accessed items.
 
 [`write.sh`](./write.sh) runs through (a) plist file(s) and generates and executes defaults commands for it to merge it into the system settings.
 
