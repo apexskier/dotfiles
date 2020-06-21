@@ -7,5 +7,7 @@
     <string>png</string>
     <key>location</key>
     <string eval="true">~/Downloads</string>
+    <key>disable-shadow</key>
+    <true/>
   </dict>
 </plist>

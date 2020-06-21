@@ -16,11 +16,19 @@ touch ~/Dev/.metadata_never_index
 /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user
 
 # Show the ~/Library folder
-chflags nohidden ~/Library
+chflags nohidden ~/Library && xattr -d com.apple.FinderInfo ~/Library
 
 # Remove Dropbox's green checkmark icons in Finder
 file=/Applications/Dropbox.app/Contents/Resources/emblem-dropbox-uptodate.icns
 [ -e "${file}" ] && mv -f "${file}" "${file}.bak"
+
+# TODO: look into these
+
+# Enable lid wakeup
+# sudo pmset -a lidwake 1
+
+# Restart automatically if the computer freezes
+# sudo systemsetup -setrestartfreeze on
 
 # enable vnc and remote desktop
 # sudo /System/Library/CoreServices/RemoteManagement/ARDAgent.app/Contents/Resources/kickstart -activate -configure -access -off -restart -agent -privs -all -allowAccessFor -allUsers

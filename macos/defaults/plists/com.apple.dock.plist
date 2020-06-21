@@ -5,6 +5,9 @@
     <!-- Don't show Dashboard as a Space -->
     <key>dashboard-in-overlay</key>
     <true/>
+    <!-- Don’t automatically rearrange Spaces based on most recent use -->
+    <key>mru-spaces</key>
+    <false/>
     <!-- Make Dock icons of hidden applications translucent -->
     <key>showhidden</key>
     <true/>

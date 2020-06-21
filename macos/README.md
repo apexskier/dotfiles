@@ -1,3 +1,4 @@
 - Adding the file `.metadata_never_index` to a directory will prevent the system from spotlight indexing it.
 - See [defaults management README](./defaults/README.md).
 - To use newer bash on macOS see https://itnext.io/upgrading-bash-on-macos-7138bd1066ba.
+- https://github.com/mathiasbynens/dotfiles/blob/master/.macos
