@@ -48,7 +48,7 @@ done
 
 $dotfiles_dir/script/bootstrap
 
-if [ "$should_install" = "true" ]
+if [ "$should_install" == "true" ]
 then
 	$dotfiles_dir/script/install
 fi
