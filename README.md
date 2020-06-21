@@ -62,7 +62,7 @@ have some utilities to automatically update the config. See
 [`./homebrew`](./homebrew).
 
 I also have a system for automatically syncing macOS system and application
-configuration. See [./macos/defaults](./macos/defaults/README.md).
+configuration. See [`./macos/defaults`](./macos/defaults/README.md).
 
 ## Docker image
 
