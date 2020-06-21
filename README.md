@@ -54,6 +54,15 @@ There's a few special files and file types in the hierarchy.
 - **appsupport**: This is a map of files that should be linked to macOS's
   application support directory. This is useful for programs like VSCode that
   use this config location.
+  
+## macOS configuration
+
+I've got most of my must-have applications auto-installed through homebrew and
+have some utilities to automatically update the config. See
+[`./homebrew`](./homebrew).
+
+I also have a system for automatically syncing macOS system and application
+configuration. See [./macos/defaults](./macos/defaults/README.md).
 
 ## Docker image
 
