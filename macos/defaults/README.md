@@ -13,8 +13,6 @@ Add the xml attribute `eval="true"` to `<string>` nodes to expand bash variables
   
 ## Tips
 
-`man defaults` and `man plutil` are very useful.
-
 ### Defaults
 
 Defaults can be difficult to discover, here are some tips:
@@ -40,7 +38,7 @@ to know what I _shouldn't_ change.
 
 See `man plutil`. It lists valid types. 
 
-Note that these will fully reformat (reorder + strip comments).
+Note that these will fully reformat (reorder + strip comments) (so will editing in XCode).
 
 `/usr/libexec/PlistBuddy` is also an option, but it doesn't support piping from stdin and is not as similar to `defaults`.
 
@@ -55,3 +53,18 @@ Later modification of a dotfiles plist file
 - `plutil -insert Key -type value -- defaults/plists/Domain.plist`
 - `plutil -replace Key -type value -- defaults/plists/Domain.plist`
 - `plutil -remove Key -- defaults/plists/Domain.plist`
+
+### Other reading
+
+- `man defaults`
+- `man plutil`
+- https://scriptingosx.com/2018/02/defaults-the-plist-killer/
+- https://shadowfile.inode.link/blog/2018/06/advanced-defaults1-usage/
+- Found this after doing the bulk of my own exploration - https://github.com/zcutlip/prefsniff
+
+## Notes
+
+Get domain for an app
+```
+mdls -name kMDItemCFBundleIdentifier -r App.app
+```

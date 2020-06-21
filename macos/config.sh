@@ -33,4 +33,6 @@ file=/Applications/Dropbox.app/Contents/Resources/emblem-dropbox-uptodate.icns
 
 # refresh things
 killall ControlStrip
+killall Dock
+killall Finder
 killall -KILL SystemUIServer
