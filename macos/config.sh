@@ -32,7 +32,4 @@ file=/Applications/Dropbox.app/Contents/Resources/emblem-dropbox-uptodate.icns
 "$DIR/defaults/write.sh"
 
 # refresh things
-killall ControlStrip
-killall Dock
-killall Finder
 killall -KILL SystemUIServer

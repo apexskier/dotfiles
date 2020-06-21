@@ -9,12 +9,31 @@ set -e
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 
 function write_plist() {
-    FILE=$1
+    local FILE=$1
 
-    FILENAME=$(basename "$FILE")
-    DOMAIN=${FILENAME%.*}
+    local FILENAME=$(basename "$FILE")
+    local DOMAIN=${FILENAME%.*}
+
+    local REOPEN=""
 
     echo $DOMAIN
+
+    # kill applications before writing defaults
+    # (recommended in defaults manpage)
+    # and reopen them once done
+    if [ "$DOMAIN" != "com.app.terminal" ]
+    then
+        APP_PATH=$(mdfind kMDItemCFBundleIdentifier = "$DOMAIN")
+        if [ -n "$APP_PATH" ]
+        then
+            APP_NAME_DOTAPP=$(basename "$APP_PATH")
+            APP_NAME=${APP_NAME_DOTAPP%.*}
+            if pkill -x "$APP_NAME"
+            then
+                REOPEN="$APP_PATH"
+            fi
+        fi
+    fi
 
     COUNT=$(xmllint --xpath 'count(/plist/dict/*)' "$FILE")
 
@@ -24,6 +43,8 @@ function write_plist() {
         VALUE_XPATH="/plist/dict/*[$((($I - 1) * 2 + 2))]"
         TYPE=$(xmllint --xpath "name($VALUE_XPATH)" $FILE)
 
+        # I now know that there's a possibility that I could just output xml
+        # directly into the defaults write command - probably much simpler
         function process_value() {
             local VALUE_XPATH=$1
             local TYPE=$(xmllint --xpath "name($VALUE_XPATH)" $FILE)
@@ -87,6 +108,11 @@ function write_plist() {
 
         (set -f; IFS=$'\n'; exec defaults write "$DOMAIN" "$KEY" $(process_value $VALUE_XPATH))
     done
+
+    if [ -n "$REOPEN" ]
+    then
+        open "$REOPEN"
+    fi
 }
 
 if [ -n "$1" ]
