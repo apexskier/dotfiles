@@ -67,3 +67,4 @@ function splitlines() {
     done
 }
 
+alias date_filename='date +"%FT%H%M%z"'
