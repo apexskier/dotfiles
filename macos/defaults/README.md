@@ -9,7 +9,9 @@ I can't just `defaults export` because they often contain timestamps or commonly
 
 [`write.sh`](./write.sh) runs through plist files and generates and executes defaults commands for it to merge it into the system settings.
 
-[`clean.sh`](./clean.sh) runs through plist files and clean formats them.
+[`read.sh`](./write.sh) runs through plist files and updates any set values with what's been written to defaults. After running, verify changes in git.
+
+[`clean.sh`](./clean.sh) runs through plist files and clean formats them (so `read.sh` generates clean diffs).
 
 (all commands accept a filepath to run on a single file)
 

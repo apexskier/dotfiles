@@ -12,7 +12,7 @@
     <true/>
     <!-- Speed up Mission Control animations -->
     <key>expose-animation-duration</key>
-    <real>0.1</real>
+    <real>0.10000000000000001</real>
     <!--
     Hot corners
     Possible values:
@@ -43,9 +43,9 @@
     <key>wvous-bl-modifier</key>
     <integer>0</integer>
     <!-- Bottom right screen corner: Desktop -->
-    <key>wvous-bl-corner</key>
+    <key>wvous-br-corner</key>
     <integer>4</integer>
-    <key>wvous-bl-modifier</key>
+    <key>wvous-br-modifier</key>
     <integer>0</integer>
   </dict>
 </plist>

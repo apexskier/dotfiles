@@ -36,11 +36,10 @@ function write_plist() {
     fi
 
     COUNT=$(xmllint --xpath 'count(/plist/dict/*)' "$FILE")
-
     for I in $(seq 1 $((COUNT / 2)))
     do
-        KEY=$(xmllint --xpath "string(/plist/dict/*[$((($I - 1) * 2 + 1))])" $FILE)
-        VALUE=$(xmllint --xpath "/plist/dict/*[$((($I - 1) * 2 + 2))]" $FILE)
+        KEY=$(xmllint --xpath "string(/plist/dict/*[$((($I - 1) * 2 + 1))])" "$FILE")
+        VALUE=$(xmllint --xpath "/plist/dict/*[$((($I - 1) * 2 + 2))]" "$FILE")
 
         (set -f; IFS=$'\n'; exec defaults write "$DOMAIN" "$KEY" "$VALUE")
     done
