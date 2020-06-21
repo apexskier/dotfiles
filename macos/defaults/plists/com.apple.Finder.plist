@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>ShowExternalHardDrivesOnDesktop</key>
+    <true/>
+    <key>ShowRemovableMediaOnDesktop</key>
+    <true/>
+    <!-- allow quitting via ⌘ + Q; doing so will also hide desktop icons -->
+    <key>QuitMenuItem</key>
+    <true/>
+    <!--
+    Set the default location for new Finder windows
+    For other paths, use `PfLo` and `file:///full/path/here/`
+    -->
+    <key>NewWindowTarget</key>
+    <string>PfLo</string>
+    <!-- <key>NewWindowTargetPath</key>
+    <string>file://${HOME}/Dev/</string> -->
+    <key>ShowPathbar</key>
+    <true/>
+    <key>ShowStatusBar</key>
+    <true/>
+    <!-- allow text selection in Quick Look -->
+    <key>QLEnableTextSelection</key>
+    <true/>
+    <!-- When performing a search, search the current folder by default -->
+    <key>FXDefaultSearchScope</key>
+    <string>SCcf</string>
+    <!-- Disable the warning when changing a file extension -->
+    <key>FXEnableExtensionChangeWarning</key>
+    <false/>
+    <!-- Automatically open a new Finder window when a volume is mounted -->
+    <key>OpenWindowForNewRemovableDisk</key>
+    <true/>
+    <!--
+    Use column view in all Finder windows by default
+    Four-letter codes for the other view modes: `Nlsv`, `icnv`, `clmv`, `Flwv`
+    -->
+    <key>FXPreferredViewStyle</key>
+    <string>clmv</string>
+    <!--
+    Expand the following File Info panes:
+    “General”, “Open with”, and “Sharing & Permissions”
+    -->
+    <key>FXInfoPanesExpanded</key>
+    <dict>
+        <key>General</key>
+        <true/>
+        <key>OpenWith</key>
+        <true/>
+        <key>Privileges</key>
+        <true/>
+    </dict>
+</dict>
+</plist>

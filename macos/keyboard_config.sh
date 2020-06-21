@@ -1,5 +1,7 @@
 # Remap some keyboard keys
 
+# TODO: automatically register this in launch agent (it needs to be run each login/boot?)
+
 set -e
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"

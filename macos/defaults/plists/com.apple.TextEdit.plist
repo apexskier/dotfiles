@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <!-- Use plain text mode for new TextEdit documents -->
+    <key>RichText</key>
+    <integer>0</integer>
+    <!-- Open and save files as UTF-8 in TextEdit -->
+    <key>PlainTextEncoding</key>
+    <integer>4</integer>
+    <key>PlainTextEncodingForWrite</key>
+    <integer>4</integer>
+</dict>
+</plist>

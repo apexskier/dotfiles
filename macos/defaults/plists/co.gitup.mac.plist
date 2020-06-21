@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- don't show gitup help messages - I've seen them before -->
+	<key>HelpShown_COMMIT</key>
+	<integer>999</integer>
+	<key>HelpShown_MAP</key>
+	<integer>999</integer>
+	<key>HelpShown_QUICKVIEW</key>
+	<integer>999</integer>
+	<key>HelpShown_SEARCH</key>
+	<integer>999</integer>
+	<key>HelpShown_STASHES</key>
+	<integer>999</integer>
+	<key>HelpShown_TAGS</key>
+	<integer>999</integer>
+</dict>
+</plist>

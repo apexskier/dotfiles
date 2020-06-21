@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<!-- Only use UTF-8 in Terminal.app -->
+	<key>StringEncodings</key>
+	<integer>4</integer>
+	<!-- note: window settings require the profile to be manually imported and terminal to be restarted -->
+	<!-- the profile can't be auto-set in this file because it's not completely valid base XML -->
+	<key>Default Window Settings</key>
+	<string>CustomTerminalProfile</string>
+	<key>Startup Window Settings</key>
+	<string>CustomTerminalProfile</string>
+</dict>
+</plist>
