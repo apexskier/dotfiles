@@ -5,5 +5,14 @@
     <!-- Copy email addresses as `foo@example.com` instead of `Foo Bar <foo@example.com>` -->
     <key>AddressesIncludeNameOnPasteboard</key>
     <false/>
+    <key>DraftsViewerAttributes</key>
+    <dict>
+      <key>DisplayInThreadedMode</key>
+      <string>yes</string>
+      <key>SortOrder</key>
+      <string>received-date</string>
+      <key>SortedAscending</key>
+      <string>yes</string>
+    </dict>
   </dict>
 </plist>
