@@ -4,18 +4,20 @@ tap "homebrew/cask"
 tap "homebrew/cask-versions"
 tap "homebrew/core"
 tap "remitly/internal"
-# Dependency manager for Cocoa projects
 brew "cocoapods"
 brew "go", link: false
 brew "go@1.13", link: true
 brew "node", link: false
 brew "node@10", link: false
 brew "node@12", link: true
+brew "vagrant-completion"
 cask "adoptopenjdk/openjdk/adoptopenjdk8"
 cask "android-studio"
 cask "intellij-idea"
 cask "postman"
 cask "sequel-pro"
+cask "vagrant"
+cask "virtualbox"
 cask "viscosity"
 cask "zoomus"
 mas "Slack", id: 803453959
