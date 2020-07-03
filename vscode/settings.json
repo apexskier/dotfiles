@@ -15,6 +15,7 @@
         "SEPA",
         "SOFORT",
         "Sprintf",
+        "UUID",
         "Unsized",
         "authed",
         "csrf",
