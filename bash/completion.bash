@@ -3,7 +3,7 @@
 
 if shopt -oq posix; then
     # non-interactive shell
-    exit 0
+    return 0
 fi
 
 [ -f ~/.fzf.bash ] && source ~/.fzf.bash

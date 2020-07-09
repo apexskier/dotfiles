@@ -1,5 +1,5 @@
 if ! command -v brew >/dev/null 2>&1; then
-    exit 0
+    return 0
 fi
 
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"

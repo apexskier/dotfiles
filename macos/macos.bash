@@ -1,5 +1,5 @@
 if [ "$(uname -s)" != "Darwin" ]; then
-    exit 0
+    return 0
 fi
 
 export DISPLAY=localhost:0.0

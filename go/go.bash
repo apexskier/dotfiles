@@ -1,5 +1,5 @@
 if ! command -v go >/dev/null 2>&1; then
-    exit 0
+    return 0
 fi
 
 export GOROOT=$(cd $(dirname $(command -v go)); cd $(dirname $(dirname $(readlink $(command -v go)))); pwd)/libexec

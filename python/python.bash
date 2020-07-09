@@ -1,5 +1,5 @@
 if ! command -v python >/dev/null 2>&1; then
-    exit 0
+    return 0
 fi
 
 export PIP_DOWNLOAD_CACHE=$HOME/.pip/caches

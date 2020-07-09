@@ -4,7 +4,7 @@
 
 if ! command -v git >/dev/null 2>&1 || [ "$DOTFILES_SKIP_GIT" == true ]; then
     echo 'skipping git'
-    return 0
+    exit 0
 fi
 
 gitconfig_local_file="$HOME/.gitconfig.local"
