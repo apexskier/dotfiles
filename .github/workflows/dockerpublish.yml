@@ -28,7 +28,7 @@ jobs:
 
           docker tag $IMAGE_NAME $IMAGE_ID:latest
           docker tag $IMAGE_NAME $IMAGE_ID:${{ github.sha }}
-          docker push $IMAGE_ID:$VERSION
+          docker push $IMAGE_ID:latest
           docker push $IMAGE_ID:${{ github.sha }}
 
       - name: Log into docker hub registry
@@ -40,5 +40,5 @@ jobs:
 
           docker tag $IMAGE_NAME $IMAGE_ID:latest
           docker tag $IMAGE_NAME $IMAGE_ID:${{ github.sha }}
-          docker push $IMAGE_ID:$VERSION
+          docker push $IMAGE_ID:latest
           docker push $IMAGE_ID:${{ github.sha }}
