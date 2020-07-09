@@ -25,10 +25,11 @@ jobs:
       - name: Push image to github registry
         run: |
           IMAGE_ID=docker.pkg.github.com/${{ github.repository }}/$IMAGE_NAME
-          VERSION=latest
 
-          docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
+          docker tag $IMAGE_NAME $IMAGE_ID:latest
+          docker tag $IMAGE_NAME $IMAGE_ID:${{ github.sha }}
           docker push $IMAGE_ID:$VERSION
+          docker push $IMAGE_ID:${{ github.sha }}
 
       - name: Log into docker hub registry
         run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u apexskier --password-stdin
@@ -36,7 +37,8 @@ jobs:
       - name: Push image to docker hub registry
         run: |
           IMAGE_ID=apexskier/$IMAGE_NAME
-          VERSION=latest
 
-          docker tag $IMAGE_NAME $IMAGE_ID:$VERSION
+          docker tag $IMAGE_NAME $IMAGE_ID:latest
+          docker tag $IMAGE_NAME $IMAGE_ID:${{ github.sha }}
           docker push $IMAGE_ID:$VERSION
+          docker push $IMAGE_ID:${{ github.sha }}
