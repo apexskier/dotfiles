@@ -13,6 +13,7 @@
     permission-reset = "!git diff -p | grep -E \"^(diff|old mode|new mode)\" | sed -e \"s/^old/NEW/;s/^new/old/;s/^NEW/new/\" | git apply"
     st = status -sb
     up = !gitup
+    default-branch = remote set-head origin --auto
 [color]
     diff = auto
     status = auto
