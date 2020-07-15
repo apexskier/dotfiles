@@ -1,6 +1,7 @@
 #!/bin/bash
 # args, filename
-# diff of all changes to a file in the current branch to master that haven't
-# happened in master yet
+# diff of all changes to a file in the current branch to main that haven't
+# happened in main yet
 
-git diff $(for c in $(git cherry master HEAD | cut -d' ' -f2-); do git show $c --oneline --name-only | tail -n +2 | grep "$1" >/dev/null && echo $c; done) "$1"
+MAIN_BRANCH=$(git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4-)
+git diff $(for c in $(git cherry "$MAIN_BRANCH" HEAD | cut -d' ' -f2-); do git show $c --oneline --name-only | tail -n +2 | grep "$1" >/dev/null && echo $c; done) "$1"
