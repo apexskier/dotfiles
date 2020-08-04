@@ -2,73 +2,73 @@
 
 # Local/private config goes in the include
 [include]
-    path = ~/.gitconfig.local
+	path = ~/.gitconfig.local
 [hub]
-    protocol = git
+	protocol = git
 [alias]
-    count = shortlog -sn
-    git = !exec git
-    lg = log --graph --decorate --oneline
-    lga = log --graph --decorate --oneline --all
-    permission-reset = "!git diff -p | grep -E \"^(diff|old mode|new mode)\" | sed -e \"s/^old/NEW/;s/^new/old/;s/^NEW/new/\" | git apply"
-    st = status -sb
-    up = !gitup
-    default-branch = remote set-head origin --auto
+	count = shortlog -sn
+	git = !exec git
+	lg = log --graph --decorate --oneline
+	lga = log --graph --decorate --oneline --all
+	permission-reset = "!git diff -p | grep -E \"^(diff|old mode|new mode)\" | sed -e \"s/^old/NEW/;s/^new/old/;s/^NEW/new/\" | git apply"
+	st = status -sb
+	up = !gitup
+	default-branch = remote set-head origin --auto
 [color]
-    diff = auto
-    status = auto
-    branch = auto
-    ui = true
+	diff = auto
+	status = auto
+	branch = auto
+	ui = true
 [color "diff"]
-    meta = yellow bold
-    commit = green bold
-    frag = magenta bold
-    old = red bold
-    new = green bold
-    whitespace = red reverse
+	meta = yellow bold
+	commit = green bold
+	frag = magenta bold
+	old = red bold
+	new = green bold
+	whitespace = red reverse
 [color "diff-highlight"]
-    oldNormal = red bold
-    oldHighlight = "red bold 52"
-    newNormal = "green bold"
-    newHighlight = "green bold 22"
+	oldNormal = red bold
+	oldHighlight = "red bold 52"
+	newNormal = "green bold"
+	newHighlight = "green bold 22"
 [color "branch"]
-    current = yellow reverse
-    local = yellow
-    remote = green
+	current = yellow reverse
+	local = yellow
+	remote = green
 [color "status"]
-    added = yellow
-    changed = green
-    untracked = cyan
+	added = yellow
+	changed = green
+	untracked = cyan
 [core]
-    excludesfile = ~/.gitignore
-    editor = vim
+	excludesfile = ~/.gitignore
+	editor = vim
 [help]
-    autocorrect = 1
+	autocorrect = 1
 [merge]
-    tool = vimdiff
+	tool = vimdiff
 [mergetool "mergepbx"]
-    cmd = mergepbx "$BASE" "$LOCAL" "$REMOTE" -o "$MERGED"
+	cmd = mergepbx "$BASE" "$LOCAL" "$REMOTE" -o "$MERGED"
 [mergetool]
-    keepBackup = false
+	keepBackup = false
 [push]
-    default = current
+	default = current
 [pull]
 	ff = only
 [diff "spaceman-diff"]
-    command = ~/.dotfiles/bin/spaceman-diff
+	command = ~/.dotfiles/bin/spaceman-diff
 [url "git@github.com:"]
-    insteadOf = "gh:"
-    insteadOf = "git://github.com"
-    pushInsteadOf = "github:"
-    pushInsteadOf = "git://github.com/"
-    pushInsteadOf = "https://github.com/"
+	insteadOf = "gh:"
+	insteadOf = "git://github.com"
+	pushInsteadOf = "github:"
+	pushInsteadOf = "git://github.com/"
+	pushInsteadOf = "https://github.com/"
 [url "git@gist.github.com:"]
-    insteadOf = "gst:"
-    pushInsteadOf = "gist:"
-    pushInsteadOf = "git://gist.github.com/"
-    pushInsteadOf = "https://gist.github.com/"
+	insteadOf = "gst:"
+	pushInsteadOf = "gist:"
+	pushInsteadOf = "git://gist.github.com/"
+	pushInsteadOf = "https://gist.github.com/"
 [filter "lfs"]
-    process = git-lfs filter-process
-    required = true
-    clean = git-lfs clean -- %f
-    smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
