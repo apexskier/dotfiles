@@ -1,4 +1,4 @@
-# Cameron Little's dotfiles
+g Cameron Little's dotfiles
 
 This was original forked from [@holman's dotfiles](https://github.com/holman/dotfiles),
 but due to some limitations of forked repositories on GitHub I've unforked.
@@ -21,14 +21,14 @@ This will symlink the appropriate files in `.dotfiles` to your home directory
 and configure your machine, which may require your input. Everything is
 configured and tweaked within that `~/.dotfiles` folder.
 
-It adds a `dot` command to your `PATH` to manage your dotfiles.
+It adds a `dotfiles` command to your `PATH` to manage your dotfiles.
 
-Run `dot` periodically to keep everything up to date.
+Run `dotfiles` periodically to keep everything up to date.
 
-Run `dot --install` to run system-level installers for various tools. This
+Run `dotfiles --install` to run system-level installers for various tools. This
 will take a while, so it's not automatic.
 
-Run `dot --edit` to open your dotfiles for editing.
+Run `dotfiles --edit` to open your dotfiles for editing.
 
 ## What's inside
 
@@ -70,7 +70,7 @@ A github action maintains a
 [docker image](https://github.com/apexskier/dotfiles/packages/158802) I use to
 quickly debug docker and kubernetes with a familiar shell and debugging tools.
 
-On `dot --install`, it's tagged locally as `toolbox` and can be started with
+On `dotfiles --install`, it's tagged locally as `toolbox` and can be started with
 `docker run -it toolbox`. To try it somewhere else, run
 
 ```sh

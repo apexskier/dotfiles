@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 #
-# dot
+# dotfiles
 #
-# `dot` handles installation, updates, things like that. Run it periodically
+# `dotfiles` handles installation, updates, things like that. Run it periodically
 # to make sure you're on the latest and greatest.
 
 set -e
@@ -11,9 +11,9 @@ parent_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 dotfiles_dir="$(cd "$(dirname "$parent_dir")" && pwd -P)"
 
 help() {
-	echo "dot -- dotfiles management"
+	echo "dotfiles -- dotfiles management"
 	echo ""
-	echo "Usage: dot [options]"
+	echo "Usage: dotfiles [options]"
 	echo ""
 	echo "Options:"
 	echo "  -e, --edit    Open dotfiles directory for editing"
