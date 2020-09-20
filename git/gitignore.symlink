@@ -98,3 +98,5 @@ Temporary Items
 phpunit
 
 *.bak
+
+__debug_bin
