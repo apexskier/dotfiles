@@ -79,3 +79,5 @@ set input-meta on
 set output-meta on
 set convert-meta off
 
+# require pressing enter before executing pasted commands
+set enable-bracketed-paste on
