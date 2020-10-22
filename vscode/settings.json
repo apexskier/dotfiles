@@ -255,7 +255,7 @@
 
     "window.zoomLevel": 0,
 
-    "workbench.colorTheme": "Solarized Dark",
+    "workbench.colorTheme": "Default Light+",
     "workbench.editor.enablePreview": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "workbench.editor.highlightModifiedTabs": true,
