@@ -91,6 +91,12 @@ ioreg -a -r -k KeyboardLanguage > $FILE
 PHYSICAL_KEYBOARD=$(/usr/libexec/PlistBuddy $FILE -c 'Print :0:KeyboardLanguage')
 rm $FILE
 
+if ioreg -p IOUSB | grep 'Das Keyboard' > /dev/null
+then
+    PHYSICAL_KEYBOARD="U.S."
+fi
+
+MAPPINGS="$US_MAPPINGS"
 case "$PHYSICAL_KEYBOARD" in
     "US International Keyboard")
         MAPPINGS="$EU_MAPPINGS"
