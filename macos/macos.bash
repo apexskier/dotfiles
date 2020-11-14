@@ -4,7 +4,7 @@ fi
 
 export DISPLAY=localhost:0.0
 
-alias jsc="/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Resources/jsc"
+alias jsc="/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Helpers/jsc"
 
 # convert clipboard contents to plain text
 # https://twitter.com/jf/status/1071105968153350144
