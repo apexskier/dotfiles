@@ -9,8 +9,8 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 # if system preferences stays open it can override stuff set here
 osascript -e 'tell application "System Preferences" to quit'
 
-mkdir -p ~/Dev
-touch ~/Dev/.metadata_never_index
+mkdir -p ~/Developer
+touch ~/Developer/.metadata_never_index
 
 # Remove duplicates in the “Open With” menu (also see `lscleanup` alias)
 /System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user

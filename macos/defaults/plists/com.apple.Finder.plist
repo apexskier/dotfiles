@@ -16,7 +16,7 @@
     <key>NewWindowTarget</key>
     <string>PfLo</string>
     <!-- <key>NewWindowTargetPath</key>
-    <string>file://${HOME}/Dev/</string> -->
+    <string>file://${HOME}/Developer/</string> -->
     <key>ShowPathbar</key>
     <true/>
     <key>ShowStatusBar</key>
