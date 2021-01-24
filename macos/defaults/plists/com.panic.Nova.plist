@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+  <dict>
+    <key>AllowCrashReportCollection</key>
+    <true/>
+    <key>AllowDataCollection</key>
+    <true/>
+    <key>ApplicationTheme</key>
+    <string>Panic Bright</string>
+    <key>EditorDarkTheme</key>
+    <string>Panic Dark</string>
+    <key>EditorLightTheme</key>
+    <string>Panic Bright</string>
+    <key>ExtensionsDeveloperEnabled</key>
+    <true/>
+    <key>FontSize</key>
+    <real>12</real>
+    <key>IndentationStyleShouldAutodetect</key>
+    <true/>
+    <key>IsFirstRun</key>
+    <false/>
+    <key>ShowHeterogeneousLineEndingsAlert</key>
+    <false/>
+    <key>ShowHiddenFiles</key>
+    <true/>
+    <key>SourceControlRecentCloneDestinations</key>
+    <array>
+      <string>file:///Users/cameronlittle/Developer/</string>
+    </array>
+    <key>TerminalBeepStyle</key>
+    <integer>1</integer>
+    <key>TerminalTitleShowDimensions</key>
+    <true/>
+    <key>TerminalTitleShowProcessArguments</key>
+    <false/>
+    <key>Theme</key>
+    <string>Panic Bright</string>
+    <key>ThemeChangesWithSystem</key>
+    <true/>
+    <key>UseCaseSensitiveSearch</key>
+    <true/>
+    <key>UseRegexSearch</key>
+    <false/>
+    <key>UseWholeWordSearch</key>
+    <true/>
+    <key>WelcomeIconSize</key>
+    <integer>144</integer>
+    <key>WindowDarkTheme</key>
+    <string>Panic Dark</string>
+    <key>WorkspaceSidebarVisible</key>
+    <true/>
+    <key>WrapLines</key>
+    <true/>
+  </dict>
+</plist>

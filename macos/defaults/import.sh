@@ -28,6 +28,8 @@ do
     then
         break
     fi
+    # escape periods
+    KEY="${KEY//./\\.}"
     plutil -remove "$KEY" "$FILE"
 done
 

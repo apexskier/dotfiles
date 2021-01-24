@@ -21,7 +21,8 @@ function write_plist() {
     # kill applications before writing defaults
     # (recommended in defaults manpage)
     # and reopen them once done
-    if [ "$DOMAIN" != "com.app.terminal" ]
+    # Don't kill Safari - there some weirdness with extensions not being loaded on reload
+    if [ "$DOMAIN" != "com.app.terminal" ] && [ "$DOMAIN" != "com.app.Safari" ]
     then
         # This can have multiple results (e.g. if I have an app I'm working on in XCode and installed from the app)
         # since pkill can't tell which one was running, I'm just going to reopen
