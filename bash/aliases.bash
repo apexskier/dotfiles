@@ -68,3 +68,5 @@ function splitlines() {
 }
 
 alias date_filename='date +"%FT%H%M%z"'
+
+alias securekeygen="openssl rand -base64 48 | sed -e 's/[\+\/\=]//g' | cut -c -32"
