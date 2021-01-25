@@ -1,3 +1,4 @@
 ssh/ssh/authorized_keys.symlink
 git/gitconfig.local.symlink
 aws/aws.symlink/credentials
+aws/aws.symlink/sso
