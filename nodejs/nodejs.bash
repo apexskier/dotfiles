@@ -9,6 +9,6 @@ function chnode() {
     then
         version="@$1"
     fi
-    brew unlink $(brew list | grep node)
+    brew unlink $(brew list --formula | grep node)
     brew link --overwrite --force "node$version"
 }
