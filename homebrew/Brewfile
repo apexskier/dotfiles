@@ -5,7 +5,7 @@ tap "homebrew/core"
 tap "nvie/tap"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
-# Programmable completion for Bash 4.1+
+# Programmable completion for Bash 4.2+
 brew "bash-completion@2"
 # Clone of cat(1) with syntax highlighting and Git integration
 brew "bat"
@@ -27,6 +27,10 @@ brew "git-delta"
 brew "gnu-sed"
 # Open source programming language to build simple/reliable/efficient software
 brew "go"
+# Library access to GnuPG
+brew "gpgme"
+# Graph visualization software from AT&T and Bell Labs
+brew "graphviz"
 # Add GitHub support to git on the command-line
 brew "hub"
 # Tools and libraries to manipulate images in many formats
@@ -59,25 +63,40 @@ brew "vim"
 brew "watchman"
 # JavaScript package manager
 brew "yarn"
+# Password manager that keeps all passwords secure behind one password
 cask "1password"
 # Suite of useful Git commands
 brew "nvie/tap/git-toolbelt"
 cask "asset-catalog-tinkerer"
+# Web debugging Proxy application
 cask "charles"
+# App to build and share containerized applications and microservices
 cask "docker"
+# Web browser
 cask "firefox"
+# Git interface focused on visual interaction
 cask "gitup"
+# Web browser
 cask "google-chrome"
+# Hex editor focussing on speed
 cask "hex-fiend"
+# Text editor
 cask "macvim"
+# Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
+# QuickLook plug-in that renders source code with syntax highlighting
 cask "qlcolorcode"
 cask "qlstephen"
+# Time optimising application
 cask "rescuetime"
 cask "sketch"
 cask "transmit"
+# Open-source code editor
 cask "visual-studio-code"
+# Network protocol analyzer
 cask "wireshark"
+# Temporary makeshift alias for the video communication tool Zoom
+cask "zoomus"
 mas "1Blocker", id: 1107421413
 mas "Amphetamine", id: 937984704
 mas "DaisyDisk", id: 411643860
