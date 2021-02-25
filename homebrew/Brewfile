@@ -43,6 +43,8 @@ brew "kubernetes-cli"
 brew "macvim", link: false
 # Mac App Store command-line interface
 brew "mas"
+# Merge XCode project files in git
+brew "mergepbx"
 # Platform built on V8 to build network applications
 brew "node"
 # Platform built on V8 to build network applications
@@ -91,6 +93,8 @@ cask "qlstephen"
 cask "rescuetime"
 cask "sketch"
 cask "transmit"
+# Multimedia player
+cask "vlc"
 # Open-source code editor
 cask "visual-studio-code"
 # Network protocol analyzer
@@ -109,6 +113,6 @@ mas "Magnet", id: 441258766
 mas "Numbers", id: 409203825
 mas "Pages", id: 409201541
 mas "Parcel", id: 639968404
-mas "Reeder", id: 1449412482
+mas "Reeder", id: 1529448980
 mas "The Clock", id: 488764545
 mas "Xcode", id: 497799835
