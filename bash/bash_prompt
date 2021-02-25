@@ -22,6 +22,7 @@ unset color_prompt force_color_prompt
 lt_purple="\[\033[1;35m\]"
    yellow="\[\033[1;33m\]"
     white="\[\033[1;37m\]"
+     fade="\033[2m\]"
 
 
 _USER=""
@@ -156,6 +157,57 @@ function k8sinfo() {
     fi
 }
 
+function exit_conventional() {
+    case "$1" in
+    # common conventions
+    1) echo "ERROR";;
+    2) echo "USAGE";;
+    126) echo "NOPERM";;
+    127) echo "NOTFOUND";;
+    *) return 1
+    esac
+}
+
+function exit_signal() {
+    case "$1" in
+    # signals
+    129) echo "HUP";;
+    130) echo "INT";;
+    131) echo "QUIT";;
+    132) echo "ILL";;
+    133) echo "TRAP";;
+    134) echo "IOT";;
+    135) echo "BUS";;
+    136) echo "FPE";;
+    137) echo "KILL";;
+    138) echo "USR1";;
+    139) echo "SEGV";;
+    140) echo "USR2";;
+    141) echo "PIPE";;
+    142) echo "ALRM";;
+    143) echo "TERM";;
+    144) echo "STKFLT";;
+    145) echo "CHLD";;
+    146) echo "CONT";;
+    147) echo "STOP";;
+    148) echo "TSTP";;
+    149) echo "TTIN";;
+    150) echo "TTOU";;
+    *) return 1
+    esac
+}
+
+function exitinfo() {
+    local desc
+    if desc=$(exit_signal "$1"); then
+        printf "%s☇ %s%s" "$red" "$desc" "$nocol"
+    elif desc=$(exit_conventional "$1"); then
+        printf "%s↩ %s%s %s(%s)%s" "$red" "$1" "$nocol" "$fade" "$desc" "$nocol"
+    else
+        printf "%s↩ %s%s" "$red" "$1" "$nocol"
+    fi
+}
+
 __dotfiles_prompt_gitinfo_file=$(mktemp)
 __dotfiles_prompt_nodeinfo_file=$(mktemp)
 __dotfiles_prompt_goinfo_file=$(mktemp)
@@ -166,7 +218,7 @@ function set_prompt() {
     local -i last_err=$?
     local cmd_info=""
     if (( last_err != 0 )); then
-        cmd_info="$red$last_err ↩$nocol\n"
+        cmd_info="$(exitinfo $last_err)\n"
     fi
 
     history -a
