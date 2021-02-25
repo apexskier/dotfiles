@@ -10,6 +10,8 @@ set -e
 parent_dir="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 dotfiles_dir="$(cd "$(dirname "$parent_dir")" && pwd -P)"
 
+. "$dotfiles_dir/script/output.sh"
+
 help() {
 	echo "dotfiles -- dotfiles management"
 	echo ""
@@ -44,13 +46,13 @@ while test $# -gt 0; do
 	shift
 done
 
-(cd $dotfiles_dir && git pull -q --ff-only && echo "Updated" || echo "Couldn't update dotfiles")
+(cd "$dotfiles_dir" && git pull -q --ff-only && info "Updated" || fail "Couldn't update dotfiles")
 
-$dotfiles_dir/script/bootstrap
+"$dotfiles_dir/script/bootstrap"
 
 if [ "$should_install" == "true" ]
 then
-	$dotfiles_dir/script/install
+	"$dotfiles_dir/script/install"
 fi
 
 . ~/.bashrc

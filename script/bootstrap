@@ -5,43 +5,38 @@
 cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd -P)
 
+. "$DOTFILES_ROOT/script/output.sh"
+
 set -e
 
 echo ''
-
-info () {
-  printf "\r  [ \033[00;34m..\033[0m ] $1\n"
-}
-
-user () {
-  printf "\r  [ \033[0;33m??\033[0m ] $1\n"
-}
-
-success () {
-  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
-}
-
-fail () {
-  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
-  echo ''
-  exit 1
-}
 
 configure () {
   # install simple symlinks
   for config in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name 'config.sh' -not -path "$DOTFILES_ROOT/.*")
   do
-    topic=$(basename $(dirname $config))
-    info "configuring $topic"
-    bash -c "$config"
-    success "configured $topic"
+    local topic action
+    topic=$(basename "$(dirname "$config")")
+
+    user "Configure $topic?\\n\
+    [y]es, [n]o?"
+    read -rn 1 action
+    case "$action" in
+      y|Y )
+        info "configuring $topic"
+        bash -c "$config"
+        success "configured $topic"
+        ;;
+      * )
+        ;;
+    esac
   done
 }
 
 link_file () {
   local src=$1 dst=$2
 
-  local overwrite= backup= skip= action=
+  local overwrite backup skip action
 
   if [ -f "$dst" ] || [ -d "$dst" ] || [ -L "$dst" ]
   then
@@ -54,8 +49,9 @@ link_file () {
         skip=true;
       else
         user "File already exists: $dst ($(basename "$src")), what do you want to do?\\n\
-        [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
+    [s]kip, [S]kip all, [o]verwrite, [O]verwrite all, [b]ackup, [B]ackup all?"
         read -n 1 action
+        echo $action
 
         case "$action" in
           o )
@@ -100,7 +96,7 @@ link_file () {
 
   if [ "$skip" != "true" ]  # "false" or empty
   then
-    mkdir -p $(dirname "$dst")
+    mkdir -p "$(dirname "$dst")"
     ln -s "$src" "$dst"
     success "linked $src to $dst"
   fi
@@ -119,7 +115,7 @@ install_dotfiles () {
   # install files of the form ~/.topic/config
   for src in $(find "$DOTFILES_ROOT" -maxdepth 2 -name 'config' -not -path "$DOTFILES_ROOT/.*")
   do
-    dst="$HOME/.$(basename $(dirname "$src"))/$(basename "$src")"
+    dst="$HOME/.$(basename "$(dirname "$src")")/$(basename "$src")"
     link_file "$src" "$dst"
   done
 }
