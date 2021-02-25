@@ -1,3 +1,4 @@
+#!/bin/bash
 # vim: ft=sh
 
 #set -x
@@ -37,15 +38,15 @@ else # root!
 fi
 _USER+="\u$nocol"
 
-STATIC_TITLE_TEXT=""
-
 get_connection_type() {
     if [[ -n "$SSH_CLIENT$SSH2_CLIENT$SSH_TTY" ]] ; then
         echo ssh
     else
         # TODO check on *BSD
-        local sess_src="$(who am i | sed -n 's/.*(\(.*\))/\1/p')"
-        local sess_parent="$(ps -o comm= -p $PPID 2> /dev/null)"
+        local sess_src
+        sess_src="$(who am i | sed -n 's/.*(\(.*\))/\1/p')"
+        local sess_parent
+        sess_parent="$(ps -o comm= -p $PPID 2> /dev/null)"
         if [[ -z "$sess_src" || "$sess_src" = ":"* ]] ; then
             echo lcl # Local
         elif [[ "$sess_parent" = "su" || "$sess_parent" = "sudo" ]] ; then
@@ -75,20 +76,33 @@ fi
 
 # make this a little less prominant and different from normal text
 # I don't use $ because it means something in bash
-PS2="${lt_grey}▻ ${nocol}"
+PS2="${lt_grey}❯ ${nocol}"
 
 function gitinfo() {
-    local gitbranch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
-    if [[ -n "$gitbranch" ]] ; then
-        printf " (±$gitbranch)"
+    local gitbranch
+    gitbranch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
+    if [[ -n "$gitbranch" ]]; then
+        printf " (±%s)" "$gitbranch"
     fi
+}
+
+function file_in_tree() {
+    local dir="$PWD"
+    while [ "$dir" != "/" ]; do
+        if [ -f "$dir/$1" ]; then
+            echo "$dir/$1"
+            return 0
+        fi
+        dir=$(dirname "$dir")
+    done
+    return 1
 }
 
 function nodeinfo() {
     if command -v node >/dev/null 2>&1; then
-        local node_version="$(node --version)"
-        # alt ⬡
-        printf " ("
+        if ! file_in_tree package.json > /dev/null; then
+            return
+        fi
 
         # too slow :(
         # if command -v npm >/dev/null 2>&1; then
@@ -100,26 +114,52 @@ function nodeinfo() {
         #     fi
         # fi
 
-        printf "⬢$nocol $node_version)"
+        local node_version
+        node_version="$(node --version)"
+        # alt ⬡
+        printf " (⬢%s %s)" "$nocol" "$node_version"
     fi
 }
 
 function goinfo() {
     if command -v go >/dev/null 2>&1; then
-        local go_version=$(go version | cut -d' ' -f3)
-        printf " ($go_version)"
+        local gomodfile
+        if ! gomodfile=$(file_in_tree go.mod); then
+            return
+        fi
+
+        local goversion
+        goversion=$(cat "$GOROOT/VERSION")
+        local goversion_major_minor
+        goversion_major_minor=$(echo "${goversion:2}" | cut -d'.' -f1-2)
+
+        local gomodversion_major_minor
+        gomodversion_major_minor=$(grep '^go ' "$gomodfile")
+        gomodversion_major_minor=${gomodversion_major_minor:3}
+
+        local gocolor
+        if [ "$gomodversion_major_minor" != "$goversion_major_minor" ]; then
+            gocolor="$red"
+        fi
+
+        printf " (%s%s%s)" "$gocolor" "$goversion" "$nocol"
     fi
 }
 
 function k8sinfo() {
-    local k8s
     if command -v kubectl >/dev/null 2>&1; then
-        local context=$(kubectl config view --minify --output=go-template --template='{{ index . "current-context" }}' 2> /dev/null)
+        local context
+        context=$(kubectl config view --minify --output=go-template --template='{{ index . "current-context" }}' 2> /dev/null)
         if [[ -n "$context" ]] ; then
-            printf " (⎈$context)"
+            printf " (⎈%s)" "$context"
         fi
     fi
 }
+
+__dotfiles_prompt_gitinfo_file=$(mktemp)
+__dotfiles_prompt_nodeinfo_file=$(mktemp)
+__dotfiles_prompt_goinfo_file=$(mktemp)
+__dotfiles_prompt_k8sinfo_file=$(mktemp)
 
 function set_prompt() {
     # get return code of last cmd
@@ -145,13 +185,13 @@ function set_prompt() {
         venv=" (⊙${VIRTUAL_ENV#$WORKON_HOME/})"
     fi
 
-    local gitinfo_file=$(mktemp)
+    local gitinfo_file="$__dotfiles_prompt_gitinfo_file"
     gitinfo > "$gitinfo_file" &
-    local nodeinfo_file=$(mktemp)
+    local nodeinfo_file="$__dotfiles_prompt_nodeinfo_file"
     nodeinfo > "$nodeinfo_file" &
-    local goinfo_file=$(mktemp)
+    local goinfo_file="$__dotfiles_prompt_goinfo_file"
     goinfo > "$goinfo_file" &
-    local k8sinfo_file=$(mktemp)
+    local k8sinfo_file="$__dotfiles_prompt_k8sinfo_file"
     k8sinfo > "$k8sinfo_file" &
 
     wait
