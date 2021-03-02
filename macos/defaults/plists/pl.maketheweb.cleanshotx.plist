@@ -48,6 +48,8 @@
     <true/>
     <key>exportPath</key>
     <string>/Users/cameronlittle/Downloads</string>
+    <key>freezeScreen</key>
+    <false/>
     <key>gifFPS</key>
     <integer>15</integer>
     <key>gifQuality</key>
@@ -91,6 +93,8 @@
     <key>showKeystrokes</key>
     <true/>
     <key>showMenubarIcon</key>
+    <true/>
+    <key>stopRecordingPopupDisplayed</key>
     <true/>
     <key>transparentWindowBackground</key>
     <true/>
