@@ -1,0 +1,10 @@
+#!/bin/bash
+#
+# minifies a video file
+
+set -x
+
+original_file="$1"
+new_file="$(echo "$1" | rev | cut -d'.' -f2- | rev).mov"
+
+ffmpeg -i "$original_file" -an -vcodec h264 -acodec mp2 "$new_file"
