@@ -9,7 +9,7 @@ COPY . .dotfiles
 
 WORKDIR /root/.dotfiles
 RUN ./script/install
-RUN DOTFILES_OVERWRITE=true DOTFILES_SKIP_GIT=true ./script/bootstrap
+RUN DOTFILES_OVERWRITE=true ./script/bootstrap
 RUN apt-get clean
 
 WORKDIR /root

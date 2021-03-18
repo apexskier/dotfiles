@@ -12,7 +12,6 @@ set -e
 echo ''
 
 configure () {
-  # install simple symlinks
   for config in $(find -H "$DOTFILES_ROOT" -maxdepth 2 -name 'config.sh' -not -path "$DOTFILES_ROOT/.*")
   do
     local topic action
@@ -143,7 +142,10 @@ install_appsupport () {
 install () {
   local overwrite_all=${DOTFILES_OVERWRITE:-false} backup_all=false skip_all=false
 
-  configure
+  if [ -t 0 ]
+  then
+    configure
+  fi
   echo
   install_dotfiles
   echo
