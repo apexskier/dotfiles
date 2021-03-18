@@ -74,3 +74,5 @@
 	smudge = git-lfs smudge -- %f
 [init]
 	defaultBranch = main
+[blame]
+	ignoreRevsFile = .git-blame-ignore-revs
