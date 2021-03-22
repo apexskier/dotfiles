@@ -15,10 +15,17 @@ function _chgo_env() {
 
 function chgo() {
     local version
+    local gomodfile
+
     if [ -n "$1" ]
     then
         version="@$1"
+    elif gomodfile=$(file_in_tree go.mod)
+    then
+        version="$(grep '^go ' "$gomodfile")"
+        version="@${version:3}"
     fi
+
     brew unlink $(brew list | grep -E '^go(@|$)')
     brew link --overwrite --force "go$version"
 
