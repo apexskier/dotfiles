@@ -290,4 +290,5 @@
     "[yaml]": {
         "editor.defaultFormatter": "redhat.vscode-yaml"
     },
+    "go.toolsManagement.autoUpdate": true,
 }
