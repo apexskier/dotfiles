@@ -19,6 +19,8 @@ brew "docker", link: false
 brew "ffmpeg"
 # Command-line fuzzy finder written in Go
 brew "fzf"
+# GitHub command-line tool
+brew "gh"
 # Distributed revision control system
 brew "git"
 # Syntax-highlighting pager for git and diff output
@@ -31,8 +33,6 @@ brew "go"
 brew "gpgme"
 # Graph visualization software from AT&T and Bell Labs
 brew "graphviz"
-# Add GitHub support to git on the command-line
-brew "hub"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
 # Lightweight and flexible command-line JSON processor

@@ -14,6 +14,7 @@
 	st = status -sb
 	up = !gitup
 	default-branch = remote set-head origin --auto
+	hub = !gh pr create --web # open the current branch in the compare view in github
 [color]
 	diff = auto
 	status = auto
