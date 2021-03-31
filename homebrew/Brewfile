@@ -35,6 +35,8 @@ brew "gpgme"
 brew "graphviz"
 # Tools and libraries to manipulate images in many formats
 brew "imagemagick"
+# CLI for ImageOptim, ImageAlpha and JPEGmini
+brew "imageoptim-cli"
 # Lightweight and flexible command-line JSON processor
 brew "jq"
 # Kubernetes command-line interface
