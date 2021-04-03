@@ -1,4 +1,4 @@
-This is a tool to sharing macOS preferences between computers.
+This is a tool for sharing macOS preferences between computers.
 
 ## Usage
 
