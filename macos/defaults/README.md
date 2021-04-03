@@ -4,29 +4,30 @@ This is a tool for sharing macOS preferences between computers.
 
 Per-domain (~application) settings files are stored as xml formatted plist files in the [`plists`](./plists) directory.
 
-[`write.sh`](./write.sh) runs through plist files and generates and executes defaults commands for it to merge it into the system settings.
+[`write.sh`](./write.sh) runs through plist files and generates and executes defaults commands to apply the settings to your computer.
 
-[`read.sh`](./write.sh) runs through plist files and updates any set values with what's been written to defaults. After running, verify changes in git.
+[`read.sh`](./write.sh) runs through plist files and updates any currently defined preferences in the file with what's on your computer. After running, verify changes in git before comitting.
 
-[`clean.sh`](./clean.sh) runs through plist files and clean formats them (so `read.sh` generates clean diffs).
+[`clean.sh`](./clean.sh) runs through plist files and formats them (so `read.sh` generates clean diffs).
 
 These commands accept a filepath to run on a single file.
 
-[`import.sh`](./import.sh) takes a domain or a path to an app and creates a full plist file for you. Verify _everything_ in it before committing.
+[`import.sh`](./import.sh) takes a domain or a path to an app and generates a full plist file for you. Verify _everything_ in it before committing—most applications store time-specific, computer-specific, or binary data that you probably don't want to store or overwrite.
 
-Add the xml attribute `eval="true"` to `<string>` nodes to expand bash variables.
+Add the xml attribute `eval="true"` to `<string>` nodes in the plist files to expand bash variables.
 
-This _attempts_ to only use builtin macOS tools.
-  
 ## Notes
 
-Preferences internally are stored in plist files, and the `defaults` command writes them. My original `config.sh` script using manual defaults commands, but is hard to keep organized. I'm now storing these as real plist files. They're more diffable, human readable, and domains provide an organization system.
+In macOS preferences internally are stored in binary plist files, and the `defaults` command writes them. My original `config.sh` script using manual defaults commands, but is hard to keep organized. I'm now storing these as xml plist files. They're more diffable, human readable, and domains provide an organization system.
+
+This _attempts_ to only use builtin macOS tools to have compatibility with your system. Please file an issue if a command it uses is not preinstalled on your computer.
 
 I can't just `defaults export` because they often contain timestamps or commonly changing lists of recently accessed items.
 
 ### Exploring defaults
 
 Defaults can be difficult to discover, here are some tips:
+- https://macos-defaults.com/
 - https://www.defaults-write.com/
 - `NSGlobalDomain` are global settings
 - `defaults domains | splitlines ', '`
@@ -38,7 +39,7 @@ Defaults can be difficult to discover, here are some tips:
 - `defaults find "search term"`
 - Many of these won't apply until a restart of some process or the full machine
 
-I often will `defaults read $DOMAIN > old.defaults` and diff that after tweaking preferences in the UI to see what changes and if I can save it. See https://github.com/zcutlip/prefsniff for a tool that tries to do this automatically.
+I often will `import.sh`, tweak preferences in a UI, then `read.sh` and `git diff` to see what changes and if I can save it. See https://github.com/zcutlip/prefsniff for a tool that tries to do this automatically.
 
 I'd like to explore snapshotting defaults and seeing what changes over time to know what I _shouldn't_ change. 
 
