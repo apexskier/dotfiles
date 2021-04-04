@@ -67,15 +67,18 @@ brew "vim"
 brew "watchman"
 # JavaScript package manager
 brew "yarn"
-# Password manager that keeps all passwords secure behind one password
-cask "1password"
 # Suite of useful Git commands
 brew "nvie/tap/git-toolbelt"
+# Password manager that keeps all passwords secure behind one password
+cask "1password"
 cask "asset-catalog-tinkerer"
 # Web debugging Proxy application
 cask "charles"
+# Voice and text chat software
+cask "discord"
 # App to build and share containerized applications and microservices
 cask "docker"
+cask "figma"
 # Web browser
 cask "firefox"
 # Git interface focused on visual interaction
@@ -93,16 +96,18 @@ cask "qlcolorcode"
 cask "qlstephen"
 # Time optimising application
 cask "rescuetime"
+# Digital design and prototyping platform
 cask "sketch"
+# File transfer application
 cask "transmit"
-# Multimedia player
-cask "vlc"
 # Open-source code editor
 cask "visual-studio-code"
+# Multimedia player
+cask "vlc"
 # Network protocol analyzer
 cask "wireshark"
-# Temporary makeshift alias for the video communication tool Zoom
-cask "zoomus"
+# Video communication and virtual meeting platform
+cask "zoom"
 mas "1Blocker", id: 1107421413
 mas "Amphetamine", id: 937984704
 mas "DaisyDisk", id: 411643860
