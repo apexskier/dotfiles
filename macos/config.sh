@@ -6,8 +6,10 @@ fi
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 
-# if system preferences stays open it can override stuff set here
-osascript -e 'tell application "System Preferences" to quit'
+if [ "$SHELL" != "/bin/bash" ]
+then
+    chsh -s /bin/bash
+fi
 
 mkdir -p ~/Developer
 touch ~/Developer/.metadata_never_index
