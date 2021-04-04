@@ -93,7 +93,6 @@ cask "macvim"
 cask "ngrok"
 # QuickLook plug-in that renders source code with syntax highlighting
 cask "qlcolorcode"
-cask "qlstephen"
 # Time optimising application
 cask "rescuetime"
 # Digital design and prototyping platform
