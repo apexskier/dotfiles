@@ -20,7 +20,7 @@ shopt -s nocaseglob # case insensitive filename expansion
 [ -f "/etc/bashrc_Apple_Terminal" ] && . /etc/bashrc_Apple_Terminal
 [ -f "$HOME/.bash_private" ] && . ~/.bash_private
 [ -f "$HOME/.bash_local" ] && . ~/.bash_local
-[ -f "~/.profile" ] && . ~/.profile
+[ -f "$HOME/.profile" ] && . ~/.profile
 
 export EDITOR=vim
 export GPG_TTY=$(tty)

@@ -2,6 +2,8 @@ if [ "$(uname -s)" != "Darwin" ]; then
     return 0
 fi
 
+export BASH_SILENCE_DEPRECATION_WARNING=1
+
 export DISPLAY=localhost:0.0
 
 alias jsc="/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Helpers/jsc"

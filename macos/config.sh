@@ -6,9 +6,13 @@ fi
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 
-if [ "$SHELL" != "/bin/bash" ]
+if [ "$SHELL" != "/usr/local/bin/bash" ] && [ -f "/usr/local/bin/bash" ]
 then
-    chsh -s /bin/bash
+    if ! grep /usr/local/bin/bash /etc/shells
+    then
+        sudo sh -c 'echo /usr/local/bin/bash >> /etc/shells'
+    fi
+    chsh -s /usr/local/bin/bash
 fi
 
 mkdir -p ~/Developer
