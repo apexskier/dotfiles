@@ -6,6 +6,8 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 
 export DISPLAY=localhost:0.0
 
+export CDPATH=~/Developer
+
 alias jsc="/System/Library/Frameworks/JavaScriptCore.framework/Versions/Current/Helpers/jsc"
 
 # convert clipboard contents to plain text
