@@ -53,7 +53,7 @@ function write_plist() {
 
     if [ -n "$REOPEN" ]
     then
-        open -g "$REOPEN"
+        open -g "$REOPEN" || echo "WARNING: Failed to reopen $REOPEN"
     fi
 }
 
