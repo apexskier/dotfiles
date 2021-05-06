@@ -6,10 +6,12 @@ tap "homebrew/core"
 tap "remitly/internal"
 brew "cocoapods"
 brew "go", link: false
-brew "go@1.13", link: true
+brew "go@1.15", link: false
+brew "go@1.14", link: false
+brew "go@1.13", link: false
 brew "node", link: false
 brew "node@10", link: false
-brew "node@12", link: true
+brew "node@12", link: false
 brew "vagrant-completion"
 cask "adoptopenjdk/openjdk/adoptopenjdk8"
 cask "android-studio"
