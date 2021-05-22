@@ -91,8 +91,6 @@ cask "hex-fiend"
 cask "macvim"
 # Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
-# QuickLook plug-in that renders source code with syntax highlighting
-cask "qlcolorcode"
 # Time optimising application
 cask "rescuetime"
 # Digital design and prototyping platform
