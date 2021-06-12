@@ -268,7 +268,6 @@
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[javascript]": {
-        // "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[markdown]": {
@@ -277,18 +276,33 @@
         "files.trimTrailingWhitespace": false
     },
     "[typescript]": {
-        // "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[typescriptreact]": {
-        // "editor.formatOnSave": true,
         "editor.defaultFormatter": "esbenp.prettier-vscode",
-    },
-    "[scss]": {
-        "editor.formatOnSave": true,
     },
     "[yaml]": {
         "editor.defaultFormatter": "redhat.vscode-yaml"
     },
     "go.toolsManagement.autoUpdate": true,
+    "go.coverageOptions": "showUncoveredCodeOnly",
+
+    "launch": {
+		"version": "0.2.0",
+		"configurations": [
+            {
+                "type": "node",
+                "request": "launch",
+                "name": "Run Jest on current file",
+                "program": "${workspaceFolder}/node_modules/.bin/jest",
+                "args": ["${relativeFile}"],
+                "console": "integratedTerminal",
+                "internalConsoleOptions": "neverOpen",
+                "disableOptimisticBPs": true,
+                "smartStep": true,
+                "sourceMaps": true,
+                "skipFiles": ["node_modules/**", "<node_internals>/**"]
+            },
+		]
+	}
 }
