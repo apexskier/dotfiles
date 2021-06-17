@@ -17,6 +17,7 @@
         "Sprintf",
         "UUID",
         "Unsized",
+        "Wrapf",
         "authed",
         "csrf",
         "cxcore",
@@ -43,6 +44,8 @@
         "memoized",
         "memoizes",
         "mfautil",
+        "mothra",
+        "netrc",
         "nolink",
         "opctl",
         "pollyjs",
@@ -96,6 +99,8 @@
 
     "debug.inlineValues": true,
     "debug.toolBarLocation": "docked",
+
+    "docker.showStartPage": false,
 
     "editor.codeActionsOnSave": {
         "source.fixAll.tslint": true,
@@ -288,8 +293,8 @@
     "go.coverageOptions": "showUncoveredCodeOnly",
 
     "launch": {
-		"version": "0.2.0",
-		"configurations": [
+        "version": "0.2.0",
+        "configurations": [
             {
                 "type": "node",
                 "request": "launch",
@@ -302,7 +307,7 @@
                 "smartStep": true,
                 "sourceMaps": true,
                 "skipFiles": ["node_modules/**", "<node_internals>/**"]
-            },
-		]
-	}
+            }
+        ]
+    }
 }
