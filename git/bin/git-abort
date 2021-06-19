@@ -2,7 +2,7 @@
 
 set -e
 
-GIT_DIR="`git rev-parse --git-dir`"
+GIT_DIR="$(git rev-parse --git-dir)"
 
 if [ -e "${GIT_DIR}/CHERRY_PICK_HEAD" ]
 then
@@ -10,7 +10,7 @@ then
     exit $?
 fi
 
-if [ -d "${GIT_DIR}/rebase-merge" -o -d "${GIT_DIR}/rebase-apply" ]
+if [ -d "${GIT_DIR}/rebase-merge" ] || [ -d "${GIT_DIR}/rebase-apply" ]
 then
     git rebase --abort
     exit $?
@@ -38,4 +38,3 @@ fi
 
 echo "Nothing to abort?"
 exit 1
-

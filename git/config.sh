@@ -16,13 +16,13 @@ git config --file "$gitconfig_local_file" credential.helper "$git_credential"
 if [ -z "$(git config user.name)" ]
 then
     echo 'What is your github author name?'
-    read -e git_authorname
+    read -re git_authorname
     git config --file "$gitconfig_local_file" user.name "$git_authorname"
 fi
 
 if [ -z "$(git config user.email)" ]
 then
     echo 'What is your github author email?'
-    read -e git_authoremail
+    read -re git_authoremail
     git config --file "$gitconfig_local_file" user.email "$git_authoremail"
 fi

@@ -2,4 +2,4 @@
 #
 # Git submodule but works outside of the top level
 
-(cd `git rev-parse --show-toplevel` && git submodule $@)
+(cd "$(git rev-parse --show-toplevel)" && git submodule $@)

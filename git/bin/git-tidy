@@ -2,8 +2,8 @@
 
 MAIN_BRANCH=$(git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4-)
 # delete merged branches that we're not currently on
-MERGED=$(git branch --merged="$MAIN_BRANCH"| grep -v '* ' | cut -c3- | grep -v "$MAIN_BRANCH")
-if [ ! -z "$MERGED" ]
+MERGED=$(git branch --merged="$MAIN_BRANCH" | grep -v '^\* ' | cut -c3- | grep -v "$MAIN_BRANCH")
+if [ -n "$MERGED" ]
 then
     git branch -d "$MERGED"
 fi

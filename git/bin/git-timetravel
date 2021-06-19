@@ -3,4 +3,4 @@
 # Checkout a commit at a particular time.
 
 MAIN_BRANCH=$(git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4-)
-git checkout $(git rev-list -n 1 --before="$1" "$MAIN_BRANCH")
+git checkout "$(git rev-list -n 1 --before="$1" "$MAIN_BRANCH")"

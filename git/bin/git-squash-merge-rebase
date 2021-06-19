@@ -16,7 +16,7 @@ then
     exit 1
 fi
 
-MERGED_BRANCH=$(git rev-parse $1)
+MERGED_BRANCH=$(git rev-parse "$1")
 CURRENT_BRANCH=$(git rev-parse HEAD)
 MAIN_BRANCH=$(git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4-)
 
@@ -24,7 +24,7 @@ git checkout -q -b "${CURRENT_BRANCH}-temp" "$MAIN_BRANCH"
 
 for commit in $(git rev-list "$MERGED_BRANCH".."$CURRENT_BRANCH" | tail -r)
 do
-    git cherry-pick $commit > /dev/null
+    git cherry-pick "$commit" > /dev/null
 done
 
 git checkout -q -
