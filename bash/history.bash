@@ -1,3 +1,4 @@
+#!/bin/bash
 # vim: ft=sh
 
 # don't put duplicate lines in the history

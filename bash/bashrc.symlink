@@ -37,7 +37,8 @@ export XDG_CACHE_HOME="$HOME/.cache"
 [ -d "$HOME/.dotfiles/git/bin" ] && export PATH="$HOME/.dotfiles/git/bin:$PATH"
 
 # load *.bash files in dotfiles
-while IFS='' read -r -d '' filename; do
+while IFS='' read -r -d '' filename
+do
   source "$filename"
 done < <(find ~/.dotfiles -maxdepth 2 -type f -name '*.bash' -print0)
 

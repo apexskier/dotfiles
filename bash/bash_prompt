@@ -1,5 +1,4 @@
 #!/bin/bash
-# vim: ft=sh
 
 #set -x
 
@@ -284,9 +283,10 @@ function set_prompt() {
 }
 
 function list_prompt_commands() {
-    for command in $(echo ${PROMPT_COMMAND//;/ })
+    IFS=";"
+    for command in $PROMPT_COMMAND
     do
-        echo $command
+        echo "$command" | xargs
     done
 }
 

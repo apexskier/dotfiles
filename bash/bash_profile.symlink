@@ -1,4 +1,4 @@
-# vim: ft=sh
+#!/bin/bash
 
 # stuff here is run once per login shell
 # bashrc is run every prompt

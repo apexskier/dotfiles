@@ -1,4 +1,4 @@
-#!bash
+#!/bin/bash
 # vim: ft=sh
 
 if shopt -oq posix; then
