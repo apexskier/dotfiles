@@ -6,4 +6,8 @@ then
 fi
 echo "$1"
 
-STR=$1 bash -c 'for file in $(rg -l "$STR"); do sed -i .bak '/'"${STR//\//\\\/}"'/d' $file; done'
+STR=$1
+for file in $(rg -l "$STR")
+do
+    sed -i .bak '/'"${STR//\//\\\/}"'/d' "$file"
+done

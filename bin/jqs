@@ -1,6 +1,6 @@
 #!/bin/bash
 #
-# graceful version of jq that ignores invalid json and outputs it as is
+# graceful version of jq that ignores invalid json and outputs it as-is
 
 if [ -z "$1" ]
 then

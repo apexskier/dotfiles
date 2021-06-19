@@ -1,4 +1,4 @@
-#!/bin/sh
+#!/bin/bash
 #
 # A little script that does something I do a lot better.
 # Replaces arg 1 with arg 2 in all files found (recursively)
