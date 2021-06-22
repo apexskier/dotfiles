@@ -9,8 +9,12 @@
 # for ssh logins, install and configure the libpam-umask package.
 #umask 022
 
-if [ "$(uname -s)" == "Darwin" ]; then
+if [ "$(uname -s)" == "Darwin" ]
+then
     return 0
 fi
 
-setxkbmap -option caps:escape
+if command -v setxkbmap > /dev/null
+then
+    setxkbmap -option caps:escape
+fi
