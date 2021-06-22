@@ -17,6 +17,7 @@ apt-get install -y \
     ripgrep \
     tmux \
     vim \
+    unzip \
     wget \
     ""
 # dnsutils contains dig
