@@ -39,7 +39,7 @@ fi
 username+="\u$nocol"
 
 get_connection_type() {
-    if [ -f .dockerenv ]
+    if [ -f /.dockerenv ]
     then
         echo docker
     elif [[ -n "$SSH_CLIENT$SSH2_CLIENT$SSH_TTY" ]]
