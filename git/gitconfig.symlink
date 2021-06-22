@@ -57,17 +57,6 @@
 	ff = only
 [diff "spaceman-diff"]
 	command = ~/.dotfiles/bin/spaceman-diff
-[url "git@github.com:"]
-	insteadOf = "gh:"
-	insteadOf = "git://github.com"
-	pushInsteadOf = "github:"
-	pushInsteadOf = "git://github.com/"
-	pushInsteadOf = "https://github.com/"
-[url "git@gist.github.com:"]
-	insteadOf = "gst:"
-	pushInsteadOf = "gist:"
-	pushInsteadOf = "git://gist.github.com/"
-	pushInsteadOf = "https://gist.github.com/"
 [filter "lfs"]
 	process = git-lfs filter-process
 	required = true
