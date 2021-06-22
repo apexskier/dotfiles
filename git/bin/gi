@@ -1,6 +1,6 @@
 #!/bin/bash
 # fix my common typo of swapping git's t with the next space
 
-GITCMD=("${@:1}")
+GITCMD="${@:1}"
 echo git "${GITCMD:1}"
 git ${GITCMD:1}
