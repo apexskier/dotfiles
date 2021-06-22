@@ -65,6 +65,34 @@ have some utilities to automatically update the config. See
 I also have a system for automatically syncing macOS system and application
 configuration. See [`./macos/defaults`](./macos/defaults/README.md).
 
+## Bash prompt
+
+My bash prompt attempts to balance between minimalism, information, and aesthetics.
+
+The prompt adapts to the context of the current environment and directory. Along with the standard user, hostname, and directory information the prompt also indicates:
+
+* connected over ssh
+* git branch
+* go version
+* in docker container
+* kubernetes context
+* nodejs version
+* readonly cwd
+* root user
+
+I use some concurrency to improve the speed of collecting this information.
+
+The prompt is prefixed with the ❯ character, which I feel makes it less likely that a copy/paste will lead to running something unexpectedly.
+
+The informational and input parts of the prompt are split between two lines. This makes the current command and command history easier to read and copy, since commands are less likely to wrap.
+
+```
+username@hostname:/current/working/directory (extra) (information)
+❯ 
+```
+
+I make heavy use of readline's [`.inputrc`](./bash/inputrc.symlink) to make it easier to edit and rerun commands.
+
 ## Docker image
 
 A github action maintains a

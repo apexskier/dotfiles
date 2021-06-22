@@ -24,22 +24,26 @@ lt_purple="\[\033[1;35m\]"
      fade="\033[2m\]"
 
 
-_USER=""
-# Yellow for root, bold if the user is not the login one, else no color.
+username=""
+# highlighted cyan for root, grey if the user is not the login one, else cyan
 if [[ "$EUID" -ne "0" ]] ; then  # if user is not root
     # if user is not login user
     if [[ $USER != "$(logname 2>/dev/null || echo $LOGNAME)" ]]; then
-        _USER="$lt_grey"
+        username="$lt_grey"
     else
-        _USER="$cyan"
+        username="$cyan"
     fi
 else # root!
-    _USER="$lt_cyan"
+    username="$lt_cyan"
 fi
-_USER+="\u$nocol"
+username+="\u$nocol"
 
 get_connection_type() {
-    if [[ -n "$SSH_CLIENT$SSH2_CLIENT$SSH_TTY" ]] ; then
+    if [ -f .dockerenv ]
+    then
+        echo docker
+    elif [[ -n "$SSH_CLIENT$SSH2_CLIENT$SSH_TTY" ]]
+    then
         echo ssh
     else
         # TODO check on *BSD
@@ -56,7 +60,9 @@ get_connection_type() {
         fi
     fi
 }
+connectionmark=""
 CONNECTION_TYPE=$(get_connection_type)
+# https://en.wikipedia.org/wiki/Arrows_(Unicode_block)
 case "$CONNECTION_TYPE" in
 ssh)
     connectionmark="⇝"
@@ -64,6 +70,8 @@ ssh)
 tel)
     connectionmark="⇢"
     ;;
+docker)
+    connectionmark="⇨"
 esac
 
 mark="@"
@@ -262,7 +270,7 @@ function set_prompt() {
     # local rows=${size[0]}
     # local cols=${size[1]}
 
-    ret+="$cmd_info$_USER$mark$connectionmark$green\h$nocol$write"
+    ret+="$cmd_info$username$mark$connectionmark$green\h$nocol$write"
     ret+="$yellow\w$nocol"
     # test "$(expr ${#ret} + ${#gitinfo})" -gt "$cols" && ret+="\n"
     ret+="$gitinfo"
