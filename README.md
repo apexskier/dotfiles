@@ -93,6 +93,8 @@ username@hostname:/current/working/directory (extra) (information)
 
 I make heavy use of readline's [`.inputrc`](./bash/inputrc.symlink) to make it easier to edit and rerun commands.
 
+Failed commands will show their exit code, translated into a more human readable form.
+
 ## Docker image
 
 A github action maintains a
