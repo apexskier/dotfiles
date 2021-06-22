@@ -258,8 +258,6 @@
         },
     ],
 
-    "window.zoomLevel": 0,
-
     "workbench.colorTheme": "Default Light+",
     "workbench.editor.enablePreview": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
@@ -296,16 +294,25 @@
         "version": "0.2.0",
         "configurations": [
             {
-                "type": "node",
+                "type": "pwa-node",
                 "request": "launch",
                 "name": "Run Jest on current file",
                 "program": "${workspaceFolder}/node_modules/.bin/jest",
                 "args": ["${relativeFile}"],
                 "console": "integratedTerminal",
                 "internalConsoleOptions": "neverOpen",
-                "disableOptimisticBPs": true,
                 "smartStep": true,
                 "sourceMaps": true,
+                "skipFiles": ["node_modules/**", "<node_internals>/**"]
+            },
+            {
+                "type": "pwa-node",
+                "request": "launch",
+                "name": "Run current file (nodejs)",
+                "program": "${workspaceFolder}/${relativeFile}",
+                "console": "integratedTerminal",
+                "internalConsoleOptions": "neverOpen",
+                "smartStep": true,
                 "skipFiles": ["node_modules/**", "<node_internals>/**"]
             }
         ]
