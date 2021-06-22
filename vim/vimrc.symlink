@@ -10,8 +10,7 @@ endif
 
 " install plugin manager if not installed yet
 if empty(glob('~/.vim/autoload/plug.vim'))
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
-    \ https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+  silent !~/.vim/install.sh
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
@@ -86,15 +85,15 @@ endif
 syntax on           " turn on syntax highlighting
 syntax enable
 
-if !has("gui_running")
-    " show whitespace characters, but try to make them invisible until visual mode
-    " is used. Matches a new vscode feature
-    set list
-    set listchars=eol:¬,tab:↦\ ,trail:~,extends:>,precedes:<,space:·
-    hi Normal ctermbg=233 ctermfg=NONE guibg=#121212 guifg=NONE cterm=NONE gui=NONE
-    hi SpecialKey ctermbg=NONE ctermfg=233 guibg=NONE guifg=#121212	cterm=NONE gui=NONE
-    hi NonText ctermbg=NONE ctermfg=233 guibg=NONE guifg=#121212 cterm=NONE gui=NONE
-endif
+" if !has("gui_running")
+"     " show whitespace characters, but try to make them invisible until visual mode
+"     " is used. Matches a new vscode feature
+"     set list
+"     set listchars=eol:¬,tab:↦\ ,trail:~,extends:>,precedes:<,space:·
+"     hi Normal ctermbg=233 ctermfg=NONE guibg=#121212 guifg=NONE cterm=NONE gui=NONE
+"     hi SpecialKey ctermbg=NONE ctermfg=233 guibg=NONE guifg=#121212	cterm=NONE gui=NONE
+"     hi NonText ctermbg=NONE ctermfg=233 guibg=NONE guifg=#121212 cterm=NONE gui=NONE
+" endif
 
 if has("gui_running")
     colorscheme macvim
