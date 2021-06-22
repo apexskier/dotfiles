@@ -31,14 +31,6 @@ jobs:
           docker push $IMAGE_ID:latest
           docker push $IMAGE_ID:${{ github.sha }}
 
-      - name: Prune old images in github registry
-        uses: actions/delete-package-versions@v1
-        with:
-          owner: apexskier
-          repo: dotfiles
-          package-name: toolbox
-          token: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Log into docker hub registry
         run: echo "${{ secrets.DOCKER_HUB_TOKEN }}" | docker login -u apexskier --password-stdin
 
