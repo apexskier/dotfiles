@@ -9,5 +9,5 @@ fi
 
 # this doesn't install docker, but pulls my docker toolbox image in
 
-docker pull docker.pkg.github.com/apexskier/dotfiles/toolbox:latest
-docker tag docker.pkg.github.com/apexskier/dotfiles/toolbox:latest toolbox
+docker pull ghcr.io/apexskier/dotfiles/toolbox:latest
+docker tag ghcr.io/apexskier/dotfiles/toolbox:latest toolbox

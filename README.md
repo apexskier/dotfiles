@@ -72,22 +72,16 @@ A github action maintains a
 quickly debug docker and kubernetes with a familiar shell and debugging tools.
 
 On `dotfiles --install`, it's tagged locally as `toolbox` and can be started with
-`docker run --rm -it toolbox`. To try it somewhere else, run
-
-```sh
-docker run --rm -it docker.pkg.github.com/apexskier/dotfiles/toolbox:latest
-```
-
-Unfortunately, you'll [need to authenticate with github for this](https://github.community/t5/GitHub-API-Development-and/Download-from-Github-Package-Registry-without-authentication/td-p/35255).
-You can use the [docker hub mirror](https://hub.docker.com/repository/docker/apexskier/toolbox)
-if you can't configure auth in your environment.
-
-```sh
-docker run --rm -it apexskier/toolbox
-```
+`docker run --rm -it toolbox`.
 
 To run in a docker network named `my_network`:
 
 ```sh
-docker run --rm -it --network=my_network apexskier/toolbox
+docker run --rm -it --network=my_network toolbox
+```
+
+To try it somewhere else, run
+
+```sh
+docker run --rm -it ghcr.io/apexskier/dotfiles/toolbox:latest
 ```
