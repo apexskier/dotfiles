@@ -4,7 +4,16 @@
 
 set -e
 
-cd "$(dirname $0)"/..
+cd "$(dirname "$0")/.."
+DOTFILES_ROOT=$(pwd -P)
+
+. "$DOTFILES_ROOT/script/output.sh"
 
 # find the installers and run them
-find . -name 'install*.sh' -maxdepth 2 | rev | sort | rev | while read installer ; do bash -c "$installer" ; done
+while read -r installer
+do
+    topic=$(basename "$(dirname "$installer")")
+    info "installing $topic"
+    bash -c "$installer"
+    success "installed $topic"
+done < <(find . -name 'install*.sh' -maxdepth 2 | rev | sort | rev)
