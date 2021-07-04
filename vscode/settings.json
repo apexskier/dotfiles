@@ -97,7 +97,7 @@
         "unmount"
     ],
 
-    "debug.inlineValues": true,
+    "debug.openDebug": "openOnFirstSessionStart",
     "debug.toolBarLocation": "docked",
 
     "docker.showStartPage": false,
@@ -112,8 +112,6 @@
     "editor.fontSize": 14,
     "editor.lineNumbers": "relative",
     "editor.minimap.enabled": false,
-    "editor.minimap.maxColumn": 120,
-    "editor.minimap.renderCharacters": false,
     "editor.rulers": [80, 120],
 
     "emmet.showAbbreviationSuggestions": false,
@@ -121,6 +119,7 @@
 
     "eslint.packageManager": "yarn",
 
+    "explorer.incrementalNaming": "smart",
     "explorer.confirmDragAndDrop": false,
 
     "files.trimTrailingWhitespace": true,
@@ -128,7 +127,9 @@
     "git.confirmSync": false,
 
     "go.autocompleteUnimportedPackages": true,
+    "go.coverageOptions": "showUncoveredCodeOnly",
     "go.formatTool": "gofmt",
+    "go.toolsManagement.autoUpdate": true,
     "go.useLanguageServer": true,
 
     "grunt.autoDetect": "off",
@@ -140,22 +141,23 @@
     "javascript.validate.enable": false,
 
     "markdown.preview.lineHeight": 1.4,
-    "markdown-preview-enhanced.codeBlockTheme": "github.css",
 
-    "npm.autoDetect": "off",
-    "npm.fetchOnlinePackageInfo": false,
+    "markdown-preview-enhanced.codeBlockTheme": "github.css",
+    "markdown-preview-enhanced.frontMatterRenderingOption": "code block",
 
     "scss.validate": false,
 
+    "search.exclude": {
+        "**/vendor": true
+    },
+    "search.smartCase": true,
     "search.useGlobalIgnoreFiles": true,
-
-    "stylelint.enable": false,
 
     "terminal.explorerKind": "external",
 
     "typescript.check.npmIsInstalled": false,
     "typescript.preferences.quoteStyle": "double",
-    "typescript.tsserver.log": "normal",
+    "typescript.tsserver.log": "off",
     "typescript.updateImportsOnFileMove.enabled": "never",
 
     "scss.lint.validProperties": [
@@ -287,8 +289,6 @@
     "[yaml]": {
         "editor.defaultFormatter": "redhat.vscode-yaml"
     },
-    "go.toolsManagement.autoUpdate": true,
-    "go.coverageOptions": "showUncoveredCodeOnly",
 
     "launch": {
         "version": "0.2.0",
