@@ -164,6 +164,9 @@
         "appearance"
     ],
 
+    "vim.cursorStylePerMode.normal": "block",
+    "vim.cursorStylePerMode.insert": "line",
+    "vim.cursorStylePerMode.replace": "underline",
     "vim.smartcase": true,
     "vim.hlsearch": true,
     "vim.incsearch": true,
@@ -257,7 +260,7 @@
             "commands": [
                 "editor.action.outdentLines"
             ]
-        },
+        }
     ],
 
     "workbench.colorTheme": "Default Light+",
@@ -266,14 +269,14 @@
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.tabSizing": "shrink",
 
+    "[javascript]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
     "[json]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[jsonc]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
     },
     "[markdown]": {
         "editor.formatOnSave": false,
@@ -281,10 +284,10 @@
         "files.trimTrailingWhitespace": false
     },
     "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
     },
     "[yaml]": {
         "editor.defaultFormatter": "redhat.vscode-yaml"
