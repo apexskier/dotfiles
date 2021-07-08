@@ -1,102 +1,66 @@
 # vim: ft=conf
 
-# Ignore docs files
-_gh_pages
-_site
-.ruby-version
-
-# Numerous always-ignore extensions
 *.aux
+*.bak
 *.diff
 *.err
-*.orig
+*.esproj
+*.ipr
+*.iws
+*.komodoproject
 *.log
+*.orig
 *.out
 *.pyc
 *.rbc
 *.rej
-*.swo
-*.swp
-*.zip
-*.vi
-*~
-
-# OS or Editor folders
-.svn
-.DS_Store
-._*
-Thumbs.db
-.cache
-.project
-.settings
-.tmproj
-*.esproj
-nbproject
 *.sublime-project
 *.sublime-workspace
-
-# pycharm
-#   User-specific stuff:
-.idea/workspace.xml
-.idea/tasks.xml
-
-#   Sensitive or high-churn files:
-.idea/dataSources.ids
-.idea/dataSources.xml
-.idea/sqlDataSources.xml
-.idea/dynamic.xml
-.idea/uiDesigner.xml
-
-#   File-based project format:
-*.ipr
-*.iws
-
-#   IntelliJ
-/out/
-
-#   mpeltonen/sbt-idea plugin
-.idea_modules/
-
-# Komodo
-*.komodoproject
-.komodotools
-
-# grunt-html-validation
-validation-status.json
-validation-report.json
-
-# Folders to ignore
-bower_components
-metadata.pickle
-
-.ropeproject
-
-
-## https://github.com/github/gitignore/blob/master/Global/OSX.gitignore
+*.swo
+*.swp
+*.vi
+*.zip
+*~
+.AppleDB
+.AppleDesktop
 .AppleDouble
-.LSOverride
-
-
-# Thumbnails
-._*
-
-# Files that might appear in the root of a volume
+.DS_Store
 .DocumentRevisions-V100
-.fseventsd
+.LSOverride
 .Spotlight-V100
 .TemporaryItems
 .Trashes
 .VolumeIcon.icns
-
-# Directories potentially created on remote AFP share
-.AppleDB
-.AppleDesktop
+._*
+._*
+.apdisk
+.cache
+.env
+.fseventsd
+.idea/dataSources.ids
+.idea/dataSources.xml
+.idea/dynamic.xml
+.idea/sqlDataSources.xml
+.idea/tasks.xml
+.idea/uiDesigner.xml
+.idea/workspace.xml
+.idea_modules/
+.komodotools
+.project
+.ropeproject
+.ruby-version
+.settings
+.svn
+.tmproj
 Network Trash Folder
 Temporary Items
-.apdisk
-
-phpunit
-
-*.bak
-
+Thumbs.db
 __debug_bin
+_gh_pages
+_site
+bower_components
+metadata.pickle
+nbproject
+phpunit
+validation-report.json
+validation-status.json
