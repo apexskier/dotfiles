@@ -142,8 +142,9 @@
 
     "markdown.preview.lineHeight": 1.4,
 
-    "markdown-preview-enhanced.codeBlockTheme": "github.css",
-    "markdown-preview-enhanced.frontMatterRenderingOption": "code block",
+    "openapi.approvedHostnames": [
+        "json-schema.org"
+    ],
 
     "scss.validate": false,
 
@@ -171,6 +172,16 @@
     "vim.hlsearch": true,
     "vim.incsearch": true,
     "vim.history": 500,
+    "vim.insertModeKeyBindings": [
+        {
+            "before": [
+                "<C-n>",
+            ],
+            "commands": [
+                "editor.action.triggerSuggest"
+            ]
+        }
+    ],
     "vim.normalModeKeyBindingsNonRecursive": [
         // unhighlight search (hlsearch) with `\⏎`
         {
