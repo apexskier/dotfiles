@@ -1,0 +1,32 @@
+#!/usr/bin/env bash
+#
+# like readlink, but recursive, printing out the chain, and expanding executables in path
+
+set -e
+
+TARGET_FILE=$1
+
+if EXECUTABLE=$(command -v "$TARGET_FILE") && [ "$TARGET_FILE" != "$EXECUTABLE" ]
+then
+    echo -n "$TARGET_FILE → "
+    TARGET_FILE=$(command -v "$TARGET_FILE")
+    echo "$TARGET_FILE"
+fi
+
+if [ ! -e "$TARGET_FILE" ]
+then
+    exit 1
+fi
+
+cd "$(dirname "$TARGET_FILE")"
+TARGET_FILE=$(basename "$TARGET_FILE")
+
+while [ -L "$TARGET_FILE" ]
+do
+    echo -n "$PWD/$TARGET_FILE → "
+    TARGET_FILE=$(readlink "$TARGET_FILE")
+    echo "$TARGET_FILE"
+
+    cd "$(dirname "$TARGET_FILE")"
+    TARGET_FILE=$(basename "$TARGET_FILE")
+done
