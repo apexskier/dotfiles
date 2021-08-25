@@ -1,6 +1,7 @@
 #!/bin/bash
 
-MAIN_BRANCH=$(git symbolic-ref refs/remotes/origin/HEAD | cut -d'/' -f4-)
+REMOTE=origin
+MAIN_BRANCH=$(git symbolic-ref "refs/remotes/$REMOTE/HEAD" | cut -d'/' -f4-)
 # delete merged branches that we're not currently on
 MERGED=$(git branch --merged="$MAIN_BRANCH" | grep -v '^\* ' | cut -c3- | grep -v "$MAIN_BRANCH")
 if [ -n "$MERGED" ]
@@ -10,3 +11,12 @@ fi
 
 # prune remote branches
 git fetch --prune
+
+# update main branch with remote
+if [ "$(git rev-parse --abbrev-ref HEAD)" == "$MAIN_BRANCH" ]
+then
+    git merge "$REMOTE/$MAIN_BRANCH" --ff
+else
+    git fetch --update-head-ok "$REMOTE" "$MAIN_BRANCH:$MAIN_BRANCH"
+fi
+
