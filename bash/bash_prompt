@@ -94,18 +94,6 @@ function gitinfo() {
     fi
 }
 
-function file_in_tree() {
-    local dir="$PWD"
-    while [ "$dir" != "/" ]; do
-        if [ -f "$dir/$1" ]; then
-            echo "$dir/$1"
-            return 0
-        fi
-        dir=$(dirname "$dir")
-    done
-    return 1
-}
-
 function nodeinfo() {
     if command -v node >/dev/null 2>&1; then
         if ! file_in_tree package.json > /dev/null; then
