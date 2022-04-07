@@ -28,7 +28,9 @@ brew "git-delta"
 # GNU implementation of the famous stream editor
 brew "gnu-sed"
 # Open source programming language to build simple/reliable/efficient software
-brew "go"
+brew "go", link: false
+# Fast linters runner for Go
+brew "golangci-lint"
 # Library access to GnuPG
 brew "gpgme"
 # Graph visualization software from AT&T and Bell Labs
@@ -48,11 +50,13 @@ brew "mas"
 # Merge XCode project files in git
 brew "mergepbx"
 # Platform built on V8 to build network applications
-brew "node"
-# Platform built on V8 to build network applications
-brew "node@10"
+brew "node", link: false
 # Platform built on V8 to build network applications
 brew "node@12"
+# Platform built on V8 to build network applications
+brew "node@14"
+# Platform built on V8 to build network applications
+brew "node@16"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Static analysis and lint tool, for (ba)sh scripts
@@ -71,6 +75,7 @@ brew "yarn"
 brew "nvie/tap/git-toolbelt"
 # Password manager that keeps all passwords secure behind one password
 cask "1password"
+# Browse/extract images from .car files
 cask "asset-catalog-tinkerer"
 # Web debugging Proxy application
 cask "charles"
@@ -78,6 +83,7 @@ cask "charles"
 cask "discord"
 # App to build and share containerized applications and microservices
 cask "docker"
+# Collaborative team software
 cask "figma"
 # Web browser
 cask "firefox"
@@ -103,6 +109,8 @@ cask "visual-studio-code"
 cask "vlc"
 # Network protocol analyzer
 cask "wireshark"
+# Install and switch between multiple versions of Xcode
+cask "xcodes"
 # Video communication and virtual meeting platform
 cask "zoom"
 mas "1Blocker", id: 1107421413
@@ -119,4 +127,3 @@ mas "Pages", id: 409201541
 mas "Parcel", id: 639968404
 mas "Reeder", id: 1529448980
 mas "The Clock", id: 488764545
-mas "Xcode", id: 497799835
