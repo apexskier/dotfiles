@@ -17,8 +17,7 @@ brew "node@14", link: false
 brew "node@12", link: false
 brew "node@10", link: false
 cask "adoptopenjdk/openjdk/adoptopenjdk8"
-cask "android-studio"
-cask "intellij-idea"
+cask "jetbrains-toolbox"
 cask "postman"
 cask "sequel-ace"
 cask "viscosity"
