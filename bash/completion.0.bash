@@ -6,6 +6,4 @@ if shopt -oq posix; then
     return 0
 fi
 
-[ -f ~/.fzf.bash ] && source ~/.fzf.bash
-
 [ -f /usr/local/etc/profile.d/bash_completion.sh ] && . /usr/local/etc/profile.d/bash_completion.sh
