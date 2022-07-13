@@ -31,7 +31,7 @@ function chgo() {
     fi
 
     INSTALLED_GOS=$(brew list | grep -E '^go(@|$)')
-    brew unlink "${INSTALLED_GOS[@]}"
+    brew unlink ${INSTALLED_GOS[@]}
     brew link --overwrite --force "go$version"
 
     _chgo_env
