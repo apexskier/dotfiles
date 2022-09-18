@@ -9,5 +9,5 @@ echo "$1"
 STR=$1
 for file in $(rg -l "$STR")
 do
-    sed -i .bak '/'"${STR//\//\\\/}"'/d' "$file"
+    sed -i.bak '/'"${STR//\//\\/}"'/d' "$file"
 done

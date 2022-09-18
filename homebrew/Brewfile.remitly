@@ -6,20 +6,19 @@ tap "homebrew/core"
 tap "remitly/internal"
 brew "cocoapods"
 brew "go", link: false
+brew "go@1.17", link: false
+brew "go@1.16", link: false
 brew "go@1.15", link: false
 brew "go@1.14", link: false
 brew "go@1.13", link: false
 brew "node", link: false
-brew "node@10", link: false
+brew "node@16", link: false
+brew "node@14", link: false
 brew "node@12", link: false
-brew "vagrant-completion"
-cask "adoptopenjdk/openjdk/adoptopenjdk8"
-cask "android-studio"
-cask "intellij-idea"
+brew "node@10", link: false
+cask "mdogan/zulu/zulu-jdk8"
+cask "jetbrains-toolbox"
 cask "postman"
 cask "sequel-ace"
-cask "vagrant"
-cask "virtualbox"
 cask "viscosity"
-cask "zoomus"
-mas "Slack", id: 803453959
+cask "zoom"

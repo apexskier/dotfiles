@@ -115,3 +115,5 @@ To try it somewhere else, run
 ```sh
 docker run --rm -it ghcr.io/apexskier/dotfiles/toolbox:latest
 ```
+
+It's also [available in docker hub as `apexskier/toolbox`](https://hub.docker.com/r/apexskier/toolbox).

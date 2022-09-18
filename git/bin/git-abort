@@ -36,5 +36,11 @@ then
     exit 0
 fi
 
+if [ -n "$(git --no-pager diff --name-only --diff-filter=U)" ]
+then
+    git reset --merge
+    exit 0
+fi
+
 echo "Nothing to abort?"
 exit 1

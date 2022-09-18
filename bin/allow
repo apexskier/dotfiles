@@ -24,11 +24,16 @@ then
     exit 1
 fi
 
-BINARY_PATH=$(command -v "$1")
-if test -z "$BINARY_PATH"
+if test -f "$1"
 then
-    echo "couldn't figure out where \"$1\" is"
-    exit 1
+    BINARY_PATH="$1"
+else
+    BINARY_PATH=$(command -v "$1")
+    if test -z "$BINARY_PATH"
+    then
+        echo "couldn't figure out where \"$1\" is"
+        exit 1
+    fi
 fi
 
 if test -n "$(xattr -p com.apple.quarantine "$BINARY_PATH")"

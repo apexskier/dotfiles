@@ -1,10 +1,14 @@
-if ! command -v go >/dev/null 2>&1; then
-    return 0
-fi
-
 function _chgo_env() {
-    export GOROOT=$(cd $(dirname $(command -v go)); cd $(dirname $(dirname $(readlink $(command -v go)))); pwd)/libexec
-    export GO_VERSION=$(go version | cut -d' ' -f3)
+    GO_BIN_PATH=$(command -v go 2>/dev/null)
+    GO_BIN_AVAILABLE=$?
+    if [ $GO_BIN_AVAILABLE -ne 0 ]; then
+        return 1
+    fi
+
+    GOROOT=$(cd "$(dirname "$GO_BIN_PATH")" || return; cd "$(dirname "$(dirname "$(readlink "$GO_BIN_PATH")")")" || return; pwd)/libexec
+    GO_VERSION=$(go version | cut -d' ' -f3)
+    export GOROOT
+    export GO_VERSION
 
     # I should remove the old gopath from PATH, but that's a pain in the ass
     # and this isn't getting run much
@@ -26,7 +30,8 @@ function chgo() {
         version="@${version:3}"
     fi
 
-    brew unlink $(brew list | grep -E '^go(@|$)')
+    INSTALLED_GOS=$(brew list | grep -E '^go(@|$)')
+    brew unlink ${INSTALLED_GOS[@]}
     brew link --overwrite --force "go$version"
 
     _chgo_env

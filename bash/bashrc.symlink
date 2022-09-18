@@ -40,7 +40,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 while IFS='' read -r -d '' filename
 do
   source "$filename"
-done < <(find ~/.dotfiles -maxdepth 2 -type f -name '*.bash' -print0)
+done < <(find ~/.dotfiles -maxdepth 2 -type f -name '*.*bash' | sort -n -t "." -k 3 | awk -F. '{print NF, $0}' | sort -snr | cut -d' ' -f2- | tr '\n' '\0')
 
 # this needs to be loaded last in order for return code printing to work
 . $HOME/.dotfiles/bash/bash_prompt

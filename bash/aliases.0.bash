@@ -12,9 +12,6 @@ alias gti='git'
 # enable color support of ls and redefine aliases if able
 if [ -x /usr/bin/dircolors ]; then
     alias ls='ls -F --color=auto'
-    # alias ll='ls -lh'
-    # alias la='ls -A'
-    # alias lal='ls -lhA'
     alias grep='grep --color=auto'
     alias fgrep='fgrep --color=auto'
     alias egrep='egrep --color=auto'
@@ -40,7 +37,8 @@ function findport() {
 }
 
 function killport() {
-    kill -9 $(findport "$1" | tr -s ' ' | cut -d' ' -f2)
+    PIDS=$(findport "$1" | tr -s ' ' | cut -d' ' -f2)
+    kill -9 "${PIDS[@]}"
 }
 
 function unescapewhitespace() {
@@ -49,7 +47,7 @@ function unescapewhitespace() {
 }
 
 function returnwith() {
-    return $1
+    return "${1[@]}"
 }
 
 function splitlines() {
@@ -65,6 +63,18 @@ function splitlines() {
             echo $i
         done
     done
+}
+
+function file_in_tree() {
+    local dir="$PWD"
+    while [ "$dir" != "/" ]; do
+        if [ -f "$dir/$1" ]; then
+            echo "$dir/$1"
+            return 0
+        fi
+        dir=$(dirname "$dir")
+    done
+    return 1
 }
 
 alias date_filename='date +"%FT%H%M%z"'
