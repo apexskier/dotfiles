@@ -14,6 +14,10 @@ Host methow methow.camlittle.com
     User cameronlittle
     Hostname methow.camlittle.com
 
+Host taro
+    User root
+    Hostname router.taro.local
+
 Host 10.1.*.*
     StrictHostKeyChecking no
     UserKnownHostsFile /dev/null
