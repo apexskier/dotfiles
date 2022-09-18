@@ -7,6 +7,7 @@
     "cSpell.userWords": [
         "Apptentive",
         "IBAN",
+        "Istio",
         "OPROD",
         "Pritunl",
         "Quovo",
@@ -273,12 +274,12 @@
             ]
         }
     ],
-
-    "workbench.colorTheme": "Default Light+",
     "workbench.editor.enablePreview": false,
     "workbench.editor.enablePreviewFromQuickOpen": false,
     "workbench.editor.highlightModifiedTabs": true,
     "workbench.editor.tabSizing": "shrink",
+
+    "window.autoDetectColorScheme": true,
 
     "[javascript]": {
         "editor.defaultFormatter": "esbenp.prettier-vscode"
@@ -330,5 +331,6 @@
                 "skipFiles": ["node_modules/**", "<node_internals>/**"]
             }
         ]
-    }
+    },
+    "workbench.colorTheme": "Default Light+"
 }
