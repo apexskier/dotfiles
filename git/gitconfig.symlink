@@ -41,8 +41,9 @@
 	changed = green
 	untracked = cyan
 [core]
-	excludesfile = ~/.gitignore
 	editor = vim
+	excludesfile = ~/.gitignore
+	attributesfile = ~/.gitattributes
 [help]
 	autocorrect = 1
 [merge]
