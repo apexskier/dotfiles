@@ -18,8 +18,6 @@ if [ -n "$1" ]; then
 fi
 
 
-# Only replace the file when Zoom isn't running
-if ! pgrep -x zoom.us; then
-    echo "Setting zoom background to $BG_FILE"
-    cp "$BG_FILE" "$ZOOM_PATH/$CURRENT_BG_ID"
-fi
+# If I'm in a meeting this won't change the background
+echo "Setting zoom background to $BG_FILE"
+cp "$BG_FILE" "$ZOOM_PATH/$CURRENT_BG_ID"
