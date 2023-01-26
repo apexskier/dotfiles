@@ -19,3 +19,13 @@ alias pbhtml="osascript -e 'the clipboard as «class HTML»' | perl -ne 'print c
 
 # quicklook from the terminal
 alias ql="qlmanage -p ${@} > /dev/null 2> /dev/null"
+
+chargespeed() {
+    local W
+    if W=$(system_profiler SPPowerDataType | grep Wattage)
+    then
+        printf '%sW\n' $(echo $W | cut -d':' -f2 | xargs)
+    else
+        echo "-W"
+    fi
+}
