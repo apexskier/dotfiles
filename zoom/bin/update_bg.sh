@@ -1,11 +1,11 @@
 #!/bin/bash
 
-set -e
+set -ex
 
 CURRENT_BG_ID=3FC050C5-95EE-4CA8-907C-FDACF119AA1F
 ZOOM_PATH=/Users/cameron/Library/Application\ Support/zoom.us/data/VirtualBkgnd_Custom
 BG_PATH=/Users/cameron/Pictures/Zoom\ Backgrounds
-BG_FILE=$(find "$BG_PATH" -type f | sort -R | head -1)
+BG_FILE=$(find "$BG_PATH" -type f | grep -v '.DS_Store' | sort -R | head -1)
 
 echo $1
 if [ -n "$1" ]; then
