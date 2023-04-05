@@ -1,12 +1,5 @@
 # vim: ft=sh
 
-# ls aliases
-alias sl='ls'
-alias ls='ls -F'
-alias ll='ls -l'
-alias la='ls -a'
-alias lal='ls -la'
-
 alias gti='git'
 
 # enable color support of ls and redefine aliases if able
@@ -17,8 +10,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias egrep='egrep --color=auto'
 fi
 
-alias c=clear
-alias ud='cd ~/.dotfiles && git pull'
 alias ..='cd ..'
 alias ...='cd ../..'
 alias ....='cd ../../..'
