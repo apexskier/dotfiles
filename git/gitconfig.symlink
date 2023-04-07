@@ -67,3 +67,7 @@
 	defaultBranch = main
 [blame]
 	ignoreRevsFile = .git-blame-ignore-revs
+[branch "master"]
+	pushRemote = no_push # override by manually specifying the remote (git push origin master)
+[branch "main"]
+	pushRemote = no_push # override by manually specifying the remote (git push origin main)
