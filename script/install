@@ -9,5 +9,10 @@ cd "$(dirname "$0")"/..
 # find the installers and run them
 find . -name 'install*.sh' -maxdepth 2 | sort -n -t "." -k 3 | awk -F. '{print NF, $0}' | sort -snr | cut -d' ' -f2- | while read -r installer
 do
-    bash -c "$installer"
+    if [ -z "$DRY_RUN" ]
+    then
+        bash -c "$installer"
+    else
+        echo "$installer"
+    fi
 done

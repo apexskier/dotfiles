@@ -19,7 +19,7 @@ configure () {
 
     user "Configure $topic?\\n\
     [y]es, [n]o?"
-    read -rn 1 action
+    read -r 1 action
     case "$action" in
       y|Y )
         info "configuring $topic"

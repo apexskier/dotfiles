@@ -52,8 +52,6 @@ brew "mergepbx"
 # Platform built on V8 to build network applications
 brew "node", link: false
 # Platform built on V8 to build network applications
-brew "node@12"
-# Platform built on V8 to build network applications
 brew "node@14"
 # Platform built on V8 to build network applications
 brew "node@16"
@@ -113,7 +111,6 @@ cask "wireshark"
 cask "xcodes"
 # Video communication and virtual meeting platform
 cask "zoom"
-mas "1Blocker", id: 1107421413
 mas "Amphetamine", id: 937984704
 mas "DaisyDisk", id: 411643860
 mas "Default Browser", id: 1055264211
