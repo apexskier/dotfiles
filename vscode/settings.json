@@ -118,8 +118,6 @@
     "emmet.showAbbreviationSuggestions": false,
     "emmet.showExpandedAbbreviation": "never",
 
-    "eslint.packageManager": "yarn",
-
     "explorer.incrementalNaming": "smart",
     "explorer.confirmDragAndDrop": false,
 
@@ -127,7 +125,6 @@
 
     "git.confirmSync": false,
 
-    "go.autocompleteUnimportedPackages": true,
     "go.coverageOptions": "showUncoveredCodeOnly",
     "go.formatTool": "gofmt",
     "go.toolsManagement.autoUpdate": true,
@@ -142,10 +139,6 @@
     "javascript.validate.enable": false,
 
     "markdown.preview.lineHeight": 1.4,
-
-    "openapi.approvedHostnames": [
-        "json-schema.org"
-    ],
 
     "scss.validate": false,
 
@@ -309,7 +302,7 @@
         "version": "0.2.0",
         "configurations": [
             {
-                "type": "pwa-node",
+                "type": "node",
                 "request": "launch",
                 "name": "Run Jest on current file",
                 "program": "${workspaceFolder}/node_modules/.bin/jest",
@@ -321,7 +314,7 @@
                 "skipFiles": ["node_modules/**", "<node_internals>/**"]
             },
             {
-                "type": "pwa-node",
+                "type": "node",
                 "request": "launch",
                 "name": "Run current file (nodejs)",
                 "program": "${workspaceFolder}/${relativeFile}",
