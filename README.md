@@ -99,7 +99,7 @@ Failed commands will show their exit code, translated into a more human readable
 
 A github action maintains a
 [docker image](https://github.com/apexskier/dotfiles/packages/158802) I use to
-quickly debug docker and kubernetes with a familiar shell and debugging tools.
+[quickly debug docker and kubernetes with a familiar shell and debugging tools](https://camlittle.com/posts/2021-06-24-docker-toolbox/).
 
 On `dotfiles --install`, it's tagged locally as `toolbox` and can be started with
 `docker run --rm -it toolbox`.
