@@ -1,0 +1,5 @@
+#!/bin/bash
+
+str=$(sed 's/+/ /g; s/%\([0-9a-f][0-9a-f]\)/\\x\1/ig;' <&0)
+printf "%b" "$str"
+
