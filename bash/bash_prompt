@@ -13,7 +13,7 @@ unset color_prompt force_color_prompt
    purple="\[\033[0;35m\]"
     brown="\[\033[0;33m\]"
   lt_grey="\[\033[0;37m\]"
-  dk_gray="\[\033[1;30m\]"
+  dk_grey="\[\033[1;30m\]"
   lt_blue="\[\033[1;34m\]"
  lt_green="\[\033[1;32m\]"
   lt_cyan="\[\033[1;36m\]"
@@ -258,8 +258,12 @@ function set_prompt() {
     # local rows=${size[0]}
     # local cols=${size[1]}
 
+    local now
+    now="$(date +"%H:%M:%S")"
+
     ret+="$cmd_info$username$mark$connectionmark$green\h$nocol$write"
     ret+="$yellow\w$nocol"
+    ret+=" $dk_grey$now$nocol"
     # test "$(expr ${#ret} + ${#gitinfo})" -gt "$cols" && ret+="\n"
     ret+="$gitinfo"
     # test "$(expr ${#ret} + ${#venv})" -gt "$cols" && ret+="\n"
