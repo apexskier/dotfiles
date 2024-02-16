@@ -130,7 +130,7 @@ function goinfo() {
             printf " (%s%s%s)" "$red" "goBROKEN" "$nocol"
             return
         fi
-        goversion=$(cat "$GOROOT/VERSION")
+        goversion=$(head -n 1 "$GOROOT/VERSION")
         local goversion_major_minor
         goversion_major_minor=$(echo "${goversion:2}" | cut -d'.' -f1-2)
 
