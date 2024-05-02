@@ -104,8 +104,8 @@
     "docker.showStartPage": false,
 
     "editor.codeActionsOnSave": {
-        "source.fixAll.tslint": true,
-        "source.fixAll.eslint": true
+        "source.fixAll.tslint": "explicit",
+        "source.fixAll.eslint": "explicit"
     },
     "editor.cursorBlinking": "solid",
     "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
@@ -297,33 +297,5 @@
     "[yaml]": {
         "editor.defaultFormatter": "redhat.vscode-yaml"
     },
-
-    "launch": {
-        "version": "0.2.0",
-        "configurations": [
-            {
-                "type": "node",
-                "request": "launch",
-                "name": "Run Jest on current file",
-                "program": "${workspaceFolder}/node_modules/.bin/jest",
-                "args": ["${relativeFile}"],
-                "console": "integratedTerminal",
-                "internalConsoleOptions": "neverOpen",
-                "smartStep": true,
-                "sourceMaps": true,
-                "skipFiles": ["node_modules/**", "<node_internals>/**"]
-            },
-            {
-                "type": "node",
-                "request": "launch",
-                "name": "Run current file (nodejs)",
-                "program": "${workspaceFolder}/${relativeFile}",
-                "console": "integratedTerminal",
-                "internalConsoleOptions": "neverOpen",
-                "smartStep": true,
-                "skipFiles": ["node_modules/**", "<node_internals>/**"]
-            }
-        ]
-    },
-    "workbench.colorTheme": "Default Light+"
+    "workbench.colorTheme": "Default Light Modern"
 }
