@@ -113,7 +113,7 @@ function nodeinfo() {
         local node_version
         node_version="$(node --version)"
         # alt ⬡
-        printf " (⬢%s %s)" "$nocol" "$node_version"
+        printf " (⬢%s%s)" "$nocol" "$node_version"
     fi
 }
 

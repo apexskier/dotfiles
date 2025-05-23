@@ -11,3 +11,5 @@ mkdir -p "$WORKON_HOME"
 
 [ -f /usr/local/bin/virtualenvwrapper.sh ] && . /usr/local/bin/virtualenvwrapper.sh
 [ -f /opt/homebrew/bin/virtualenvwrapper.sh ] && . /opt/homebrew/bin/virtualenvwrapper.sh
+[ -d /opt/homebrew/anaconda3/bin/ ] && export PATH="/opt/homebrew/anaconda3/bin:$PATH"
+

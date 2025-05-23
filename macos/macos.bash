@@ -29,3 +29,9 @@ chargespeed() {
         echo "-W"
     fi
 }
+
+# git command completion macros
+xcodeGitCompletion=$(xcode-select -p)/usr/share/git-core/git-completion.bash
+if [ -f $xcodeGitCompletion ]; then
+  . $xcodeGitCompletion
+fi
