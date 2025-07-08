@@ -1,329 +1,211 @@
 {
-    "breadcrumbs.enabled": true,
-
-    "cSpell.language": "en,en-US",
-    "cSpell.showStatus": false,
-    "cSpell.allowCompoundWords": true,
-    "cSpell.userWords": [
-        "Apptentive",
-        "IBAN",
-        "Istio",
-        "OPROD",
-        "Pritunl",
-        "Quovo",
-        "Remitly's",
-        "Remitly’s",
-        "SEPA",
-        "SOFORT",
-        "Sprintf",
-        "UUID",
-        "Unsized",
-        "Wrapf",
-        "authed",
-        "csrf",
-        "cxcore",
-        "debounced",
-        "decamelize",
-        "deduping",
-        "deduplicated",
-        "deployer",
-        "deregister",
-        "deregistered",
-        "deserialization",
-        "deserialize",
-        "deserialized",
-        "deserializer",
-        "directionality",
-        "forex",
-        "gtag",
-        "hackathon",
-        "ifsc",
-        "imap",
-        "kubernetes",
-        "locme",
-        "mailto",
-        "memoized",
-        "memoizes",
-        "mfautil",
-        "mothra",
-        "netrc",
-        "nolink",
-        "opctl",
-        "pollyjs",
-        "promisify",
-        "react",
-        "recurse",
-        "remitly",
-        "rerequest",
-        "sassify",
-        "serializable",
-        "serializers",
-        "signup",
-        "sjcl",
-        "stateful",
-        "symlinks",
-        "transpilation",
-        "truthy",
-        "unauthed",
-        "uncancelable",
-        "uncommented",
-        "unexported",
-        "unhydrated",
-        "unmounts",
-        "untrusted",
-        "verdaccio"
-    ],
-    "cSpell.words": [
-        "anchor",
-        "clabe",
-        "context",
-        "describedby",
-        "deserialize",
-        "forex",
-        "gettext",
-        "kount",
-        "refresh",
-        "reinit",
-        "remitly",
-        "rescroll",
-        "rescroller",
-        "resume",
-        "scroll",
-        "sendto",
-        "serializable",
-        "softfail",
-        "softfailed",
-        "transaction",
-        "types",
-        "unmount"
-    ],
-
-    "debug.openDebug": "openOnFirstSessionStart",
-    "debug.toolBarLocation": "docked",
-
-    "docker.showStartPage": false,
-
-    "editor.codeActionsOnSave": {
-        "source.fixAll.tslint": true,
-        "source.fixAll.eslint": true
+  "breadcrumbs.enabled": true,
+  "cSpell.language": "en,en-US",
+  "cSpell.showStatus": false,
+  "cSpell.allowCompoundWords": true,
+  "cSpell.userWords": [
+    "Apptentive",
+    "authed",
+    "csrf",
+    "debounced",
+    "decamelize",
+    "deduping",
+    "deduplicated",
+    "deployer",
+    "deregister",
+    "deregistered",
+    "describedby",
+    "deserialization",
+    "deserialize",
+    "deserialized",
+    "deserializer",
+    "directionality",
+    "forex",
+    "gettext",
+    "gtag",
+    "hackathon",
+    "IBAN",
+    "ifsc",
+    "imap",
+    "Istio",
+    "kount",
+    "kubernetes",
+    "locme",
+    "mailto",
+    "memoized",
+    "memoizes",
+    "mfautil",
+    "mothra",
+    "netrc",
+    "nolink",
+    "opctl",
+    "OPROD",
+    "pollyjs",
+    "Pritunl",
+    "promisify",
+    "Quovo",
+    "recurse",
+    "refresh",
+    "reinit",
+    "rerequest",
+    "rescroller",
+    "scroll",
+    "sendto",
+    "serializable",
+    "serializers",
+    "signup",
+    "sjcl",
+    "SOFORT",
+    "softfail",
+    "softfailed",
+    "Sprintf",
+    "stateful",
+    "symlinks",
+    "transaction",
+    "transpilation",
+    "truthy",
+    "types",
+    "unauthed",
+    "uncancelable",
+    "uncommented",
+    "unexported",
+    "unhydrated",
+    "unmount",
+    "unmounts",
+    "Unsized",
+    "untrusted",
+    "UUID",
+    "verdaccio",
+    "Wrapf"
+  ],
+  "debug.javascript.autoAttachFilter": "onlyWithFlag",
+  "debug.openDebug": "openOnFirstSessionStart",
+  "debug.toolBarLocation": "docked",
+  "docker.showStartPage": false,
+  "editor.codeActionsOnSave": {
+    "source.fixAll.tslint": "explicit",
+    "source.fixAll.eslint": "explicit"
+  },
+  "editor.cursorBlinking": "solid",
+  "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
+  "editor.fontLigatures": true,
+  "editor.fontSize": 14,
+  "editor.largeFileOptimizations": false,
+  "editor.lineNumbers": "relative",
+  "editor.minimap.enabled": false,
+  "editor.rulers": [80, 120],
+  "emmet.showAbbreviationSuggestions": false,
+  "emmet.showExpandedAbbreviation": "never",
+  "explorer.confirmDragAndDrop": false,
+  "explorer.incrementalNaming": "smart",
+  "files.trimTrailingWhitespace": true,
+  "git.confirmSync": false,
+  "github.copilot.nextEditSuggestions.enabled": true,
+  "go.coverageOptions": "showUncoveredCodeOnly",
+  "go.formatTool": "gofmt",
+  "go.toolsManagement.autoUpdate": true,
+  "go.useLanguageServer": true,
+  "javascript.validate.enable": false,
+  "markdown.preview.lineHeight": 1.4,
+  "rest-client.previewOption": "body",
+  "scad-lsp.fmtStyle": "file",
+  "scss.lint.validProperties": ["appearance"],
+  "scss.validate": false,
+  "search.smartCase": true,
+  "search.useGlobalIgnoreFiles": true,
+  "terminal.explorerKind": "external",
+  "typescript.check.npmIsInstalled": false,
+  "typescript.preferences.quoteStyle": "double",
+  "typescript.tsserver.log": "off",
+  "typescript.updateImportsOnFileMove.enabled": "never",
+  "vim.cursorStylePerMode.insert": "line",
+  "vim.cursorStylePerMode.normal": "block",
+  "vim.cursorStylePerMode.replace": "underline",
+  "vim.hlsearch": true,
+  "vim.incsearch": true,
+  "vim.smartcase": true,
+  "vim.history": 500,
+  "vim.insertModeKeyBindings": [
+    {
+      "before": ["<C-n>"],
+      "commands": ["editor.action.triggerSuggest"]
+    }
+  ],
+  "vim.normalModeKeyBindingsNonRecursive": [
+    // unhighlight search (hlsearch) with `\⏎`
+    {
+      "before": ["<leader>", "<cr>"],
+      "commands": [":nohl"]
     },
-    "editor.cursorBlinking": "solid",
-    "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
-    "editor.fontLigatures": true,
-    "editor.fontSize": 14,
-    "editor.lineNumbers": "relative",
-    "editor.minimap.enabled": false,
-    "editor.rulers": [80, 120],
-
-    "emmet.showAbbreviationSuggestions": false,
-    "emmet.showExpandedAbbreviation": "never",
-
-    "explorer.incrementalNaming": "smart",
-    "explorer.confirmDragAndDrop": false,
-
-    "files.trimTrailingWhitespace": true,
-
-    "git.confirmSync": false,
-
-    "go.coverageOptions": "showUncoveredCodeOnly",
-    "go.formatTool": "gofmt",
-    "go.toolsManagement.autoUpdate": true,
-    "go.useLanguageServer": true,
-
-    "grunt.autoDetect": "off",
-
-    "gulp.autoDetect": "off",
-
-    "jake.autoDetect": "off",
-
-    "javascript.validate.enable": false,
-
-    "markdown.preview.lineHeight": 1.4,
-
-    "scss.validate": false,
-
-    "search.exclude": {
-        "**/vendor": true
+    // execute q macro with Q
+    {
+      "before": ["Q"],
+      "after": ["@", "q"]
     },
-    "search.smartCase": true,
-    "search.useGlobalIgnoreFiles": true,
-
-    "terminal.explorerKind": "external",
-
-    "typescript.check.npmIsInstalled": false,
-    "typescript.preferences.quoteStyle": "double",
-    "typescript.tsserver.log": "off",
-    "typescript.updateImportsOnFileMove.enabled": "never",
-
-    "scss.lint.validProperties": [
-        "appearance"
-    ],
-
-    "vim.cursorStylePerMode.normal": "block",
-    "vim.cursorStylePerMode.insert": "line",
-    "vim.cursorStylePerMode.replace": "underline",
-    "vim.smartcase": true,
-    "vim.hlsearch": true,
-    "vim.incsearch": true,
-    "vim.history": 500,
-    "vim.insertModeKeyBindings": [
-        {
-            "before": [
-                "<C-n>",
-            ],
-            "commands": [
-                "editor.action.triggerSuggest"
-            ]
-        }
-    ],
-    "vim.normalModeKeyBindingsNonRecursive": [
-        // unhighlight search (hlsearch) with `\⏎`
-        {
-            "before": [
-                "<leader>",
-                "<cr>"
-            ],
-            "commands": [
-                ":nohl"
-            ]
-        },
-        // execute q macro with Q
-        {
-            "before": [
-                "Q"
-            ],
-            "after": [
-                "@",
-                "q"
-            ]
-        },
-        // show usages
-        {
-            "before": [
-                "g",
-                "r"
-            ],
-            "commands": [
-                "editor.action.referenceSearch.trigger"
-            ]
-        },
-        // preview definition
-        {
-            "before": [
-                "g",
-                "R"
-            ],
-            "commands": [
-                "editor.action.previewDeclaration"
-            ]
-        },
-        // jump to definition
-        {
-            "before": [
-                "g",
-                "d"
-            ],
-            "commands": [
-                "editor.action.goToDeclaration"
-            ]
-        },
-        // jump to type definition
-        {
-            "before": [
-                "g",
-                "D"
-            ],
-            "commands": [
-                "editor.action.goToTypeDefinition"
-            ]
-        },
-        // rename
-        {
-            "before": [
-                "g",
-                "n"
-            ],
-            "commands": [
-                "editor.action.rename"
-            ]
-        }
-    ],
-    "vim.visualModeKeyBindingsNonRecursive": [
-        // nicer indentation
-        {
-            "before": [
-                ">"
-            ],
-            "commands": [
-                "editor.action.indentLines"
-            ]
-        },
-        {
-            "before": [
-                "<"
-            ],
-            "commands": [
-                "editor.action.outdentLines"
-            ]
-        }
-    ],
-    "workbench.editor.enablePreview": false,
-    "workbench.editor.enablePreviewFromQuickOpen": false,
-    "workbench.editor.highlightModifiedTabs": true,
-    "workbench.editor.tabSizing": "shrink",
-
-    "window.autoDetectColorScheme": true,
-
-    "[javascript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    // show usages
+    {
+      "before": ["g", "r"],
+      "commands": ["editor.action.referenceSearch.trigger"]
     },
-    "[json]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    // preview definition
+    {
+      "before": ["g", "R"],
+      "commands": ["editor.action.previewDeclaration"]
     },
-    "[jsonc]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    // jump to definition
+    {
+      "before": ["g", "d"],
+      "commands": ["editor.action.goToDeclaration"]
     },
-    "[markdown]": {
-        "editor.formatOnSave": false,
-        "editor.trimAutoWhitespace": false,
-        "files.trimTrailingWhitespace": false
+    // jump to type definition
+    {
+      "before": ["g", "D"],
+      "commands": ["editor.action.goToTypeDefinition"]
     },
-    "[typescript]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    // rename
+    {
+      "before": ["g", "n"],
+      "commands": ["editor.action.rename"]
+    }
+  ],
+  "vim.visualModeKeyBindingsNonRecursive": [
+    // nicer indentation
+    {
+      "before": [">"],
+      "commands": ["editor.action.indentLines"]
     },
-    "[typescriptreact]": {
-        "editor.defaultFormatter": "esbenp.prettier-vscode"
-    },
-    "[yaml]": {
-        "editor.defaultFormatter": "redhat.vscode-yaml"
-    },
-
-    "launch": {
-        "version": "0.2.0",
-        "configurations": [
-            {
-                "type": "node",
-                "request": "launch",
-                "name": "Run Jest on current file",
-                "program": "${workspaceFolder}/node_modules/.bin/jest",
-                "args": ["${relativeFile}"],
-                "console": "integratedTerminal",
-                "internalConsoleOptions": "neverOpen",
-                "smartStep": true,
-                "sourceMaps": true,
-                "skipFiles": ["node_modules/**", "<node_internals>/**"]
-            },
-            {
-                "type": "node",
-                "request": "launch",
-                "name": "Run current file (nodejs)",
-                "program": "${workspaceFolder}/${relativeFile}",
-                "console": "integratedTerminal",
-                "internalConsoleOptions": "neverOpen",
-                "smartStep": true,
-                "skipFiles": ["node_modules/**", "<node_internals>/**"]
-            }
-        ]
-    },
-    "workbench.colorTheme": "Default Light+"
+    {
+      "before": ["<"],
+      "commands": ["editor.action.outdentLines"]
+    }
+  ],
+  "workbench.colorTheme": "Default Light Modern",
+  "workbench.editor.enablePreview": false,
+  "workbench.editor.enablePreviewFromQuickOpen": false,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.tabSizing": "shrink",
+  "window.autoDetectColorScheme": true,
+  "[html]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.formatOnSave": false,
+    "editor.trimAutoWhitespace": false,
+    "files.trimTrailingWhitespace": false
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[typescriptreact]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
 }
