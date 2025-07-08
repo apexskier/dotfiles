@@ -6,7 +6,7 @@ Per-domain (~application) settings files are stored as xml formatted plist files
 
 [`write.sh`](./write.sh) runs through plist files and generates and executes defaults commands to apply the settings to your computer.
 
-[`read.sh`](./write.sh) runs through plist files and updates any currently defined preferences in the file with what's on your computer. After running, verify changes in git before comitting.
+[`read.sh`](./write.sh) runs through plist files and updates any currently defined preferences in the file with what's on your computer. After running, verify changes in git before committing.
 
 [`clean.sh`](./clean.sh) runs through plist files and formats them (so `read.sh` generates clean diffs).
 

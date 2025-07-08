@@ -2,6 +2,11 @@
 
 # WIP
 # this script extracts settings from domains
+#
+# using `plutil` for file modification reformats the file in some not ideal ways
+# for version control (reorders keys, and strips comments)
+# `xmllint` doesn't
+# I see a lot fo stuff online about `xmlstarlet`, but it's not built-in
 
 # set -x
 set -e
@@ -14,18 +19,19 @@ function read_plist() {
     FILENAME=$(basename "$FILE")
     DOMAIN=${FILENAME%.*}
 
-    echo $DOMAIN
+    echo "$DOMAIN"
 
-    if [ $DOMAIN == "com.apple.terminal" ]
+    if [ "$DOMAIN" == "com.apple.terminal" ]
     then
-        # terminal conf contains invalid xml in it's themes
+        # terminal conf contains invalid xml in its themes
         echo "Skipping terminal"
         exit 0
     fi
 
-    local TEMP_FILE=$(mktemp)
+    local TEMP_FILE
+    TEMP_FILE=$(mktemp)
 
-    defaults export "$DOMAIN" - > $TEMP_FILE
+    defaults export "$DOMAIN" - > "$TEMP_FILE"
 
     COUNT=$(xmllint --xpath 'count(/plist/dict/*)' "$FILE")
     for I in $(seq 1 $((COUNT / 2)))
@@ -58,15 +64,15 @@ EOF
         fi
     done
 
-    "$DIR/clean.sh" $FILE
+    "$DIR/clean.sh" "$FILE"
 }
 
 if [ -n "$1" ]
 then
-    read_plist $1
+    read_plist "$1"
 else
-    for FILE in $(ls "$DIR/plists/"*.plist)
+    for FILE in "$DIR"/plists/*.plist
     do
-        read_plist $FILE
+        read_plist "$FILE"
     done
 fi

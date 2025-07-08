@@ -19,8 +19,8 @@ FILE="$DIR/plists/$DOMAIN.plist"
 
 defaults export "$DOMAIN" - > "$FILE"
 
-# remove all NS* keys - they're generaly macOS global things that
-# shouln't be saved
+# remove all NS* keys - they're generally macOS global things that
+# shouldn't be saved
 while [ "$(xmllint --xpath "count(/plist/dict/*[starts-with(text(), 'NS')])" "$FILE")" != "0" ]
 do
     KEY=$(xmllint --xpath "/plist/dict/*[starts-with(text(), 'NS')][1]/text()" "$FILE")
