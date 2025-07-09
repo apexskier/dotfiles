@@ -11,12 +11,13 @@ DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd -P)"
 function write_plist() {
     local FILE=$1
 
-    local FILENAME=$(basename "$FILE")
+    local FILENAME
+    FILENAME=$(basename "$FILE")
     local DOMAIN=${FILENAME%.*}
 
     local REOPEN=""
 
-    echo $DOMAIN
+    echo "$DOMAIN"
 
     # kill applications before writing defaults
     # (recommended in defaults manpage)
@@ -61,8 +62,8 @@ if [ -n "$1" ]
 then
     write_plist $1
 else
-    for FILE in $(ls "$DIR/plists/"*.plist)
+    for FILE in "$DIR"/plists/*.plist
     do
-        write_plist $FILE
+        write_plist "$FILE"
     done
 fi

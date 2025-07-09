@@ -3,8 +3,8 @@
 <plist version="1.0">
   <dict>
     <key>first day of week</key>
-    <integer>1</integer>
+    <integer>2</integer>
     <key>number of hours displayed</key>
-    <integer>7</integer>
+    <integer>12</integer>
   </dict>
 </plist>

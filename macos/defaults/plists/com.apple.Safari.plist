@@ -4,31 +4,12 @@
   <dict>
     <key>IncludeDevelopMenu</key>
     <true/>
-    <key>IncludeInternalDebugMenu</key>
-    <true/>
-    <key>WebKitDeveloperExtras</key>
-    <true/>
     <key>WebKitDeveloperExtrasEnabledPreferenceKey</key>
     <true/>
     <key>ShowFullURLInSmartSearchField</key>
     <true/>
-    <key>com.apple.Safari.ContentPageGroupIdentifier.WebKit2DeveloperExtrasEnabled</key>
-    <true/>
-    <!-- Make Safari's search banners default to Contains instead of Starts With -->
-    <key>FindOnPageMatchesWordStartsOnly</key>
-    <false/>
-    <key>WarnAboutFraudulentWebsites</key>
-    <true/>
     <!-- Only use 1password for password autofill -->
     <key>AutoFillPasswords</key>
-    <false/>
-    <key>InstallExtensionUpdatesAutomatically</key>
-    <true/>
-    <key>WebKitJavaEnabled</key>
-    <false/>
-    <key>com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabled</key>
-    <false/>
-    <key>com.apple.Safari.ContentPageGroupIdentifier.WebKit2JavaEnabledForLocalFiles</key>
     <false/>
   </dict>
 </plist>

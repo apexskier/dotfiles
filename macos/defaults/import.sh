@@ -33,4 +33,4 @@ do
     plutil -remove "$KEY" "$FILE"
 done
 
-./clean.sh "$FILE"
+"$DIR/clean.sh" "$FILE"
