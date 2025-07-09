@@ -1,7 +1,5 @@
 tap "homebrew/bundle"
-tap "homebrew/cask"
 tap "homebrew/cask-versions"
-tap "homebrew/core"
 tap "nvie/tap"
 # Bourne-Again SHell, a UNIX command interpreter
 brew "bash"
@@ -29,6 +27,8 @@ brew "git-delta"
 brew "gnu-sed"
 # Open source programming language to build simple/reliable/efficient software
 brew "go", link: false
+# Open source programming language to build simple/reliable/efficient software
+brew "go@1.21"
 # Fast linters runner for Go
 brew "golangci-lint"
 # Library access to GnuPG
@@ -43,8 +43,6 @@ brew "imageoptim-cli"
 brew "jq"
 # Kubernetes command-line interface
 brew "kubernetes-cli"
-# GUI for vim, made for macOS
-brew "macvim", link: false
 # Mac App Store command-line interface
 brew "mas"
 # Merge XCode project files in git
@@ -52,21 +50,23 @@ brew "mergepbx"
 # Platform built on V8 to build network applications
 brew "node", link: false
 # Platform built on V8 to build network applications
-brew "node@14"
+brew "node@18"
 # Platform built on V8 to build network applications
-brew "node@16"
+brew "node@20"
 # Search tool like grep and The Silver Searcher
 brew "ripgrep"
 # Static analysis and lint tool, for (ba)sh scripts
 brew "shellcheck"
+# User interface to the TELNET protocol
+brew "telnet"
 # Send macOS User Notifications from the command-line
 brew "terminal-notifier"
 # Terminal multiplexer
 brew "tmux"
 # Vi 'workalike' with many additional features
 brew "vim"
-# Watch files and take action when they change
-brew "watchman"
+# Little beautifier tool for xcodebuild
+brew "xcbeautify"
 # JavaScript package manager
 brew "yarn"
 # Suite of useful Git commands
@@ -79,24 +79,26 @@ cask "asset-catalog-tinkerer"
 cask "charles"
 # Voice and text chat software
 cask "discord"
-# App to build and share containerized applications and microservices
-cask "docker"
+# App to build and share containerised applications and microservices
+cask "docker-desktop"
 # Collaborative team software
 cask "figma"
 # Web browser
 cask "firefox"
 # Git interface focused on visual interaction
-cask "gitup"
+cask "gitup-app"
 # Web browser
 cask "google-chrome"
 # Hex editor focussing on speed
 cask "hex-fiend"
-# Text editor
-cask "macvim"
+# Utility to hide menu bar items
+cask "hiddenbar"
 # Reverse proxy, secure introspectable tunnels to localhost
 cask "ngrok"
 # Time optimising application
 cask "rescuetime"
+# MySQL/MariaDB database management
+cask "sequel-ace"
 # Digital design and prototyping platform
 cask "sketch"
 # File transfer application
@@ -106,9 +108,9 @@ cask "visual-studio-code"
 # Multimedia player
 cask "vlc"
 # Network protocol analyzer
-cask "wireshark"
+cask "wireshark-app"
 # Install and switch between multiple versions of Xcode
-cask "xcodes"
+cask "xcodes-app"
 # Video communication and virtual meeting platform
 cask "zoom"
 mas "Amphetamine", id: 937984704
@@ -124,3 +126,19 @@ mas "Pages", id: 409201541
 mas "Parcel", id: 639968404
 mas "Reeder", id: 1529448980
 mas "The Clock", id: 488764545
+vscode "bierner.github-markdown-preview"
+vscode "bierner.markdown-checkbox"
+vscode "bierner.markdown-emoji"
+vscode "bierner.markdown-footnotes"
+vscode "bierner.markdown-mermaid"
+vscode "bierner.markdown-preview-github-styles"
+vscode "bierner.markdown-yaml-preamble"
+vscode "dbaeumer.vscode-eslint"
+vscode "docker.docker"
+vscode "editorconfig.editorconfig"
+vscode "esbenp.prettier-vscode"
+vscode "github.vscode-github-actions"
+vscode "humao.rest-client"
+vscode "timonwong.shellcheck"
+vscode "vscodevim.vim"
+vscode "zamerick.vscode-caddyfile-syntax"
