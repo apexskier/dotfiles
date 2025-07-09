@@ -49,7 +49,7 @@
     <key>exportPath</key>
     <string>/Users/cameronlittle/Downloads</string>
     <key>freezeScreen</key>
-    <false/>
+    <true/>
     <key>gifFPS</key>
     <integer>15</integer>
     <key>gifQuality</key>
@@ -81,14 +81,6 @@
     <key>popupOnLeftEdge</key>
     <false/>
     <key>popupSize</key>
-    <integer>1</integer>
-    <key>s000</key>
-    <integer>1610741580</integer>
-    <key>s001</key>
-    <integer>7</integer>
-    <key>s006</key>
-    <integer>2</integer>
-    <key>screenshotSound</key>
     <integer>1</integer>
     <key>showKeystrokes</key>
     <true/>
