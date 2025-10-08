@@ -124,26 +124,20 @@ function goinfo() {
             return
         fi
 
-        local goversion
+        local gotoolchain
+        gotoolchain=$(go env GOTOOLCHAIN)
 
-        if [ ! -f "$GOROOT/VERSION" ]; then
-            printf " (%s%s%s)" "$red" "goBROKEN" "$nocol"
-            return
-        fi
-        goversion=$(head -n 1 "$GOROOT/VERSION")
-        local goversion_major_minor
-        goversion_major_minor=$(echo "${goversion:2}" | cut -d'.' -f1-2)
-
-        local gomodversion_major_minor
-        gomodversion_major_minor=$(grep '^go ' "$gomodfile")
-        gomodversion_major_minor=${gomodversion_major_minor:3}
+        local gomodversion
+        gomodversion=$(grep '^go ' "$gomodfile")
+        gomodversion=${gomodversion}
+        gomodtoolchain="go${gomodversion:3}"
 
         local gocolor
-        if [ "$gomodversion_major_minor" != "$goversion_major_minor" ]; then
+        if [ "$gomodtoolchain" != "$gotoolchain" ]; then
             gocolor="$red"
         fi
 
-        printf " (%s%s%s)" "$gocolor" "$goversion" "$nocol"
+        printf " (%s%s%s)" "$gocolor" "$gotoolchain" "$nocol"
     fi
 }
 
