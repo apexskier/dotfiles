@@ -232,15 +232,15 @@ function set_prompt() {
     fi
 
     local gitinfo_file="$__dotfiles_prompt_gitinfo_file"
-    gitinfo > "$gitinfo_file" &
+    gitinfo > "$gitinfo_file" # &
     local nodeinfo_file="$__dotfiles_prompt_nodeinfo_file"
-    nodeinfo > "$nodeinfo_file" &
+    nodeinfo > "$nodeinfo_file" # &
     local goinfo_file="$__dotfiles_prompt_goinfo_file"
-    goinfo > "$goinfo_file" &
+    goinfo > "$goinfo_file" # &
     local k8sinfo_file="$__dotfiles_prompt_k8sinfo_file"
-    k8sinfo > "$k8sinfo_file" &
+    k8sinfo > "$k8sinfo_file" # &
 
-    wait
+    # wait
 
     gitinfo=$(cat "$gitinfo_file")
     nodeinfo=$(cat "$nodeinfo_file")
