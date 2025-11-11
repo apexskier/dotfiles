@@ -23,6 +23,13 @@ lt_purple="\[\033[1;35m\]"
     white="\[\033[1;37m\]"
      fade="\033[2m\]"
 
+function __dotfiles_pre_command() {
+    [[ -z "$__dotfiles_at_prompt" ]] && return
+    unset __dotfiles_at_prompt
+
+    __dotfiles_timer_start=$(date +%s.%N)
+}
+trap __dotfiles_pre_command DEBUG
 
 username=""
 # highlighted cyan for root, grey if the user is not the login one, else cyan
@@ -114,7 +121,7 @@ function nodeinfo() {
         local node_version
         node_version="$(node --version)"
         # alt ⬡
-        printf "⬢%s%s" "$nocol" "$node_version"
+        printf "⬢%s" "$node_version"
     fi
 }
 
@@ -218,6 +225,47 @@ function exitinfo() {
     fi
 }
 
+function format_duration() {
+    local duration=$1
+    local hours=$((duration / 3600))
+    local minutes=$(((duration % 3600) / 60))
+    local seconds=$((duration % 60))
+
+    if (( hours > 0 )); then
+        printf "%dh%dm%ds" $hours $minutes $seconds
+    elif (( minutes > 0 )); then
+        printf "%dm%ds" $minutes $seconds
+    else
+        printf "%ds" $seconds
+    fi
+}
+
+function timerinfo() {
+    if [[ -z "$__dotfiles_timer_start" ]]; then
+        return
+    fi
+
+    local duration
+    duration=$(echo "$(date +%s.%N) - $__dotfiles_timer_start" | bc -l)
+    printf -v duration '%.0f' "$duration"
+
+    # Only show if command took more than 1 second
+    if (( duration >= 1 )); then
+        local formatted
+        formatted=$(format_duration "$duration")
+
+        printf "%s⏱ " $dk_grey
+
+        if (( duration >= 60 )); then
+            printf "%s" "$red"
+        elif (( duration >= 10 )); then
+            printf "%s" "$yellow"
+        fi
+
+        printf "%s%s" "$formatted" "$nocol"
+    fi
+}
+
 __dotfiles_prompt_gitinfo_file=$(mktemp)
 __dotfiles_prompt_nodeinfo_file=$(mktemp)
 __dotfiles_prompt_goinfo_file=$(mktemp)
@@ -264,9 +312,14 @@ function map_format {
 function set_prompt() {
     # get exit info of last cmd before running any more
     local -i last_err=$?
-    local cmd_info=""
+    local cmd_info=()
     if (( last_err != 0 )); then
-        cmd_info="$(exitinfo $last_err)\n"
+        cmd_info+=("$(exitinfo $last_err)")
+    fi
+    cmd_info+=("$(timerinfo)")
+    cmd_info_str=$(join " " "${cmd_info[@]}")
+    if [[ -n "$cmd_info_str" ]]; then
+        cmd_info_str+="\n"
     fi
 
     history -a
@@ -274,7 +327,7 @@ function set_prompt() {
     local ret
 
     # exit info of last command
-    ret+="$cmd_info"
+    ret+="$cmd_info_str"
 
     # username, display mark, connnection type, hostname
     ret+="$username$displaymark$connectionmark$green\h$nocol"
@@ -293,7 +346,6 @@ function set_prompt() {
 
     # timestamp
     ret+=" $dk_grey$(date +"%H:%M:%S")$nocol"
-
 
     # environment info (parallelized)
     local venv
@@ -326,7 +378,6 @@ function set_prompt() {
     read -r -a formatted_items < <(map_format "$fade(%s$fade)$nocol" "${filtered_items[@]}")
     environment=$(join " " "${formatted_items[@]}")
 
-
     # this stuff can be used for _responsive_ design
     # it doesn't work though, since $ret doesn't expand custom prompt variables
     # local size
@@ -350,20 +401,10 @@ function set_prompt() {
     echo -ne "\033]0;\007\c"
 }
 
-function list_prompt_commands() {
-    IFS=";"
-    for command in $PROMPT_COMMAND
-    do
-        echo "$command" | xargs
-    done
+function post_prompt_cleanup() {
+    __dotfiles_at_prompt=1
 }
 
-# don't add duplicate commands to the prompt command and
-# make sure set_prompt runs first, so the return code can be captured
-new_prompt_command=$(list_prompt_commands | grep -v '^set_prompt$' | awk '!x[$0]++' | tr '\n' ';')
-new_prompt_command="set_prompt;$new_prompt_command"
-
-export PROMPT_COMMAND=$new_prompt_command
-
+export PROMPT_COMMAND="set_prompt;$PROMPT_COMMAND;post_prompt_cleanup"
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
