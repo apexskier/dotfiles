@@ -74,15 +74,16 @@ docker)
     connectionmark="⇨"
 esac
 
-mark="@"
+# highlight mark if windowing is supported
+displaymark="@"
 # If we are connected with X11 support (remote windowing on linux)
 if [[ -n "$DISPLAY" ]] ; then
-    mark="$white$mark$nocol"
+    displaymark="$white$displaymark$nocol"
 else
-    mark="$lt_grey$mark$nocol"
+    displaymark="$lt_grey$displaymark$nocol"
 fi
 
-# make this a little less prominant and different from normal text
+# make this a little less prominent and different from normal text
 # I don't use $ because it means something in bash
 PS2="${lt_grey}❯ ${nocol}"
 
@@ -90,7 +91,7 @@ function gitinfo() {
     local gitbranch
     gitbranch=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
     if [[ -n "$gitbranch" ]]; then
-        printf " (±%s)" "$gitbranch"
+        printf "±%s" "$gitbranch"
     fi
 }
 
@@ -113,7 +114,7 @@ function nodeinfo() {
         local node_version
         node_version="$(node --version)"
         # alt ⬡
-        printf " (⬢%s%s)" "$nocol" "$node_version"
+        printf "⬢%s%s" "$nocol" "$node_version"
     fi
 }
 
@@ -132,12 +133,16 @@ function goinfo() {
         gomodversion=${gomodversion}
         gomodtoolchain="go${gomodversion:3}"
 
-        local gocolor
-        if [ "$gomodtoolchain" != "$gotoolchain" ]; then
-            gocolor="$red"
+        if [ "$gotoolchain" = "local" ]; then
+            gotoolchain="$gomodtoolchain"
         fi
 
-        printf " (%s%s%s)" "$gocolor" "$gotoolchain" "$nocol"
+        if [ "$gomodtoolchain" != "$gotoolchain" ]; then
+            printf "%s%s%s" "$red" "$gotoolchain" "$nocol"
+        else
+            echo -n "$gotoolchain"
+        fi
+
     fi
 }
 
@@ -146,7 +151,18 @@ function k8sinfo() {
         local context
         context=$(kubectl config view --minify --output=go-template --template='{{ index . "current-context" }}' 2> /dev/null)
         if [[ -n "$context" ]] ; then
-            printf " (⎈%s)" "$context"
+            printf "⎈%s" "$context"
+        fi
+    fi
+}
+
+function gcloudinfo() {
+    if command -v gcloud >/dev/null 2>&1; then
+        local configName
+        # gcloud cli has some weird output, we're reading from something odd
+        configName=$(gcloud --format=text config get-value project 2>&1 | head -n1 | cut -d '[' -f2 | cut -d ']' -f1)
+        if [[ -n "$configName" ]] ; then
+            printf "☁%s" "$configName"
         fi
     fi
 }
@@ -206,9 +222,47 @@ __dotfiles_prompt_gitinfo_file=$(mktemp)
 __dotfiles_prompt_nodeinfo_file=$(mktemp)
 __dotfiles_prompt_goinfo_file=$(mktemp)
 __dotfiles_prompt_k8sinfo_file=$(mktemp)
+__dotfiles_prompt_gcloudinfo_file=$(mktemp)
+
+# joins arguments with a delimiter
+# usage: join "delimiter" "first" "second" "third" ...
+# output: firstdelimiterseconddelimiterthird
+function join {
+    local d=${1-} f=${2-}
+    if shift 2; then
+        printf %s "${f[@]}" "${@/#/$d}"
+    fi
+}
+
+# filters out empty arguments and returns the rest
+# usage: filter_empty "first" "" "second" "third" ""
+# output: first second third
+function filter_empty {
+    filtered=()
+    for item in "$@"; do
+        if [[ -n "$item" ]]; then
+            filtered+=("$item")
+        fi
+    done
+    echo "${filtered[@]}"
+}
+
+# maps a list
+# usage: map_format "(%s)" "first" "second" "third"
+# output: (first) (second) (third)
+function map_format {
+    local format=$1
+    shift
+    mapped=()
+    for item in "$@"; do
+        # shellcheck disable=SC2059
+        mapped+=("$(printf "$format" "$item")")
+    done
+    echo "${mapped[@]}"
+}
 
 function set_prompt() {
-    # get return code of last cmd
+    # get exit info of last cmd before running any more
     local -i last_err=$?
     local cmd_info=""
     if (( last_err != 0 )); then
@@ -219,54 +273,70 @@ function set_prompt() {
 
     local ret
 
+    # exit info of last command
+    ret+="$cmd_info"
+
+    # username, display mark, connnection type, hostname
+    ret+="$username$displaymark$connectionmark$green\h$nocol"
+
+    # write permission indicator
     local write=":"
     if [[ -w "$PWD" ]] ; then
         write="$green$write$nocol"
     else
         write="$red$write$nocol"
     fi
+    ret+="$write"
 
+    # current working directory
+    ret+="$yellow\w$nocol"
+
+    # timestamp
+    ret+=" $dk_grey$(date +"%H:%M:%S")$nocol"
+
+
+    # environment info (parallelized)
     local venv
     if [[ -n "$VIRTUAL_ENV" ]] ; then
-        venv=" (⊙${VIRTUAL_ENV#$WORKON_HOME/})"
+        venv="⊙${VIRTUAL_ENV#"$WORKON_HOME"/}"
     fi
 
     local gitinfo_file="$__dotfiles_prompt_gitinfo_file"
-    gitinfo > "$gitinfo_file" # &
+    gitinfo > "$gitinfo_file" &
     local nodeinfo_file="$__dotfiles_prompt_nodeinfo_file"
-    nodeinfo > "$nodeinfo_file" # &
+    nodeinfo > "$nodeinfo_file" &
     local goinfo_file="$__dotfiles_prompt_goinfo_file"
-    goinfo > "$goinfo_file" # &
+    goinfo > "$goinfo_file" &
     local k8sinfo_file="$__dotfiles_prompt_k8sinfo_file"
-    k8sinfo > "$k8sinfo_file" # &
+    k8sinfo > "$k8sinfo_file" &
+    local gcloudinfo_file="$__dotfiles_prompt_gcloudinfo_file"
+    gcloudinfo > "$gcloudinfo_file" &
 
-    # wait
+    wait
 
     gitinfo=$(cat "$gitinfo_file")
     nodeinfo=$(cat "$nodeinfo_file")
     goinfo=$(cat "$goinfo_file")
     k8sinfo=$(cat "$k8sinfo_file")
+    gcloudinfo=$(cat "$gcloudinfo_file")
 
     # this stuff can be used for _responsive_ design
     # local size=($(stty size))
     # local rows=${size[0]}
     # local cols=${size[1]}
-
-    local now
-    now="$(date +"%H:%M:%S")"
-
-    ret+="$cmd_info$username$mark$connectionmark$green\h$nocol$write"
-    ret+="$yellow\w$nocol"
-    ret+=" $dk_grey$now$nocol"
     # test "$(expr ${#ret} + ${#gitinfo})" -gt "$cols" && ret+="\n"
-    ret+="$gitinfo"
-    # test "$(expr ${#ret} + ${#venv})" -gt "$cols" && ret+="\n"
-    ret+="$venv"
-    ret+="$nodeinfo"
-    ret+="$goinfo"
-    ret+="$k8sinfo"
 
-    # use multi-line prompt as the main prompt as well
+    # environment information
+    local filtered_items
+    read -r -a filtered_items < <(filter_empty "$gitinfo" "$venv" "$nodeinfo" "$goinfo" "$k8sinfo" "$gcloudinfo")
+    read -r -a formatted_items < <(map_format "$fade(%s$fade)$nocol" "${filtered_items[@]}")
+    if [ ${#formatted_items[@]} -gt 0 ] ; then
+        ret+="\n"
+        ret+=$(join " " "${formatted_items[@]}")
+    fi
+    # test "$(expr ${#ret} + ${#venv})" -gt "$cols" && ret+="\n"
+
+    # command prompt on a new line, so I can read long commands easier
     ret+="\n$PS2"
 
     PS1=$ret
