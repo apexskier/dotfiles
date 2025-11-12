@@ -92,7 +92,7 @@ fi
 
 # make this a little less prominent and different from normal text
 # I don't use $ because it means something in bash
-PS2="${lt_grey}❯ ${nocol}"
+PS2="${lt_grey}↪ ${nocol}"
 
 function gitinfo() {
     local gitbranch
@@ -217,11 +217,11 @@ function exit_signal() {
 function exitinfo() {
     local desc
     if desc=$(exit_signal "$1"); then
-        printf "%s☇ %s%s" "$red" "$desc" "$nocol"
+        printf "%s%s%s" "$red" "$desc" "$nocol"
     elif desc=$(exit_conventional "$1"); then
-        printf "%s↩ %s%s %s(%s)%s" "$red" "$1" "$nocol" "$fade" "$desc" "$nocol"
+        printf "%s%s%s %s(%s)%s" "$red" "$1" "$nocol" "$fade" "$desc" "$nocol"
     else
-        printf "%s↩ %s%s" "$red" "$1" "$nocol"
+        printf "%s%s%s" "$red" "$1" "$nocol"
     fi
 }
 
@@ -319,7 +319,7 @@ function set_prompt() {
     cmd_info+=("$(timerinfo)")
     cmd_info_str=$(join " " "${cmd_info[@]}")
     if [[ -n "$cmd_info_str" ]]; then
-        cmd_info_str+="\n"
+        cmd_info_str="↩ $cmd_info_str\n"
     fi
 
     history -a
