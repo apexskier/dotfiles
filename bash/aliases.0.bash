@@ -51,7 +51,7 @@ function splitlines() {
     # https://stackoverflow.com/a/918931
     while IFS="$1" read -ra LINES; do
         for i in "${LINES[@]}"; do
-            echo $i
+            echo "$i"
         done
     done
 }
