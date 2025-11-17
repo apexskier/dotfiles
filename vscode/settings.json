@@ -1,8 +1,151 @@
 {
+  "editor.fontSize": 14,
+  "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
+  "workbench.colorTheme": "Default Light Modern",
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": "explicit",
+    "source.fixAll.tslint": "explicit"
+  },
+  "editor.largeFileOptimizations": false,
+  "editor.lineNumbers": "relative",
+  "editor.rulers": [
+    80,
+    120
+  ],
+  "editor.cursorBlinking": "solid",
+  "editor.fontLigatures": true,
+  "editor.minimap.enabled": false,
+  "files.trimTrailingWhitespace": true,
   "breadcrumbs.enabled": true,
+  "workbench.editor.highlightModifiedTabs": true,
+  "workbench.editor.tabSizing": "shrink",
+  "window.autoDetectColorScheme": true,
+  "explorer.confirmDragAndDrop": false,
+  "explorer.incrementalNaming": "smart",
+  "search.smartCase": true,
+  "search.useGlobalIgnoreFiles": true,
+  "debug.javascript.autoAttachFilter": "onlyWithFlag",
+  "debug.openDebug": "openOnFirstSessionStart",
+  "debug.toolBarLocation": "docked",
+  "chat.agent.maxRequests": 150,
+  "chat.agent.thinkingStyle": "collapsedPreview",
+  "chat.tools.terminal.autoApprove": {
+    "/\\(.+\\)/s": {
+      "approve": false,
+      "matchCommandLine": true
+    },
+    "/\\{.+\\}/s": {
+      "approve": false,
+      "matchCommandLine": true
+    },
+    "/`.+`/s": {
+      "approve": false,
+      "matchCommandLine": true
+    },
+    "/^cargo test .*/": true,
+    "/^column\\b.*-c\\s+[0-9]{4,}/": false,
+    "/^Compare-[a-z0-9]/i": true,
+    "/^date\\b.*(-s|--set)\\b/": false,
+    "/^find\\b.*-(delete|exec|execdir|fprint|fprintf|fls|ok|okdir)\\b/": false,
+    "/^Format-[a-z0-9]/i": true,
+    "/^git branch\\b.*-(d|D|m|M|-delete|-force)\\b/": false,
+    "/^git diff .*/": true,
+    "/^go doc .*/": true,
+    "/^go test .*/": true,
+    "/^Measure-[a-z0-9]/i": true,
+    "/^Select-[a-z0-9]/i": true,
+    "/^Sort-[a-z0-9]/i": true,
+    "/^sort\\b.*-(o|S)\\b/": false,
+    "/^tree\\b.*-o\\b/": false,
+    "basename": true,
+    "cargo build": true,
+    "cargo check": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "cat": true,
+    "cd": true,
+    "chmod": false,
+    "chown": false,
+    "cmp": true,
+    "column": true,
+    "curl": false,
+    "cut": true,
+    "date": true,
+    "dd": false,
+    "del": false,
+    "df": true,
+    "dirname": true,
+    "du": true,
+    "echo": true,
+    "erase": false,
+    "eval": false,
+    "file": true,
+    "find": true,
+    "findstr": true,
+    "Get-ChildItem": true,
+    "Get-Content": true,
+    "Get-Date": true,
+    "Get-Location": true,
+    "Get-Random": true,
+    "git branch": true,
+    "git grep": true,
+    "git log": true,
+    "git show": true,
+    "git status": true,
+    "grep": true,
+    "head": true,
+    "iex": false,
+    "Invoke-Expression": false,
+    "Invoke-RestMethod": false,
+    "Invoke-WebRequest": false,
+    "irm": false,
+    "iwr": false,
+    "Join-Path": true,
+    "jq": false,
+    "just run-local": {
+      "approve": true,
+      "matchCommandLine": true
+    },
+    "kill": false,
+    "ls": true,
+    "npm run fix": true,
+    "ps": false,
+    "pwd": true,
+    "rd": false,
+    "readlink": true,
+    "realpath": true,
+    "Remove-Item": false,
+    "ri": false,
+    "rm": false,
+    "rmdir": false,
+    "Set-Acl": false,
+    "Set-ItemProperty": false,
+    "sleep": true,
+    "sort": true,
+    "sp": false,
+    "Split-Path": true,
+    "spps": false,
+    "Start-Sleep": true,
+    "stat": true,
+    "Stop-Process": false,
+    "tail": true,
+    "taskkill": false,
+    "taskkill.exe": false,
+    "top": false,
+    "tr": true,
+    "tree": true,
+    "wc": true,
+    "wget": false,
+    "Where-Object": true,
+    "which": true,
+    "Write-Host": true,
+    "Write-Output": true,
+    "xargs": false
+  },
+  "security.workspace.trust.untrustedFiles": "open",
+  "cSpell.diagnosticLevel": "Hint",
   "cSpell.language": "en,en-US",
-  "cSpell.showStatus": false,
-  "cSpell.allowCompoundWords": true,
   "cSpell.userWords": [
     "Apptentive",
     "authed",
@@ -28,6 +171,8 @@
     "ifsc",
     "imap",
     "Istio",
+    "kagi",
+    "kagisearch",
     "kount",
     "kubernetes",
     "locme",
@@ -60,7 +205,9 @@
     "softfailed",
     "Sprintf",
     "stateful",
+    "supabase",
     "symlinks",
+    "templatised",
     "transaction",
     "transpilation",
     "truthy",
@@ -78,42 +225,26 @@
     "verdaccio",
     "Wrapf"
   ],
-  "debug.javascript.autoAttachFilter": "onlyWithFlag",
-  "debug.openDebug": "openOnFirstSessionStart",
-  "debug.toolBarLocation": "docked",
-  "docker.showStartPage": false,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.tslint": "explicit",
-    "source.fixAll.eslint": "explicit"
-  },
-  "editor.cursorBlinking": "solid",
-  "editor.fontFamily": "Fira Code, Menlo, Monaco, 'Courier New', monospace",
-  "editor.fontLigatures": true,
-  "editor.fontSize": 14,
-  "editor.largeFileOptimizations": false,
-  "editor.lineNumbers": "relative",
-  "editor.minimap.enabled": false,
-  "editor.rulers": [80, 120],
+  "docker.extension.enableComposeLanguageServer": false,
   "emmet.showAbbreviationSuggestions": false,
   "emmet.showExpandedAbbreviation": "never",
-  "explorer.confirmDragAndDrop": false,
-  "explorer.incrementalNaming": "smart",
-  "files.trimTrailingWhitespace": true,
   "git.confirmSync": false,
+  "github.copilot.chat.agent.thinkingTool": true,
   "github.copilot.nextEditSuggestions.enabled": true,
+  "glsllint.fallBackStage": "frag",
   "go.coverageOptions": "showUncoveredCodeOnly",
   "go.formatTool": "gofmt",
   "go.toolsManagement.autoUpdate": true,
   "go.useLanguageServer": true,
   "javascript.validate.enable": false,
   "markdown.preview.lineHeight": 1.4,
+  "playwright.reuseBrowser": false,
+  "prettier.trailingComma": "all",
   "rest-client.previewOption": "body",
-  "scad-lsp.fmtStyle": "file",
-  "scss.lint.validProperties": ["appearance"],
+  "scss.lint.validProperties": [
+    "appearance"
+  ],
   "scss.validate": false,
-  "search.smartCase": true,
-  "search.useGlobalIgnoreFiles": true,
-  "terminal.explorerKind": "external",
   "typescript.check.npmIsInstalled": false,
   "typescript.preferences.quoteStyle": "double",
   "typescript.tsserver.log": "off",
@@ -121,70 +252,111 @@
   "vim.cursorStylePerMode.insert": "line",
   "vim.cursorStylePerMode.normal": "block",
   "vim.cursorStylePerMode.replace": "underline",
+  "vim.history": 500,
   "vim.hlsearch": true,
   "vim.incsearch": true,
-  "vim.smartcase": true,
-  "vim.history": 500,
   "vim.insertModeKeyBindings": [
     {
-      "before": ["<C-n>"],
-      "commands": ["editor.action.triggerSuggest"]
+      "before": [
+        "<C-n>"
+      ],
+      "commands": [
+        "editor.action.triggerSuggest"
+      ]
     }
   ],
   "vim.normalModeKeyBindingsNonRecursive": [
     // unhighlight search (hlsearch) with `\⏎`
     {
-      "before": ["<leader>", "<cr>"],
-      "commands": [":nohl"]
+      "before": [
+        "<leader>",
+        "<cr>"
+      ],
+      "commands": [
+        ":nohl"
+      ]
     },
     // execute q macro with Q
     {
-      "before": ["Q"],
-      "after": ["@", "q"]
+      "after": [
+        "@",
+        "q"
+      ],
+      "before": [
+        "Q"
+      ]
     },
     // show usages
     {
-      "before": ["g", "r"],
-      "commands": ["editor.action.referenceSearch.trigger"]
+      "before": [
+        "g",
+        "r"
+      ],
+      "commands": [
+        "editor.action.referenceSearch.trigger"
+      ]
     },
     // preview definition
     {
-      "before": ["g", "R"],
-      "commands": ["editor.action.previewDeclaration"]
+      "before": [
+        "g",
+        "R"
+      ],
+      "commands": [
+        "editor.action.previewDeclaration"
+      ]
     },
     // jump to definition
     {
-      "before": ["g", "d"],
-      "commands": ["editor.action.goToDeclaration"]
+      "before": [
+        "g",
+        "d"
+      ],
+      "commands": [
+        "editor.action.goToDeclaration"
+      ]
     },
     // jump to type definition
     {
-      "before": ["g", "D"],
-      "commands": ["editor.action.goToTypeDefinition"]
+      "before": [
+        "g",
+        "D"
+      ],
+      "commands": [
+        "editor.action.goToTypeDefinition"
+      ]
     },
     // rename
     {
-      "before": ["g", "n"],
-      "commands": ["editor.action.rename"]
+      "before": [
+        "g",
+        "n"
+      ],
+      "commands": [
+        "editor.action.rename"
+      ]
     }
   ],
+  "vim.smartcase": true,
   "vim.visualModeKeyBindingsNonRecursive": [
     // nicer indentation
     {
-      "before": [">"],
-      "commands": ["editor.action.indentLines"]
+      "before": [
+        ">"
+      ],
+      "commands": [
+        "editor.action.indentLines"
+      ]
     },
     {
-      "before": ["<"],
-      "commands": ["editor.action.outdentLines"]
+      "before": [
+        "<"
+      ],
+      "commands": [
+        "editor.action.outdentLines"
+      ]
     }
   ],
-  "workbench.colorTheme": "Default Light Modern",
-  "workbench.editor.enablePreview": false,
-  "workbench.editor.enablePreviewFromQuickOpen": false,
-  "workbench.editor.highlightModifiedTabs": true,
-  "workbench.editor.tabSizing": "shrink",
-  "window.autoDetectColorScheme": true,
   "[html]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
@@ -192,20 +364,20 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[markdown]": {
     "editor.formatOnSave": false,
     "editor.trimAutoWhitespace": false,
     "files.trimTrailingWhitespace": false
   },
+  "[tailwindcss]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
   "[typescript]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "[typescriptreact]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
-  },
+  }
 }
