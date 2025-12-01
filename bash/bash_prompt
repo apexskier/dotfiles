@@ -156,7 +156,8 @@ function goinfo() {
 function k8sinfo() {
     if command -v kubectl >/dev/null 2>&1; then
         local context
-        context=$(kubectl config view --minify --output=go-template --template='{{ index . "current-context" }}' 2> /dev/null)
+        # --server prevents reliance on an internet connection
+        context=$(kubectl config view --server /dev/null --minify --output=go-template --template='{{ index . "current-context" }}' 2> /dev/null)
         if [[ -n "$context" ]] ; then
             printf "⎈%s" "$context"
         fi
