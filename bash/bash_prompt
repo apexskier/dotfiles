@@ -220,7 +220,7 @@ function exitinfo() {
     if desc=$(exit_signal "$1"); then
         printf "%s%s%s" "$red" "$desc" "$nocol"
     elif desc=$(exit_conventional "$1"); then
-        printf "%s%s%s %s(%s)%s" "$red" "$1" "$nocol" "$fade" "$desc" "$nocol"
+        printf "%s%s%s %s%s%s" "$red" "$1" "$nocol" "$fade" "$desc" "$nocol"
     else
         printf "%s%s%s" "$red" "$1" "$nocol"
     fi
@@ -330,7 +330,7 @@ function set_prompt() {
     # exit info of last command
     ret+="$cmd_info_str"
 
-    # username, display mark, connnection type, hostname
+    # username, display mark, connection type, hostname
     ret+="$username$displaymark$connectionmark$green\h$nocol"
 
     # write permission indicator
@@ -376,7 +376,7 @@ function set_prompt() {
     # environment information
     local filtered_items formatted_items environment
     read -r -a filtered_items < <(filter_empty "$gitinfo" "$venv" "$nodeinfo" "$goinfo" "$k8sinfo" "$gcloudinfo")
-    read -r -a formatted_items < <(map_format "$fade(%s$fade)$nocol" "${filtered_items[@]}")
+    read -r -a formatted_items < <(map_format "$fade%s$fade$nocol" "${filtered_items[@]}")
     environment=$(join " " "${formatted_items[@]}")
 
     # this stuff can be used for _responsive_ design
@@ -402,10 +402,23 @@ function set_prompt() {
     echo -ne "\033]0;\007\c"
 }
 
-function post_prompt_cleanup() {
-    __dotfiles_at_prompt=1
+function list_prompt_commands() {
+    IFS=";"
+    for command in $PROMPT_COMMAND
+    do
+        if [[ -n "$command" ]]; then
+            echo "$command" | xargs
+        fi
+    done
 }
 
-export PROMPT_COMMAND="set_prompt;$PROMPT_COMMAND;post_prompt_cleanup"
+# don't add duplicate commands to the prompt command - this allows nested shells t work
+new_prompt_command=$(list_prompt_commands | grep -v '^set_prompt$' | awk '!x[$0]++' | tr '\n' ';')
+
+# make sure set_prompt runs first, so the return code can be captured
+new_prompt_command="set_prompt;$new_prompt_command"
+
+export PROMPT_COMMAND=$new_prompt_command
+
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
