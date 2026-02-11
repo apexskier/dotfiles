@@ -228,17 +228,24 @@ function exitinfo() {
 
 function format_duration() {
     local duration=$1
-    local hours=$((duration / 3600))
-    local minutes=$(((duration % 3600) / 60))
-    local seconds=$((duration % 60))
 
+    hours=$(echo "($duration / 3600) / 1" | bc)
     if (( hours > 0 )); then
-        printf "%dh%dm%ds" $hours $minutes $seconds
-    elif (( minutes > 0 )); then
-        printf "%dm%ds" $minutes $seconds
-    else
-        printf "%ds" $seconds
+        printf "%sh" "$hours"
     fi
+
+    minutes=$(echo "(($duration % 3600) / 60) / 1" | bc)
+    if (( minutes > 0 )); then
+        printf "%sm" "$minutes"
+    fi
+
+    seconds=$(echo "($duration % 60) / 1" | bc)
+    if (( seconds > 0 )); then
+        printf "%ss" "$seconds"
+    fi
+
+    milliseconds=$(echo "($duration * 1000) % 1000 / 1" | bc)
+    printf "%sms" "$milliseconds"
 }
 
 function timerinfo() {
@@ -248,23 +255,13 @@ function timerinfo() {
 
     local duration
     duration=$(echo "$(date +%s.%N) - $__dotfiles_timer_start" | bc -l)
-    printf -v duration '%.0f' "$duration"
+    # printf -v duration '%.3f' "$duration"
 
-    # Only show if command took more than 1 second
-    if (( duration >= 1 )); then
-        local formatted
-        formatted=$(format_duration "$duration")
+    local formatted
+    formatted=$(format_duration "$duration")
 
-        printf "%s⏱ " $dk_grey
-
-        if (( duration >= 60 )); then
-            printf "%s" "$red"
-        elif (( duration >= 10 )); then
-            printf "%s" "$yellow"
-        fi
-
-        printf "%s%s" "$formatted" "$nocol"
-    fi
+    printf "%s⏱ " "$dk_grey"
+    printf "%s%s" "$formatted" "$nocol"
 }
 
 __dotfiles_prompt_gitinfo_file=$(mktemp)
@@ -402,6 +399,11 @@ function set_prompt() {
     echo -ne "\033]0;\007\c"
 }
 
+function pre_command() {
+    [[ -n "$__dotfiles_at_prompt" ]] && return
+    __dotfiles_at_prompt=1
+}
+
 function list_prompt_commands() {
     IFS=";"
     for command in $PROMPT_COMMAND
@@ -410,6 +412,7 @@ function list_prompt_commands() {
             echo "$command" | xargs
         fi
     done
+    echo "pre_command"
 }
 
 # don't add duplicate commands to the prompt command - this allows nested shells t work
