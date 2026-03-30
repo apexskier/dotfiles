@@ -9,6 +9,7 @@ echo "  Installing linux utilities"
 apt-get update
 apt-get install -y \
     bash-completion \
+    bc \
     curl \
     dnsutils \
     fzf \
