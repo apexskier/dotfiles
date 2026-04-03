@@ -167,8 +167,7 @@ function k8sinfo() {
 function gcloudinfo() {
     if command -v gcloud >/dev/null 2>&1; then
         local configName
-        # gcloud cli has some weird output, we're reading from something odd
-        configName=$(gcloud --format=text config get-value project 2>&1 | head -n1 | cut -d '[' -f2 | cut -d ']' -f1)
+        configName=$(gcloud --format='value(name)' config configurations list --filter="is_active:true" 2> /dev/null)
         if [[ -n "$configName" ]] ; then
             printf "☁%s" "$configName"
         fi
